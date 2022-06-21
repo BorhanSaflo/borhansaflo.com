@@ -1,0 +1,12 @@
+@use "styles/variables" as *;
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 30px 0px;
+    background-color: $darkPrimary;
+    color: $lightPrimary;
+    font-size: 1rem;
+}

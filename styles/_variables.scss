@@ -1,0 +1,32 @@
+//Colors
+$darkPrimary: #171717;
+$darkSecondary: #262626;
+$darkTertiary: #404040;
+$lightPrimary: #fafafa;
+$lightSecondary: #f5f5f5;
+$lightTertiary: #e5e5e5;
+$primary: hsl(20, 85%, 55%);
+$secondary: hsl(10, 72%, 51%);
+
+//Screen Sizes
+$lg: 1024px;
+$md: 768px;
+
+@mixin lg {
+  @media (min-width: $lg) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (min-width: $md) {
+    @content;
+  }
+}
+
+@mixin flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+

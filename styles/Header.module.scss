@@ -1,0 +1,10 @@
+@use "styles/variables" as *;
+
+.wrapper {
+    @include flexCenter;
+    position: fixed;
+    width: 100%;
+    height: 64px;
+    background-color: $darkPrimary;
+    color: $lightPrimary;
+}

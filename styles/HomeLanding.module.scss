@@ -1,0 +1,13 @@
+@use "styles/variables" as *;
+
+.wrapper {
+  @include flexCenter;
+  flex: 1;
+  min-height: 100vh;
+  background: $primary;
+  background: linear-gradient(0deg, $primary 0%, $secondary 100%);
+}
+
+.heading {
+  font-size: 3.5rem;
+}
