@@ -1,10 +1,20 @@
 @use "styles/variables" as *;
 
 .wrapper {
-    @include flexCenter;
-    position: fixed;
-    width: 100%;
-    height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 80px;
+  position: fixed;
+  width: 100%;
+  height: 64px;
+  background-color: transparent;
+  color: $lightPrimary;
+  font-weight: bold;
+  z-index: 99;
+  transition: background-color 0.25s ease-in-out;
+
+  &.active {
     background-color: $darkPrimary;
-    color: $lightPrimary;
+  }
 }
