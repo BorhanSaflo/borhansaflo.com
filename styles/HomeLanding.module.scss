@@ -2,7 +2,8 @@
 
 .wrapper {
   @include flexCenter;
-  flex: 1;
+  flex-direction: column;
+  gap: 20px;
   min-height: 100vh;
   background: $primary;
   background: linear-gradient(0deg, $primary 0%, $secondary 100%);
@@ -11,5 +12,13 @@
 .heading {
   font-size: 3.5rem;
   text-align: center;
+  margin: 0;
+  color: $lightPrimary;
+}
+
+.subHeading {
+  font-size: 1.5rem;
+  text-align: center;
+  margin: 0;
   color: $lightPrimary;
 }
