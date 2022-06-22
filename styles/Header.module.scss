@@ -1,13 +1,15 @@
 @use "styles/variables" as *;
 
-.wrapper {
+.container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 80px;
+  flex-direction: row;
+  flex-wrap: nowrap;
   position: fixed;
   width: 100%;
   height: 64px;
+  padding: 0 30px;
   background-color: transparent;
   color: $lightPrimary;
   font-weight: bold;
@@ -17,4 +19,52 @@
   &.active {
     background-color: $darkPrimary;
   }
+
+  @include md {
+    justify-content: space-around;
+    padding: 0;
+  }
+}
+
+.logo {
+  @include flexCenter;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: $lightPrimary;
+
+  @include md {
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+}
+
+//Mobile Menu
+.mobileMenuButton {
+  font-size: 27px;
+}
+
+.mobileMenuItem {
+}
+
+//Desktop Menu
+.menuContainer {
+  @include flexCenter;
+  gap: 40px;
+}
+
+.menuItem {
+}
+
+.socialButtonsContainer {
+  @include flexCenter;
+  gap: 10px;
+
+  @include md {
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+}
+
+.socialButton {
+  font-size: 27px;
 }
