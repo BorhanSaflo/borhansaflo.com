@@ -14,10 +14,11 @@
   color: $lightPrimary;
   font-weight: bold;
   z-index: 99;
-  transition: background-color 0.25s ease-in-out;
+  transition: background-color 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
 
   &.active {
     background-color: $darkPrimary;
+    box-shadow: 0px 4px 22px 0px #0000001a;
   }
 
   @include md {
@@ -26,16 +27,16 @@
   }
 }
 
-.logo {
+.logoContainer {
   @include flexCenter;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: $lightPrimary;
-
   @include md {
     flex-grow: 1;
     flex-basis: 0;
   }
+}
+
+.logo {
+  
 }
 
 //Mobile Menu

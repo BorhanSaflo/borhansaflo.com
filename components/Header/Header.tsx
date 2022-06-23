@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import styles from "../../styles/Header.module.scss";
 import { FaBars, FaGithubSquare, FaLinkedin } from "react-icons/fa";
 import DesktopMenu from "./DesktopMenu";
@@ -37,7 +38,9 @@ function Header() {
       className={
         isActive ? `${styles.container} ${styles.active}` : styles.container
       }>
-      <div className={styles.logo}>Borhan Saflo</div>
+      <div className={styles.logoContainer}>
+        <Image className={styles.logo} src="/Logo.png" alt="logo" width="50" height="50" />
+      </div>
 
       {isMobile && <FaBars className={styles.mobileMenuButton} />}
 
