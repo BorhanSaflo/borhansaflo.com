@@ -1,13 +1,15 @@
 //Colors
-$darkPrimary: hsl(234, 3%, 11%);
+$darkPrimary: #1b1b1d;
 $darkSecondary: #262626;
 $darkTertiary: #404040;
 $lightPrimary: #fafafa;
 $lightSecondary: #f5f5f5;
 $lightTertiary: #e5e5e5;
-$primary: #dc682e;
-$secondary: #cf3e20;
-$Tertiary: #342402;
+$primary: #fb9128;
+$secondary: #f98424;
+$Tertiary: #bf360c;
+$primaryBoxShadow: rgba(0, 0, 0, 0.2);
+$secondaryBoxShadow: rgba(0, 0, 0, 0.3);
 
 //Screen Sizes
 $lg: 1024px;
@@ -30,4 +32,3 @@ $md: 768px;
   align-items: center;
   justify-content: center;
 }
-

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import styles from "../../styles/Header.module.scss";
-import { FaBars, FaGithubSquare, FaLinkedin } from "react-icons/fa";
+import { FaBars, FaEnvelope, FaGithub, FaLinkedinIn } from "react-icons/fa";
+import SocialButton from "./SocialButton";
 import DesktopMenu from "./DesktopMenu";
 import MobileMenu from "./MobileMenu";
 
@@ -39,7 +40,13 @@ function Header() {
         isActive ? `${styles.container} ${styles.active}` : styles.container
       }>
       <div className={styles.logoContainer}>
-        <Image className={styles.logo} src="/Logo.png" alt="logo" width="50" height="50" />
+        <Image
+          className={styles.logo}
+          src="/Logo.png"
+          alt="logo"
+          width="40"
+          height="40"
+        />
       </div>
 
       {isMobile && <FaBars className={styles.mobileMenuButton} />}
@@ -48,8 +55,9 @@ function Header() {
         <>
           <DesktopMenu />
           <div className={styles.socialButtonsContainer}>
-            <FaGithubSquare className={styles.socialButton} />
-            <FaLinkedin className={styles.socialButton} />
+            <SocialButton Icon={FaGithub} url="https://github.com/" />
+            <SocialButton Icon={FaLinkedinIn} url="https://www.linkedin.com" />
+            <SocialButton Icon={FaEnvelope} url="mailto:example.com" />
           </div>
         </>
       )}

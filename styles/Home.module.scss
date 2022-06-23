@@ -1,0 +1,78 @@
+@use "styles/variables" as *;
+
+.wrapper {
+  @include flexCenter;
+  flex-direction: column;
+  gap: 20px;
+  min-height: 100vh;
+  background: $primary;
+  background: linear-gradient(0deg, $secondary 0%, $primary 100%);
+}
+
+.heading {
+  font-size: 3.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 0;
+  color: $darkPrimary;
+}
+
+.subHeading {
+  font-size: 1.5rem;
+  text-align: center;
+  margin: 0;
+  color: $darkPrimary;
+}
+
+.scrollDownArrow {
+  position: absolute;
+  bottom: 10px;
+  font-size: 2.5rem;
+  text-align: center;
+  margin: 0;
+  color: $darkPrimary;
+  animation: slidingLoopAnimation 1s linear infinite;
+  transition: all 0.3s ease;
+
+  &.hidden {
+    opacity: 0;
+  }
+}
+
+@keyframes slidingLoopAnimation {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.button {
+  @include flexCenter;
+  gap: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  margin: 0;
+  padding: 12px 20px;
+  color: $lightPrimary;
+  background-color: $darkPrimary;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 5px 10px $primaryBoxShadow;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+  &:hover {
+    background-color: $darkSecondary;
+    box-shadow: 0px 5px 11px $secondaryBoxShadow;
+    transform: translateY(-1px);
+  }
+}
+
+.SVGShape {
+  fill: $secondary;
+}
