@@ -8,7 +8,7 @@ interface Props {
 
 function SocialButton({ Icon, url }: Props) {
   return (
-    <a href={url} target="_blank" className={styles.socialButton}>
+    <a href={url} target="_blank" rel="noreferrer" className={styles.socialButton}>
       <Icon />
     </a>
   );
