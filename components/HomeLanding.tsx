@@ -20,7 +20,7 @@ function HomeLanding() {
   return (
     <>
       <div className={styles.wrapper}>
-        <h1 className={styles.heading}>Hi, I'm Borhan Saflo</h1>
+        <h1 className={styles.heading}>{"Hi, I'm Borhan Saflo"}</h1>
         <h2 className={styles.subHeading}>A Web Developer</h2>
         <FaArrowCircleDown
           className={`${styles.scrollDownArrow} ${
