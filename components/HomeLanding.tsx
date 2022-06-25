@@ -5,6 +5,7 @@ import { TiChevronRight } from "react-icons/ti";
 import SVGShape from "./SVGShape";
 import Button from "./Button";
 import Typed from "typed.js";
+import Image from "next/image";
 
 function HomeLanding() {
   const [scrollPos, setScrollPos] = useState(
@@ -53,25 +54,33 @@ function HomeLanding() {
   return (
     <>
       <div className={styles.wrapper}>
-        <div className={`${styles.container} ${styles.headingContainer}`}>
-          <h1 className={styles.heading}>{"Hello, I'm Borhan Saflo"}</h1>
-          <h2 className={styles.subHeading}>A Web Developer</h2>
-          <Button text="Learn More" Icon={TiChevronRight} />
-        </div>
         <div className={styles.container}>
-          <div className={styles.laptopContainer}>
-            <div className={styles.laptopDisplay}>
-              <div className={styles.laptopScreen}>
-                <div className={styles.typingText}>
-                  <span ref={text1}></span>
-                  <span ref={text2}></span>
+          <div className={`${styles.containerItem} ${styles.headingContainer}`}>
+            <h1 className={styles.heading}>{"Hello, I'm Borhan Saflo"}</h1>
+            <h2 className={styles.subHeading}>A Web Developer</h2>
+            <Button text="Learn More" Icon={TiChevronRight} />
+          </div>
+          <div className={`${styles.containerItem} ${styles.laptopContainer}`}>
+            <div className={styles.laptop}>
+              <div className={styles.laptopDisplay}>
+                <div className={styles.laptopScreen}>
+                  <Image
+                    className={styles.laptopBackground}
+                    src="/laptopBackground.png"
+                    layout="fill"
+                    objectFit="cover"
+                  />
+                  <div className={styles.typingText}>
+                    <span ref={text1}></span>
+                    <span ref={text2}></span>
+                  </div>
                 </div>
               </div>
+              <div className={styles.laptopBase}>
+                <div className={styles.laptopIndent}></div>
+              </div>
+              <div className={styles.laptopBottom}></div>
             </div>
-            <div className={styles.laptopBase}>
-              <div className={styles.laptopIndent}></div>
-            </div>
-            <div className={styles.laptopBottom}></div>
           </div>
         </div>
         <FaArrowCircleDown

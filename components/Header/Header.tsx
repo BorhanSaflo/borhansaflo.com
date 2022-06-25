@@ -37,30 +37,35 @@ function Header() {
   return (
     <div
       className={
-        isActive ? `${styles.container} ${styles.active}` : styles.container
+        isActive ? `${styles.wrapper} ${styles.active}` : styles.wrapper
       }>
-      <div className={styles.logoContainer}>
-        <Image
-          className={styles.logo}
-          src="/Logo.png"
-          alt="logo"
-          width="40"
-          height="40"
-        />
+      <div className={styles.container}>
+        <div className={styles.logoContainer}>
+          <Image
+            className={styles.logo}
+            src="/Logo.png"
+            alt="logo"
+            width="40"
+            height="40"
+          />
+        </div>
+
+        {isMobile && <FaBars className={styles.mobileMenuButton} />}
+
+        {!isMobile && (
+          <>
+            <DesktopMenu />
+            <div className={styles.socialButtonsContainer}>
+              <SocialButton Icon={FaGithub} url="https://github.com/" />
+              <SocialButton
+                Icon={FaLinkedinIn}
+                url="https://www.linkedin.com"
+              />
+              <SocialButton Icon={FaEnvelope} url="mailto:example.com" />
+            </div>
+          </>
+        )}
       </div>
-
-      {isMobile && <FaBars className={styles.mobileMenuButton} />}
-
-      {!isMobile && (
-        <>
-          <DesktopMenu />
-          <div className={styles.socialButtonsContainer}>
-            <SocialButton Icon={FaGithub} url="https://github.com/" />
-            <SocialButton Icon={FaLinkedinIn} url="https://www.linkedin.com" />
-            <SocialButton Icon={FaEnvelope} url="mailto:example.com" />
-          </div>
-        </>
-      )}
     </div>
   );
 }

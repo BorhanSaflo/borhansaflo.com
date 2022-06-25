@@ -2,49 +2,50 @@
 
 .wrapper {
   @include flexCenter;
-  flex-direction: column;
+  width: 100%;
   min-height: 100vh;
-  gap: 50px;
   background: $primary;
   background: linear-gradient(0deg, $secondary 0%, $primary 100%);
-
-  @include md {
-    gap: 20px;
-    flex-direction: row;
-    padding: 0px 40px;
-  }
-
-  @include lg {
-    gap: 40px;
-  }
 }
 
 .container {
   @include flexCenter;
-  flex: 0;
+  flex: 1;
+  flex-direction: column;
+  max-width: $xl;
+  gap: 40px;
+  padding: 0 30px;
+
+  @include lg {
+    flex-direction: row;
+    gap: 20px;
+  }
+}
+
+.containerItem {
+  @include flexCenter;
+  flex: 1;
   flex-direction: column;
   text-align: center;
   gap: 20px;
-  max-width: 650px;
-
-  @include md {
-    flex: 1;
-  }
 
   @include lg {
     gap: 30px;
     &.headingContainer {
       align-items: flex-start;
       text-align: left;
-      padding-left: 25px;
+    }
+    &.laptopContainer {
+      display: flex;
+      align-items: flex-end;
     }
   }
 }
 
 .heading {
+  margin: 0;
   font-size: 2.5rem;
   font-weight: 700;
-  margin: 0;
   color: $darkPrimary;
 
   @include md {
@@ -52,11 +53,11 @@
   }
 
   @include lg {
-    font-size: 3rem;
+    font-size: 2.9rem;
   }
 
   @include xl {
-    font-size: 3.5rem;
+    font-size: 3.3rem;
   }
 }
 
@@ -120,13 +121,12 @@
 }
 
 //Laptop
-$laptopWidth: 17em;
-$laptopHeight: 9.5em;
+$laptopWidth: 25.5em;
+$laptopHeight: 14.25em;
 
-.laptopContainer {
+.laptop {
   width: $laptopWidth;
   height: $laptopHeight;
-  margin: 0 auto;
   perspective: 1200px;
   transition: transform 0.3s ease-in-out;
 
@@ -136,13 +136,13 @@ $laptopHeight: 9.5em;
   }
 
   @include lg {
-    width: $laptopWidth * 1.7;
-    height: $laptopHeight * 1.7;
+    width: $laptopWidth * 1.3;
+    height: $laptopHeight * 1.3;
   }
 
   @include xl {
-    width: $laptopWidth * 1.9;
-    height: $laptopHeight * 1.9;
+    width: $laptopWidth * 1.4;
+    height: $laptopHeight * 1.4;
   }
 
   &:hover {
@@ -180,15 +180,15 @@ $laptopHeight: 9.5em;
   }
 
   &:after {
+    content: "";
     position: absolute;
     top: 0;
     right: 0;
     z-index: 2;
-    border-top: 4em solid #ffffff0d;
-    border-left: 4em solid transparent;
+    border-top: 6em solid #ffffff0e;
+    border-left: 6em solid transparent;
     width: 0;
     height: 0;
-    content: "";
   }
 }
 
@@ -197,7 +197,6 @@ $laptopHeight: 9.5em;
   justify-content: flex-start;
   padding: 8% 7%;
   background: #2b2b2b;
-  background: url("/laptopBackground.png");
   position: absolute;
   top: 1.5%;
   left: 1%;
@@ -208,6 +207,11 @@ $laptopHeight: 9.5em;
   background-size: cover;
   width: 98%;
   height: 96%;
+}
+
+.laptopBackground {
+  @include noSelect;
+  z-index: -1;
 }
 
 .typingText {
