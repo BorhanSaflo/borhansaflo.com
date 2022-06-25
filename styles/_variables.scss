@@ -1,6 +1,6 @@
 //Colors
-$darkPrimary: #1b1b1d;
-$darkSecondary: #262626;
+$darkPrimary: hsl(240, 4%, 11%);
+$darkSecondary: hsl(240, 4%, 14%);
 $darkTertiary: #404040;
 $lightPrimary: #fafafa;
 $lightSecondary: #f5f5f5;
@@ -12,8 +12,15 @@ $primaryBoxShadow: rgba(0, 0, 0, 0.2);
 $secondaryBoxShadow: rgba(0, 0, 0, 0.3);
 
 //Screen Sizes
+$xl: 1279px;
 $lg: 1024px;
 $md: 768px;
+
+@mixin xl {
+  @media (min-width: $xl) {
+    @content;
+  }
+}
 
 @mixin lg {
   @media (min-width: $lg) {

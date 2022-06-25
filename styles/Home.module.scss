@@ -3,23 +3,65 @@
 .wrapper {
   @include flexCenter;
   flex-direction: column;
-  gap: 20px;
   min-height: 100vh;
+  gap: 50px;
   background: $primary;
   background: linear-gradient(0deg, $secondary 0%, $primary 100%);
+
+  @include md {
+    gap: 20px;
+    flex-direction: row;
+    padding: 0px 40px;
+  }
+
+  @include lg {
+    gap: 40px;
+  }
+}
+
+.container {
+  @include flexCenter;
+  flex: 0;
+  flex-direction: column;
+  text-align: center;
+  gap: 20px;
+  max-width: 650px;
+
+  @include md {
+    flex: 1;
+  }
+
+  @include lg {
+    gap: 30px;
+    &.headingContainer {
+      align-items: flex-start;
+      text-align: left;
+      padding-left: 25px;
+    }
+  }
 }
 
 .heading {
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   font-weight: 700;
-  text-align: center;
   margin: 0;
   color: $darkPrimary;
+
+  @include md {
+    font-size: 2.8rem;
+  }
+
+  @include lg {
+    font-size: 3rem;
+  }
+
+  @include xl {
+    font-size: 3.5rem;
+  }
 }
 
 .subHeading {
   font-size: 1.5rem;
-  text-align: center;
   margin: 0;
   color: $darkPrimary;
 }
@@ -64,15 +106,191 @@
   box-shadow: 0px 5px 10px $primaryBoxShadow;
   transition: all 0.3s ease;
   cursor: pointer;
-  transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
 
   &:hover {
     background-color: $darkSecondary;
     box-shadow: 0px 5px 11px $secondaryBoxShadow;
-    transform: translateY(-1px);
+    transform: translateY(-2px);
   }
 }
 
 .SVGShape {
   fill: $secondary;
+}
+
+//Laptop
+$laptopWidth: 17em;
+$laptopHeight: 9.5em;
+
+.laptopContainer {
+  width: $laptopWidth;
+  height: $laptopHeight;
+  margin: 0 auto;
+  perspective: 1200px;
+  transition: transform 0.3s ease-in-out;
+
+  @include md {
+    width: $laptopWidth * 1.2;
+    height: $laptopHeight * 1.2;
+  }
+
+  @include lg {
+    width: $laptopWidth * 1.7;
+    height: $laptopHeight * 1.7;
+  }
+
+  @include xl {
+    width: $laptopWidth * 1.9;
+    height: $laptopHeight * 1.9;
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+.laptopDisplay {
+  position: relative;
+  margin: auto;
+  border-top-left-radius: 0.425em;
+  border-top-right-radius: 0.425em;
+  background-color: #000;
+  width: 81%;
+  height: 93%;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transform-origin: bottom;
+  animation-delay: 3s;
+  animation: openLaptop 2s ease-in-out;
+
+  &:before {
+    position: absolute;
+    top: 0.05em;
+    right: 0;
+    left: 0;
+    z-index: 2;
+    margin: auto;
+    border-bottom-left-radius: 10%;
+    border-bottom-right-radius: 10%;
+    background: #000;
+    width: 10%;
+    height: 4%;
+    content: "";
+  }
+
+  &:after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    border-top: 4em solid #ffffff0d;
+    border-left: 4em solid transparent;
+    width: 0;
+    height: 0;
+    content: "";
+  }
+}
+
+.laptopScreen {
+  display: flex;
+  justify-content: flex-start;
+  padding: 8% 7%;
+  background: #2b2b2b;
+  background: url("/laptopBackground.png");
+  position: absolute;
+  top: 1.5%;
+  left: 1%;
+  z-index: 1;
+  margin: auto;
+  border-top-left-radius: 0.3em;
+  border-top-right-radius: 0.3em;
+  background-size: cover;
+  width: 98%;
+  height: 96%;
+}
+
+.typingText {
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 400;
+  color: $lightPrimary;
+
+  @include md {
+    font-size: 1.2rem;
+  }
+}
+
+.laptopBase {
+  position: relative;
+  background-color: #eff0f4;
+  width: 100%;
+  height: 2.5%;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1em;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      rgba(226, 228, 227, 0.35) 0,
+      rgba(140, 141, 145, 0.35) 51%,
+      rgba(226, 228, 227, 0.35) 99%,
+      rgba(226, 228, 227, 0.35)
+    );
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1em;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      rgba(226, 228, 227, 0.35) 0,
+      rgba(140, 141, 145, 0.35) 51%,
+      rgba(226, 228, 227, 0.35) 99%,
+      rgba(226, 228, 227, 0.35)
+    );
+  }
+}
+
+.laptopIndent {
+  margin: auto;
+  border-bottom-left-radius: 2em;
+  border-bottom-right-radius: 2em;
+  width: 10%;
+  height: 60%;
+  background: linear-gradient(
+    180deg,
+    rgba(153, 154, 158, 0.75) 30%,
+    rgba(44, 45, 47, 0.6) 90%
+  );
+}
+
+.laptopBottom {
+  margin: auto;
+  border-bottom-left-radius: 2em;
+  border-bottom-right-radius: 2em;
+  box-shadow: 0 19px 38px #000000, 0 5px 12px #0000004d;
+  height: 1.7%;
+  background: linear-gradient(
+    180deg,
+    rgba(153, 154, 158, 0.75) 30%,
+    rgba(44, 45, 47, 0.6) 90%
+  );
+}
+
+@keyframes openLaptop {
+  0% {
+    transform: rotateX(275deg);
+  }
+  100% {
+    transform: rotateX(360deg);
+  }
 }
