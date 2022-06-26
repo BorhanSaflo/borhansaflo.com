@@ -6,6 +6,7 @@
   min-height: 100vh;
   background: $primary;
   background: linear-gradient(0deg, $secondary 0%, $primary 100%);
+  overflow: hidden;
 }
 
 .container {
@@ -44,7 +45,7 @@
 
 .heading {
   margin: 0;
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   font-weight: 700;
   color: $darkPrimary;
 
@@ -62,9 +63,13 @@
 }
 
 .subHeading {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   margin: 0;
   color: $darkPrimary;
+
+  @include md {
+    font-size: 1.5rem;
+  }
 }
 
 .scrollDownArrow {
@@ -121,8 +126,8 @@
 }
 
 //Laptop
-$laptopWidth: 25.5em;
-$laptopHeight: 14.25em;
+$laptopWidth: 20.4em;
+$laptopHeight: 11.4em;
 
 .laptop {
   width: $laptopWidth;
@@ -210,7 +215,7 @@ $laptopHeight: 14.25em;
 }
 
 .laptopBackground {
-  @include noSelect;
+  @include noDrag;
   z-index: -1;
 }
 

@@ -3,7 +3,7 @@
 .wrapper {
   @include flexCenter;
   width: 100%;
-  height: 64px;
+  height: $headerSize;
   position: fixed;
   background-color: transparent;
   z-index: 99;
@@ -59,14 +59,61 @@
 }
 
 .logo {
+  @include noDrag;
 }
 
 //Mobile Menu
 .mobileMenuButton {
   font-size: 27px;
+  transition: transform 0.25s ease;
+
+  &.mobileMenuButtonActive {
+    font-size: 32px;
+    transform: rotate(90deg);
+  }
+}
+
+.mobileMenu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: fixed;
+  top: $headerSize;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background-color: $darkPrimary;
+  transition: opacity 0.3s ease-in-out, height 0.3s ease-in-out;
+  opacity: 0;
+
+  &.mobileMenuActive {
+    height: calc(100% - $headerSize);
+    opacity: 1;
+  }
+}
+
+.mobileMenuItemsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .mobileMenuItem {
+  font-size: 1.8em;
+  width: 100%;
+  padding: 10px 40px;
+  border-bottom: 1px solid #fff;
+
+  &:first-child {
+    border-top: 1px solid #fff;
+  }
+}
+
+.mobileSocialButtonsContainer {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 //Desktop Menu
@@ -75,11 +122,12 @@
 
 .socialButton {
   @include flexCenter;
-  width: 35px;
-  height: 35px;
-  font-size: 20px;
-  color: $lightPrimary;
-  background-color: $darkPrimary;
+  width: 55px;
+  height: 55px;
+  margin: 10px;
+  font-size: 35px;
+  color: $darkPrimary;
+  background-color: $lightPrimary;
   border-radius: 5px;
   transition: all 0.15s ease-in-out;
 
@@ -87,5 +135,12 @@
     background-color: $darkSecondary;
     box-shadow: 0px 2px 5px $secondaryBoxShadow;
     transform: translateY(-2px);
+  }
+
+  @include md {
+    margin: auto;
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
   }
 }

@@ -66,6 +66,7 @@ function HomeLanding() {
                 <div className={styles.laptopScreen}>
                   <Image
                     className={styles.laptopBackground}
+                    priority
                     src="/laptopBackground.png"
                     layout="fill"
                     objectFit="cover"

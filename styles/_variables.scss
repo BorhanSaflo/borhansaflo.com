@@ -16,6 +16,9 @@ $xl: 1279px;
 $lg: 1024px;
 $md: 768px;
 
+//Other
+$headerSize: 64px;
+
 @mixin xl {
   @media (min-width: $xl) {
     @content;
@@ -40,11 +43,16 @@ $md: 768px;
   justify-content: center;
 }
 
-@mixin noSelect {
+@mixin noDrag {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  -khtml-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
 }
