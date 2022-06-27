@@ -42,7 +42,6 @@ function Header() {
       window.removeEventListener("resize", updateWindowDimensions);
     };
   });
-  const nodeRef = React.useRef(null);
   return (
     <div className={isHidden ? "hidden" : ""}>
       <div
@@ -55,7 +54,7 @@ function Header() {
           <div className={styles.logoContainer}>
             <Image
               className={styles.logo}
-              src="/Logo.png"
+              src="/images/logo.png"
               alt="logo"
               width="40"
               height="40"

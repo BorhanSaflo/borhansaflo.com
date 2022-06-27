@@ -3,12 +3,14 @@ import styles from "../styles/Home.module.scss";
 
 function SVGShape() {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-      <path
-        fillOpacity="1"
-        className={styles.SVGShape}
-        d="M0,192L80,208C160,224,320,256,480,245.3C640,235,800,181,960,176C1120,171,1280,213,1360,234.7L1440,256L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path>
-    </svg>
+    <div className={styles.SVGShape}>
+      <svg
+        preserveAspectRatio="none"
+        viewBox="0 0 1200 120"
+        xmlns="http://www.w3.org/2000/svg">
+        <path d="M321.39 56.44c58-10.79 114.16-30.13 172-41.86 82.39-16.72 168.19-17.73 250.45-.39C823.78 31 906.67 72 985.66 92.83c70.05 18.48 146.53 26.09 214.34 3V0H0v27.35a600.21 600.21 0 00321.39 29.09z" />
+      </svg>
+    </div>
   );
 }
 

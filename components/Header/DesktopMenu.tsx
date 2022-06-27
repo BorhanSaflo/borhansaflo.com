@@ -5,10 +5,21 @@ import styles from "../../styles/Header.module.scss";
 function DesktopMenu() {
   return (
     <div className={styles.menuContainer}>
-      <a className={styles.menuItem}>Home</a>
-      <a className={styles.menuItem}>About</a>
-      <a className={styles.menuItem}>Projects</a>
-      <a className={styles.menuItem}>Contact</a>
+      <Link href="/" className={styles.menuItem}>
+        Home
+      </Link>
+      <Link href="#about" className={styles.menuItem}>
+        About
+      </Link>
+      <Link href="#projects" className={styles.menuItem}>
+        Projects
+      </Link>
+      <Link href="#skills" className={styles.menuItem}>
+        Skills
+      </Link>
+      <Link href="#contact" className={styles.menuItem}>
+        Contact
+      </Link>
     </div>
   );
 }

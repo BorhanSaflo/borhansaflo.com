@@ -56,8 +56,13 @@ function HomeLanding() {
       <div className={styles.wrapper}>
         <div className={styles.container}>
           <div className={`${styles.containerItem} ${styles.headingContainer}`}>
-            <h1 className={styles.heading}>{"Hello, I'm Borhan Saflo"}</h1>
-            <h2 className={styles.subHeading}>A Web Developer</h2>
+            <h1 className={styles.heading}>{"Hi, I'm Borhan Saflo 👨‍💻"}</h1>
+            <h2 className={styles.subHeading}>
+              A <span className={styles.keyWord}>Web Developer</span>,
+              <span className={styles.keyWord}> Designer</span>, & Aspiring
+              <span className={styles.keyWord}> Software Engineer</span> Based
+              in Canada.
+            </h2>
             <Button text="Learn More" Icon={TiChevronRight} />
           </div>
           <div className={`${styles.containerItem} ${styles.laptopContainer}`}>
@@ -67,7 +72,7 @@ function HomeLanding() {
                   <Image
                     className={styles.laptopBackground}
                     priority
-                    src="/laptopBackground.png"
+                    src="/images/laptopBackground.png"
                     layout="fill"
                     objectFit="cover"
                   />
@@ -84,11 +89,13 @@ function HomeLanding() {
             </div>
           </div>
         </div>
-        <FaArrowCircleDown
+        <a
+          href="#about"
           className={`${styles.scrollDownArrow} ${
             scrollPos !== 0 ? `${styles.hidden}` : ""
-          }`}
-        />
+          }`}>
+          <FaArrowCircleDown />
+        </a>
       </div>
       <SVGShape />
     </>
