@@ -6,6 +6,7 @@ import { CgClose } from "react-icons/cg";
 import SocialButton from "./SocialButton";
 import DesktopMenu from "./DesktopMenu";
 import MobileMenu from "./MobileMenu";
+import Link from "next/link";
 
 function Header() {
   const [isActive, setIsActive] = useState(false);
@@ -13,9 +14,27 @@ function Header() {
   const [isHidden, setIsHidden] = useState(true);
   const [isMobileMenuActive, setIsMobileMenuActive] = useState(false);
 
+  const menuData: { name: string; href: string }[] = [
+    {
+      name: "Home",
+      href: "/",
+    },
+    {
+      name: "About",
+      href: "#about",
+    },
+    {
+      name: "Projects",
+      href: "#projects",
+    },
+    {
+      name: "Contact",
+      href: "#contact",
+    },
+  ];
+
   const toggleMobileMenu = () => {
     setIsMobileMenuActive(!isMobileMenuActive);
-    console.log(isMobileMenuActive);
   };
 
   const changeBackground = () => {
@@ -52,13 +71,15 @@ function Header() {
         }>
         <div className={styles.container}>
           <div className={styles.logoContainer}>
-            <Image
-              className={styles.logo}
-              src="/images/logo.png"
-              alt="logo"
-              width="40"
-              height="40"
-            />
+            <Link href="/">
+              <Image
+                className={styles.logo}
+                src="/images/logo.png"
+                alt="logo"
+                width="40"
+                height="40"
+              />
+            </Link>
           </div>
 
           {isMobile ? (
@@ -76,7 +97,7 @@ function Header() {
             </>
           ) : (
             <>
-              <DesktopMenu />
+              <DesktopMenu menuData={menuData} />
               <div className={styles.socialButtonsContainer}>
                 <SocialButton Icon={FaGithub} url="https://github.com/" />
                 <SocialButton

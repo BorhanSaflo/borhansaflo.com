@@ -63,13 +63,13 @@
 }
 
 .subHeading {
-  font-size: 1.2rem;
-  font-weight: 500;
   margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
   color: $darkPrimary;
 
   .keyWord {
-    font-weight: 700;
+    text-decoration: underline;
   }
 
   @include md {
@@ -106,12 +106,12 @@
 .button {
   @include flexCenter;
   gap: 10px;
-  font-size: 1rem;
+  font-size: 1.1em;
   font-weight: 700;
   text-align: center;
   margin: 0;
   padding: 12px 25px;
-  color: $lightPrimary;
+  color: $primary;
   background-color: $darkPrimary;
   border: none;
   border-radius: 5px;

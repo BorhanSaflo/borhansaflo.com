@@ -56,12 +56,15 @@ function HomeLanding() {
       <div className={styles.wrapper}>
         <div className={styles.container}>
           <div className={`${styles.containerItem} ${styles.headingContainer}`}>
-            <h1 className={styles.heading}>{"Hi, I'm Borhan Saflo 👨‍💻"}</h1>
+            <h1 className={styles.heading}>{"Hi, I'm Borhan Saflo 👋"}</h1>
             <h2 className={styles.subHeading}>
-              A <span className={styles.keyWord}>Web Developer</span>,
-              <span className={styles.keyWord}> Designer</span>, & Aspiring
-              <span className={styles.keyWord}> Software Engineer</span> Based
-              in Canada.
+              {"A "}
+              <span className={styles.keyWord}>Web Developer</span>
+              {", "}
+              <span className={styles.keyWord}>Designer</span>
+              {", & Aspiring "}
+              <span className={styles.keyWord}>Software Engineer</span>
+              {" Based in Canada."}
             </h2>
             <Button text="Learn More" Icon={TiChevronRight} />
           </div>
