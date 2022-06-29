@@ -5,13 +5,11 @@ import Header from "../components/Header/Header";
 import Landing from "../components/Landing";
 import Section from "../components/Section";
 import { Scrollspy } from "@makotot/ghostui";
-import { useRef, useState } from "react";
+import { createRef, useEffect, useState } from "react";
 
 const Home: NextPage = () => {
   const [currentElementIndexInViewport, setCurrentElementIndexInViewport] =
     useState(0);
-
-  const sectionRefs = Array.from(Array(5), () => useRef<HTMLDivElement>(null));
 
   const loremText =
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim adminim veniam, quis nostru exercitatio ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaeca cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim adminim veniam, quis nostru exercitatio ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaeca cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
@@ -63,6 +61,18 @@ const Home: NextPage = () => {
       paragraph: loremText,
     },
   ];
+
+  const arrLength = sections.length;
+  const [sectionRefs, setSectionRefs] = useState([]);
+
+  useEffect(() => {
+    console.log(arrLength);
+    setSectionRefs((elRefs) =>
+      Array(arrLength)
+        .fill(null)
+        .map((_, i) => elRefs[i] || createRef<HTMLDivElement>())
+    );
+  }, [arrLength]);
 
   return (
     <div>

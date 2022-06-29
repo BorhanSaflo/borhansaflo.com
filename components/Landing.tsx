@@ -108,5 +108,6 @@ const Landing = forwardRef<HTMLDivElement, Props>(({ id }: Props, ref) => {
     </>
   );
 });
+Landing.displayName = 'Landing';
 
 export default Landing;
