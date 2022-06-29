@@ -1,0 +1,7 @@
+@use "styles/variables" as *;
+
+.wrapper {
+  @include flexCenter;
+  width: 100%;
+  background: $primary;
+}
