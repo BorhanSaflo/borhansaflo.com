@@ -1,10 +1,17 @@
-import React from 'react'
-import styles from '../../styles/Projects.module.scss'
+import React from "react";
+import styles from "../../styles/Projects.module.scss";
 
-function Project() {
-  return (
-    <div>Project</div>
-  )
+interface Props {
+  id?: string;
+  title: string;
+  description: string;
+  image: string;
+  link: string;
+  tags: string[];
 }
 
-export default Project
+function Project({ id, title, description, image, link, tags }: Props) {
+  return <div className={styles.projectContainer}>{title}</div>;
+}
+
+export default Project;
