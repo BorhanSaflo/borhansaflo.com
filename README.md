@@ -1,1 +1,2 @@
 # borhansaflo.com
+My personal portfolio, built with React and NextJS to create a modernized and accessible experience that highlights my work, projects, and expertise while also allowing potential employers, clients, and users to connect with me.

@@ -66,7 +66,6 @@ const Home: NextPage = () => {
   const [sectionRefs, setSectionRefs] = useState([]);
 
   useEffect(() => {
-    console.log(arrLength);
     setSectionRefs((elRefs) =>
       Array(arrLength)
         .fill(null)
