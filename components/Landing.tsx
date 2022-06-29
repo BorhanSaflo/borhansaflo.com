@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, forwardRef } from "react";
 import styles from "../styles/Home.module.scss";
 import { FaArrowCircleDown } from "react-icons/fa";
 import { TiChevronRight } from "react-icons/ti";
@@ -7,7 +7,11 @@ import Button from "./Button";
 import Typed from "typed.js";
 import Image from "next/image";
 
-function HomeLanding() {
+interface Props {
+  id?: string;
+}
+
+const Landing = forwardRef<HTMLDivElement, Props>(({ id }: Props, ref) => {
   const [scrollPos, setScrollPos] = useState(
     typeof window !== "undefined" ? window.scrollY : 0
   );
@@ -53,7 +57,7 @@ function HomeLanding() {
 
   return (
     <>
-      <div className={styles.wrapper}>
+      <div ref={ref} id={id} className={styles.wrapper}>
         <div className={styles.container}>
           <div className={`${styles.containerItem} ${styles.headingContainer}`}>
             <h1 className={styles.heading}>{"Hi, I'm Borhan Saflo 👋"}</h1>
@@ -103,6 +107,6 @@ function HomeLanding() {
       <SVGShape />
     </>
   );
-}
+});
 
-export default HomeLanding;
+export default Landing;

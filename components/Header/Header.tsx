@@ -8,30 +8,18 @@ import DesktopMenu from "./DesktopMenu";
 import MobileMenu from "./MobileMenu";
 import Link from "next/link";
 
-function Header() {
+function Header({ sectionData, currentElement }: any) {
   const [isActive, setIsActive] = useState(false);
   const [isMobile, setIsMobile] = useState(true);
   const [isHidden, setIsHidden] = useState(true);
   const [isMobileMenuActive, setIsMobileMenuActive] = useState(false);
 
-  const menuData: { name: string; href: string }[] = [
-    {
-      name: "Home",
-      href: "/",
-    },
-    {
-      name: "About",
-      href: "#about",
-    },
-    {
-      name: "Projects",
-      href: "#projects",
-    },
-    {
-      name: "Contact",
-      href: "#contact",
-    },
-  ];
+  const menuData = sectionData.map((section: any) => {
+    return {
+      name: section.nav.name,
+      href: section.nav.href,
+    };
+  });
 
   const toggleMobileMenu = () => {
     setIsMobileMenuActive(!isMobileMenuActive);
@@ -97,7 +85,10 @@ function Header() {
             </>
           ) : (
             <>
-              <DesktopMenu menuData={menuData} />
+              <DesktopMenu
+                menuData={menuData}
+                currentElement={currentElement}
+              />
               <div className={styles.socialButtonsContainer}>
                 <SocialButton Icon={FaGithub} url="https://github.com/" />
                 <SocialButton

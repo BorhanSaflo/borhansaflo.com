@@ -9,12 +9,17 @@ interface menuProps {
 
 interface Props {
   menuData: menuProps[];
+  currentElement: number;
 }
 
-function DesktopMenu({ menuData }: Props) {
-  const menuItems = menuData.map((menuItem: menuProps) => (
-    <Link key={menuItem.name} href={menuItem.href}>
-      {menuItem.name}
+function DesktopMenu({ menuData, currentElement }: Props) {
+  const menuItems = menuData.map((menuItem: menuProps, i) => (
+    <Link key={menuItem.name} href={menuItem.href} passHref>
+      <a
+        className={i === currentElement ? styles.activeMenuItem : ""}
+        data-text={menuItem.name}>
+        {menuItem.name}
+      </a>
     </Link>
   ));
 

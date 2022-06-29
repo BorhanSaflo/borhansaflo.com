@@ -1,13 +1,13 @@
 //Colors
 $darkPrimary: #1c1a17;
-$darkSecondary: #272420;
-$darkTertiary: #2e2e2e;
+$darkSecondary: lighten($darkPrimary, 4%);
+$darkTertiary: lighten($darkPrimary, 8%);
 $lightPrimary: #fcfcfc;
-$lightSecondary: #f2f2f2;
-$lightTertiary: #d9d9d9;
+$lightSecondary: darken($lightPrimary, 4%);
+$lightTertiary: darken($lightPrimary, 8%);
 $primary: #e1af6e;
-$secondary: #deb378;
-$Tertiary: #b48b55;
+$secondary: saturate(darken($primary, 3%), 3%);
+$tertiary: saturate(darken($primary, 6%), 6%);
 $primaryBoxShadow: rgba(0, 0, 0, 0.2);
 $secondaryBoxShadow: rgba(0, 0, 0, 0.3);
 
