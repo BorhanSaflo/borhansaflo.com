@@ -33,7 +33,7 @@ function ProjectsGrid() {
 
   useEffect(() => {
     setProjectsLength(projects.length);
-  }, []);
+  }, [projects.length]);
 
   return (
     <div className={styles.wrapper}>

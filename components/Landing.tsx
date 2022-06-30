@@ -85,6 +85,7 @@ const Landing = forwardRef<HTMLDivElement, Props>(({ id }: Props, ref) => {
                   <Image
                     className={styles.laptopBackground}
                     priority
+                    alt="Laptop Background"
                     src="/images/laptopBackground.png"
                     layout="fill"
                     objectFit="cover"

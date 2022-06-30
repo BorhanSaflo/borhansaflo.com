@@ -48,7 +48,7 @@ function Header({ sectionData, currentElement }: any) {
       window.removeEventListener("scroll", changeBackground);
       window.removeEventListener("resize", updateWindowDimensions);
     };
-  });
+  }, []);
   return (
     <div className={isHidden ? "hidden" : ""}>
       <div

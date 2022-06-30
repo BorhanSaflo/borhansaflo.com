@@ -4,8 +4,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header/Header";
 import Landing from "../components/Landing";
 import Section from "../components/Section";
-import { Scrollspy } from "@makotot/ghostui";
-import { createRef, useEffect, useState } from "react";
+import React, { createRef, useEffect, useState } from "react";
 import ProjectsGrid from "../components/Projects/ProjectsGrid";
 
 const Home: NextPage = () => {
@@ -86,6 +85,21 @@ const Home: NextPage = () => {
     );
   }, [arrLength]);
 
+  useEffect(() => {
+    const checkCurrentElementInViewport = () => {
+      const currentElementIndexInViewport = sectionRefs.findIndex(
+        (elRef: React.RefObject<HTMLDivElement>) =>
+          elRef.current &&
+          elRef.current.getBoundingClientRect().top <= 0 &&
+          elRef.current.getBoundingClientRect().bottom > 0
+      );
+      setCurrentElementIndexInViewport(currentElementIndexInViewport);
+    };
+    window.addEventListener("scroll", checkCurrentElementInViewport);
+    return () =>
+      window.removeEventListener("scroll", checkCurrentElementInViewport);
+  }, [sectionRefs]);
+
   return (
     <div>
       <Head>
@@ -101,36 +115,22 @@ const Home: NextPage = () => {
         currentElement={currentElementIndexInViewport}
       />
       <main>
-        <Scrollspy sectionRefs={sectionRefs}>
-          {({ currentElementIndexInViewport }) => (
-            useEffect(() => {
-              setCurrentElementIndexInViewport(currentElementIndexInViewport);
-            }, [currentElementIndexInViewport]),
-            (
-              <>
-                {sections.map((section, i) => {
-                  if (section.id === "landing") {
-                    return (
-                      <Landing ref={sectionRefs[i]} id={section.id} key={i} />
-                    );
-                  } else {
-                    return (
-                      <Section
-                        ref={sectionRefs[i]}
-                        id={section.id}
-                        key={i}
-                        heading={section.heading}
-                        paragraph={section.paragraph}>
-                        {section.content}
-                      </Section>
-                    );
-                  }
-                })}
-                ;
-              </>
-            )
-          )}
-        </Scrollspy>
+        {sections.map((section, i) => {
+          if (section.id === "landing") {
+            return <Landing ref={sectionRefs[i]} id={section.id} key={i} />;
+          } else {
+            return (
+              <Section
+                ref={sectionRefs[i]}
+                id={section.id}
+                key={i}
+                heading={section.heading}
+                paragraph={section.paragraph}>
+                {section.content}
+              </Section>
+            );
+          }
+        })}
       </main>
       <Footer />
     </div>
