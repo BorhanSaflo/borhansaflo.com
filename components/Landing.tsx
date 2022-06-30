@@ -12,16 +12,22 @@ interface Props {
 }
 
 const Landing = forwardRef<HTMLDivElement, Props>(({ id }: Props, ref) => {
-  const [scrollPos, setScrollPos] = useState(
-    typeof window !== "undefined" ? window.scrollY : 0
-  );
+  const [isScrolled, setIsScrolled] = useState(false);
+
   useEffect(() => {
-    const updateScrollPosition = () => {
-      setScrollPos(window.scrollY);
-    };
-    window.addEventListener("scroll", updateScrollPosition);
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 0) {
+          setIsScrolled(true);
+        } else {
+          setIsScrolled(false);
+        }
+      });
+    }
     return () => {
-      window.removeEventListener("scroll", updateScrollPosition);
+      if (typeof window !== "undefined") {
+        window.removeEventListener("scroll", () => {});
+      }
     };
   });
 
@@ -56,8 +62,8 @@ const Landing = forwardRef<HTMLDivElement, Props>(({ id }: Props, ref) => {
   }, []);
 
   return (
-    <>
-      <div ref={ref} id={id} className={styles.wrapper}>
+    <div ref={ref} id={id}>
+      <div className={styles.wrapper}>
         <div className={styles.container}>
           <div className={`${styles.containerItem} ${styles.headingContainer}`}>
             <h1 className={styles.heading}>{"Hi, I'm Borhan Saflo 👋"}</h1>
@@ -79,6 +85,7 @@ const Landing = forwardRef<HTMLDivElement, Props>(({ id }: Props, ref) => {
                   <Image
                     className={styles.laptopBackground}
                     priority
+                    alt="Laptop Background"
                     src="/images/laptopBackground.png"
                     layout="fill"
                     objectFit="cover"
@@ -98,16 +105,15 @@ const Landing = forwardRef<HTMLDivElement, Props>(({ id }: Props, ref) => {
         </div>
         <a
           href="#about"
-          className={`${styles.scrollDownArrow} ${
-            scrollPos !== 0 ? `${styles.hidden}` : ""
-          }`}>
+          className={styles.scrollDownArrow}
+          style={isScrolled ? { opacity: "0" } : {}}>
           <FaArrowCircleDown />
         </a>
       </div>
       <SVGShape />
-    </>
+    </div>
   );
 });
-Landing.displayName = 'Landing';
+Landing.displayName = "Landing";
 
 export default Landing;

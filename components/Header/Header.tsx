@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
 import styles from "../../styles/Header.module.scss";
 import { FaBars, FaEnvelope, FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { CgClose } from "react-icons/cg";
@@ -25,19 +24,19 @@ function Header({ sectionData, currentElement }: any) {
     setIsMobileMenuActive(!isMobileMenuActive);
   };
 
-  const changeBackground = () => {
-    if (window.scrollY > 0) {
-      setIsActive(true);
-    } else {
-      setIsActive(false);
-    }
-  };
-
-  const updateWindowDimensions = () => {
-    setIsMobile(window.innerWidth < 768);
-  };
-
   useEffect(() => {
+    const changeBackground = () => {
+      if (window.scrollY > 0) {
+        setIsActive(true);
+      } else {
+        setIsActive(false);
+      }
+    };
+
+    const updateWindowDimensions = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
     updateWindowDimensions();
     window.addEventListener("resize", updateWindowDimensions);
 
@@ -48,7 +47,7 @@ function Header({ sectionData, currentElement }: any) {
       window.removeEventListener("scroll", changeBackground);
       window.removeEventListener("resize", updateWindowDimensions);
     };
-  });
+  }, []);
   return (
     <div className={isHidden ? "hidden" : ""}>
       <div
@@ -59,14 +58,13 @@ function Header({ sectionData, currentElement }: any) {
         }>
         <div className={styles.container}>
           <div className={styles.logoContainer}>
-            <Link href="/">
-              <Image
-                className={styles.logo}
-                src="/images/logo.png"
-                alt="logo"
-                width="40"
-                height="40"
-              />
+            <Link href="/" passHref>
+              <a
+                className={
+                  isActive ? `${styles.logo} ${styles.logoActive}` : styles.logo
+                }>
+                {"B"}
+              </a>
             </Link>
           </div>
 
