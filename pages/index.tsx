@@ -103,7 +103,9 @@ const Home: NextPage = () => {
       <main>
         <Scrollspy sectionRefs={sectionRefs}>
           {({ currentElementIndexInViewport }) => (
-            setCurrentElementIndexInViewport(currentElementIndexInViewport),
+            useEffect(() => {
+              setCurrentElementIndexInViewport(currentElementIndexInViewport);
+            }, [currentElementIndexInViewport]),
             (
               <>
                 {sections.map((section, i) => {

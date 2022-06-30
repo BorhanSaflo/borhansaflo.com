@@ -1,47 +1,112 @@
 @use "styles/variables" as *;
 
 .wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  @include flexCenter;
+  flex-direction: column;
+  gap: 30px;
   width: 100%;
-  gap: 20px;
-  padding: 0 30px;
-  background: $primary;
 }
 
-.projectContainer {
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+  gap: 20px;
+  padding: 25px 0px;
+
+  @include md {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include lg {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.project {
   position: relative;
-  height: 200px;
-  background: $secondary;
+  background: #fff;
   border-radius: 5px;
   transition: all 0.3s ease-in-out;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%),
+    0 0 0 1px rgb(10 10 10 / 2%);
+  animation: fadeIn 0.5s ease-in-out;
   cursor: pointer;
   &:hover {
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0.7em 1.2em -0.125em rgb(10 10 10 / 12%),
+      0 0 0 1px rgb(10 10 10 / 2%);
     transform: scale(1.02);
   }
 }
 
-.projectImage {
-  z-index: 0;
-  position: absolute;
-  top: 0;
-  left: 0;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.projectImageContainer {
+  background: $darkPrimary;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  position: relative;
   width: 100%;
-  height: 100%;
+  height: 200px;
+}
+
+.projectImage {
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
 }
 
 .projectInfo {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  position: absolute;
   width: 100%;
-  height: 100%;
-  z-index: 1;
-  background: rgba(0, 0, 0, 0.5);
-  color: $primary;
+  color: $darkPrimary;
   padding: 20px;
   transition: all 0.3s ease-in-out;
+
+  h3 {
+    margin: 0;
+  }
+
+  .projectDescription {
+    color: lighten($darkPrimary, 25%);
+  }
+}
+
+.projectTags {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2px;
+  width: 100%;
+  color: $darkPrimary;
+  transition: all 0.3s ease-in-out;
+
+  span {
+    background: $primary;
+    color: $darkPrimary;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 2px;
+    font-size: 0.8em;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    &:hover {
+      background: $secondary;
+      color: $darkSecondary;
+    }
+  }
 }

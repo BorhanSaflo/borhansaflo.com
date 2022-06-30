@@ -25,19 +25,19 @@ function Header({ sectionData, currentElement }: any) {
     setIsMobileMenuActive(!isMobileMenuActive);
   };
 
-  const changeBackground = () => {
-    if (window.scrollY > 0) {
-      setIsActive(true);
-    } else {
-      setIsActive(false);
-    }
-  };
-
-  const updateWindowDimensions = () => {
-    setIsMobile(window.innerWidth < 768);
-  };
-
   useEffect(() => {
+    const changeBackground = () => {
+      if (window.scrollY > 0) {
+        setIsActive(true);
+      } else {
+        setIsActive(false);
+      }
+    };
+
+    const updateWindowDimensions = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
     updateWindowDimensions();
     window.addEventListener("resize", updateWindowDimensions);
 
@@ -59,14 +59,16 @@ function Header({ sectionData, currentElement }: any) {
         }>
         <div className={styles.container}>
           <div className={styles.logoContainer}>
-            <Link href="/">
-              <Image
-                className={styles.logo}
-                src="/images/logo.png"
-                alt="logo"
-                width="40"
-                height="40"
-              />
+            <Link href="/" passHref>
+              <a>
+                <Image
+                  className={styles.logo}
+                  src="/images/logo.png"
+                  alt="logo"
+                  width="40"
+                  height="40"
+                />
+              </a>
             </Link>
           </div>
 

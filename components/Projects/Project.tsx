@@ -6,19 +6,37 @@ interface Props {
   id?: string;
   title: string;
   description: string;
-  image: string;
+  image: any;
   link: string;
   tags: string[];
 }
 
 function Project({ id, title, description, image, link, tags }: Props) {
+  const truncateDescription = (description: string) => {
+    if (description.length > 100) {
+      return `${description.substring(0, 100)}...`;
+    } else {
+      return description;
+    }
+  };
+
   return (
-    <div className={styles.projectContainer}>
-      <Image className={styles.projectImage} src={image} layout="fill" />
+    <div className={styles.project}>
+      <div className={styles.projectImageContainer}>
+        <Image
+          className={styles.projectImage}
+          src={image}
+          layout="fill"
+          alt={title}
+          objectFit="cover"
+        />
+      </div>
 
       <div className={styles.projectInfo}>
         <h3 className={styles.projectTitle}>{title}</h3>
-        <p className={styles.projectDescription}>{description}</p>
+        <div className={styles.projectDescription}>
+          <p>{truncateDescription(description)}</p>
+        </div>
         <div className={styles.projectTags}>
           {tags.map((tag) => (
             <span key={tag} className={styles.projectTag}>
@@ -26,9 +44,9 @@ function Project({ id, title, description, image, link, tags }: Props) {
             </span>
           ))}
         </div>
-        <a href={link} className={styles.projectLink}>
+        {/* <a href={link} className={styles.projectLink}>
           View Project
-        </a>
+        </a> */}
       </div>
     </div>
   );
