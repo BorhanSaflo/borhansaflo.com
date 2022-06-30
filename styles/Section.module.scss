@@ -5,13 +5,13 @@
   width: 100%;
   padding: 100px 0;
   background-color: $lightPrimary;
-  min-height: 600px;
+  min-height: 400px;
 }
 
 .container {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
   align-items: flex-start;
   width: $lg;
   max-width: $lg;

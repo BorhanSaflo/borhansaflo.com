@@ -62,8 +62,8 @@ const Landing = forwardRef<HTMLDivElement, Props>(({ id }: Props, ref) => {
   }, []);
 
   return (
-    <>
-      <div ref={ref} id={id} className={styles.wrapper}>
+    <div ref={ref} id={id}>
+      <div className={styles.wrapper}>
         <div className={styles.container}>
           <div className={`${styles.containerItem} ${styles.headingContainer}`}>
             <h1 className={styles.heading}>{"Hi, I'm Borhan Saflo 👋"}</h1>
@@ -111,7 +111,7 @@ const Landing = forwardRef<HTMLDivElement, Props>(({ id }: Props, ref) => {
         </a>
       </div>
       <SVGShape />
-    </>
+    </div>
   );
 });
 Landing.displayName = "Landing";

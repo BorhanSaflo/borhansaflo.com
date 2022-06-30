@@ -10,24 +10,26 @@
 .container {
   display: grid;
   grid-template-columns: 1fr;
+  justify-items: center;
   width: 100%;
-  gap: 20px;
+  gap: 30px;
   padding: 25px 0px;
 
   @include md {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   @include lg {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
 .project {
   position: relative;
+  max-width: 400px;
   background: #fff;
   border-radius: 5px;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.25s ease;
   box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%),
     0 0 0 1px rgb(10 10 10 / 2%);
   animation: fadeIn 0.5s ease-in-out;
@@ -51,7 +53,6 @@
 }
 
 .projectImageContainer {
-  background: $darkPrimary;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   position: relative;
@@ -62,11 +63,6 @@
 .projectImage {
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
-  transition: all 0.3s ease-in-out;
-  &:hover {
-    transform: scale(1.05);
-    opacity: 0.8;
-  }
 }
 
 .projectInfo {
@@ -75,14 +71,13 @@
   width: 100%;
   color: $darkPrimary;
   padding: 20px;
-  transition: all 0.3s ease-in-out;
 
   h3 {
     margin: 0;
   }
 
   .projectDescription {
-    color: lighten($darkPrimary, 25%);
+    color: rgba($darkPrimary, 60%);
   }
 }
 

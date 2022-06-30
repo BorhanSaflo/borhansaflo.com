@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
 import styles from "../../styles/Header.module.scss";
 import { FaBars, FaEnvelope, FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { CgClose } from "react-icons/cg";
@@ -60,14 +59,11 @@ function Header({ sectionData, currentElement }: any) {
         <div className={styles.container}>
           <div className={styles.logoContainer}>
             <Link href="/" passHref>
-              <a>
-                <Image
-                  className={styles.logo}
-                  src="/images/logo.png"
-                  alt="logo"
-                  width="40"
-                  height="40"
-                />
+              <a
+                className={
+                  isActive ? `${styles.logo} ${styles.logoActive}` : styles.logo
+                }>
+                {"B"}
               </a>
             </Link>
           </div>

@@ -90,8 +90,8 @@ const Home: NextPage = () => {
       const currentElementIndexInViewport = sectionRefs.findIndex(
         (elRef: React.RefObject<HTMLDivElement>) =>
           elRef.current &&
-          elRef.current.getBoundingClientRect().top <= 0 &&
-          elRef.current.getBoundingClientRect().bottom > 0
+          elRef.current.getBoundingClientRect().top <= 100 &&
+          elRef.current.getBoundingClientRect().bottom >= 100
       );
       setCurrentElementIndexInViewport(currentElementIndexInViewport);
     };
