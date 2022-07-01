@@ -20,9 +20,9 @@
     }
 
     .menuContainer a {
-      color: $secondary;
+      color: $primary;
       &:hover {
-        color: $primary;
+        color: $secondary;
       }
     }
 
@@ -109,7 +109,7 @@
 
   &.logoActive {
     &:after {
-      width: 4.1ch;
+      width: 85px;
     }
   }
 }

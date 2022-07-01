@@ -6,6 +6,7 @@ import Landing from "../components/Landing";
 import Section from "../components/Section";
 import React, { createRef, useEffect, useState } from "react";
 import ProjectsGrid from "../components/Projects/ProjectsGrid";
+import SkillsGrid from "../components/Skills/SkillsGrid";
 
 const Home: NextPage = () => {
   const [currentElementIndexInViewport, setCurrentElementIndexInViewport] =
@@ -62,6 +63,7 @@ const Home: NextPage = () => {
       },
       heading: "Skills",
       paragraph: loremText,
+      content: <SkillsGrid />,
     },
     {
       id: "contact",
