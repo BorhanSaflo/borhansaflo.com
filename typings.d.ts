@@ -29,8 +29,36 @@ export type ProjectBody = {
   tags: Tag[];
 };
 
-export interface Tag {
+export interface Tag extends TagBody {
   _id: string;
   _type: "tag";
-  tagName: string;
 }
+
+export type TagBody = {
+  name: string;
+};
+
+//Skills
+export interface SkillGroup extends SkillGroupBody {
+  _id: string;
+  _type: "skillGroup";
+  _createdAt: string;
+  _updatedAt: string;
+  order: number;
+}
+export type SkillGroupBody = {
+  name: string;
+  skills: Skill[];
+};
+
+export interface Skill extends SkillBody {
+  _id: string;
+  _type: "skill";
+}
+
+export type SkillBody = {
+  name: string;
+  icon: string;
+  color: string;
+  level: number;
+};

@@ -4,11 +4,7 @@ import { urlFor } from "../../sanity";
 import styles from "../../styles/Projects.module.scss";
 import { Project } from "../../typings";
 
-interface Props {
-  project: Project;
-}
-
-function Project({ project }: Props) {
+function Project({ project }: { project: Project }) {
   const truncateDescription = (description: string) => {
     if (description.length > 100) {
       return `${description.substring(0, 100)}...`;
@@ -45,7 +41,7 @@ function Project({ project }: Props) {
             <>
               {project.tags.map((tag) => (
                 <span key={tag._id} className={styles.projectTag}>
-                  {tag.tagName}
+                  {tag.name}
                 </span>
               ))}
             </>

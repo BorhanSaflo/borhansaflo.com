@@ -9,7 +9,7 @@ export default () =>
         .schemaType("section")
         .child(S.documentTypeList("section").title("Sections")),
       S.listItem()
-        .title("Projects Data")
+        .title("Projects")
         .child(
           S.list()
             .title("Projects")
@@ -22,6 +22,22 @@ export default () =>
                 .title("Tags")
                 .schemaType("tag")
                 .child(S.documentTypeList("tag").title("Tags")),
+            ])
+        ),
+      S.listItem()
+        .title("Skills")
+        .child(
+          S.list()
+            .title("Skills")
+            .items([
+              S.listItem()
+                .title("Skill Groups")
+                .schemaType("skillGroup")
+                .child(S.documentTypeList("skillGroup").title("Skill Groups")),
+              S.listItem()
+                .title("Skills")
+                .schemaType("skill")
+                .child(S.documentTypeList("skill").title("Skills")),
             ])
         ),
     ]);

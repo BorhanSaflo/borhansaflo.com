@@ -21,8 +21,26 @@ export const projectsQuery = groq`
     title,
     description,
     previewImage,
-    tags[]-> | order(_createdAt asc) {
-    tagName 
-  },
+    tags[]-> | order(_updatedAt asc) {
+        _id,
+        name 
+    },
   } | order(_createdAt desc)
+`;
+
+export const skillsQuery = groq`
+*[_type == "skillGroup"] {
+    _id,
+    _createdAt,
+    _updatedAt,
+    order,
+    name,
+    skills[]-> {
+      _id,
+      name,
+      icon,
+      color,
+      level,
+    },
+ }
 `;

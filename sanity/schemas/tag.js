@@ -4,7 +4,7 @@ export default {
   type: "document",
   fields: [
     {
-      name: "tagName",
+      name: "name",
       title: "Tag Name",
       type: "string",
     },

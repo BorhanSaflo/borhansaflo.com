@@ -7,16 +7,17 @@ import SectionComponent from "../components/Section";
 import React, { createRef, useEffect, useState } from "react";
 import ProjectsGrid from "../components/Projects/ProjectsGrid";
 import SkillsGrid from "../components/Skills/SkillsGrid";
-import { Project, Section } from "../typings";
+import { Project, Section, SkillGroup } from "../typings";
 import { sanityClient } from "../sanity";
-import { projectsQuery, sectionsQuery } from "../lib/getQuery";
+import { projectsQuery, sectionsQuery, skillsQuery } from "../lib/getQuery";
 
 interface Props {
   sections: Section[];
   projects: Project[];
+  skills: SkillGroup[];
 }
 
-const Home = ({ sections, projects }: Props) => {
+const Home = ({ sections, projects, skills }: Props) => {
   const [currentElementIndexInViewport, setCurrentElementIndexInViewport] =
     useState(0);
 
@@ -51,7 +52,7 @@ const Home = ({ sections, projects }: Props) => {
       case "projects":
         return <ProjectsGrid projects={projects} />;
       case "skills":
-        return <SkillsGrid />;
+        return <SkillsGrid skills={skills} />;
       default:
         return null;
     }
@@ -101,11 +102,13 @@ export default Home;
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const sections: Section[] = await sanityClient.fetch(sectionsQuery);
   const projects: Project[] = await sanityClient.fetch(projectsQuery);
+  const skills: SkillGroup[] = await sanityClient.fetch(skillsQuery);
 
   return {
     props: {
       projects,
       sections,
+      skills,
     },
     revalidate: 3600,
   };

@@ -1,53 +1,18 @@
 import React from "react";
 import styles from "../../styles/Skills.module.scss";
-import SkillGroup from "./SkillGroup";
-import { GrStatusUnknown } from "react-icons/gr";
+import SkillGroupComponent from "./SkillGroup";
+import { SkillGroup } from "../../typings";
 
-function SkillsGrid() {
-  const skillGroups = [];
+interface Props {
+  skills: SkillGroup[];
+}
 
-  for (let i = 1; i <= 3; i++) {
-    skillGroups.push({
-      id: "SkillGroup-" + i,
-      groupName: `Group ${i}`,
-      skills: [
-        {
-          id: "Skill-1",
-          skillName: `Skill 1`,
-          experience: 1,
-          Icon: GrStatusUnknown,
-        },
-        {
-          id: "Skill-2",
-          skillName: "Skill 2",
-          experience: 2,
-          Icon: GrStatusUnknown,
-        },
-        {
-          id: "Skill-3",
-          skillName: "Skill 3",
-          experience: 3,
-          Icon: GrStatusUnknown,
-        },
-        {
-          id: "Skill-4",
-          skillName: "Skill 4",
-          experience: 4,
-          Icon: GrStatusUnknown,
-        },
-      ],
-    });
-  }
-
+function SkillsGrid({ skills }: Props) {
   return (
     <div className={styles.container}>
-      {skillGroups.map((skillGroup) => {
+      {skills.map((skillGroup) => {
         return (
-          <SkillGroup
-            key={skillGroup.id}
-            groupName={skillGroup.groupName}
-            skills={skillGroup.skills}
-          />
+          <SkillGroupComponent key={skillGroup._id} skillGroup={skillGroup} />
         );
       })}
     </div>
