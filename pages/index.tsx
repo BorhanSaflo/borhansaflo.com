@@ -7,7 +7,6 @@ import Section from "../components/Section";
 import React, { createRef, useEffect, useState } from "react";
 import ProjectsGrid from "../components/Projects/ProjectsGrid";
 import SkillsGrid from "../components/Skills/SkillsGrid";
-import { fetchProjects } from "../lib/fetchProjects";
 import { Project } from "../typings";
 import { sanityClient } from "../sanity";
 import { groq } from "next-sanity";
