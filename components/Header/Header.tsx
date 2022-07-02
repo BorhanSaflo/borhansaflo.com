@@ -6,17 +6,23 @@ import SocialButton from "./SocialButton";
 import DesktopMenu from "./DesktopMenu";
 import MobileMenu from "./MobileMenu";
 import Link from "next/link";
+import { Section } from "../../typings";
 
-function Header({ sectionData, currentElement }: any) {
+interface Props {
+  sections: Section[];
+  currentElement: number;
+}
+
+function Header({ sections, currentElement }: Props) {
   const [isActive, setIsActive] = useState(false);
   const [isMobile, setIsMobile] = useState(true);
   const [isHidden, setIsHidden] = useState(true);
   const [isMobileMenuActive, setIsMobileMenuActive] = useState(false);
 
-  const menuData = sectionData.map((section: any) => {
+  const menuData = sections.map((section: Section) => {
     return {
-      name: section.nav.name,
-      href: section.nav.href,
+      name: section.name,
+      href: `${section.id !== "landing" ? "#" + section.id : "/"}`,
     };
   });
 

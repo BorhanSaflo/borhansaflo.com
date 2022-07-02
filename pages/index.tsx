@@ -3,85 +3,22 @@ import Head from "next/head";
 import Footer from "../components/Footer";
 import Header from "../components/Header/Header";
 import Landing from "../components/Landing";
-import Section from "../components/Section";
+import SectionComponent from "../components/Section";
 import React, { createRef, useEffect, useState } from "react";
 import ProjectsGrid from "../components/Projects/ProjectsGrid";
 import SkillsGrid from "../components/Skills/SkillsGrid";
-import { Project } from "../typings";
+import { Project, Section } from "../typings";
 import { sanityClient } from "../sanity";
-import { groq } from "next-sanity";
+import { projectsQuery, sectionsQuery } from "../lib/getQuery";
 
 interface Props {
+  sections: Section[];
   projects: Project[];
 }
 
-const Home = ({ projects }: Props) => {
+const Home = ({ sections, projects }: Props) => {
   const [currentElementIndexInViewport, setCurrentElementIndexInViewport] =
     useState(0);
-
-  const loremText =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim adminim veniam, quis nostru exercitatio ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaeca cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim adminim veniam, quis nostru exercitatio ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaeca cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
-
-  interface Section {
-    id: string;
-    nav: {
-      name: string;
-      href: string;
-    };
-    heading: string;
-    paragraph?: string;
-    content?: JSX.Element;
-  }
-
-  const sections: Section[] = [
-    {
-      id: "landing",
-      nav: {
-        name: "Home",
-        href: "/",
-      },
-      heading: "Landing",
-      paragraph: "Landing paragraph",
-    },
-    {
-      id: "about",
-      nav: {
-        name: "About",
-        href: "#about",
-      },
-      heading: "About",
-      paragraph: loremText,
-    },
-    {
-      id: "projects",
-      nav: {
-        name: "Projects",
-        href: "#projects",
-      },
-      heading: "Projects",
-      paragraph: loremText,
-      content: <ProjectsGrid projects={projects} />,
-    },
-    {
-      id: "skills",
-      nav: {
-        name: "Skills",
-        href: "#skills",
-      },
-      heading: "Skills",
-      paragraph: loremText,
-      content: <SkillsGrid />,
-    },
-    {
-      id: "contact",
-      nav: {
-        name: "Contact",
-        href: "#contact",
-      },
-      heading: "Contact",
-      paragraph: loremText,
-    },
-  ];
 
   const arrLength = sections.length;
   const [sectionRefs, setSectionRefs] = useState([]);
@@ -109,6 +46,17 @@ const Home = ({ projects }: Props) => {
       window.removeEventListener("scroll", checkCurrentElementInViewport);
   }, [sectionRefs]);
 
+  const getSectionContent = (section: string) => {
+    switch (section) {
+      case "projects":
+        return <ProjectsGrid projects={projects} />;
+      case "skills":
+        return <SkillsGrid />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <div>
       <Head>
@@ -120,23 +68,25 @@ const Home = ({ projects }: Props) => {
       </Head>
 
       <Header
-        sectionData={sections}
+        sections={sections}
         currentElement={currentElementIndexInViewport}
       />
       <main>
         {sections.map((section, i) => {
           if (section.id === "landing") {
-            return <Landing ref={sectionRefs[i]} id={section.id} key={i} />;
+            return (
+              <Landing ref={sectionRefs[i]} id={section.id} key={section._id} />
+            );
           } else {
             return (
-              <Section
+              <SectionComponent
                 ref={sectionRefs[i]}
                 id={section.id}
-                key={i}
+                key={section._id}
                 heading={section.heading}
                 paragraph={section.paragraph}>
-                {section.content}
-              </Section>
+                {getSectionContent(section.id)}
+              </SectionComponent>
             );
           }
         })}
@@ -149,25 +99,13 @@ const Home = ({ projects }: Props) => {
 export default Home;
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const projectsQuery = groq`
-    *[_type == "project"] {
-        _id,
-        _createdAt,
-        _updatedAt,
-        title,
-        description,
-        previewImage,
-        tags[]-> {
-            _id,
-            tagName
-        },
-    } | order(_createdAt desc)
-    `;
+  const sections: Section[] = await sanityClient.fetch(sectionsQuery);
   const projects: Project[] = await sanityClient.fetch(projectsQuery);
 
   return {
     props: {
       projects,
+      sections,
     },
     revalidate: 3600,
   };
