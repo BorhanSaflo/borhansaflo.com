@@ -9,6 +9,8 @@ import ProjectsGrid from "../components/Projects/ProjectsGrid";
 import SkillsGrid from "../components/Skills/SkillsGrid";
 import { fetchProjects } from "../lib/fetchProjects";
 import { Project } from "../typings";
+import { sanityClient } from "../sanity";
+import { groq } from "next-sanity";
 
 interface Props {
   projects: Project[];
@@ -148,7 +150,21 @@ const Home = ({ projects }: Props) => {
 export default Home;
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const projects = await fetchProjects();
+  const projectsQuery = groq`
+    *[_type == "project"] {
+        _id,
+        _createdAt,
+        _updatedAt,
+        title,
+        description,
+        previewImage,
+        tags[]-> {
+            _id,
+            tagName
+        },
+    } | order(_createdAt desc)
+    `;
+  const projects: Project[] = await sanityClient.fetch(projectsQuery);
 
   return {
     props: {
