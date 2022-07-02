@@ -1,4 +1,4 @@
-import type { NextPage } from "next";
+import type { GetStaticProps } from "next";
 import Head from "next/head";
 import Footer from "../components/Footer";
 import Header from "../components/Header/Header";
@@ -7,8 +7,14 @@ import Section from "../components/Section";
 import React, { createRef, useEffect, useState } from "react";
 import ProjectsGrid from "../components/Projects/ProjectsGrid";
 import SkillsGrid from "../components/Skills/SkillsGrid";
+import { fetchProjects } from "../lib/fetchProjects";
+import { Project } from "../typings";
 
-const Home: NextPage = () => {
+interface Props {
+  projects: Project[];
+}
+
+const Home = ({ projects }: Props) => {
   const [currentElementIndexInViewport, setCurrentElementIndexInViewport] =
     useState(0);
 
@@ -53,7 +59,7 @@ const Home: NextPage = () => {
       },
       heading: "Projects",
       paragraph: loremText,
-      content: <ProjectsGrid />,
+      content: <ProjectsGrid projects={projects} />,
     },
     {
       id: "skills",
@@ -140,3 +146,14 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const projects = await fetchProjects();
+
+  return {
+    props: {
+      projects,
+    },
+    revalidate: 3600,
+  };
+};
