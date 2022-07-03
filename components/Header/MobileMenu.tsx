@@ -1,14 +1,29 @@
+import Link from "next/link";
 import React, { useEffect } from "react";
 import styles from "../../styles/Header.module.scss";
 import { Social } from "../../typings";
 import SocialButton from "./SocialButton";
 
-interface Props {
-  active: boolean;
-  socials: Social[];
+interface menuProps {
+  name: string;
+  href: string;
 }
 
-function MobileMenu({ active, socials }: Props) {
+interface Props {
+  menuData: menuProps[];
+  active: boolean;
+  socials: Social[];
+  currentElement: number;
+  toggleMobileMenu: () => void;
+}
+
+function MobileMenu({
+  menuData,
+  active,
+  socials,
+  currentElement,
+  toggleMobileMenu,
+}: Props) {
   useEffect(() => {
     if (active) {
       document.body.style.overflow = "hidden";
@@ -17,6 +32,19 @@ function MobileMenu({ active, socials }: Props) {
       document.body.style.overflow = "unset";
     };
   });
+
+  const menuItems = menuData.map((menuItem: menuProps, i) => (
+    <Link key={menuItem.name} href={menuItem.href} passHref>
+      <a
+        className={
+          i === currentElement
+            ? `${styles.mobileMenuItem} ${styles.mobileActiveMenuItem}`
+            : styles.mobileMenuItem
+        }>
+        {menuItem.name}
+      </a>
+    </Link>
+  ));
   return (
     <div
       className={
@@ -24,11 +52,10 @@ function MobileMenu({ active, socials }: Props) {
           ? `${styles.mobileMenu} ${styles.mobileMenuActive}`
           : styles.mobileMenu
       }>
-      <div className={styles.mobileMenuItemsContainer}>
-        <a className={styles.mobileMenuItem}>Home</a>
-        <a className={styles.mobileMenuItem}>About</a>
-        <a className={styles.mobileMenuItem}>Projects</a>
-        <a className={styles.mobileMenuItem}>Contact</a>
+      <div
+        onClick={() => toggleMobileMenu()}
+        className={styles.mobileMenuItemsContainer}>
+        {menuItems}
       </div>
       <div className={styles.mobileSocialButtonsContainer}>
         <div className={styles.socialButtonsContainer}>

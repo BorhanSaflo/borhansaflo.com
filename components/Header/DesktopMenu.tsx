@@ -15,9 +15,7 @@ interface Props {
 function DesktopMenu({ menuData, currentElement }: Props) {
   const menuItems = menuData.map((menuItem: menuProps, i) => (
     <Link key={menuItem.name} href={menuItem.href} passHref>
-      <a
-        className={i === currentElement ? styles.activeMenuItem : ""}
-        data-text={menuItem.name}>
+      <a className={i === currentElement ? styles.activeMenuItem : ""}>
         {menuItem.name}
       </a>
     </Link>

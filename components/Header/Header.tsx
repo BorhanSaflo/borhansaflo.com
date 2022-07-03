@@ -77,7 +77,13 @@ function Header({ sections, socials, currentElement }: Props) {
 
           {isMobile ? (
             <>
-              <MobileMenu active={isMobileMenuActive} socials={socials} />
+              <MobileMenu
+                menuData={menuData}
+                active={isMobileMenuActive}
+                socials={socials}
+                currentElement={currentElement}
+                toggleMobileMenu={toggleMobileMenu}
+              />
               <div
                 onClick={toggleMobileMenu}
                 className={
