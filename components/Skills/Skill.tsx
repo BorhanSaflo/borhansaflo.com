@@ -1,13 +1,12 @@
 import React from "react";
-import { VscDebugBreakpointData } from "react-icons/vsc";
-import { skillsIcons } from "../../lib/skillsIcons";
+import { getIcon } from "../../lib/icons";
 import styles from "../../styles/Skills.module.scss";
 import { Skill } from "../../typings";
 
 function Skill({ skill }: { skill: Skill }) {
-  const IconComponent = skillsIcons.get(skill.icon)!
-    ? skillsIcons?.get(skill.icon)!
-    : VscDebugBreakpointData;
+  const IconComponent = getIcon(skill.icon)
+    ? getIcon(skill.icon)
+    : getIcon("empty");
   return (
     <div className={styles.skill}>
       <div className={styles.skillIconContainer}>

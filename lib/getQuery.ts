@@ -9,7 +9,13 @@ export const sectionsQuery = groq`
   name,
   id,
   heading,
-  paragraph
+  subHeading,
+  paragraph,
+  image,
+  button,
+  buttonText,
+  buttonIcon,
+  buttonLink,
 } | order(order asc)
 `;
 

@@ -76,16 +76,15 @@ const Home = ({ sections, projects, skills }: Props) => {
         {sections.map((section, i) => {
           if (section.id === "landing") {
             return (
-              <Landing ref={sectionRefs[i]} id={section.id} key={section._id} />
+              <Landing
+                ref={sectionRefs[i]}
+                key={section._id}
+                section={section}
+              />
             );
           } else {
             return (
-              <SectionComponent
-                ref={sectionRefs[i]}
-                id={section.id}
-                key={section._id}
-                heading={section.heading}
-                paragraph={section.paragraph}>
+              <SectionComponent ref={sectionRefs[i]} section={section}>
                 {getSectionContent(section.id)}
               </SectionComponent>
             );

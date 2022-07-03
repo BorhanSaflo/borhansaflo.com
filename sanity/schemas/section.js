@@ -24,7 +24,7 @@ export default {
       type: "string",
     },
     {
-      name: "subheading",
+      name: "subHeading",
       title: "Subheading",
       type: "string",
     },
@@ -32,6 +32,34 @@ export default {
       name: "paragraph",
       title: "Paragraph",
       type: "text",
+    },
+    {
+      name: "image",
+      title: "Image",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+    },
+    {
+      name: "button",
+      title: "Button",
+      type: "boolean",
+    },
+    {
+      name: "buttonText",
+      title: "Button Text",
+      type: "string",
+    },
+    {
+      name: "buttonIcon",
+      title: "Button Icon",
+      type: "string",
+    },
+    {
+      name: "buttonLink",
+      title: "Button Link",
+      type: "string",
     },
   ],
   initialValue: {

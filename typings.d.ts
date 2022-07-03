@@ -10,8 +10,15 @@ export type SectionBody = {
   name: string;
   id: string;
   heading: string;
+  subHeading: string;
   paragraph: string;
   content?: JSX.Element;
+  order: number;
+  image: string;
+  button: boolean;
+  buttonText: string;
+  buttonIcon: string;
+  buttonLink: string;
 };
 
 //Projects
