@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
-import { FaEnvelope, FaGithub, FaLinkedinIn } from "react-icons/fa";
 import styles from "../../styles/Header.module.scss";
+import { Social } from "../../typings";
 import SocialButton from "./SocialButton";
 
 interface Props {
   active: boolean;
+  socials: Social[];
 }
 
-function MobileMenu({ active }: Props) {
+function MobileMenu({ active, socials }: Props) {
   useEffect(() => {
     if (active) {
       document.body.style.overflow = "hidden";
@@ -30,9 +31,11 @@ function MobileMenu({ active }: Props) {
         <a className={styles.mobileMenuItem}>Contact</a>
       </div>
       <div className={styles.mobileSocialButtonsContainer}>
-        <SocialButton Icon={FaGithub} url="https://github.com/" />
-        <SocialButton Icon={FaLinkedinIn} url="https://www.linkedin.com" />
-        <SocialButton Icon={FaEnvelope} url="mailto:example.com" />
+        <div className={styles.socialButtonsContainer}>
+          {socials?.map((social: Social) => {
+            return <SocialButton key={social.id} social={social} />;
+          })}
+        </div>
       </div>
     </div>
   );
