@@ -12,43 +12,43 @@
 
 .container {
   @include flexCenter;
-  flex: 1;
   flex-direction: column;
   max-width: $xl;
+  margin: 0 auto;
   gap: 40px;
   padding: 0 30px;
+  overflow: hidden;
 
   @include lg {
+    flex: 1;
     flex-direction: row;
-    gap: 20px;
+    gap: 0px;
   }
 }
 
 .containerItem {
   @include flexCenter;
-  flex: 1;
   flex-direction: column;
   text-align: center;
-  gap: 20px;
+  gap: 1rem;
 
   @include lg {
-    gap: 25px;
+    flex: 1;
     &.headingContainer {
       align-items: flex-start;
       text-align: left;
     }
     &.laptopContainer {
-      display: flex;
       align-items: flex-end;
     }
   }
 }
 
 .heading {
-  margin: 0;
-  font-size: 1.8rem;
+  font-size: 2.4rem;
   font-weight: 700;
   color: $darkPrimary;
+  white-space: nowrap;
 
   @include md {
     font-size: 2.8rem;
@@ -64,10 +64,10 @@
 }
 
 .subHeading {
-  margin: 0;
   font-size: 1.2rem;
   font-weight: 600;
   color: $darkPrimary;
+  max-width: 500px;
 
   .keyWord {
     text-decoration: underline;
@@ -105,27 +105,16 @@
   }
 }
 
-.button {
+.buttonsContainer {
   @include flexCenter;
-  @include noDrag;
+  width: 100%;
+  flex-direction: column;
   gap: 10px;
-  font-size: 1.1em;
-  font-weight: 700;
-  text-align: center;
-  margin: 0;
-  padding: 12px 25px;
-  color: $primary;
-  background-color: $darkPrimary;
-  border-radius: 5px;
-  box-shadow: 0px 5px 10px $primaryBoxShadow;
-  transition: all 0.3s ease;
-  cursor: pointer;
+  gap: 20px;
 
-  &:hover {
-    transition: all 0.15s ease-in-out;
-    background-color: $darkSecondary;
-    box-shadow: 0px 5px 11px $secondaryBoxShadow;
-    transform: translateY(-2px);
+  @include lg {
+    flex-direction: row;
+    justify-content: flex-start;
   }
 }
 

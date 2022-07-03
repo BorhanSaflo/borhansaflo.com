@@ -12,10 +12,7 @@ export const sectionsQuery = groq`
   subHeading,
   paragraph,
   image,
-  button,
-  buttonText,
-  buttonIcon,
-  buttonLink,
+  buttons
 } | order(order asc)
 `;
 

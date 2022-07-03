@@ -5,8 +5,10 @@ import {
   FaJava,
   FaReact,
   FaEnvelope,
+  FaPaperPlane,
   FaGithub,
   FaLinkedinIn,
+  FaAngleDown,
 } from "react-icons/fa";
 import { IoLogoCss3 } from "react-icons/io";
 import { SiJavascript, SiTypescript } from "react-icons/si";
@@ -18,9 +20,11 @@ const icons = new Map<string, IconType>([
   ["arrowCircleDown", FaArrowCircleDown],
   ["empty", VscDebugBreakpointData],
   ["email", FaEnvelope],
+  ["send", FaPaperPlane],
   ["github", FaGithub],
+  ["loadMore", FaAngleDown],
   ["linkedin", FaLinkedinIn],
-  ["learnMore", TiChevronRight],
+  ["arrowRight", TiChevronRight],
   ["html", FaHtml5],
   ["css", IoLogoCss3],
   ["js", SiJavascript],

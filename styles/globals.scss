@@ -15,10 +15,65 @@ a {
   text-decoration: none;
 }
 
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
 * {
   box-sizing: border-box;
 }
 
 .hidden {
   display: none;
+}
+
+@mixin button {
+  @include flexCenter;
+  @include noDrag;
+  gap: 10px;
+  font-size: 1.1em;
+  font-weight: 700;
+  text-align: center;
+  padding: 12px 25px;
+  border-radius: 5px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  .buttonIcon {
+    font-size: 1.1em;
+    align-self: flex-end;
+  }
+}
+
+.primaryButton {
+  @include button;
+  color: $primary;
+  background-color: $darkPrimary;
+  box-shadow: 0px 3px 8px $primaryBoxShadow;
+  &:hover {
+    background-color: $darkSecondary;
+    box-shadow: 0px 4px 10px $secondaryBoxShadow;
+  }
+}
+
+.secondaryButton {
+  @include button;
+  color: $darkPrimary;
+  background-color: $primary;
+  box-shadow: 0px 3px 10px $primaryBoxShadow;
+  &:hover {
+    background-color: $secondary;
+    box-shadow: 0px 4px 10px $secondaryBoxShadow;
+  }
+}
+
+.transparentButton {
+  @include button;
+  font-weight: 800;
+  color: $darkPrimary;
 }

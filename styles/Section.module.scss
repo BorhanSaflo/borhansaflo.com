@@ -5,7 +5,7 @@
   width: 100%;
   padding: 100px 0;
   background-color: $lightPrimary;
-  min-height: 400px;
+  min-height: 500px;
 }
 
 .container {
@@ -14,8 +14,9 @@
   gap: 10px;
   align-items: flex-start;
   width: $lg;
-  max-width: $lg;
   padding: 0 30px;
+  overflow: hidden;
+
 }
 
 .heading {

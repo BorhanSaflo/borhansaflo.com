@@ -68,13 +68,17 @@ const Landing = forwardRef<HTMLDivElement, { section: SectionBody }>(
               className={`${styles.containerItem} ${styles.headingContainer}`}>
               <h1 className={styles.heading}>{section.heading}</h1>
               <h2 className={styles.subHeading}>{section.subHeading}</h2>
-              {section.button && (
-                <Button
-                  text={section.buttonText}
-                  link={section.buttonLink}
-                  Icon={getIcon(section.buttonIcon)}
-                />
-              )}
+              <div className={styles.buttonsContainer}>
+                {section.buttons?.map((button) => (
+                  <Button
+                    key={button.text}
+                    Icon={getIcon(button.icon)}
+                    text={button.text}
+                    link={button.link}
+                    type={button.type}
+                  />
+                ))}
+              </div>
             </div>
             <div
               className={`${styles.containerItem} ${styles.laptopContainer}`}>

@@ -12,6 +12,7 @@ import skill from "./skill";
 import skillGroup from "./skillGroup";
 import social from "./social";
 import seo from "./seo";
+import button from "./button";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -27,5 +28,6 @@ export default createSchema({
     skillGroup,
     social,
     seo,
+    button,
   ]),
 });

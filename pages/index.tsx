@@ -3,7 +3,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header/Header";
 import Landing from "../components/Landing";
 import SectionComponent from "../components/Section";
-import React, { createRef, useEffect, useState } from "react";
+import React, { createRef, RefObject, useEffect, useState } from "react";
 import ProjectsGrid from "../components/Projects/ProjectsGrid";
 import SkillsGrid from "../components/Skills/SkillsGrid";
 import { Project, Section, SEO, SkillGroup, Social } from "../typings";
@@ -30,7 +30,9 @@ const Home = ({ seo, sections, projects, skills, socials }: Props) => {
     useState(0);
 
   const arrLength = sections.length;
-  const [sectionRefs, setSectionRefs] = useState([]);
+  const [sectionRefs, setSectionRefs] = useState<RefObject<HTMLDivElement>[]>(
+    []
+  );
 
   useEffect(() => {
     setSectionRefs((elRefs) =>
@@ -42,12 +44,15 @@ const Home = ({ seo, sections, projects, skills, socials }: Props) => {
 
   useEffect(() => {
     const checkCurrentElementInViewport = () => {
-      const currentElementIndexInViewport = sectionRefs.findIndex(
-        (elRef: React.RefObject<HTMLDivElement>) =>
-          elRef.current &&
-          elRef.current.getBoundingClientRect().top <= 100 &&
-          elRef.current.getBoundingClientRect().bottom >= 100
-      );
+      const currentElementIndexInViewport: number =
+        window.innerHeight + window.scrollY >= document.body.offsetHeight
+          ? arrLength - 1
+          : sectionRefs.findIndex(
+              (elRef: RefObject<HTMLDivElement>) =>
+                elRef.current &&
+                elRef.current.getBoundingClientRect().top <= 100 &&
+                elRef.current.getBoundingClientRect().bottom >= 100
+            );
       setCurrentElementIndexInViewport(currentElementIndexInViewport);
     };
     window.addEventListener("scroll", checkCurrentElementInViewport);

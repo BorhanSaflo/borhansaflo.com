@@ -2,36 +2,52 @@ export default {
   name: "section",
   title: "Section",
   type: "document",
+  groups: [
+    {
+      name: "sectionText",
+      title: "Text Section",
+    },
+    {
+      name: "sectionButton",
+      title: "Buttons Section",
+    },
+  ],
   fields: [
     {
       name: "order",
       title: "Order",
       type: "number",
+      group: "sectionText",
     },
     {
       name: "name",
       title: "Name",
       type: "string",
+      group: "sectionText",
     },
     {
       name: "id",
       title: "ID",
       type: "string",
+      group: "sectionText",
     },
     {
       name: "heading",
       title: "Heading",
       type: "string",
+      group: "sectionText",
     },
     {
       name: "subHeading",
       title: "Subheading",
       type: "string",
+      group: "sectionText",
     },
     {
       name: "paragraph",
       title: "Paragraph",
       type: "text",
+      group: "sectionText",
     },
     {
       name: "image",
@@ -40,26 +56,14 @@ export default {
       options: {
         hotspot: true,
       },
+      group: "sectionText",
     },
     {
-      name: "button",
-      title: "Button",
-      type: "boolean",
-    },
-    {
-      name: "buttonText",
-      title: "Button Text",
-      type: "string",
-    },
-    {
-      name: "buttonIcon",
-      title: "Button Icon",
-      type: "string",
-    },
-    {
-      name: "buttonLink",
-      title: "Button Link",
-      type: "string",
+      name: "buttons",
+      title: "Buttons",
+      type: "array",
+      of: [{ type: "button" }],
+      group: "sectionButton",
     },
   ],
   initialValue: {

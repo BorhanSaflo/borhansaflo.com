@@ -15,10 +15,13 @@ export type SectionBody = {
   content?: JSX.Element;
   order: number;
   image: string;
-  button: boolean;
-  buttonText: string;
-  buttonIcon: string;
-  buttonLink: string;
+  buttons: {
+    button: boolean;
+    type: string;
+    text: string;
+    icon: string;
+    link: string;
+  }[];
 };
 
 //Projects

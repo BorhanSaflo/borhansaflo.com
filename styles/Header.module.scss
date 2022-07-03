@@ -9,6 +9,7 @@
   z-index: 99;
   transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
 
+
   &.active {
     background-color: $darkPrimary;
     box-shadow: 0px 4px 22px 0px #0000001a;
@@ -49,7 +50,11 @@
   height: 100%;
   width: 100%;
   max-width: $xl;
-  padding: 0 30px;
+  padding: 0 25px;
+
+  @include lg {
+    padding: 0 30px;
+  }
 }
 
 .logoContainer {
@@ -69,6 +74,7 @@
   gap: 30px;
   font-weight: 700;
   font-size: 18px;
+  
   a {
     @include flexCenter;
     height: 100%;
@@ -146,6 +152,7 @@
   background-color: $darkPrimary;
   transition: opacity 0.3s ease-in-out, height 0.3s ease-in-out;
   opacity: 0;
+  overflow: hidden;
 
   &.mobileMenuActive {
     height: calc(100% - $headerSize);
