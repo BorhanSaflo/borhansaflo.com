@@ -40,4 +40,8 @@ export default () =>
                 .child(S.documentTypeList("skill").title("Skills")),
             ])
         ),
+      S.listItem()
+        .title("Socials")
+        .schemaType("social")
+        .child(S.documentTypeList("social").title("Socials")),
     ]);

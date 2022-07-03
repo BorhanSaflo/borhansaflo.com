@@ -50,3 +50,13 @@ export const skillsQuery = groq`
     },
  }
 `;
+
+export const socialsQuery = groq`
+*[_type == "social"] {
+    _id,
+    name,
+    id,
+    icon,
+    link,
+ }
+`;

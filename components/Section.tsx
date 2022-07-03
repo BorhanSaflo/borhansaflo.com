@@ -1,21 +1,13 @@
 import React, { forwardRef } from "react";
 import styles from "../styles/Section.module.scss";
-import { SectionBody } from "../typings";
-
-// interface Props {
-//   id?: string;
-//   className?: string;
-//   heading: string;
-//   paragraph?: string;
-//   children?: any;
-// }
+import { Section } from "../typings";
 
 const Section = forwardRef<
   HTMLDivElement,
-  { section: SectionBody; children: React.ReactNode }
+  { section: Section; children: React.ReactNode }
 >(
   (
-    { section, children }: { section: SectionBody; children: React.ReactNode },
+    { section, children }: { section: Section; children: React.ReactNode },
     ref
   ) => {
     return (

@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
 import styles from "../../styles/Header.module.scss";
-import { FaBars, FaEnvelope, FaGithub, FaLinkedinIn } from "react-icons/fa";
+import { FaBars } from "react-icons/fa";
 import { CgClose } from "react-icons/cg";
 import SocialButton from "./SocialButton";
 import DesktopMenu from "./DesktopMenu";
 import MobileMenu from "./MobileMenu";
 import Link from "next/link";
-import { Section } from "../../typings";
+import { Section, Social } from "../../typings";
 
 interface Props {
   sections: Section[];
+  socials: Social[];
   currentElement: number;
 }
 
-function Header({ sections, currentElement }: Props) {
+function Header({ sections, socials, currentElement }: Props) {
   const [isActive, setIsActive] = useState(false);
   const [isMobile, setIsMobile] = useState(true);
   const [isHidden, setIsHidden] = useState(true);
@@ -94,12 +95,9 @@ function Header({ sections, currentElement }: Props) {
                 currentElement={currentElement}
               />
               <div className={styles.socialButtonsContainer}>
-                <SocialButton Icon={FaGithub} url="https://github.com/" />
-                <SocialButton
-                  Icon={FaLinkedinIn}
-                  url="https://www.linkedin.com"
-                />
-                <SocialButton Icon={FaEnvelope} url="mailto:example.com" />
+                {socials?.map((social: Social) => {
+                  return <SocialButton key={social.id} social={social} />;
+                })}
               </div>
             </>
           )}

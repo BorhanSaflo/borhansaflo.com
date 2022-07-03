@@ -7,17 +7,23 @@ import SectionComponent from "../components/Section";
 import React, { createRef, useEffect, useState } from "react";
 import ProjectsGrid from "../components/Projects/ProjectsGrid";
 import SkillsGrid from "../components/Skills/SkillsGrid";
-import { Project, Section, SkillGroup } from "../typings";
+import { Project, Section, SkillGroup, Social } from "../typings";
 import { sanityClient } from "../sanity";
-import { projectsQuery, sectionsQuery, skillsQuery } from "../lib/getQuery";
+import {
+  projectsQuery,
+  sectionsQuery,
+  skillsQuery,
+  socialsQuery,
+} from "../lib/getQuery";
 
 interface Props {
   sections: Section[];
   projects: Project[];
   skills: SkillGroup[];
+  socials: Social[];
 }
 
-const Home = ({ sections, projects, skills }: Props) => {
+const Home = ({ sections, projects, skills, socials }: Props) => {
   const [currentElementIndexInViewport, setCurrentElementIndexInViewport] =
     useState(0);
 
@@ -70,6 +76,7 @@ const Home = ({ sections, projects, skills }: Props) => {
 
       <Header
         sections={sections}
+        socials={socials}
         currentElement={currentElementIndexInViewport}
       />
       <main>
@@ -84,7 +91,10 @@ const Home = ({ sections, projects, skills }: Props) => {
             );
           } else {
             return (
-              <SectionComponent ref={sectionRefs[i]} section={section}>
+              <SectionComponent
+                ref={sectionRefs[i]}
+                key={section._id}
+                section={section}>
                 {getSectionContent(section.id)}
               </SectionComponent>
             );
@@ -99,6 +109,7 @@ const Home = ({ sections, projects, skills }: Props) => {
 export default Home;
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const socials: Social[] = await sanityClient.fetch(socialsQuery);
   const sections: Section[] = await sanityClient.fetch(sectionsQuery);
   const projects: Project[] = await sanityClient.fetch(projectsQuery);
   const skills: SkillGroup[] = await sanityClient.fetch(skillsQuery);
@@ -108,6 +119,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       projects,
       sections,
       skills,
+      socials,
     },
     revalidate: 3600,
   };
