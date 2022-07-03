@@ -84,8 +84,9 @@
 }
 
 .logo {
-  @include flexCenter;
   @include noDrag;
+  display: flex;
+  align-items: flex-end;
   height: 38px;
   font-size: 2rem;
   font-weight: 600;

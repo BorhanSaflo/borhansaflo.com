@@ -1,5 +1,4 @@
 import type { GetStaticProps } from "next";
-import Head from "next/head";
 import Footer from "../components/Footer";
 import Header from "../components/Header/Header";
 import Landing from "../components/Landing";
@@ -7,23 +6,26 @@ import SectionComponent from "../components/Section";
 import React, { createRef, useEffect, useState } from "react";
 import ProjectsGrid from "../components/Projects/ProjectsGrid";
 import SkillsGrid from "../components/Skills/SkillsGrid";
-import { Project, Section, SkillGroup, Social } from "../typings";
+import { Project, Section, SEO, SkillGroup, Social } from "../typings";
 import { sanityClient } from "../sanity";
 import {
   projectsQuery,
   sectionsQuery,
+  seoQuery,
   skillsQuery,
   socialsQuery,
 } from "../lib/getQuery";
+import SEOComponent from "../components/SEO";
 
 interface Props {
+  seo: SEO;
   sections: Section[];
   projects: Project[];
   skills: SkillGroup[];
   socials: Social[];
 }
 
-const Home = ({ sections, projects, skills, socials }: Props) => {
+const Home = ({ seo, sections, projects, skills, socials }: Props) => {
   const [currentElementIndexInViewport, setCurrentElementIndexInViewport] =
     useState(0);
 
@@ -66,14 +68,7 @@ const Home = ({ sections, projects, skills, socials }: Props) => {
 
   return (
     <div>
-      <Head>
-        <title>
-          Borhan Saflo | Web Developer, Designer, & Aspiring Software Engineer
-        </title>
-        <meta name="description" content="Borhan Saflo" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
+      <SEOComponent seo={seo} />
       <Header
         sections={sections}
         socials={socials}
@@ -109,6 +104,7 @@ const Home = ({ sections, projects, skills, socials }: Props) => {
 export default Home;
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const seo: SEO = await sanityClient.fetch(seoQuery);
   const socials: Social[] = await sanityClient.fetch(socialsQuery);
   const sections: Section[] = await sanityClient.fetch(sectionsQuery);
   const projects: Project[] = await sanityClient.fetch(projectsQuery);
@@ -116,6 +112,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return {
     props: {
+      seo,
       projects,
       sections,
       skills,

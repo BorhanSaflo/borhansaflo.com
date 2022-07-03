@@ -44,4 +44,7 @@ export default () =>
         .title("Socials")
         .schemaType("social")
         .child(S.documentTypeList("social").title("Socials")),
+      S.listItem()
+        .title("SEO")
+        .child(S.document().schemaType("seo").documentId("seo")),
     ]);

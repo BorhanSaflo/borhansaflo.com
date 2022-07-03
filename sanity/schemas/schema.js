@@ -11,6 +11,7 @@ import tag from "./tag";
 import skill from "./skill";
 import skillGroup from "./skillGroup";
 import social from "./social";
+import seo from "./seo";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -25,5 +26,6 @@ export default createSchema({
     skill,
     skillGroup,
     social,
+    seo,
   ]),
 });

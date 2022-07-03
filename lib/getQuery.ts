@@ -60,3 +60,10 @@ export const socialsQuery = groq`
     link,
  }
 `;
+
+export const seoQuery = groq`
+*[_type == "seo"][0] {
+    _id,
+  ...
+ }
+`;

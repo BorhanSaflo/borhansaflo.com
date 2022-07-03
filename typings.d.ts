@@ -81,3 +81,18 @@ export type SocialBody = {
   link: string;
   icon: string;
 };
+
+export interface SEO extends SEOBody {
+  _id: string;
+  _type: "seo";
+}
+
+export type SEOBody = {
+  siteName: string;
+  title: string;
+  description: string;
+  image: string;
+  url: string;
+  themeColor: string;
+  openGraphType: string;
+};
