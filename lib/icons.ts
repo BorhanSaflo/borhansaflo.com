@@ -12,6 +12,7 @@ import {
   FaVuejs,
   FaWordpress,
   FaGitAlt,
+  FaFigma,
 } from "react-icons/fa";
 import { IoLogoCss3 } from "react-icons/io";
 import {
@@ -20,10 +21,16 @@ import {
   SiBootstrap,
   SiSass,
   SiPython,
+  SiAngular,
+  SiJquery,
   SiC,
   SiCplusplus,
+  SiCsharp,
   SiPhp,
   SiMysql,
+  SiMongodb,
+  SiFirebase,
+  SiExpress,
   SiNodedotjs,
   SiNextdotjs,
   SiNuxtdotjs,
@@ -32,13 +39,14 @@ import {
   SiAdobeillustrator,
   SiAdobeaftereffects,
   SiAdobepremierepro,
-  SiWindows,
-  SiLinux,
-  SiMacos,
+  SiBlender,
+  SiIntellijidea,
+  SiVim,
 } from "react-icons/si";
 import { TiChevronRight } from "react-icons/ti";
 import { VscDebugBreakpointData } from "react-icons/vsc";
 import { GrStatusUnknown } from "react-icons/gr";
+import { BsFillTerminalFill } from "react-icons/bs";
 
 const icons = new Map<string, IconType>([
   ["arrowCircleDown", FaArrowCircleDown],
@@ -55,27 +63,35 @@ const icons = new Map<string, IconType>([
   ["js", SiJavascript],
   ["ts", SiTypescript],
   ["react", FaReact],
+  ["angular", SiAngular],
+  ["jquery", SiJquery],
   ["java", FaJava],
   ["vue", FaVuejs],
   ["sass", SiSass],
   ["python", SiPython],
   ["c", SiC],
   ["c++", SiCplusplus],
+  ["cSharp", SiCsharp],
   ["php", SiPhp],
   ["mysql", SiMysql],
+  ["mongodb", SiMongodb],
+  ["firebase", SiFirebase],
+  ["express", SiExpress],
   ["nodeJs", SiNodedotjs],
   ["nextJs", SiNextdotjs],
   ["nuxtJs", SiNuxtdotjs],
   ["VSCode", SiVisualstudiocode],
+  ["intellij", SiIntellijidea],
+  ["vim", SiVim],
   ["photoshop", SiAdobephotoshop],
   ["illustrator", SiAdobeillustrator],
   ["afterEffects", SiAdobeaftereffects],
   ["premierePro", SiAdobepremierepro],
+  ["figma", FaFigma],
+  ["blender", SiBlender],
   ["wordPress", FaWordpress],
   ["bootstrap", SiBootstrap],
-  ["windows", SiWindows],
-  ["linux", SiLinux],
-  ["macos", SiMacos],
+  ["terminal", BsFillTerminalFill],
 ]);
 
 export const getIcon = (name: string) => {

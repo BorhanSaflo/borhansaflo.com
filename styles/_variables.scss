@@ -18,10 +18,8 @@ $md: 768px;
 
 //Other
 $headerSize: 64px;
-$boxShadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%),
-  0 0 0 1px rgb(10 10 10 / 2%);
-$hoverBoxShadow: 0 0.7em 1.2em -0.125em rgb(10 10 10 / 12%),
-  0 0 0 1px rgb(10 10 10 / 2%);
+$boxShadow: 0 0.3em 0.8em -0.125em #0a0a0a14, 0 0 0 1px rgb(10 10 10 / 2%);
+$hoverBoxShadow: 0 0.5em 1em -0.125em #0a0a0a14, 0 0 0 1px rgb(10 10 10 / 2%);
 
 @mixin xl {
   @media (min-width: $xl) {

@@ -30,11 +30,12 @@
   @include flexCenter;
   flex-direction: column;
   text-align: center;
-  gap: 1rem;
+  gap: 1em;
   padding-bottom: 10px;
 
   @include lg {
     flex: 1;
+    gap: 1.5em;
     &.headingContainer {
       align-items: flex-start;
       text-align: left;
