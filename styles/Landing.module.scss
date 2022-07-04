@@ -31,6 +31,7 @@
   flex-direction: column;
   text-align: center;
   gap: 1rem;
+  padding-bottom: 10px;
 
   @include lg {
     flex: 1;
@@ -45,7 +46,7 @@
 }
 
 .heading {
-  font-size: 2.4rem;
+  font-size: 2rem;
   font-weight: 700;
   color: $darkPrimary;
   white-space: nowrap;
@@ -129,8 +130,8 @@
 }
 
 //Laptop
-$laptopWidth: 24.48em;
-$laptopHeight: 13.68em;
+$laptopWidth: 20.4em;
+$laptopHeight: 11.4em;
 
 .laptop {
   width: $laptopWidth;
@@ -149,8 +150,8 @@ $laptopHeight: 13.68em;
   }
 
   @include xl {
-    width: $laptopWidth * 1.35;
-    height: $laptopHeight * 1.35;
+    width: $laptopWidth * 1.4;
+    height: $laptopHeight * 1.4;
   }
 }
 
@@ -200,7 +201,7 @@ $laptopHeight: 13.68em;
   display: flex;
   justify-content: flex-start;
   padding: 9% 7%;
-  background: $secondary;
+  background: #ffc163f2;
   position: absolute;
   top: 2%;
   left: 1.2%;
@@ -287,7 +288,7 @@ $laptopHeight: 13.68em;
   margin: auto;
   border-bottom-left-radius: 2em;
   border-bottom-right-radius: 2em;
-  box-shadow: 0 10px 25px #000000, 0 5px 10px #0000004d;
+  box-shadow: 0 5px 15px #0000004d, 0 2px 6px #00000080;
   height: 1.7%;
   background: linear-gradient(
     180deg,

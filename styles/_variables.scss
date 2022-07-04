@@ -8,8 +8,8 @@ $lightTertiary: darken($lightPrimary, 8%);
 $primary: #f3b153;
 $secondary: saturate(darken($primary, 4%), 2%);
 $tertiary: saturate(darken($primary, 8%), 6%);
-$primaryBoxShadow: rgba(0, 0, 0, 0.2);
-$secondaryBoxShadow: rgba(0, 0, 0, 0.3);
+$primaryBoxShadow: rgba(0, 0, 0, 0.15);
+$secondaryBoxShadow: rgba(0, 0, 0, 0.25);
 
 //Screen Sizes
 $xl: 1279px;
