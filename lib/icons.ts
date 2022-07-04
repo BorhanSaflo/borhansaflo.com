@@ -9,9 +9,29 @@ import {
   FaGithub,
   FaLinkedinIn,
   FaAngleDown,
+  FaVuejs,
+  FaWordpress,
+  FaGitAlt,
 } from "react-icons/fa";
 import { IoLogoCss3 } from "react-icons/io";
-import { SiJavascript, SiTypescript } from "react-icons/si";
+import {
+  SiJavascript,
+  SiTypescript,
+  SiSass,
+  SiPython,
+  SiC,
+  SiCplusplus,
+  SiPhp,
+  SiMysql,
+  SiNodedotjs,
+  SiNextdotjs,
+  SiNuxtdotjs,
+  SiVisualstudiocode,
+  SiAdobephotoshop,
+  SiAdobeillustrator,
+  SiAdobeaftereffects,
+  SiAdobepremierepro,
+} from "react-icons/si";
 import { TiChevronRight } from "react-icons/ti";
 import { VscDebugBreakpointData } from "react-icons/vsc";
 import { GrStatusUnknown } from "react-icons/gr";
@@ -22,6 +42,7 @@ const icons = new Map<string, IconType>([
   ["email", FaEnvelope],
   ["send", FaPaperPlane],
   ["github", FaGithub],
+  ["git", FaGitAlt],
   ["loadMore", FaAngleDown],
   ["linkedin", FaLinkedinIn],
   ["arrowRight", TiChevronRight],
@@ -31,6 +52,22 @@ const icons = new Map<string, IconType>([
   ["ts", SiTypescript],
   ["react", FaReact],
   ["java", FaJava],
+  ["vue", FaVuejs],
+  ["sass", SiSass],
+  ["python", SiPython],
+  ["c", SiC],
+  ["c++", SiCplusplus],
+  ["php", SiPhp],
+  ["mysql", SiMysql],
+  ["nodeJs", SiNodedotjs],
+  ["nextJs", SiNextdotjs],
+  ["nuxtJs", SiNuxtdotjs],
+  ["VSCode", SiVisualstudiocode],
+  ["photoshop", SiAdobephotoshop],
+  ["illustrator", SiAdobeillustrator],
+  ["afterEffects", SiAdobeaftereffects],
+  ["premierePro", SiAdobepremierepro],
+  ["wordPress", FaWordpress],
 ]);
 
 export const getIcon = (name: string) => {
