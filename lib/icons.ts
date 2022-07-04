@@ -17,6 +17,7 @@ import { IoLogoCss3 } from "react-icons/io";
 import {
   SiJavascript,
   SiTypescript,
+  SiBootstrap,
   SiSass,
   SiPython,
   SiC,
@@ -31,6 +32,9 @@ import {
   SiAdobeillustrator,
   SiAdobeaftereffects,
   SiAdobepremierepro,
+  SiWindows,
+  SiLinux,
+  SiMacos,
 } from "react-icons/si";
 import { TiChevronRight } from "react-icons/ti";
 import { VscDebugBreakpointData } from "react-icons/vsc";
@@ -68,6 +72,10 @@ const icons = new Map<string, IconType>([
   ["afterEffects", SiAdobeaftereffects],
   ["premierePro", SiAdobepremierepro],
   ["wordPress", FaWordpress],
+  ["bootstrap", SiBootstrap],
+  ["windows", SiWindows],
+  ["linux", SiLinux],
+  ["macos", SiMacos],
 ]);
 
 export const getIcon = (name: string) => {

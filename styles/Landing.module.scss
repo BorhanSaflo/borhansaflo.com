@@ -129,8 +129,8 @@
 }
 
 //Laptop
-$laptopWidth: 20.4em;
-$laptopHeight: 11.4em;
+$laptopWidth: 24.48em;
+$laptopHeight: 13.68em;
 
 .laptop {
   width: $laptopWidth;
@@ -149,12 +149,8 @@ $laptopHeight: 11.4em;
   }
 
   @include xl {
-    width: $laptopWidth * 1.4;
-    height: $laptopHeight * 1.4;
-  }
-
-  &:hover {
-    transform: scale(1.02);
+    width: $laptopWidth * 1.35;
+    height: $laptopHeight * 1.35;
   }
 }
 

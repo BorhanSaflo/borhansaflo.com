@@ -45,7 +45,7 @@ export const skillsQuery = groq`
       color,
       level,
     },
- }
+ } | order(order asc)
 `;
 
 export const socialsQuery = groq`
