@@ -6,6 +6,7 @@ import Typed from "typed.js";
 import Image from "next/image";
 import { SectionBody } from "../typings";
 import { getIcon } from "../lib/icons";
+import { PortableText } from "@portabletext/react";
 
 const Landing = forwardRef<HTMLDivElement, { section: SectionBody }>(
   ({ section }: { section: SectionBody }, ref) => {
@@ -67,7 +68,9 @@ const Landing = forwardRef<HTMLDivElement, { section: SectionBody }>(
             <div
               className={`${styles.containerItem} ${styles.headingContainer}`}>
               <h1 className={styles.heading}>{section.heading}</h1>
-              <h2 className={styles.subHeading}>{section.subHeading}</h2>
+              <div className={styles.subHeading}>
+                <PortableText value={section.content} />
+              </div>
               <div className={styles.buttonsContainer}>
                 {section.buttons?.map((button) => (
                   <Button

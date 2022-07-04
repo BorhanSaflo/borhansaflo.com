@@ -15,6 +15,10 @@ a {
   text-decoration: none;
 }
 
+p {
+  margin: 0;
+}
+
 h1,
 h2,
 h3 {
@@ -33,10 +37,10 @@ h3 {
   @include flexCenter;
   @include noDrag;
   gap: 10px;
-  font-size: 1.1em;
+  font-size: 0.8rem;
   font-weight: 700;
   text-align: center;
-  padding: 12px 25px;
+  padding: 11px 16px;
   border-radius: 5px;
   transition: all 0.2s ease;
   cursor: pointer;
@@ -44,8 +48,13 @@ h3 {
     transform: translateY(-2px);
   }
 
+  @include md {
+    font-size: 1rem;
+    padding: 12px 20px;
+  }
+
   .buttonIcon {
-    font-size: 1.1em;
+    font-size: 1rem;
     align-self: flex-end;
   }
 }

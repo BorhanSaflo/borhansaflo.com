@@ -44,18 +44,52 @@ export default {
       group: "sectionText",
     },
     {
-      name: "paragraph",
-      title: "Paragraph",
-      type: "text",
-      group: "sectionText",
-    },
-    {
-      name: "image",
-      title: "Image",
-      type: "image",
-      options: {
-        hotspot: true,
-      },
+      name: "content",
+      title: "Content",
+      type: "array",
+      of: [
+        {
+          type: "block",
+          styles: [
+            {
+              title: "Normal",
+              value: "normal",
+            },
+            {
+              title: "H1",
+              value: "h1",
+            },
+            {
+              title: "H2",
+              value: "h2",
+            },
+            {
+              title: "H3",
+              value: "h3",
+            },
+            {
+              title: "H4",
+              value: "h4",
+            },
+            {
+              title: "H5",
+              value: "h5",
+            },
+            {
+              title: "H6",
+              value: "h6",
+            },
+          ],
+          marks: {
+            decorators: [
+              { title: "Strong", value: "strong" },
+              { title: "Underline", value: "underline" },
+              { title: "Emphasis", value: "em" },
+              { title: "Code", value: "code" },
+            ],
+          },
+        },
+      ],
       group: "sectionText",
     },
     {
@@ -66,10 +100,6 @@ export default {
       group: "sectionButton",
     },
   ],
-  initialValue: {
-    paragraph:
-      "Lorem ipsum dolor sit amet. Et quia quisquam et consequuntur velit est consequuntur veniam. Non laudantium quia et numquam quia et similique modi ut pariatur exercitationem in illo consequatur.",
-  },
   orderings: [
     {
       title: "Order",

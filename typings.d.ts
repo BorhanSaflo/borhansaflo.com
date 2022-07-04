@@ -11,7 +11,7 @@ export type SectionBody = {
   id: string;
   heading: string;
   subHeading: string;
-  paragraph: string;
+  content: TypedObject[];
   content?: JSX.Element;
   order: number;
   image: string;

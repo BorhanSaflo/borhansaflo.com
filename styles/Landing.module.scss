@@ -30,12 +30,11 @@
   @include flexCenter;
   flex-direction: column;
   text-align: center;
-  gap: 1em;
+  gap: 0.3em;
   padding-bottom: 10px;
 
   @include lg {
     flex: 1;
-    gap: 1.5em;
     &.headingContainer {
       align-items: flex-start;
       text-align: left;
@@ -66,17 +65,24 @@
 }
 
 .subHeading {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: $darkPrimary;
-  max-width: 500px;
-
-  .keyWord {
-    text-decoration: underline;
+  h2 {
+    max-width: 350px;
+    color: $darkPrimary;
+    font-size: 1em;
+    font-weight: 600;
+    line-height: 1.5;
+    span {
+      text-decoration: none !important;
+      padding-bottom: 1px;
+      border-bottom: 2.5px dotted #292929cc;
+    }
   }
 
   @include md {
-    font-size: 1.5rem;
+    h2 {
+      font-size: 1.4em;
+      max-width: $lg;
+    }
   }
 }
 
@@ -109,10 +115,10 @@
 
 .buttonsContainer {
   @include flexCenter;
+  margin-top: 1em;
   width: 100%;
   flex-direction: column;
-  gap: 10px;
-  gap: 20px;
+  gap: 1em;
 
   @include lg {
     flex-direction: row;
