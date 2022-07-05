@@ -49,7 +49,7 @@ h3 {
   }
 
   @include md {
-    font-size: 1rem;
+    font-size: 1.1rem;
     padding: 12px 20px;
   }
 
@@ -61,7 +61,7 @@ h3 {
 
 .primaryButton {
   @include button;
-  color: $primary;
+  color: $secondary;
   background-color: $darkPrimary;
   box-shadow: 0px 3px 7px $primaryBoxShadow;
   &:hover {
@@ -83,6 +83,5 @@ h3 {
 
 .transparentButton {
   @include button;
-  font-weight: 800;
   color: $darkPrimary;
 }

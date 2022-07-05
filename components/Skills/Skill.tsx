@@ -7,6 +7,7 @@ function Skill({ skill }: { skill: Skill }) {
   const IconComponent = getIcon(skill.icon)
     ? getIcon(skill.icon)
     : getIcon("empty");
+
   return (
     <div className={styles.skill}>
       <div className={styles.skillIconContainer}>
@@ -21,8 +22,6 @@ function Skill({ skill }: { skill: Skill }) {
           <div
             className={styles.experience}
             style={{
-              transition: "all 0.25s ease",
-              transitionDelay: "1000ms",
               width: `${skill.level * 10}%`,
             }}
           />

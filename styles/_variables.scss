@@ -7,7 +7,7 @@ $lightSecondary: darken($lightPrimary, 4%);
 $lightTertiary: darken($lightPrimary, 8%);
 $primary: #f3b153;
 $secondary: saturate(darken($primary, 4%), 2%);
-$tertiary: saturate(darken($primary, 8%), 6%);
+$tertiary: #cf7900;
 $primaryBoxShadow: rgba(0, 0, 0, 0.15);
 $secondaryBoxShadow: rgba(0, 0, 0, 0.25);
 
@@ -18,8 +18,8 @@ $md: 768px;
 
 //Other
 $headerSize: 64px;
-$boxShadow: 0 0.3em 0.8em -0.125em #0a0a0a14, 0 0 0 1px rgb(10 10 10 / 2%);
-$hoverBoxShadow: 0 0.5em 1em -0.125em #0a0a0a14, 0 0 0 1px rgb(10 10 10 / 2%);
+$boxShadow: 0 0.3em 0.5em -0.125em #0a0a0a14, 0 0 0 1px #e6ecf8;
+$hoverBoxShadow: 0 0.5em 0.7em -0.125em #0a0a0a14, 0 0 0 1px #e6ecf8;
 
 @mixin xl {
   @media (min-width: $xl) {

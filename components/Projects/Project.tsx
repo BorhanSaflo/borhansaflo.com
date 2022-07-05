@@ -24,7 +24,7 @@ function Project({ project }: { project: Project }) {
               : "/images/projects/placeholder.png"
           }
           alt={project.title}
-          layout="responsive"
+          layout="fill"
           width={300}
           height={200}
           objectFit="cover"
