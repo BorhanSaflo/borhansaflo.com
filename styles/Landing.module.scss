@@ -90,7 +90,7 @@
         width: 100%;
         height: 100%;
         background-color: $tertiary;
-        transition: transform 300ms;
+        transition: transform 0.25s ease-in-out;
         transform: translate3d(-101%, 0, 0);
         z-index: -1;
       }
@@ -119,7 +119,7 @@
   color: $darkPrimary;
   animation: slidingLoopAnimation 1.5s ease infinite;
   opacity: 0.75;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
 
   @include md {
     display: block;
@@ -167,7 +167,11 @@ $laptopHeight: 11.4em;
   width: $laptopWidth;
   height: $laptopHeight;
   perspective: 1200px;
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.25s ease-in-out;
+
+  &:hover {
+    transform: scale(0.98);
+  }
 
   @include md {
     width: $laptopWidth * 1.2;

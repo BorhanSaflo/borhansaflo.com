@@ -47,9 +47,11 @@ import { TiChevronRight } from "react-icons/ti";
 import { VscDebugBreakpointData } from "react-icons/vsc";
 import { GrStatusUnknown } from "react-icons/gr";
 import { BsFillTerminalFill } from "react-icons/bs";
+import { ImCheckmark } from "react-icons/im";
 
 const icons = new Map<string, IconType>([
   ["arrowCircleDown", FaArrowCircleDown],
+  ["checkmark", ImCheckmark],
   ["empty", VscDebugBreakpointData],
   ["email", FaEnvelope],
   ["send", FaPaperPlane],

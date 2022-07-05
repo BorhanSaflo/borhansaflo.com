@@ -1,8 +1,10 @@
 import Image from "next/image";
 import React from "react";
+import { getIcon } from "../../lib/icons";
 import { urlFor } from "../../sanity";
 import styles from "../../styles/Projects.module.scss";
 import { Project } from "../../typings";
+import Button from "../Button";
 
 function Project({ project }: { project: Project }) {
   const truncateDescription = (description: string) => {
@@ -12,6 +14,8 @@ function Project({ project }: { project: Project }) {
       return description;
     }
   };
+
+  const StatusIcon = getIcon("checkmark");
 
   return (
     <div className={styles.project}>
@@ -29,6 +33,13 @@ function Project({ project }: { project: Project }) {
           height={200}
           objectFit="cover"
         />
+        <div className={styles.status}>
+          <StatusIcon />
+          <span>Complete</span>
+        </div>
+        <div className={styles.button}>
+          <Button text="View Project" type="secondary" />
+        </div>
       </div>
 
       <div className={styles.projectInfo}>
