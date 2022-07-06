@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import styles from "../../styles/Header.module.scss";
-import { FaBars } from "react-icons/fa";
-import { CgClose } from "react-icons/cg";
 import SocialButton from "./SocialButton";
 import DesktopMenu from "./DesktopMenu";
 import MobileMenu from "./MobileMenu";
 import Link from "next/link";
 import { Section, Social } from "../../typings";
+import { getIcon } from "../../lib/icons";
 
 interface Props {
   sections: Section[];
@@ -55,6 +54,10 @@ function Header({ sections, socials, currentElement }: Props) {
       window.removeEventListener("resize", updateWindowDimensions);
     };
   }, []);
+
+  const CloseButton = getIcon("close");
+  const OpenButton = getIcon("open");
+
   return (
     <div className={isHidden ? "hidden" : ""}>
       <div
@@ -91,7 +94,7 @@ function Header({ sections, socials, currentElement }: Props) {
                     ? `${styles.mobileMenuButton} ${styles.mobileMenuButtonActive}`
                     : styles.mobileMenuButton
                 }>
-                {isMobileMenuActive ? <CgClose /> : <FaBars />}
+                {isMobileMenuActive ? <CloseButton /> : <OpenButton />}
               </div>
             </>
           ) : (

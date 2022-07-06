@@ -9,7 +9,6 @@
   z-index: 99;
   transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
 
-
   &.active {
     background-color: $darkPrimary;
     box-shadow: 0px 4px 22px 0px #0000001a;
@@ -74,7 +73,7 @@
   gap: 30px;
   font-weight: 700;
   font-size: 18px;
-  
+
   a {
     @include flexCenter;
     height: 100%;
@@ -135,7 +134,6 @@
   transition: transform 0.25s ease;
 
   &.mobileMenuButtonActive {
-    font-size: 32px;
     transform: rotate(90deg);
   }
 }

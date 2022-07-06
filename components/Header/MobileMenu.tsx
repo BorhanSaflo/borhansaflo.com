@@ -26,10 +26,10 @@ function MobileMenu({
 }: Props) {
   useEffect(() => {
     if (active) {
-      document.body.style.overflow = "hidden";
+      document.body.classList.add("overflowHidden");
     }
     return () => {
-      document.body.style.overflow = "unset";
+      document.body.classList.remove("overflowHidden");
     };
   });
 

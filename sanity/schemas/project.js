@@ -22,6 +22,25 @@ export default {
       },
     },
     {
+      name: "link",
+      title: "Link",
+      type: "string",
+    },
+    {
+      name: "status",
+      title: "Status",
+      type: "string",
+      options: {
+        list: [
+          { title: "Planned", value: "calendar" },
+          { title: "In Development", value: "development" },
+          { title: "Completed", value: "checkmark" },
+          { title: "On Hold", value: "pause" },
+          { title: "Cancelled", value: "close" },
+        ],
+      },
+    },
+    {
       name: "tags",
       title: "Tags",
       type: "array",

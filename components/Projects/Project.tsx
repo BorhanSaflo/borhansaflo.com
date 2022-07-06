@@ -15,7 +15,15 @@ function Project({ project }: { project: Project }) {
     }
   };
 
-  const StatusIcon = getIcon("checkmark");
+  const statusColor = new Map<string, string[]>([
+    ["development", ["#ffc107", "In Development"]],
+    ["checkmark", ["#28a745", "Completed"]],
+    ["close", ["#ff3a3a", "Incomplete"]],
+    ["pause", ["#f2804b", "On Hold"]],
+    ["calendar", ["#2083fc", "Planned"]],
+  ]);
+
+  const StatusIcon = getIcon(project.status);
 
   return (
     <div className={styles.project}>
@@ -34,12 +42,15 @@ function Project({ project }: { project: Project }) {
           objectFit="cover"
         />
         <div className={styles.status}>
-          <StatusIcon />
-          <span>Complete</span>
+          <StatusIcon
+            className={styles.statusIcon}
+            style={{ color: statusColor.get(project.status)![0] }}
+          />
+          <span>{statusColor.get(project.status)![1]}</span>
         </div>
-        <div className={styles.button}>
-          <Button text="View Project" type="secondary" />
-        </div>
+        <a className={styles.button} href={project.link ? project.link : "/"}>
+          {"View Project"}
+        </a>
       </div>
 
       <div className={styles.projectInfo}>
@@ -58,9 +69,6 @@ function Project({ project }: { project: Project }) {
             </>
           )}
         </div>
-        {/* <a href={link} className={styles.projectLink}>
-          View Project
-        </a> */}
       </div>
     </div>
   );

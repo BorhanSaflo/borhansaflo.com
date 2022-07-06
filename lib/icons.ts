@@ -13,8 +13,10 @@ import {
   FaWordpress,
   FaGitAlt,
   FaFigma,
+  FaBars,
+  FaTimes,
 } from "react-icons/fa";
-import { IoLogoCss3 } from "react-icons/io";
+import { IoLogoCss3, IoMdConstruct, IoMdPause } from "react-icons/io";
 import {
   SiJavascript,
   SiTypescript,
@@ -46,10 +48,19 @@ import {
 import { TiChevronRight } from "react-icons/ti";
 import { VscDebugBreakpointData } from "react-icons/vsc";
 import { GrStatusUnknown } from "react-icons/gr";
-import { BsFillTerminalFill } from "react-icons/bs";
+import {
+  BsFillCalendarCheckFill,
+  BsFillTerminalFill,
+  BsXLg,
+} from "react-icons/bs";
 import { ImCheckmark } from "react-icons/im";
 
 const icons = new Map<string, IconType>([
+  ["development", IoMdConstruct],
+  ["pause", IoMdPause],
+  ["open", FaBars],
+  ["close", BsXLg],
+  ["calendar", BsFillCalendarCheckFill],
   ["arrowCircleDown", FaArrowCircleDown],
   ["checkmark", ImCheckmark],
   ["empty", VscDebugBreakpointData],

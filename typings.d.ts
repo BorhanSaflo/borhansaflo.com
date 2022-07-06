@@ -35,7 +35,9 @@ export interface Project extends ProjectBody {
 export type ProjectBody = {
   title: string;
   description: string;
+  link: string;
   previewImage: string;
+  status: string;
   tags: Tag[];
 };
 

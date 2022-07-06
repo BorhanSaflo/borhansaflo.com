@@ -23,7 +23,9 @@ export const projectsQuery = groq`
     _updatedAt,
     title,
     description,
+    link,
     previewImage,
+    status,
     tags[]-> | order(_updatedAt asc) {
         _id,
         name 
