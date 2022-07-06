@@ -15,6 +15,8 @@ import {
   FaFigma,
   FaBars,
   FaTimes,
+  FaChevronRight,
+  FaChevronDown,
 } from "react-icons/fa";
 import { IoLogoCss3, IoMdConstruct, IoMdPause } from "react-icons/io";
 import {
@@ -45,7 +47,6 @@ import {
   SiIntellijidea,
   SiVim,
 } from "react-icons/si";
-import { TiChevronRight } from "react-icons/ti";
 import { VscDebugBreakpointData } from "react-icons/vsc";
 import { GrStatusUnknown } from "react-icons/gr";
 import {
@@ -68,9 +69,9 @@ const icons = new Map<string, IconType>([
   ["send", FaPaperPlane],
   ["github", FaGithub],
   ["git", FaGitAlt],
-  ["loadMore", FaAngleDown],
+  ["loadMore", FaChevronDown],
   ["linkedin", FaLinkedinIn],
-  ["arrowRight", TiChevronRight],
+  ["arrowRight", FaChevronRight],
   ["html", FaHtml5],
   ["css", IoLogoCss3],
   ["js", SiJavascript],

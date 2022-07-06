@@ -10,9 +10,14 @@ export const sectionsQuery = groq`
   id,
   heading,
   subHeading,
-  content,
-  image,
-  buttons
+  subSections[]{
+    name,
+    heading,
+    content,
+    switchOrder,
+    image,
+    buttons,
+  },
 } | order(order asc)
 `;
 

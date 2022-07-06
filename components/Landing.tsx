@@ -69,10 +69,10 @@ const Landing = forwardRef<HTMLDivElement, { section: SectionBody }>(
               className={`${styles.containerItem} ${styles.headingContainer}`}>
               <h1 className={styles.heading}>{section.heading}</h1>
               <div className={styles.subHeading}>
-                <PortableText value={section.content} />
+                <PortableText value={section.subSections[0].content} />
               </div>
               <div className={styles.buttonsContainer}>
-                {section.buttons?.map((button) => (
+                {section.subSections[0].buttons?.map((button) => (
                   <Button
                     key={button.text}
                     Icon={getIcon(button.icon)}

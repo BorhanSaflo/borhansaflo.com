@@ -17,10 +17,10 @@ function Project({ project }: { project: Project }) {
 
   const statusColor = new Map<string, string[]>([
     ["development", ["#ffc107", "In Development"]],
-    ["checkmark", ["#28a745", "Completed"]],
+    ["checkmark", ["#26b745", "Completed"]],
     ["close", ["#ff3a3a", "Incomplete"]],
     ["pause", ["#f2804b", "On Hold"]],
-    ["calendar", ["#2083fc", "Planned"]],
+    ["calendar", ["#5a98fc", "Planned"]],
   ]);
 
   const StatusIcon = getIcon(project.status);
@@ -37,8 +37,8 @@ function Project({ project }: { project: Project }) {
           }
           alt={project.title}
           layout="fill"
-          width={300}
-          height={200}
+          width={"300"}
+          height={"200"}
           objectFit="cover"
         />
         <div className={styles.status}>

@@ -37,6 +37,20 @@ h3 {
   display: none;
 }
 
+.orderFirst {
+  order: auto;
+  @include lg {
+    order: 1;
+  }
+}
+
+.orderSecond {
+  order: auto;
+  @include lg {
+    order: 2;
+  }
+}
+
 @mixin button {
   @include flexCenter;
   @include noDrag;
@@ -44,7 +58,7 @@ h3 {
   font-size: 0.8rem;
   font-weight: 700;
   text-align: center;
-  padding: 11px 16px;
+  padding: 14px 20px;
   border-radius: 5px;
   transition: transform 0.25s ease-in-out, background-color 0.25s ease,
     color 0.25s ease, box-shadow 0.25s ease-in-out;
@@ -59,8 +73,7 @@ h3 {
   }
 
   .buttonIcon {
-    font-size: 1rem;
-    align-self: flex-end;
+    font-size: 1.1em;
   }
 }
 

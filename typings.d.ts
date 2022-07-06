@@ -11,16 +11,21 @@ export type SectionBody = {
   id: string;
   heading: string;
   subHeading: string;
-  content: TypedObject[];
   content?: JSX.Element;
   order: number;
-  image: string;
-  buttons: {
-    button: boolean;
-    type: string;
-    text: string;
-    icon: string;
-    link: string;
+  subSections: {
+    name: string;
+    heading: string;
+    content: TypedObject[];
+    switchOrder: Boolean;
+    image: string;
+    buttons: {
+      button: boolean;
+      type: string;
+      text: string;
+      icon: string;
+      link: string;
+    }[];
   }[];
 };
 
