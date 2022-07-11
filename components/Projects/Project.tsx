@@ -15,14 +15,6 @@ function Project({ project }: { project: Project }) {
     }
   };
 
-  const statusColor = new Map<string, string[]>([
-    ["development", ["#ffc107", "In Development"]],
-    ["checkmark", ["#26b745", "Completed"]],
-    ["close", ["#ff3a3a", "Incomplete"]],
-    ["pause", ["#f2804b", "On Hold"]],
-    ["calendar", ["#5a98fc", "Planned"]],
-  ]);
-
   const StatusIcon = getIcon(project.status);
 
   return (
@@ -40,11 +32,8 @@ function Project({ project }: { project: Project }) {
           objectFit="cover"
         />
         <div className={styles.status}>
-          <StatusIcon
-            className={styles.statusIcon}
-            style={{ color: statusColor.get(project.status)![0] }}
-          />
-          <span>{statusColor.get(project.status)![1]}</span>
+          <StatusIcon className={styles.statusIcon} />
+          <span>{project.status}</span>
         </div>
         <a className={styles.button} href={project.link ? project.link : "/"}>
           {"View Project"}

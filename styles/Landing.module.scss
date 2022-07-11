@@ -17,7 +17,6 @@
   margin: 0 auto;
   gap: 40px;
   padding: 0 30px;
-  overflow: hidden;
 
   @include lg {
     flex: 1;
@@ -35,7 +34,7 @@
 
   @include lg {
     flex: 1;
-    gap: 0.3em;
+    gap: 0em;
     &.headingContainer {
       align-items: flex-start;
       text-align: left;
@@ -173,7 +172,7 @@ $laptopHeight: 11.4em;
   transition: transform 0.25s ease-in-out;
 
   &:hover {
-    transform: scale(0.98);
+    transform: scale(1.02);
   }
 
   @include md {
@@ -238,7 +237,7 @@ $laptopHeight: 11.4em;
   display: flex;
   justify-content: flex-start;
   padding: 9% 7%;
-  background: #eba03d;
+  background: rgb(30, 30, 30);
   position: absolute;
   top: 2%;
   left: 1.2%;

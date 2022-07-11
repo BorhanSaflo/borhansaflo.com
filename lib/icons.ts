@@ -57,13 +57,14 @@ import {
 import { ImCheckmark } from "react-icons/im";
 
 const icons = new Map<string, IconType>([
-  ["development", IoMdConstruct],
-  ["pause", IoMdPause],
+  ["Completed", ImCheckmark],
+  ["In Development", IoMdConstruct],
+  ["On Hold", IoMdPause],
+  ["Cancelled", BsXLg],
+  ["Planned", BsFillCalendarCheckFill],
   ["open", FaBars],
   ["close", BsXLg],
-  ["calendar", BsFillCalendarCheckFill],
   ["arrowCircleDown", FaArrowCircleDown],
-  ["checkmark", ImCheckmark],
   ["empty", VscDebugBreakpointData],
   ["email", FaEnvelope],
   ["send", FaPaperPlane],

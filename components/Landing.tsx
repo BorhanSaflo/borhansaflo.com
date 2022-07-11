@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, forwardRef } from "react";
 import styles from "../styles/Landing.module.scss";
 import SVGShape from "./SVGShape";
 import Button from "./Button";
-import Typed from "typed.js";
+//import Typed from "typed.js";
 import Image from "next/image";
 import { SectionBody } from "../typings";
 import { getIcon } from "../lib/icons";
@@ -29,35 +29,35 @@ const Landing = forwardRef<HTMLDivElement, { section: SectionBody }>(
       };
     });
 
-    const text1 = useRef() as React.MutableRefObject<HTMLSpanElement>;
-    const text2 = useRef() as React.MutableRefObject<HTMLSpanElement>;
+    // const text1 = useRef() as React.MutableRefObject<HTMLSpanElement>;
+    // const text2 = useRef() as React.MutableRefObject<HTMLSpanElement>;
 
-    useEffect(() => {
-      const typed1 = new Typed(text1.current, {
-        strings: ["I am a&nbsp;"],
-        startDelay: 2000,
-        typeSpeed: 90,
-        showCursor: false,
-      });
-      const typed2 = new Typed(text2.current, {
-        strings: [
-          "Full Stack Web Developer",
-          "Graphics Designer",
-          "Software Engineer",
-          "Computer Science Student",
-        ],
-        startDelay: 3000,
-        typeSpeed: 100,
-        backSpeed: 40,
-        backDelay: 3000,
-        loop: true,
-      });
+    // useEffect(() => {
+    //   const typed1 = new Typed(text1.current, {
+    //     strings: ["I am a&nbsp;"],
+    //     startDelay: 2000,
+    //     typeSpeed: 90,
+    //     showCursor: false,
+    //   });
+    //   const typed2 = new Typed(text2.current, {
+    //     strings: [
+    //       "Full Stack Web Developer",
+    //       "Graphics Designer",
+    //       "Software Engineer",
+    //       "Computer Science Student",
+    //     ],
+    //     startDelay: 3000,
+    //     typeSpeed: 100,
+    //     backSpeed: 40,
+    //     backDelay: 3000,
+    //     loop: true,
+    //   });
 
-      return () => {
-        typed1.destroy();
-        typed2.destroy();
-      };
-    }, []);
+    //   return () => {
+    //     typed1.destroy();
+    //     typed2.destroy();
+    //   };
+    // }, []);
 
     const ArrowIcon = getIcon("arrowCircleDown")!;
 
@@ -101,10 +101,10 @@ const Landing = forwardRef<HTMLDivElement, { section: SectionBody }>(
                       layout="fill"
                       objectFit="cover"
                     />
-                    <div className={styles.typingText}>
+                    {/* <div className={styles.typingText}>
                       <span ref={text1}></span>
                       <span ref={text2}></span>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
                 <div className={styles.laptopBase}>

@@ -67,8 +67,8 @@ function Footer() {
       </div>
       <div className={styles.wrapper}>
         <span className={styles.logo}>{"B"}</span>
-        <span>{"Crafted with passion & love."}</span>
-        <span>© {new Date().getFullYear()} Borhan Saflo.</span>
+        <span>{"Crafted with Passion & Love."}</span>
+        <span>© {new Date().getFullYear()} Borhan Saflo</span>
       </div>
     </>
   );

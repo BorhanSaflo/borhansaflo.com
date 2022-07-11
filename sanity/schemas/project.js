@@ -32,11 +32,11 @@ export default {
       type: "string",
       options: {
         list: [
-          { title: "Planned", value: "calendar" },
-          { title: "In Development", value: "development" },
-          { title: "Completed", value: "checkmark" },
-          { title: "On Hold", value: "pause" },
-          { title: "Cancelled", value: "close" },
+          { title: "Planned", value: "Planned" },
+          { title: "In Development", value: "In Development" },
+          { title: "Completed", value: "Completed" },
+          { title: "On Hold", value: "On Hold" },
+          { title: "Cancelled", value: "Cancelled" },
         ],
       },
     },
