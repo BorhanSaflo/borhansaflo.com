@@ -1,21 +1,50 @@
+import Link from "next/link";
 import React, { useEffect } from "react";
-import { FaEnvelope, FaGithub, FaLinkedinIn } from "react-icons/fa";
 import styles from "../../styles/Header.module.scss";
+import { Social } from "../../typings";
 import SocialButton from "./SocialButton";
 
-interface Props {
-  active: boolean;
+interface menuProps {
+  name: string;
+  href: string;
 }
 
-function MobileMenu({ active }: Props) {
+interface Props {
+  menuData: menuProps[];
+  active: boolean;
+  socials: Social[];
+  currentElement: number;
+  toggleMobileMenu: () => void;
+}
+
+function MobileMenu({
+  menuData,
+  active,
+  socials,
+  currentElement,
+  toggleMobileMenu,
+}: Props) {
   useEffect(() => {
     if (active) {
-      document.body.style.overflow = "hidden";
+      document.body.classList.add("overflowHidden");
     }
     return () => {
-      document.body.style.overflow = "unset";
+      document.body.classList.remove("overflowHidden");
     };
   });
+
+  const menuItems = menuData.map((menuItem: menuProps, i) => (
+    <Link key={menuItem.name} href={menuItem.href} passHref>
+      <a
+        className={
+          i === currentElement
+            ? `${styles.mobileMenuItem} ${styles.mobileActiveMenuItem}`
+            : styles.mobileMenuItem
+        }>
+        {menuItem.name}
+      </a>
+    </Link>
+  ));
   return (
     <div
       className={
@@ -23,16 +52,17 @@ function MobileMenu({ active }: Props) {
           ? `${styles.mobileMenu} ${styles.mobileMenuActive}`
           : styles.mobileMenu
       }>
-      <div className={styles.mobileMenuItemsContainer}>
-        <a className={styles.mobileMenuItem}>Home</a>
-        <a className={styles.mobileMenuItem}>About</a>
-        <a className={styles.mobileMenuItem}>Projects</a>
-        <a className={styles.mobileMenuItem}>Contact</a>
+      <div
+        onClick={() => toggleMobileMenu()}
+        className={styles.mobileMenuItemsContainer}>
+        {menuItems}
       </div>
       <div className={styles.mobileSocialButtonsContainer}>
-        <SocialButton Icon={FaGithub} url="https://github.com/" />
-        <SocialButton Icon={FaLinkedinIn} url="https://www.linkedin.com" />
-        <SocialButton Icon={FaEnvelope} url="mailto:example.com" />
+        <div className={styles.socialButtonsContainer}>
+          {socials?.map((social: Social) => {
+            return <SocialButton key={social.id} social={social} />;
+          })}
+        </div>
       </div>
     </div>
   );

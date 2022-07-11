@@ -1,17 +1,12 @@
 import Image from "next/image";
 import React from "react";
+import { getIcon } from "../../lib/icons";
+import { urlFor } from "../../sanity";
 import styles from "../../styles/Projects.module.scss";
+import { Project } from "../../typings";
+import Button from "../Button";
 
-interface Props {
-  id?: string;
-  title: string;
-  description: string;
-  image: any;
-  link: string;
-  tags: string[];
-}
-
-function Project({ id, title, description, image, link, tags }: Props) {
+function Project({ project }: { project: Project }) {
   const truncateDescription = (description: string) => {
     if (description.length > 100) {
       return `${description.substring(0, 100)}...`;
@@ -20,33 +15,51 @@ function Project({ id, title, description, image, link, tags }: Props) {
     }
   };
 
+  const StatusIcon = getIcon(project.status);
+
   return (
     <div className={styles.project}>
       <div className={styles.projectImageContainer}>
         <Image
           className={styles.projectImage}
-          src={image}
+          src={
+            project.previewImage
+              ? urlFor(project.previewImage).url()
+              : "/images/projects/placeholder.png"
+          }
+          alt={project.title}
           layout="fill"
-          alt={title}
           objectFit="cover"
         />
+        <div className={styles.status}>
+          <StatusIcon className={styles.statusIcon} />
+          <span>{project.status}</span>
+        </div>
+        <a
+          className={styles.button}
+          href={project.link ? project.link : "/"}
+          target="_blank"
+          rel="noreferrer">
+          {"View Project"}
+        </a>
       </div>
 
       <div className={styles.projectInfo}>
-        <h3 className={styles.projectTitle}>{title}</h3>
+        <h3 className={styles.projectTitle}>{project.title}</h3>
         <div className={styles.projectDescription}>
-          <p>{truncateDescription(description)}</p>
+          <p>{truncateDescription(project.description)}</p>
         </div>
         <div className={styles.projectTags}>
-          {tags.map((tag) => (
-            <span key={tag} className={styles.projectTag}>
-              {tag + " "}
-            </span>
-          ))}
+          {project.tags?.length > 0 && (
+            <>
+              {project.tags.map((tag) => (
+                <span key={tag._id} className={styles.projectTag}>
+                  {tag.name}
+                </span>
+              ))}
+            </>
+          )}
         </div>
-        {/* <a href={link} className={styles.projectLink}>
-          View Project
-        </a> */}
       </div>
     </div>
   );

@@ -1,22 +1,28 @@
 import React, { useState, useEffect } from "react";
 import styles from "../../styles/Header.module.scss";
-import { FaBars, FaEnvelope, FaGithub, FaLinkedinIn } from "react-icons/fa";
-import { CgClose } from "react-icons/cg";
 import SocialButton from "./SocialButton";
 import DesktopMenu from "./DesktopMenu";
 import MobileMenu from "./MobileMenu";
 import Link from "next/link";
+import { Section, Social } from "../../typings";
+import { getIcon } from "../../lib/icons";
 
-function Header({ sectionData, currentElement }: any) {
+interface Props {
+  sections: Section[];
+  socials: Social[];
+  currentElement: number;
+}
+
+function Header({ sections, socials, currentElement }: Props) {
   const [isActive, setIsActive] = useState(false);
   const [isMobile, setIsMobile] = useState(true);
   const [isHidden, setIsHidden] = useState(true);
   const [isMobileMenuActive, setIsMobileMenuActive] = useState(false);
 
-  const menuData = sectionData.map((section: any) => {
+  const menuData = sections.map((section: Section) => {
     return {
-      name: section.nav.name,
-      href: section.nav.href,
+      name: section.name,
+      href: `${section.id !== "landing" ? "#" + section.id : "/"}`,
     };
   });
 
@@ -48,6 +54,10 @@ function Header({ sectionData, currentElement }: any) {
       window.removeEventListener("resize", updateWindowDimensions);
     };
   }, []);
+
+  const CloseButton = getIcon("close");
+  const OpenButton = getIcon("open");
+
   return (
     <div className={isHidden ? "hidden" : ""}>
       <div
@@ -70,7 +80,13 @@ function Header({ sectionData, currentElement }: any) {
 
           {isMobile ? (
             <>
-              <MobileMenu active={isMobileMenuActive} />
+              <MobileMenu
+                menuData={menuData}
+                active={isMobileMenuActive}
+                socials={socials}
+                currentElement={currentElement}
+                toggleMobileMenu={toggleMobileMenu}
+              />
               <div
                 onClick={toggleMobileMenu}
                 className={
@@ -78,7 +94,7 @@ function Header({ sectionData, currentElement }: any) {
                     ? `${styles.mobileMenuButton} ${styles.mobileMenuButtonActive}`
                     : styles.mobileMenuButton
                 }>
-                {isMobileMenuActive ? <CgClose /> : <FaBars />}
+                {isMobileMenuActive ? <CloseButton /> : <OpenButton />}
               </div>
             </>
           ) : (
@@ -88,12 +104,9 @@ function Header({ sectionData, currentElement }: any) {
                 currentElement={currentElement}
               />
               <div className={styles.socialButtonsContainer}>
-                <SocialButton Icon={FaGithub} url="https://github.com/" />
-                <SocialButton
-                  Icon={FaLinkedinIn}
-                  url="https://www.linkedin.com"
-                />
-                <SocialButton Icon={FaEnvelope} url="mailto:example.com" />
+                {socials?.map((social: Social) => {
+                  return <SocialButton key={social.id} social={social} />;
+                })}
               </div>
             </>
           )}

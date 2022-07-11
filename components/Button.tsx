@@ -1,17 +1,17 @@
 import React, { SVGProps } from "react";
-import styles from "../styles/Home.module.scss";
-
 interface Props {
   Icon?: (props: SVGProps<SVGSVGElement>) => JSX.Element;
   text: string;
+  link?: string;
+  type: string;
   onClick?: () => void;
 }
 
-function Button({ Icon, text, onClick }: Props) {
+function Button({ Icon, text, link, type, onClick }: Props) {
   return (
-    <a className={styles.button} onClick={onClick}>
+    <a href={link} className={type + "Button"} onClick={onClick}>
       {text}
-      {Icon && <Icon />}
+      {Icon && <Icon className={"buttonIcon"} />}
     </a>
   );
 }

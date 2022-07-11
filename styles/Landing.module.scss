@@ -7,89 +7,124 @@
   background: $primary;
   background: linear-gradient(0deg, $secondary 0%, $primary 100%);
   overflow: hidden;
+  padding: 100px 0;
 }
 
 .container {
   @include flexCenter;
-  flex: 1;
   flex-direction: column;
   max-width: $xl;
+  margin: 0 auto;
   gap: 40px;
   padding: 0 30px;
 
   @include lg {
+    flex: 1;
     flex-direction: row;
-    gap: 20px;
+    gap: 0px;
   }
 }
 
 .containerItem {
   @include flexCenter;
-  flex: 1;
   flex-direction: column;
   text-align: center;
-  gap: 20px;
+  gap: 0.6em;
+  padding-bottom: 10px;
 
   @include lg {
-    gap: 25px;
+    flex: 1;
+    gap: 0em;
     &.headingContainer {
       align-items: flex-start;
       text-align: left;
     }
     &.laptopContainer {
-      display: flex;
       align-items: flex-end;
     }
   }
 }
 
 .heading {
-  margin: 0;
-  font-size: 1.8rem;
+  font-size: 2.8rem;
   font-weight: 700;
   color: $darkPrimary;
+  white-space: nowrap;
 
   @include md {
     font-size: 2.8rem;
   }
 
   @include lg {
-    font-size: 2.9rem;
+    font-size: 3.8rem;
   }
 
   @include xl {
-    font-size: 3.3rem;
+    font-size: 4rem;
   }
 }
 
 .subHeading {
-  margin: 0;
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: $darkPrimary;
+  h2,
+  span {
+    max-width: 350px;
+    color: $darkPrimary;
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.5em;
 
-  .keyWord {
-    text-decoration: underline;
+    span {
+      text-decoration-color: $tertiary !important;
+      text-underline-offset: 2px;
+      overflow: hidden;
+      display: inline-flex;
+      position: relative;
+      transform-style: preserve-3d;
+      padding: 0 2px;
+      cursor: text;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $tertiary;
+        transition: transform 0.25s ease-in-out;
+        transform: translate3d(-101%, 0, 0);
+        z-index: -1;
+      }
+
+      &:hover::after {
+        transform: translate3d(0, 0, 0);
+      }
+    }
   }
 
   @include md {
-    font-size: 1.5rem;
+    h2,
+    span {
+      max-width: 500px;
+      font-size: 1.4rem;
+    }
   }
 }
 
 .scrollDownArrow {
   position: absolute;
+  display: none;
   bottom: 10px;
   font-size: 2rem;
   text-align: center;
   margin: 0;
   color: $darkPrimary;
-  animation: slidingLoopAnimation 1.5s linear infinite;
+  animation: slidingLoopAnimation 1.5s ease infinite;
   opacity: 0.75;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
 
-  &.hidden {
-    opacity: 0;
+  @include md {
+    display: block;
   }
 }
 
@@ -103,31 +138,21 @@
   }
 }
 
-.button {
+.buttonsContainer {
   @include flexCenter;
-  @include noDrag;
-  gap: 10px;
-  font-size: 1.1em;
-  font-weight: 700;
-  text-align: center;
-  margin: 0;
-  padding: 12px 25px;
-  color: $primary;
-  background-color: $darkPrimary;
-  border-radius: 5px;
-  box-shadow: 0px 5px 10px $primaryBoxShadow;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  transition: all 0.15s ease-in-out;
+  margin-top: 1em;
+  width: 100%;
+  flex-direction: column;
+  gap: 1em;
 
-  &:hover {
-    background-color: $darkSecondary;
-    box-shadow: 0px 5px 11px $secondaryBoxShadow;
-    transform: translateY(-2px);
+  @include lg {
+    flex-direction: row;
+    justify-content: flex-start;
   }
 }
 
 .SVGShape {
+  margin-top: -1px;
   overflow: hidden;
   svg {
     width: 130%;
@@ -144,7 +169,11 @@ $laptopHeight: 11.4em;
   width: $laptopWidth;
   height: $laptopHeight;
   perspective: 1200px;
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.25s ease-in-out;
+
+  &:hover {
+    transform: scale(1.02);
+  }
 
   @include md {
     width: $laptopWidth * 1.2;
@@ -159,10 +188,6 @@ $laptopHeight: 11.4em;
   @include xl {
     width: $laptopWidth * 1.4;
     height: $laptopHeight * 1.4;
-  }
-
-  &:hover {
-    transform: scale(1.02);
   }
 }
 
@@ -212,7 +237,7 @@ $laptopHeight: 11.4em;
   display: flex;
   justify-content: flex-start;
   padding: 9% 7%;
-  background: $tertiary;
+  background: rgb(30, 30, 30);
   position: absolute;
   top: 2%;
   left: 1.2%;
@@ -299,7 +324,7 @@ $laptopHeight: 11.4em;
   margin: auto;
   border-bottom-left-radius: 2em;
   border-bottom-right-radius: 2em;
-  box-shadow: 0 10px 25px #000000, 0 5px 10px #0000004d;
+  box-shadow: 0 5px 15px #0000004d, 0 2px 6px #00000080;
   height: 1.7%;
   background: linear-gradient(
     180deg,

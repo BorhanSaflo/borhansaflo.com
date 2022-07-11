@@ -5,35 +5,91 @@
   width: 100%;
   padding: 100px 0;
   background-color: $lightPrimary;
-  min-height: 400px;
+
+  &:not(:nth-child(2)) {
+    border-top: 1px solid #e6ecf8;
+  }
 }
 
 .container {
-  display: flex;
+  @include flexCenter;
   flex-direction: column;
   gap: 10px;
-  align-items: flex-start;
-  width: $lg;
-  max-width: $lg;
-  padding: 0 30px;
+  width: $xl;
+  padding: 10px 30px;
+  overflow: hidden;
 }
 
 .heading {
   font-size: 2.5em;
-  margin: 10px 0;
 
   &:after {
     content: "";
     display: block;
-    width: 40px;
+    width: 80px;
     height: 3px;
     background-color: $primary;
-    margin-top: 8px;
+    margin: 20px auto;
   }
 }
 
-.paragraph {
-  margin: 0;
+.subSectionsContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 75px;
+}
+
+.subSection {
+  @include flexCenter;
+  flex-direction: column;
+  width: 100%;
+  gap: 50px;
+  margin-top: 0.5em;
+
+  @include lg {
+    flex-direction: row;
+  }
+}
+
+.subSectionHeading {
+  font-size: 1.5em;
+  font-weight: 700;
   color: $darkPrimary;
-  line-height: 1.5;
+}
+
+.paragraph {
+  display: flex;
+  flex: 1.4 1 0;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  gap: 15px;
+  color: $darkPrimary;
+  line-height: calc(1ex / 0.32);
+
+  @include lg {
+    align-items: flex-start;
+  }
+}
+
+.imageContainer {
+  position: relative;
+  @include flexCenter;
+  flex: 1 1 0;
+}
+
+.image {
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px $primaryBoxShadow;
+  width: 375px;
+}
+
+.buttonsContainer {
+  align-self: center;
+  margin-top: 20px;
+
+  @include lg {
+    align-self: auto;
+  }
 }
