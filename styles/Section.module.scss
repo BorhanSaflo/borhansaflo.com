@@ -6,9 +6,8 @@
   padding: 100px 0;
   background-color: $lightPrimary;
 
-  //all but not first
   &:not(:nth-child(2)) {
-    border-top: 1px solid #E6ECF8;
+    border-top: 1px solid #e6ecf8;
   }
 }
 
@@ -35,16 +34,16 @@
 }
 
 .subSectionsContainer {
-  width: 100%;
   display: flex;
   flex-direction: column;
+  width: 100%;
   gap: 75px;
 }
 
 .subSection {
-  width: 100%;
   @include flexCenter;
   flex-direction: column;
+  width: 100%;
   gap: 50px;
   margin-top: 0.5em;
 
@@ -54,21 +53,24 @@
 }
 
 .subSectionHeading {
-  font-size: 1.2em;
+  font-size: 1.5em;
   font-weight: 700;
   color: $darkPrimary;
-  white-space: nowrap;
 }
 
 .paragraph {
-  align-self: flex-start;
   display: flex;
-  flex-direction: column;
-  gap: 15px;
-  align-items: flex-start;
   flex: 1.4 1 0;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  gap: 15px;
   color: $darkPrimary;
   line-height: calc(1ex / 0.32);
+
+  @include lg {
+    align-items: flex-start;
+  }
 }
 
 .imageContainer {
@@ -78,12 +80,16 @@
 }
 
 .image {
-  position: relative;
   border-radius: 5px;
   box-shadow: 0px 2px 5px $primaryBoxShadow;
   width: 375px;
 }
 
 .buttonsContainer {
+  align-self: center;
   margin-top: 20px;
+
+  @include lg {
+    align-self: auto;
+  }
 }

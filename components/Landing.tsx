@@ -67,6 +67,11 @@ const Landing = forwardRef<HTMLDivElement, { section: SectionBody }>(
           <div className={styles.container}>
             <div
               className={`${styles.containerItem} ${styles.headingContainer}`}>
+              <div className={styles.subHeading}>
+                <span>
+                  <PortableText value={section.subSections[1].content} />
+                </span>
+              </div>
               <h1 className={styles.heading}>{section.heading}</h1>
               <div className={styles.subHeading}>
                 <PortableText value={section.subSections[0].content} />

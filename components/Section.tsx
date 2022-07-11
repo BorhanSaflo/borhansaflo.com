@@ -23,49 +23,47 @@ const Section = forwardRef<
           <div className={styles.subSectionsContainer}>
             {section.subSections?.map((subSection) => {
               return (
-                <>
-                  <div className={styles.subSection} key={subSection.name}>
-                    <div
-                      className={`${styles.paragraph} ${
-                        subSection.switchOrder ? " orderSecond" : "orderFirst"
-                      }`}>
-                      {subSection.heading && (
-                        <h3 className={styles.subSectionHeading}>
-                          {subSection.heading}
-                        </h3>
-                      )}
-                      <PortableText value={subSection.content} />
-                      {subSection.buttons && (
-                        <div className={styles.buttonsContainer}>
-                          {subSection.buttons?.map((button) => (
-                            <Button
-                              key={button.text}
-                              Icon={getIcon(button.icon)}
-                              text={button.text}
-                              link={button.link}
-                              type={button.type}
-                            />
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                    {subSection.image && (
-                      <div
-                        className={`${styles.imageContainer} ${
-                          subSection.switchOrder ? "orderFirst" : "orderSecond"
-                        }`}>
-                        <div className={styles.image}>
-                          <Image
-                            src={urlFor(subSection.image).url()}
-                            layout="responsive"
-                            width="300"
-                            height="200"
+                <div className={styles.subSection} key={subSection.name}>
+                  <div
+                    className={`${styles.paragraph} ${
+                      subSection.switchOrder ? " orderSecond" : "orderFirst"
+                    }`}>
+                    {subSection.heading && (
+                      <h3 className={styles.subSectionHeading}>
+                        {subSection.heading}
+                      </h3>
+                    )}
+                    <PortableText value={subSection.content} />
+                    {subSection.buttons && (
+                      <div className={styles.buttonsContainer}>
+                        {subSection.buttons?.map((button) => (
+                          <Button
+                            key={button.text}
+                            Icon={getIcon(button.icon)}
+                            text={button.text}
+                            link={button.link}
+                            type={button.type}
                           />
-                        </div>
+                        ))}
                       </div>
                     )}
                   </div>
-                </>
+                  {subSection.image && (
+                    <div
+                      className={`${styles.imageContainer} ${
+                        subSection.switchOrder ? "orderFirst" : "orderSecond"
+                      }`}>
+                      <div className={styles.image}>
+                        <Image
+                          src={urlFor(subSection.image).url()}
+                          layout="responsive"
+                          width="300"
+                          height="200"
+                        />
+                      </div>
+                    </div>
+                  )}
+                </div>
               );
             })}
           </div>

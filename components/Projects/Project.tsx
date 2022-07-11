@@ -37,8 +37,6 @@ function Project({ project }: { project: Project }) {
           }
           alt={project.title}
           layout="fill"
-          width={"300"}
-          height={"200"}
           objectFit="cover"
         />
         <div className={styles.status}>

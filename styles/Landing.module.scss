@@ -30,11 +30,12 @@
   @include flexCenter;
   flex-direction: column;
   text-align: center;
-  gap: 0.3em;
+  gap: 0.6em;
   padding-bottom: 10px;
 
   @include lg {
     flex: 1;
+    gap: 0.3em;
     &.headingContainer {
       align-items: flex-start;
       text-align: left;
@@ -46,7 +47,7 @@
 }
 
 .heading {
-  font-size: 2rem;
+  font-size: 2.8rem;
   font-weight: 700;
   color: $darkPrimary;
   white-space: nowrap;
@@ -56,19 +57,20 @@
   }
 
   @include lg {
-    font-size: 2.9rem;
+    font-size: 3.8rem;
   }
 
   @include xl {
-    font-size: 3.3rem;
+    font-size: 4rem;
   }
 }
 
 .subHeading {
-  h2 {
+  h2,
+  span {
     max-width: 350px;
     color: $darkPrimary;
-    font-size: 1em;
+    font-size: 1.2rem;
     font-weight: 600;
     line-height: 1.5em;
 
@@ -102,9 +104,10 @@
   }
 
   @include md {
-    h2 {
-      font-size: 1.4em;
-      max-width: $lg;
+    h2,
+    span {
+      max-width: 500px;
+      font-size: 1.4rem;
     }
   }
 }
