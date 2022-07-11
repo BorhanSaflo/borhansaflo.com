@@ -35,7 +35,11 @@ function Project({ project }: { project: Project }) {
           <StatusIcon className={styles.statusIcon} />
           <span>{project.status}</span>
         </div>
-        <a className={styles.button} href={project.link ? project.link : "/"}>
+        <a
+          className={styles.button}
+          href={project.link ? project.link : "/"}
+          target="_blank"
+          rel="noreferrer">
           {"View Project"}
         </a>
       </div>
