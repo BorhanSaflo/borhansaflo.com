@@ -2,8 +2,6 @@ import React, { useState, useEffect, useRef, forwardRef } from "react";
 import styles from "../styles/Landing.module.scss";
 import SVGShape from "./SVGShape";
 import Button from "./Button";
-//import Typed from "typed.js";
-import Image from "next/image";
 import { SectionBody } from "../typings";
 import { getIcon } from "../lib/icons";
 import { PortableText } from "@portabletext/react";
@@ -27,37 +25,7 @@ const Landing = forwardRef<HTMLDivElement, { section: SectionBody }>(
           window.removeEventListener("scroll", () => {});
         }
       };
-    });
-
-    // const text1 = useRef() as React.MutableRefObject<HTMLSpanElement>;
-    // const text2 = useRef() as React.MutableRefObject<HTMLSpanElement>;
-
-    // useEffect(() => {
-    //   const typed1 = new Typed(text1.current, {
-    //     strings: ["I am a&nbsp;"],
-    //     startDelay: 2000,
-    //     typeSpeed: 90,
-    //     showCursor: false,
-    //   });
-    //   const typed2 = new Typed(text2.current, {
-    //     strings: [
-    //       "Full Stack Web Developer",
-    //       "Graphics Designer",
-    //       "Software Engineer",
-    //       "Computer Science Student",
-    //     ],
-    //     startDelay: 3000,
-    //     typeSpeed: 100,
-    //     backSpeed: 40,
-    //     backDelay: 3000,
-    //     loop: true,
-    //   });
-
-    //   return () => {
-    //     typed1.destroy();
-    //     typed2.destroy();
-    //   };
-    // }, []);
+    }, []);
 
     const ArrowIcon = getIcon("arrowCircleDown")!;
 
@@ -93,18 +61,13 @@ const Landing = forwardRef<HTMLDivElement, { section: SectionBody }>(
               <div className={styles.laptop}>
                 <div className={styles.laptopDisplay}>
                   <div className={styles.laptopScreen}>
-                    <Image
-                      className={styles.laptopBackground}
-                      priority
-                      alt="Laptop Background"
-                      src="/images/laptopBackground.png"
-                      layout="fill"
-                      objectFit="cover"
-                    />
-                    {/* <div className={styles.typingText}>
-                      <span ref={text1}></span>
-                      <span ref={text2}></span>
-                    </div> */}
+                    <div className={styles.laptopContent}>
+                      <ul>
+                        {[...Array(14)].map((_, i) => (
+                          <li key={i} />
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </div>
                 <div className={styles.laptopBase}>
