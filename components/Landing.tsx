@@ -1,4 +1,4 @@
-import React, { useState, useEffect, forwardRef } from "react";
+import React, { forwardRef } from "react";
 import styles from "../styles/Landing.module.scss";
 import SVGShape from "./SVGShape";
 import Button from "./Button";
@@ -6,27 +6,13 @@ import { SectionBody } from "../typings";
 import { getIcon } from "../lib/icons";
 import { PortableText } from "@portabletext/react";
 
-const Landing = forwardRef<HTMLDivElement, { section: SectionBody }>(
-  ({ section }: { section: SectionBody }, ref) => {
-    const [isScrolled, setIsScrolled] = useState(false);
+interface Props {
+  section: SectionBody;
+  isScrolled: boolean;
+}
 
-    useEffect(() => {
-      if (typeof window !== "undefined") {
-        window.addEventListener("scroll", () => {
-          if (window.scrollY > 0) {
-            setIsScrolled(true);
-          } else {
-            setIsScrolled(false);
-          }
-        });
-      }
-      return () => {
-        if (typeof window !== "undefined") {
-          window.removeEventListener("scroll", () => {});
-        }
-      };
-    }, []);
-
+const Landing = forwardRef<HTMLDivElement, Props>(
+  ({ section, isScrolled }: Props, ref) => {
     const ArrowIcon = getIcon("arrowCircleDown")!;
 
     return (
