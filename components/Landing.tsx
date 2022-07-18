@@ -65,13 +65,11 @@ const Landing = forwardRef<HTMLDivElement, { section: SectionBody }>(
                     <div />
                     <div />
                   </div>
-                  <div className={styles.laptopContent}>
-                    <ul>
-                      {[...Array(15)].map((_, i) => (
-                        <li key={i} />
-                      ))}
-                    </ul>
-                  </div>
+                  <ul className={styles.laptopContent}>
+                    {[...Array(15)].map((_, i) => (
+                      <li key={i} />
+                    ))}
+                  </ul>
                 </div>
                 <div className={styles.laptopBase}>
                   <div className={styles.laptopIndent}></div>
