@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, forwardRef } from "react";
+import React, { useState, useEffect, forwardRef } from "react";
 import styles from "../styles/Landing.module.scss";
 import SVGShape from "./SVGShape";
 import Button from "./Button";

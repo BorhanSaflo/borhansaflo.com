@@ -119,22 +119,12 @@
   text-align: center;
   margin: 0;
   color: $darkPrimary;
-  animation: slidingLoopAnimation 1.5s ease infinite;
+  animation: arrowSliding 1.5s ease infinite;
   opacity: 0.75;
   transition: all 0.25s ease;
 
   @include md {
     display: block;
-  }
-}
-
-@keyframes slidingLoopAnimation {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
   }
 }
 
@@ -418,6 +408,16 @@ $laptopHeight: 11.4em;
   100% {
     opacity: 1;
     max-width: 100%;
+  }
+}
+
+@keyframes arrowSliding {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
   }
 }
 
