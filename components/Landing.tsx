@@ -60,14 +60,17 @@ const Landing = forwardRef<HTMLDivElement, { section: SectionBody }>(
               className={`${styles.containerItem} ${styles.laptopContainer}`}>
               <div className={styles.laptop}>
                 <div className={styles.laptopDisplay}>
-                  <div className={styles.laptopScreen}>
-                    <div className={styles.laptopContent}>
-                      <ul>
-                        {[...Array(14)].map((_, i) => (
-                          <li key={i} />
-                        ))}
-                      </ul>
-                    </div>
+                  <div className={styles.laptopToolbar}>
+                    <div />
+                    <div />
+                    <div />
+                  </div>
+                  <div className={styles.laptopContent}>
+                    <ul>
+                      {[...Array(15)].map((_, i) => (
+                        <li key={i} />
+                      ))}
+                    </ul>
                   </div>
                 </div>
                 <div className={styles.laptopBase}>
