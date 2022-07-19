@@ -171,9 +171,9 @@ $laptopHeight: 11.4em;
             glow 5s ease infinite alternate;
 
           &:after {
-            left: -$indent + 5px;
+            left: -$indent + 8px;
             @if ($i < 10) {
-              left: -$indent + 7.5px;
+              left: -$indent + 10.5px;
             }
           }
         }
