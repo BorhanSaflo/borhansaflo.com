@@ -1,64 +1,19 @@
-import React, { useState, useEffect, useRef, forwardRef } from "react";
+import React, { forwardRef } from "react";
 import styles from "../styles/Landing.module.scss";
 import SVGShape from "./SVGShape";
 import Button from "./Button";
-//import Typed from "typed.js";
-import Image from "next/image";
 import { SectionBody } from "../typings";
 import { getIcon } from "../lib/icons";
 import { PortableText } from "@portabletext/react";
+import Laptop from "./Laptop";
 
-const Landing = forwardRef<HTMLDivElement, { section: SectionBody }>(
-  ({ section }: { section: SectionBody }, ref) => {
-    const [isScrolled, setIsScrolled] = useState(false);
+interface Props {
+  section: SectionBody;
+  isScrolled: boolean;
+}
 
-    useEffect(() => {
-      if (typeof window !== "undefined") {
-        window.addEventListener("scroll", () => {
-          if (window.scrollY > 0) {
-            setIsScrolled(true);
-          } else {
-            setIsScrolled(false);
-          }
-        });
-      }
-      return () => {
-        if (typeof window !== "undefined") {
-          window.removeEventListener("scroll", () => {});
-        }
-      };
-    });
-
-    // const text1 = useRef() as React.MutableRefObject<HTMLSpanElement>;
-    // const text2 = useRef() as React.MutableRefObject<HTMLSpanElement>;
-
-    // useEffect(() => {
-    //   const typed1 = new Typed(text1.current, {
-    //     strings: ["I am a&nbsp;"],
-    //     startDelay: 2000,
-    //     typeSpeed: 90,
-    //     showCursor: false,
-    //   });
-    //   const typed2 = new Typed(text2.current, {
-    //     strings: [
-    //       "Full Stack Web Developer",
-    //       "Graphics Designer",
-    //       "Software Engineer",
-    //       "Computer Science Student",
-    //     ],
-    //     startDelay: 3000,
-    //     typeSpeed: 100,
-    //     backSpeed: 40,
-    //     backDelay: 3000,
-    //     loop: true,
-    //   });
-
-    //   return () => {
-    //     typed1.destroy();
-    //     typed2.destroy();
-    //   };
-    // }, []);
-
+const Landing = forwardRef<HTMLDivElement, Props>(
+  ({ section, isScrolled }: Props, ref) => {
     const ArrowIcon = getIcon("arrowCircleDown")!;
 
     return (
@@ -80,7 +35,7 @@ const Landing = forwardRef<HTMLDivElement, { section: SectionBody }>(
                 {section.subSections[0].buttons?.map((button) => (
                   <Button
                     key={button.text}
-                    Icon={getIcon(button.icon)}
+                    icon={button.icon}
                     text={button.text}
                     link={button.link}
                     type={button.type}
@@ -90,28 +45,7 @@ const Landing = forwardRef<HTMLDivElement, { section: SectionBody }>(
             </div>
             <div
               className={`${styles.containerItem} ${styles.laptopContainer}`}>
-              <div className={styles.laptop}>
-                <div className={styles.laptopDisplay}>
-                  <div className={styles.laptopScreen}>
-                    <Image
-                      className={styles.laptopBackground}
-                      priority
-                      alt="Laptop Background"
-                      src="/images/laptopBackground.png"
-                      layout="fill"
-                      objectFit="cover"
-                    />
-                    {/* <div className={styles.typingText}>
-                      <span ref={text1}></span>
-                      <span ref={text2}></span>
-                    </div> */}
-                  </div>
-                </div>
-                <div className={styles.laptopBase}>
-                  <div className={styles.laptopIndent}></div>
-                </div>
-                <div className={styles.laptopBottom}></div>
-              </div>
+              <Laptop />
             </div>
           </div>
           <a

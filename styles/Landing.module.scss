@@ -119,22 +119,12 @@
   text-align: center;
   margin: 0;
   color: $darkPrimary;
-  animation: slidingLoopAnimation 1.5s ease infinite;
+  animation: arrowSliding 1.5s ease infinite;
   opacity: 0.75;
   transition: all 0.25s ease;
 
   @include md {
     display: block;
-  }
-}
-
-@keyframes slidingLoopAnimation {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
   }
 }
 
@@ -161,183 +151,13 @@
   }
 }
 
-//Laptop
-$laptopWidth: 20.4em;
-$laptopHeight: 11.4em;
-
-.laptop {
-  width: $laptopWidth;
-  height: $laptopHeight;
-  perspective: 1200px;
-  transition: transform 0.25s ease-in-out;
-
-  &:hover {
-    transform: scale(1.02);
-  }
-
-  @include md {
-    width: $laptopWidth * 1.2;
-    height: $laptopHeight * 1.2;
-  }
-
-  @include lg {
-    width: $laptopWidth * 1.3;
-    height: $laptopHeight * 1.3;
-  }
-
-  @include xl {
-    width: $laptopWidth * 1.4;
-    height: $laptopHeight * 1.4;
-  }
-}
-
-.laptopDisplay {
-  position: relative;
-  margin: auto;
-  border-top-left-radius: 3.5%;
-  border-top-right-radius: 3.5%;
-  background-color: #000;
-  width: 81%;
-  height: 93%;
-  overflow: hidden;
-  transform-style: preserve-3d;
-  transform-origin: bottom;
-  animation-delay: 3s;
-  animation: openLaptop 2s ease-in-out;
-
-  &:before {
-    position: absolute;
-    top: 0.05em;
-    right: 0;
-    left: 0;
-    z-index: 2;
-    margin: auto;
-    border-bottom-left-radius: 10%;
-    border-bottom-right-radius: 10%;
-    background: #000;
-    width: 10%;
-    height: 4%;
-    content: "";
-  }
-
-  &:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 2;
-    border-top: 6em solid #ffffff0e;
-    border-left: 6em solid transparent;
-    width: 0;
-    height: 0;
-  }
-}
-
-.laptopScreen {
-  display: flex;
-  justify-content: flex-start;
-  padding: 9% 7%;
-  background: rgb(30, 30, 30);
-  position: absolute;
-  top: 2%;
-  left: 1.2%;
-  z-index: 1;
-  margin: auto;
-  border-top-left-radius: 3%;
-  border-top-right-radius: 3%;
-  background-size: cover;
-  width: 97.5%;
-  height: 95%;
-}
-
-.laptopBackground {
-  @include noDrag;
-  border-top-left-radius: 3%;
-  border-top-right-radius: 3%;
-  z-index: -1;
-}
-
-.typingText {
-  text-align: left;
-  font-size: 1rem;
-  font-weight: 400;
-  color: $lightPrimary;
-
-  @include md {
-    font-size: 1.2rem;
-  }
-}
-
-.laptopBase {
-  position: relative;
-  background-color: rgb(209, 210, 214);
-  width: 100%;
-  height: 2.5%;
-
-  &:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 1em;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      rgba(209, 210, 214, 0.35) 0,
-      rgba(118, 119, 123, 0.35) 51%,
-      rgba(209, 210, 214, 0.35) 99%,
-      rgba(209, 210, 214, 0.35)
-    );
-  }
-
-  &:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 1em;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      rgba(209, 210, 214, 0.35) 0,
-      rgba(118, 119, 123, 0.35) 51%,
-      rgba(209, 210, 214, 0.35) 99%,
-      rgba(209, 210, 214, 0.35)
-    );
-  }
-}
-
-.laptopIndent {
-  margin: auto;
-  border-bottom-left-radius: 2em;
-  border-bottom-right-radius: 2em;
-  width: 10%;
-  height: 60%;
-  background: linear-gradient(
-    180deg,
-    rgba(153, 154, 158, 0.75) 30%,
-    rgba(44, 45, 47, 0.6) 90%
-  );
-}
-
-.laptopBottom {
-  margin: auto;
-  border-bottom-left-radius: 2em;
-  border-bottom-right-radius: 2em;
-  box-shadow: 0 5px 15px #0000004d, 0 2px 6px #00000080;
-  height: 1.7%;
-  background: linear-gradient(
-    180deg,
-    rgba(153, 154, 158, 0.75) 30%,
-    rgba(44, 45, 47, 0.6) 90%
-  );
-}
-
-@keyframes openLaptop {
-  0% {
-    transform: rotateX(275deg);
-  }
+//Animations
+@keyframes arrowSliding {
+  0%,
   100% {
-    transform: rotateX(360deg);
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
   }
 }

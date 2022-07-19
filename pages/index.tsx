@@ -28,6 +28,7 @@ interface Props {
 const Home = ({ seo, sections, projects, skills, socials }: Props) => {
   const [currentElementIndexInViewport, setCurrentElementIndexInViewport] =
     useState(0);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const arrLength = sections.length;
   const [sectionRefs, setSectionRefs] = useState<RefObject<HTMLDivElement>[]>(
@@ -43,22 +44,27 @@ const Home = ({ seo, sections, projects, skills, socials }: Props) => {
   }, [arrLength]);
 
   useEffect(() => {
-    const checkCurrentElementInViewport = () => {
-      const currentElementIndexInViewport: number =
-        window.innerHeight + window.scrollY >= document.body.offsetHeight
-          ? arrLength - 1
-          : sectionRefs.findIndex(
-              (elRef: RefObject<HTMLDivElement>) =>
-                elRef.current &&
-                elRef.current.getBoundingClientRect().top <= 100 &&
-                elRef.current.getBoundingClientRect().bottom >= 100
-            );
-      setCurrentElementIndexInViewport(currentElementIndexInViewport);
+    const handleScrollEvent = () => {
+      setIsScrolled(window.scrollY > 0);
+      checkCurrentElementInViewport();
     };
-    window.addEventListener("scroll", checkCurrentElementInViewport);
+    window.addEventListener("scroll", handleScrollEvent);
     return () =>
       window.removeEventListener("scroll", checkCurrentElementInViewport);
   }, [sectionRefs]);
+
+  const checkCurrentElementInViewport = () => {
+    const currentElementIndexInViewport: number =
+      window.innerHeight + window.scrollY >= document.body.offsetHeight
+        ? arrLength - 1
+        : sectionRefs.findIndex(
+            (elRef: RefObject<HTMLDivElement>) =>
+              elRef.current &&
+              elRef.current.getBoundingClientRect().top <= 100 &&
+              elRef.current.getBoundingClientRect().bottom >= 100
+          );
+    setCurrentElementIndexInViewport(currentElementIndexInViewport);
+  };
 
   const getSectionContent = (section: string) => {
     switch (section) {
@@ -77,6 +83,7 @@ const Home = ({ seo, sections, projects, skills, socials }: Props) => {
       <Header
         sections={sections}
         socials={socials}
+        isScrolled={isScrolled}
         currentElement={currentElementIndexInViewport}
       />
       <main>
@@ -87,6 +94,7 @@ const Home = ({ seo, sections, projects, skills, socials }: Props) => {
                 ref={sectionRefs[i]}
                 key={section._id}
                 section={section}
+                isScrolled={isScrolled}
               />
             );
           } else {

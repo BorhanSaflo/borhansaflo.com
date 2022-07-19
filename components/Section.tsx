@@ -1,7 +1,6 @@
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 import React, { forwardRef } from "react";
-import { getIcon } from "../lib/icons";
 import { urlFor } from "../sanity";
 import styles from "../styles/Section.module.scss";
 import { Section } from "../typings";
@@ -39,7 +38,7 @@ const Section = forwardRef<
                         {subSection.buttons?.map((button) => (
                           <Button
                             key={button.text}
-                            Icon={getIcon(button.icon)}
+                            icon={button.icon}
                             text={button.text}
                             link={button.link}
                             type={button.type}
