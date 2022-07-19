@@ -4,150 +4,151 @@
   @include flexCenter;
   width: 100%;
   min-height: 100vh;
+  padding: 100px 0;
   background: $primary;
   background: linear-gradient(0deg, $secondary 0%, $primary 100%);
   overflow: hidden;
-  padding: 100px 0;
-}
 
-.container {
-  @include flexCenter;
-  flex-direction: column;
-  max-width: $xl;
-  margin: 0 auto;
-  gap: 40px;
-  padding: 0 30px;
+  .container {
+    @include flexCenter;
+    flex-direction: column;
+    gap: 40px;
+    max-width: $xl;
+    padding: 0 30px;
+    margin: 0 auto;
 
-  @include lg {
-    flex: 1;
-    flex-direction: row;
-    gap: 0px;
-  }
-}
-
-.containerItem {
-  @include flexCenter;
-  flex-direction: column;
-  text-align: center;
-  gap: 0.6em;
-  padding-bottom: 10px;
-
-  @include lg {
-    flex: 1;
-    gap: 0em;
-    &.headingContainer {
-      align-items: flex-start;
-      text-align: left;
+    @include lg {
+      flex: 1;
+      flex-direction: row;
+      gap: 0px;
     }
-    &.laptopContainer {
-      align-items: flex-end;
-    }
-  }
-}
 
-.heading {
-  font-size: 2.8rem;
-  font-weight: 700;
-  color: $darkPrimary;
-  white-space: nowrap;
+    .containerItem {
+      @include flexCenter;
+      flex-direction: column;
+      gap: 0.6em;
+      padding-bottom: 10px;
+      text-align: center;
 
-  @include md {
-    font-size: 2.8rem;
-  }
+      @include lg {
+        flex: 1;
+        gap: 0em;
+        &.headingContainer {
+          align-items: flex-start;
+          text-align: left;
+        }
+        &.laptopContainer {
+          align-items: flex-end;
+        }
+      }
 
-  @include lg {
-    font-size: 3.8rem;
-  }
+      .heading {
+        white-space: nowrap;
+        color: $darkPrimary;
+        font-size: 2.8rem;
+        font-weight: 700;
 
-  @include xl {
-    font-size: 4rem;
-  }
-}
+        @include md {
+          font-size: 2.8rem;
+        }
 
-.subHeading {
-  h2,
-  span {
-    max-width: 350px;
-    color: $darkPrimary;
-    font-size: 1.2rem;
-    font-weight: 600;
-    line-height: 1.5em;
+        @include lg {
+          font-size: 3.8rem;
+        }
 
-    span {
-      text-decoration-color: $tertiary !important;
-      text-underline-offset: 2px;
-      overflow: hidden;
-      display: inline-flex;
-      position: relative;
-      transform-style: preserve-3d;
-      padding: 0 2px;
-      cursor: text;
+        @include xl {
+          font-size: 4rem;
+        }
+      }
 
-      &::after {
-        content: "";
-        position: absolute;
-        bottom: 0px;
-        left: 0;
+      .subHeading {
+        h2,
+        span {
+          max-width: 350px;
+          line-height: 1.5em;
+          color: $darkPrimary;
+          font-size: 1.2rem;
+          font-weight: 600;
+
+          span {
+            text-underline-offset: 2px;
+            display: inline-flex;
+            position: relative;
+            padding: 0 2px;
+            overflow: hidden;
+            text-decoration-color: $tertiary !important;
+            transform-style: preserve-3d;
+            cursor: text;
+
+            &::after {
+              content: "";
+              position: absolute;
+              bottom: 0px;
+              left: 0;
+              z-index: -1;
+              width: 100%;
+              height: 100%;
+              background-color: $tertiary;
+              transform: translate3d(-101%, 0, 0);
+              transition: transform 0.25s ease-in-out;
+            }
+
+            &:hover::after {
+              transform: translate3d(0, 0, 0);
+            }
+          }
+        }
+
+        @include md {
+          h2,
+          span {
+            max-width: 500px;
+            font-size: 1.4rem;
+          }
+        }
+      }
+
+      .buttonsContainer {
+        @include flexCenter;
+        flex-direction: column;
+        gap: 1em;
         width: 100%;
-        height: 100%;
-        background-color: $tertiary;
-        transition: transform 0.25s ease-in-out;
-        transform: translate3d(-101%, 0, 0);
-        z-index: -1;
-      }
+        margin-top: 1em;
 
-      &:hover::after {
-        transform: translate3d(0, 0, 0);
+        @include lg {
+          flex-direction: row;
+          justify-content: flex-start;
+        }
       }
     }
   }
 
-  @include md {
-    h2,
-    span {
-      max-width: 500px;
-      font-size: 1.4rem;
+  .scrollDownArrow {
+    display: none;
+    position: absolute;
+    bottom: 10px;
+    opacity: 0.75;
+    margin: 0;
+    text-align: center;
+    color: $darkPrimary;
+    font-size: 2rem;
+    animation: arrowSliding 1.5s ease infinite;
+    transition: all 0.25s ease;
+
+    @include md {
+      display: block;
     }
-  }
-}
-
-.scrollDownArrow {
-  position: absolute;
-  display: none;
-  bottom: 10px;
-  font-size: 2rem;
-  text-align: center;
-  margin: 0;
-  color: $darkPrimary;
-  animation: arrowSliding 1.5s ease infinite;
-  opacity: 0.75;
-  transition: all 0.25s ease;
-
-  @include md {
-    display: block;
-  }
-}
-
-.buttonsContainer {
-  @include flexCenter;
-  margin-top: 1em;
-  width: 100%;
-  flex-direction: column;
-  gap: 1em;
-
-  @include lg {
-    flex-direction: row;
-    justify-content: flex-start;
   }
 }
 
 .SVGShape {
   margin-top: -1px;
   overflow: hidden;
+
   svg {
+    fill: $secondary;
     width: 130%;
     height: 100px;
-    fill: $secondary;
   }
 }
 

@@ -15,24 +15,24 @@
 .logo {
   @include noDrag;
   @include flexCenter;
+  width: 60px;
+  height: 60px;
   padding-bottom: 6px;
   margin-bottom: 20px;
-  height: 60px;
-  width: 60px;
+  border-radius: 5px;
+  background-color: $darkPrimary;
+  color: $primary;
   font-size: 3.3rem;
   font-weight: 600;
-  color: $primary;
-  background-color: $darkPrimary;
-  border-radius: 5px;
 }
 
 .svgShape {
-  margin-bottom: -5px;
   margin-top: 150px;
+  margin-bottom: -5px;
   overflow: hidden;
   svg {
+    fill: $secondary;
     width: 130%;
     height: 100px;
-    fill: $secondary;
   }
 }

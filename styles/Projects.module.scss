@@ -5,147 +5,147 @@
   flex-direction: column;
   gap: 30px;
   width: 100%;
-}
 
-.container {
-  display: grid;
-  grid-template-columns: 1fr;
-  justify-items: center;
-  width: 100%;
-  gap: 30px;
-  padding: 25px 0px;
+  .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    justify-items: center;
+    width: 100%;
+    padding: 25px 0px;
 
-  @include md {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @include lg {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.project {
-  width: 100%;
-  background: $lightPrimary;
-  border-radius: 5px;
-  transition: all 0.25s ease;
-  box-shadow: 0 0.3em 0.5em -0.125em #0a0a0a14, 0 0 0 1px #e6ecf8;
-  animation: fadeIn 0.6s ease-in-out;
-
-  &:hover {
-    box-shadow: 0 0.5em 0.7em -0.125em #0a0a0a14, 0 0 0 1px #e6ecf8;
-    transform: scale(1.02);
-
-    .projectImageContainer {
-      .projectImage {
-        filter: brightness(0.6) blur(0.5px);
-      }
-      .button {
-        opacity: 1;
-        transform: translateY(0px);
-      }
-
-      .status span {
-        transition: all 0.25s ease;
-        opacity: 1;
-        max-width: 150px;
-      }
+    @include md {
+      grid-template-columns: repeat(2, 1fr);
     }
-  }
-}
 
-.projectImageContainer {
-  @include flexCenter;
-  position: relative;
-  width: 100%;
-  height: 250px;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
-  overflow: hidden;
+    @include lg {
+      grid-template-columns: repeat(3, 1fr);
+    }
 
-  @include lg {
-    height: 200px;
-  }
-}
+    .project {
+      width: 100%;
+      border-radius: 5px;
+      box-shadow: 0 0.3em 0.5em -0.125em #0a0a0a14, 0 0 0 1px #e6ecf8;
+      background: $lightPrimary;
+      animation: fadeIn 0.6s ease-in-out;
+      transition: all 0.25s ease;
 
-.projectImage {
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
-  filter: brightness(0.95);
-  transition: all 0.25s ease;
-}
+      &:hover {
+        box-shadow: 0 0.5em 0.7em -0.125em #0a0a0a14, 0 0 0 1px #e6ecf8;
+        transform: scale(1.02);
 
-.button {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.25s ease;
-}
+        .projectImageContainer {
+          .projectImage {
+            filter: brightness(0.6) blur(0.5px);
+          }
+          .button {
+            opacity: 1;
+            transform: translateY(0px);
+          }
 
-.status {
-  @include flexCenter;
-  gap: 5px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  background: rgba($darkPrimary, 85%);
-  color: $lightPrimary;
-  padding: 6px 12px;
-  border-bottom-left-radius: 5px;
+          .status span {
+            opacity: 1;
+            max-width: 150px;
+            transition: all 0.25s ease;
+          }
+        }
+      }
 
-  span {
-    white-space: nowrap;
-    max-width: 0;
-    opacity: 0;
-    transition: all 0.25s ease;
-    color: $lightPrimary;
-    font-weight: 500;
-  }
+      .projectImageContainer {
+        @include flexCenter;
+        position: relative;
+        width: 100%;
+        height: 250px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        overflow: hidden;
 
-  .statusIcon {
-    color: $primary;
-  }
-}
+        @include lg {
+          height: 200px;
+        }
 
-.projectInfo {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5em;
-  width: 100%;
-  color: $darkPrimary;
-  padding: 20px;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+        .projectImage {
+          filter: brightness(0.95);
+          border-top-left-radius: 5px;
+          border-top-right-radius: 5px;
+          transition: all 0.25s ease;
+        }
 
-  h3 {
-    margin: 0;
-  }
+        .button {
+          opacity: 0;
+          transform: translateY(30px);
+          transition: all 0.25s ease;
+        }
 
-  .projectDescription {
-    color: rgba($darkPrimary, 70%);
-  }
-}
+        .status {
+          @include flexCenter;
+          position: absolute;
+          top: 0;
+          right: 0;
+          gap: 5px;
+          padding: 6px 12px;
+          border-bottom-left-radius: 5px;
+          background: rgba($darkPrimary, 85%);
+          color: $lightPrimary;
 
-.projectTags {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 2px;
-  width: 100%;
-  color: $darkPrimary;
-  transition: all 0.3s ease-in-out;
+          span {
+            opacity: 0;
+            max-width: 0;
+            white-space: nowrap;
+            color: $lightPrimary;
+            font-weight: 500;
+            transition: all 0.25s ease;
+          }
 
-  span {
-    background: $primary;
-    color: $darkPrimary;
-    border-radius: 5px;
-    padding: 5px 10px;
-    margin: 2px;
-    font-size: 0.8em;
-    transition: all 0.3s ease-in-out;
-    cursor: pointer;
-    &:hover {
-      background: $secondary;
-      color: $darkSecondary;
+          .statusIcon {
+            color: $primary;
+          }
+        }
+      }
+
+      .projectInfo {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+        width: 100%;
+        padding: 20px;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        color: $darkPrimary;
+
+        h3 {
+          margin: 0;
+        }
+
+        .projectDescription {
+          color: rgba($darkPrimary, 70%);
+        }
+
+        .projectTags {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: 2px;
+          width: 100%;
+          color: $darkPrimary;
+          transition: all 0.3s ease-in-out;
+
+          span {
+            padding: 5px 10px;
+            margin: 2px;
+            border-radius: 5px;
+            background: $primary;
+            color: $darkPrimary;
+            font-size: 0.8em;
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+            &:hover {
+              background: $secondary;
+              color: $darkSecondary;
+            }
+          }
+        }
+      }
     }
   }
 }

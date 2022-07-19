@@ -2,6 +2,7 @@
 
 .wrapper {
   @include flexCenter;
+
   width: 100%;
   padding: 100px 0;
   background-color: $lightPrimary;
@@ -9,87 +10,87 @@
   &:not(:nth-child(2)) {
     border-top: 1px solid #e6ecf8;
   }
-}
 
-.container {
-  @include flexCenter;
-  flex-direction: column;
-  gap: 10px;
-  width: $xl;
-  padding: 10px 30px;
-  overflow: hidden;
-}
+  .container {
+    @include flexCenter;
+    flex-direction: column;
+    gap: 10px;
+    width: $xl;
+    padding: 10px 30px;
+    overflow: hidden;
 
-.heading {
-  font-size: 2.5em;
+    .heading {
+      font-size: 2.5em;
 
-  &:after {
-    content: "";
-    display: block;
-    width: 80px;
-    height: 3px;
-    background-color: $primary;
-    margin: 20px auto;
-  }
-}
+      &:after {
+        content: "";
+        display: block;
+        width: 80px;
+        height: 3px;
+        margin: 20px auto;
+        background-color: $primary;
+      }
+    }
 
-.subSectionsContainer {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  gap: 75px;
-}
+    .subSectionsContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 75px;
+      width: 100%;
 
-.subSection {
-  @include flexCenter;
-  flex-direction: column;
-  width: 100%;
-  gap: 50px;
-  margin-top: 0.5em;
+      .subSection {
+        @include flexCenter;
+        flex-direction: column;
+        gap: 50px;
+        width: 100%;
+        margin-top: 0.5em;
 
-  @include lg {
-    flex-direction: row;
-  }
-}
+        @include lg {
+          flex-direction: row;
+        }
+      }
+    }
 
-.subSectionHeading {
-  font-size: 1.5em;
-  font-weight: 700;
-  color: $darkPrimary;
-}
+    .paragraph {
+      display: flex;
+      flex: 1.4 1 0;
+      flex-direction: column;
+      gap: 15px;
+      align-items: center;
+      width: 100%;
+      line-height: calc(1ex / 0.32);
+      color: $darkPrimary;
 
-.paragraph {
-  display: flex;
-  flex: 1.4 1 0;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-  gap: 15px;
-  color: $darkPrimary;
-  line-height: calc(1ex / 0.32);
+      @include lg {
+        align-items: flex-start;
+      }
 
-  @include lg {
-    align-items: flex-start;
-  }
-}
+      .subSectionHeading {
+        color: $darkPrimary;
+        font-size: 1.5em;
+        font-weight: 700;
+      }
 
-.imageContainer {
-  position: relative;
-  @include flexCenter;
-  flex: 1 1 0;
-}
+      .buttonsContainer {
+        align-self: center;
+        margin-top: 20px;
 
-.image {
-  border-radius: 5px;
-  box-shadow: 0px 2px 5px $primaryBoxShadow;
-  width: 375px;
-}
+        @include lg {
+          align-self: auto;
+        }
+      }
+    }
 
-.buttonsContainer {
-  align-self: center;
-  margin-top: 20px;
+    .imageContainer {
+      @include flexCenter;
+      position: relative;
+      flex: 1 1 0;
 
-  @include lg {
-    align-self: auto;
+      .image {
+        width: 375px;
+        border-radius: 5px;
+        box-shadow: 0px 2px 5px $primaryBoxShadow;
+      }
+    }
   }
 }

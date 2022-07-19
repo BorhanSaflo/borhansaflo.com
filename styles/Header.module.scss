@@ -2,35 +2,33 @@
 
 .wrapper {
   @include flexCenter;
+  position: fixed;
+  z-index: 99;
   width: 100%;
   height: $headerSize;
-  position: fixed;
   background-color: transparent;
-  z-index: 99;
   transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
 
   &.active {
-    background-color: $darkPrimary;
     box-shadow: 0px 4px 22px 0px #0000001a;
+    background-color: $darkPrimary;
 
-    //Desktop
     .activeMenuItem {
-      border-bottom: 4px solid $primary;
       padding-top: 4px;
+      border-bottom: 4px solid $primary;
       transition: padding-top 0.25s linear, border-bottom 0.25s linear;
     }
 
-    //mobile
     .mobileActiveMenuItem {
-      border-left: 5px solid $primary;
       padding-left: 35px;
+      border-left: 5px solid $primary;
       font-weight: 600;
     }
 
     .menuContainer a {
-      color: $primary;
+      color: $primary !important;
       &:hover {
-        color: $secondary;
+        color: $secondary !important;
       }
     }
 
@@ -38,172 +36,171 @@
       color: $primary;
     }
   }
-}
 
-//Containers
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: nowrap;
-  height: 100%;
-  width: 100%;
-  max-width: $xl;
-  padding: 0 25px;
-
-  @include lg {
-    padding: 0 30px;
-  }
-}
-
-.logoContainer {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  height: 100%;
-  @include md {
-    flex-grow: 1;
-    flex-basis: 0;
-  }
-}
-
-.menuContainer {
-  @include flexCenter;
-  height: 100%;
-  gap: 30px;
-  font-weight: 700;
-  font-size: 18px;
-
-  a {
-    @include flexCenter;
-    height: 100%;
-    color: $darkTertiary;
-    &:hover {
-      color: $darkPrimary;
-    }
-  }
-}
-
-.socialButtonsContainer {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 10px;
-
-  @include md {
-    flex-grow: 1;
-    flex-basis: 0;
-  }
-}
-
-.logo {
-  @include noDrag;
-  display: flex;
-  align-items: flex-end;
-  height: 38px;
-  font-size: 2rem;
-  font-weight: 600;
-  color: $primary;
-  background-color: $darkPrimary;
-  border-radius: 5px;
-  padding: 0 10px;
-  transition: all 0.25s ease-in-out;
-
-  &:hover {
-    box-shadow: 0px 2px 5px $secondaryBoxShadow;
-    transform: translateY(-2px);
-  }
-
-  &:after {
-    content: "orhan";
-    width: 0;
-    overflow: hidden;
-    transition: all 0.25s ease;
-  }
-
-  &.logoActive {
-    &:after {
-      width: 85px;
-    }
-  }
-}
-
-//Mobile Menu
-.mobileMenuButton {
-  font-size: 27px;
-  transition: transform 0.25s ease;
-
-  &.mobileMenuButtonActive {
-    transform: rotate(90deg);
-  }
-}
-
-.mobileMenu {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: fixed;
-  top: $headerSize;
-  left: 0;
-  width: 100%;
-  height: 0;
-  background-color: $darkPrimary;
-  transition: opacity 0.25s ease-in-out, height 0.25s ease-in-out;
-  opacity: 0;
-  overflow: hidden;
-
-  &.mobileMenuActive {
-    height: calc(100% - $headerSize);
-    opacity: 1;
-  }
-}
-
-.mobileMenuItemsContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-
-  .mobileMenuItem {
-    font-size: 1.8em;
-    color: $primary;
+  .container {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
-    padding: 15px 40px;
-    border-bottom: 1px solid $secondary;
+    max-width: $xl;
+    height: 100%;
+    padding: 0 25px;
 
-    &:first-child {
-      border-top: 1px solid $secondary;
+    @include lg {
+      padding: 0 30px;
     }
-  }
-}
 
-.mobileSocialButtonsContainer {
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
+    .logoContainer {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      height: 100%;
 
-.socialButton {
-  @include flexCenter;
-  width: 55px;
-  height: 55px;
-  margin: 10px;
-  font-size: 35px;
-  color: $primary;
-  background-color: $darkPrimary;
-  border-radius: 5px;
-  transition: all 0.25s ease-in-out;
+      @include md {
+        flex-basis: 0;
+        flex-grow: 1;
+      }
 
-  &:hover {
-    background-color: $darkSecondary;
-    box-shadow: 0px 2px 5px $secondaryBoxShadow;
-    transform: translateY(-2px);
-  }
+      .logo {
+        @include noDrag;
+        display: flex;
+        align-items: flex-end;
+        height: 38px;
+        padding: 0 10px;
+        border-radius: 5px;
+        background-color: $darkPrimary;
+        color: $primary;
+        font-size: 2rem;
+        font-weight: 600;
+        transition: all 0.25s ease-in-out;
 
-  @include md {
-    margin: 0;
-    width: 35px;
-    height: 35px;
-    font-size: 20px;
+        &:hover {
+          box-shadow: 0px 2px 5px $secondaryBoxShadow;
+          transform: translateY(-2px);
+        }
+
+        &:after {
+          content: "orhan";
+          width: 0;
+          overflow: hidden;
+          transition: all 0.25s ease;
+        }
+
+        &.logoActive {
+          &:after {
+            width: 85px;
+          }
+        }
+      }
+    }
+
+    .mobileMenu {
+      display: flex;
+      position: fixed;
+      top: $headerSize;
+      left: 0;
+      flex-direction: column;
+      justify-content: space-between;
+      opacity: 0;
+      width: 100%;
+      height: 0;
+      background-color: $darkPrimary;
+      overflow: hidden;
+      transition: opacity 0.25s ease-in-out, height 0.25s ease-in-out;
+
+      &.mobileMenuActive {
+        opacity: 1;
+        height: calc(100% - $headerSize);
+      }
+
+      .mobileMenuItemsContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        .mobileMenuItem {
+          width: 100%;
+          padding: 15px 40px;
+          border-bottom: 1px solid $secondary;
+          color: $primary;
+          font-size: 1.8em;
+
+          &:first-child {
+            border-top: 1px solid $secondary;
+          }
+        }
+      }
+
+      .mobileSocialButtonsContainer {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 20px;
+      }
+    }
+
+    .mobileMenuButton {
+      font-size: 27px;
+      transition: transform 0.25s ease;
+
+      &.mobileMenuButtonActive {
+        transform: rotate(90deg);
+      }
+    }
+
+    .menuContainer {
+      @include flexCenter;
+      gap: 30px;
+      height: 100%;
+      font-size: 18px;
+      font-weight: 700;
+
+      a {
+        @include flexCenter;
+        height: 100%;
+        color: $darkTertiary;
+        &:hover {
+          color: $darkPrimary;
+        }
+      }
+    }
+
+    .socialButtonsContainer {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: flex-end;
+
+      @include md {
+        flex-basis: 0;
+        flex-grow: 1;
+      }
+    }
+
+    .socialButton {
+      @include flexCenter;
+      width: 55px;
+      height: 55px;
+      margin: 10px;
+      border-radius: 5px;
+      background-color: $darkPrimary;
+      color: $primary;
+      font-size: 35px;
+      transition: all 0.25s ease-in-out;
+
+      @include md {
+        width: 35px;
+        height: 35px;
+        margin: 0;
+        font-size: 20px;
+      }
+
+      &:hover {
+        box-shadow: 0px 2px 5px $secondaryBoxShadow;
+        background-color: $darkSecondary;
+        transform: translateY(-2px);
+      }
+    }
   }
 }
