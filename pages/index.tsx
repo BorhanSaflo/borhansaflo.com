@@ -28,7 +28,6 @@ interface Props {
 const Home = ({ seo, sections, projects, skills, socials }: Props) => {
   const [currentElementIndexInViewport, setCurrentElementIndexInViewport] =
     useState(0);
-  const [scrollPosition, setScrollPosition] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
 
   const arrLength = sections.length;
@@ -46,7 +45,6 @@ const Home = ({ seo, sections, projects, skills, socials }: Props) => {
 
   useEffect(() => {
     const handleScrollEvent = () => {
-      setScrollPosition(window.scrollY);
       setIsScrolled(window.scrollY > 0);
       checkCurrentElementInViewport();
     };

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { getIcon } from "../../lib/icons";
 import styles from "../../styles/Projects.module.scss";
 import { Project } from "../../typings";
 import Button from "../Button";
@@ -34,7 +33,7 @@ function ProjectsGrid({ projects }: Props) {
         <Button
           text={`Load more (${projectsLength - visibleProjectsLength})`}
           type={"secondary"}
-          Icon={getIcon("loadMore")}
+          icon={"loadMore"}
           onClick={loadMoreProjects}
         />
       )}

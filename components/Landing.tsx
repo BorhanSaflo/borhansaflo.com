@@ -34,7 +34,7 @@ const Landing = forwardRef<HTMLDivElement, Props>(
                 {section.subSections[0].buttons?.map((button) => (
                   <Button
                     key={button.text}
-                    Icon={getIcon(button.icon)}
+                    icon={button.icon}
                     text={button.text}
                     link={button.link}
                     type={button.type}

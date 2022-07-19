@@ -8,15 +8,14 @@ import {
   FaPaperPlane,
   FaGithub,
   FaLinkedinIn,
-  FaAngleDown,
   FaVuejs,
   FaWordpress,
   FaGitAlt,
   FaFigma,
   FaBars,
-  FaTimes,
   FaChevronRight,
   FaChevronDown,
+  FaExternalLinkAlt,
 } from "react-icons/fa";
 import { IoLogoCss3, IoMdConstruct, IoMdPause } from "react-icons/io";
 import {
@@ -55,8 +54,10 @@ import {
   BsXLg,
 } from "react-icons/bs";
 import { ImCheckmark } from "react-icons/im";
+import { BiLinkExternal } from "react-icons/bi";
 
 const icons = new Map<string, IconType>([
+  ["externalLink", BiLinkExternal],
   ["Completed", ImCheckmark],
   ["In Development", IoMdConstruct],
   ["On Hold", IoMdPause],

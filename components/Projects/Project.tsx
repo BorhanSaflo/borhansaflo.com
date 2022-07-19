@@ -16,6 +16,7 @@ function Project({ project }: { project: Project }) {
   };
 
   const StatusIcon = getIcon(project.status);
+  const ExternalIcon = getIcon("externalLink");
 
   return (
     <div className={styles.project}>
@@ -35,13 +36,14 @@ function Project({ project }: { project: Project }) {
           <StatusIcon className={styles.statusIcon} />
           <span>{project.status}</span>
         </div>
-        <a
+        <Button
+          type="secondary"
+          text="View Project"
+          icon="externalLink"
+          external={true}
           className={styles.button}
-          href={project.link ? project.link : "/"}
-          target="_blank"
-          rel="noreferrer">
-          {"View Project"}
-        </a>
+          link={project.link ? project.link : "/"}
+        />
       </div>
 
       <div className={styles.projectInfo}>
