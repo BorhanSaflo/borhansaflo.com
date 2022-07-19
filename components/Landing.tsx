@@ -50,6 +50,7 @@ const Landing = forwardRef<HTMLDivElement, Props>(
           </div>
           <a
             href="#about"
+            title="Scroll to about"
             className={styles.scrollDownArrow}
             style={isScrolled ? { opacity: "0" } : {}}>
             <ArrowIcon />
