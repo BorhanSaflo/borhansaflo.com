@@ -5,6 +5,7 @@ import Button from "./Button";
 import { SectionBody } from "../typings";
 import { getIcon } from "../lib/icons";
 import { PortableText } from "@portabletext/react";
+import Laptop from "./Laptop";
 
 interface Props {
   section: SectionBody;
@@ -44,24 +45,7 @@ const Landing = forwardRef<HTMLDivElement, Props>(
             </div>
             <div
               className={`${styles.containerItem} ${styles.laptopContainer}`}>
-              <div className={styles.laptop}>
-                <div className={styles.laptopDisplay}>
-                  <div className={styles.laptopToolbar}>
-                    <div />
-                    <div />
-                    <div />
-                  </div>
-                  <ul className={styles.laptopContent}>
-                    {[...Array(15)].map((_, i) => (
-                      <li key={i} />
-                    ))}
-                  </ul>
-                </div>
-                <div className={styles.laptopBase}>
-                  <div className={styles.laptopIndent}></div>
-                </div>
-                <div className={styles.laptopBottom}></div>
-              </div>
+              <Laptop />
             </div>
           </div>
           <a
