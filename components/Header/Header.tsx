@@ -85,7 +85,7 @@ function Header({ sections, socials, currentElement, isScrolled }: Props) {
         ) : (
           <>
             <DesktopMenu menuData={menuData} currentElement={currentElement} />
-            <div className={styles.socialButtonsContainer}>
+            <div className={styles.socialsContainer}>
               {socials?.map((social: Social) => {
                 return <SocialButton key={social.id} social={social} />;
               })}

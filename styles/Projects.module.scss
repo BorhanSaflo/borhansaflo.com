@@ -46,7 +46,7 @@
           .status span {
             opacity: 1;
             max-width: 150px;
-            transition: all 0.25s ease;
+            transition: all 0.25s ease-in-out;
           }
         }
       }
@@ -61,7 +61,7 @@
         overflow: hidden;
 
         @include lg {
-          height: 200px;
+          height: 225px;
         }
 
         .projectImage {
@@ -94,7 +94,7 @@
             white-space: nowrap;
             color: $lightPrimary;
             font-weight: 500;
-            transition: all 0.25s ease;
+            transition: all 0.25s ease-in-out;
           }
 
           .statusIcon {
@@ -139,6 +139,7 @@
             font-size: 0.8em;
             transition: all 0.3s ease-in-out;
             cursor: pointer;
+            
             &:hover {
               background: $secondary;
               color: $darkSecondary;

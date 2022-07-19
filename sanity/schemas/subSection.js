@@ -70,6 +70,11 @@ export default {
       },
     },
     {
+      name: "imageAlt",
+      title: "Image Alt",
+      type: "text",
+    },
+    {
       name: "switchOrder",
       title: "Switch Order",
       type: "boolean",

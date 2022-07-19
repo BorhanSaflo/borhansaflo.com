@@ -24,7 +24,7 @@ const Section = forwardRef<
               return (
                 <div className={styles.subSection} key={subSection.name}>
                   <div
-                    className={`${styles.paragraph} ${
+                    className={`${styles.textContainer} ${
                       subSection.switchOrder ? " orderSecond" : "orderFirst"
                     }`}>
                     {subSection.heading && (
@@ -56,8 +56,9 @@ const Section = forwardRef<
                         <Image
                           src={urlFor(subSection.image).url()}
                           layout="responsive"
-                          width="300"
-                          height="200"
+                          width="1400"
+                          height="900"
+                          alt={subSection.imageAlt}
                         />
                       </div>
                     </div>

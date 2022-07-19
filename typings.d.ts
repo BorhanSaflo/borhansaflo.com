@@ -19,6 +19,7 @@ export type SectionBody = {
     content: TypedObject[];
     switchOrder: Boolean;
     image: string;
+    imageAlt: string;
     buttons: {
       button: boolean;
       type: string;

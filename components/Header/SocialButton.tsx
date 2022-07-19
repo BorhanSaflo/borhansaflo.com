@@ -11,6 +11,7 @@ function SocialButton({ social }: { social: Social }) {
         href={social.id === "email" ? `mailto:${social.link}` : social.link}
         target="_blank"
         rel="noreferrer"
+        title={social.name}
         className={styles.socialButton}>
         <SocialIcon />
       </a>

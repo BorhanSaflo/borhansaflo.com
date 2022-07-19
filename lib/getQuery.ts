@@ -16,6 +16,7 @@ export const sectionsQuery = groq`
     content,
     switchOrder,
     image,
+    imageAlt,
     buttons,
   },
 } | order(order asc)

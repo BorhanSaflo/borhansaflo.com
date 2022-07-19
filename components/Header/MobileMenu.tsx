@@ -57,8 +57,8 @@ function MobileMenu({
         className={styles.mobileMenuItemsContainer}>
         {menuItems}
       </div>
-      <div className={styles.mobileSocialButtonsContainer}>
-        <div className={styles.socialButtonsContainer}>
+      <div className={styles.mobileSocialsContainer}>
+        <div className={styles.socialsContainer}>
           {socials?.map((social: Social) => {
             return <SocialButton key={social.id} social={social} />;
           })}
