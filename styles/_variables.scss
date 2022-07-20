@@ -6,7 +6,7 @@ $lightPrimary: #fcfcfc;
 $lightSecondary: darken($lightPrimary, 4%);
 $lightTertiary: darken($lightPrimary, 8%);
 $primary: #f3b153;
-$secondary: saturate(darken($primary, 3%), 1%);
+$secondary: saturate(darken($primary, 2%), 1%);
 $tertiary: #cf7900;
 $primaryBoxShadow: rgba(0, 0, 0, 0.15);
 $secondaryBoxShadow: rgba(0, 0, 0, 0.25);
