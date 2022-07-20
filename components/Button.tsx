@@ -20,7 +20,7 @@ function Button({
   onClick,
 }: Props) {
   const Icon = icon ? getIcon(icon) : null;
-  return (
+  return link ? (
     <a
       href={link}
       className={className ? `${type}Button ${className}` : `${type}Button`}
@@ -29,6 +29,13 @@ function Button({
       {text}
       {Icon && <Icon className={"buttonIcon"} />}
     </a>
+  ) : (
+    <div
+      className={className ? `${type}Button ${className}` : `${type}Button`}
+      onClick={onClick}>
+      {text}
+      {Icon && <Icon className={"buttonIcon"} />}
+    </div>
   );
 }
 
