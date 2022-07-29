@@ -31,7 +31,7 @@ function MobileMenu({
     return () => {
       document.body.classList.remove("overflowHidden");
     };
-  });
+  }, [active]);
 
   const menuItems = menuData.map((menuItem: menuProps, i) => (
     <Link key={menuItem.name} href={menuItem.href} passHref>

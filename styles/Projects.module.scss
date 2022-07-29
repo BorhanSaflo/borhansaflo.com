@@ -1,10 +1,10 @@
 @use "styles/variables" as *;
 
 .wrapper {
-  @include flexCenter;
   flex-direction: column;
   gap: 30px;
   width: 100%;
+  @include flexCenter;
 
   .container {
     display: grid;
@@ -52,13 +52,13 @@
       }
 
       .projectImageContainer {
-        @include flexCenter;
         position: relative;
         width: 100%;
         height: 250px;
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
         overflow: hidden;
+        @include flexCenter;
 
         @include lg {
           height: 225px;
@@ -78,7 +78,6 @@
         }
 
         .status {
-          @include flexCenter;
           position: absolute;
           top: 0;
           right: 0;
@@ -87,6 +86,7 @@
           border-bottom-left-radius: 5px;
           background: rgba($darkPrimary, 85%);
           color: $lightPrimary;
+          @include flexCenter;
 
           span {
             opacity: 0;
@@ -120,33 +120,134 @@
         .projectDescription {
           color: rgba($darkPrimary, 70%);
         }
-
-        .projectTags {
-          display: flex;
-          flex-direction: row;
-          flex-wrap: wrap;
-          gap: 2px;
-          width: 100%;
-          color: $darkPrimary;
-          transition: all 0.3s ease-in-out;
-
-          span {
-            padding: 5px 10px;
-            margin: 2px;
-            border-radius: 5px;
-            background: $primary;
-            color: $darkPrimary;
-            font-size: 0.8em;
-            transition: all 0.3s ease-in-out;
-            cursor: pointer;
-            
-            &:hover {
-              background: $secondary;
-              color: $darkSecondary;
-            }
-          }
-        }
       }
     }
   }
+}
+
+.projectTags {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2px;
+  width: 100%;
+  color: $darkPrimary;
+  transition: all 0.3s ease-in-out;
+
+  span {
+    padding: 5px 10px;
+    margin: 2px;
+    border-radius: 5px;
+    background: $primary;
+    color: $darkPrimary;
+    font-size: 0.8em;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      background: $secondary;
+      color: $darkSecondary;
+    }
+  }
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  @include flexCenter;
+}
+
+.modalBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  z-index: 101;
+  width: 800px;
+  max-height: 700px;
+  border-radius: 5px;
+  box-shadow: 0 0.3em 0.5em -0.125em rgba(10, 10, 10, 0.1), 0 0 0 1px #e6ecf8;
+  background-color: #fefefe;
+  animation: fadeIn 0.3s ease;
+
+  @include lg {
+    //flex-direction: row;
+    width: 1000px;
+  }
+}
+
+.modalHeader {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 30px 10px 30px;
+  border-bottom: 1px solid #e6ecf8;
+  background-color: $lightPrimary;
+  color: $darkPrimary;
+}
+
+.modalHeaderTitleContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: flex-start;
+}
+
+.modalTitle {
+  color: $darkPrimary;
+  font-size: 1.8em;
+  font-weight: 700;
+}
+
+.modalBodyContainer {
+  overflow-y: auto;
+}
+
+.modalBody {
+  flex-direction: column;
+  gap: 10px;
+  padding: 40px 30px;
+  color: $darkPrimary;
+  color: rgba($darkPrimary, 70%);
+  font-weight: 500;
+  @include flexCenter;
+}
+
+.modalImageContainer {
+  width: 100%;
+}
+
+.modalStatus {
+  gap: 5px;
+  padding: 5px 12px;
+  border-radius: 5px;
+  background-color: $primary;
+  font-weight: 500;
+  @include flexCenter;
+}
+
+.modalDescription {
+  width: 100%;
+  text-align: left;
+}
+
+.modalClose {
+  color: $darkPrimary;
+  font-size: 1.5em;
+  font-weight: 700;
+  cursor: pointer;
 }
