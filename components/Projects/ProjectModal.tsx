@@ -4,6 +4,7 @@ import { getIcon } from "../../lib/icons";
 import { urlFor } from "../../sanity";
 import styles from "../../styles/Projects.module.scss";
 import { Project } from "../../typings";
+import { RemoveScrollBar } from "react-remove-scroll-bar";
 
 interface Props {
   project: Project;
@@ -16,6 +17,7 @@ function ProjectModal({ project, closeModal }: Props) {
 
   return (
     <div className={styles.modal}>
+      <RemoveScrollBar />
       <div className={styles.modalBackground} onClick={() => closeModal()} />
       <div className={styles.modalContent}>
         <div className={styles.modalHeader}>

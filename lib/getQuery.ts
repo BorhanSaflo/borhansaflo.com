@@ -32,7 +32,7 @@ export const projectsQuery = groq`
     link,
     previewImage,
     status,
-    tags[]-> | order(_updatedAt asc) {
+    tags[]-> {
         _id,
         name 
     },
