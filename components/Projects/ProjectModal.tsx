@@ -2,7 +2,8 @@ import Image from "next/image";
 import React from "react";
 import { getIcon } from "../../lib/icons";
 import { urlFor } from "../../sanity";
-import styles from "../../styles/Projects.module.scss";
+import styles from "../../styles/ProjectModal.module.scss";
+import projectStyles from "../../styles/Projects.module.scss";
 import { Project } from "../../typings";
 import { RemoveScrollBar } from "react-remove-scroll-bar";
 
@@ -13,28 +14,41 @@ interface Props {
 
 function ProjectModal({ project, closeModal }: Props) {
   const StatusIcon = getIcon(project.status);
+  const GitHubIcon = getIcon("github");
   const CloseIcon = getIcon("close");
 
   return (
-    <div className={styles.modal}>
+    <div className={styles.wrapper}>
       <RemoveScrollBar />
-      <div className={styles.modalBackground} onClick={() => closeModal()} />
-      <div className={styles.modalContent}>
-        <div className={styles.modalHeader}>
-          <div className={styles.modalHeaderTitleContainer}>
-            <div className={styles.modalStatus}>
-              <StatusIcon />
-              <span>{project.status}</span>
+      <div className={styles.background} onClick={() => closeModal()} />
+      <div className={styles.modal}>
+        <div className={styles.header}>
+          <div className={styles.titleContainer}>
+            <span className={styles.title}>{project.title}</span>
+            <div className={styles.titleTags}>
+              <div className={styles.titleTag}>
+                <StatusIcon />
+                {project.status}
+              </div>
+              {project.link && project.link != "" && (
+                <a
+                  className={styles.titleTag}
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  <GitHubIcon />
+                  {"Github"}
+                </a>
+              )}
             </div>
-            <span className={styles.modalTitle}>{project.title}</span>
           </div>
-          <div className={styles.modalClose}>
+          <div className={styles.closeButton}>
             <CloseIcon onClick={() => closeModal()} />
           </div>
         </div>
-        <div className={styles.modalBodyContainer}>
-          <div className={styles.modalBody}>
-            <div className={styles.modalImageContainer}>
+        <div className={styles.bodyContainer}>
+          <div className={styles.body}>
+            <div className={styles.imageContainer}>
               <Image
                 className={styles.projectImage}
                 src={
@@ -49,7 +63,7 @@ function ProjectModal({ project, closeModal }: Props) {
                 objectFit="cover"
               />
             </div>
-            <div className={styles.projectTags}>
+            <div className={projectStyles.projectTags}>
               {project.tags?.length > 0 && (
                 <>
                   {project.tags.map((tag) => (
@@ -60,7 +74,7 @@ function ProjectModal({ project, closeModal }: Props) {
                 </>
               )}
             </div>
-            <div className={styles.modalDescription}>
+            <div className={styles.description}>
               <p>{project.description}</p>
             </div>
           </div>
