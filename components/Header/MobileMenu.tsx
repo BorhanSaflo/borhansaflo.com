@@ -1,8 +1,9 @@
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React from "react";
 import styles from "../../styles/Header.module.scss";
 import { Social } from "../../typings";
 import SocialButton from "./SocialButton";
+import { RemoveScrollBar } from "react-remove-scroll-bar";
 
 interface menuProps {
   name: string;
@@ -24,15 +25,6 @@ function MobileMenu({
   currentElement,
   toggleMobileMenu,
 }: Props) {
-  useEffect(() => {
-    if (active) {
-      document.body.classList.add("overflowHidden");
-    }
-    return () => {
-      document.body.classList.remove("overflowHidden");
-    };
-  });
-
   const menuItems = menuData.map((menuItem: menuProps, i) => (
     <Link key={menuItem.name} href={menuItem.href} passHref>
       <a
@@ -52,6 +44,7 @@ function MobileMenu({
           ? `${styles.mobileMenu} ${styles.mobileMenuActive}`
           : styles.mobileMenu
       }>
+      {active && <RemoveScrollBar />}
       <div
         onClick={() => toggleMobileMenu()}
         className={styles.mobileMenuItemsContainer}>

@@ -1,0 +1,106 @@
+@use "styles/variables" as *;
+
+.wrapper {
+  @include flexCenter;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .modal {
+    display: flex;
+    flex-direction: column;
+    z-index: 101;
+    width: 700px;
+    max-width: 90%;
+    height: 750px;
+    max-height: 80%;
+    border-radius: 5px;
+    box-shadow: 0 0.3em 0.5em -0.125em rgba(10, 10, 10, 0.1), 0 0 0 1px #e6ecf8;
+    background-color: #fefefe;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .header {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 30px 10px 30px;
+    border-bottom: 1px solid #e6ecf8;
+    background-color: $lightPrimary;
+    color: $darkPrimary;
+
+    .titleContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: flex-start;
+      overflow: hidden;
+
+      .title {
+        color: $darkPrimary;
+        font-size: 1.8em;
+        font-weight: 700;
+      }
+
+      .titleTags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+      }
+
+      .titleTag {
+        @include flexCenter;
+        gap: 5px;
+        padding: 5px 12px;
+        border-radius: 5px;
+        background-color: $primary;
+        font-size: 0.8em;
+        font-weight: 700;
+      }
+    }
+
+    .closeButton {
+      color: $darkPrimary;
+      font-size: 1.5em;
+      font-weight: 700;
+      cursor: pointer;
+    }
+  }
+
+  .bodyContainer {
+    overflow-y: auto;
+
+    .body {
+      @include flexCenter;
+      flex-direction: column;
+      gap: 10px;
+      padding: 40px 30px;
+      color: $darkPrimary;
+      color: rgba($darkPrimary, 70%);
+      font-weight: 500;
+
+      .imageContainer {
+        width: 100%;
+      }
+
+      .description {
+        width: 100%;
+        text-align: left;
+      }
+    }
+  }
+}

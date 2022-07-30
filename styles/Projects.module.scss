@@ -8,25 +8,27 @@
 
   .container {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+    grid-auto-rows: 1fr;
     gap: 30px;
     justify-items: center;
     width: 100%;
     padding: 25px 0px;
 
     @include md {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     @include lg {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
     .project {
+      display: flex;
+      flex-direction: column;
       width: 100%;
       border-radius: 5px;
       box-shadow: 0 0.3em 0.5em -0.125em #0a0a0a14, 0 0 0 1px #e6ecf8;
-      background: $lightPrimary;
       animation: fadeIn 0.6s ease-in-out;
       transition: all 0.25s ease;
 
@@ -38,6 +40,7 @@
           .projectImage {
             filter: brightness(0.6) blur(0.5px);
           }
+
           .button {
             opacity: 1;
             transform: translateY(0px);
@@ -60,15 +63,11 @@
         border-top-right-radius: 5px;
         overflow: hidden;
 
-        @include lg {
-          height: 225px;
-        }
-
         .projectImage {
-          filter: brightness(0.95);
           border-top-left-radius: 5px;
           border-top-right-radius: 5px;
           transition: all 0.25s ease;
+          filter: brightness(0.95);
         }
 
         .button {
@@ -103,50 +102,56 @@
         }
       }
 
-      .projectInfo {
+      .projectInfoContainer {
         display: flex;
+        flex: 1;
         flex-direction: column;
         gap: 0.5em;
+        justify-content: space-between;
         width: 100%;
         padding: 20px;
         border-bottom-left-radius: 5px;
         border-bottom-right-radius: 5px;
         color: $darkPrimary;
+        cursor: pointer;
 
-        h3 {
-          margin: 0;
+        .projectInfo {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5em;
         }
 
         .projectDescription {
           color: rgba($darkPrimary, 70%);
         }
-
-        .projectTags {
-          display: flex;
-          flex-direction: row;
-          flex-wrap: wrap;
-          gap: 2px;
-          width: 100%;
-          color: $darkPrimary;
-          transition: all 0.3s ease-in-out;
-
-          span {
-            padding: 5px 10px;
-            margin: 2px;
-            border-radius: 5px;
-            background: $primary;
-            color: $darkPrimary;
-            font-size: 0.8em;
-            transition: all 0.3s ease-in-out;
-            cursor: pointer;
-            
-            &:hover {
-              background: $secondary;
-              color: $darkSecondary;
-            }
-          }
-        }
       }
+    }
+  }
+}
+
+.projectTags {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2px;
+  width: 100%;
+  color: $darkPrimary;
+  transition: all 0.3s ease-in-out;
+
+  span {
+    @include noDrag;
+    padding: 5px 10px;
+    margin: 2px;
+    border-radius: 5px;
+    background: $primary;
+    white-space: nowrap;
+    color: $darkPrimary;
+    font-size: 0.8em;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      background: $secondary;
+      color: $darkSecondary;
     }
   }
 }

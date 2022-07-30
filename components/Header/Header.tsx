@@ -6,6 +6,7 @@ import MobileMenu from "./MobileMenu";
 import Link from "next/link";
 import { Section, Social } from "../../typings";
 import { getIcon } from "../../lib/icons";
+import { fullWidthClassName } from "react-remove-scroll-bar";
 
 interface Props {
   sections: Section[];
@@ -51,7 +52,7 @@ function Header({ sections, socials, currentElement, isScrolled }: Props) {
           ? `${styles.wrapper} ${styles.active}`
           : styles.wrapper
       }>
-      <div className={styles.container}>
+      <div className={`${styles.container} ${fullWidthClassName}`}>
         <div className={styles.logoContainer}>
           <Link href="/" passHref>
             <a

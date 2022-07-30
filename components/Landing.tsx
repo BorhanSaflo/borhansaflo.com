@@ -17,7 +17,7 @@ const Landing = forwardRef<HTMLDivElement, Props>(
     const ArrowIcon = getIcon("arrowCircleDown")!;
 
     return (
-      <div ref={ref} id={section.id}>
+      <div className={styles.bg} ref={ref} id={section.id}>
         <div className={styles.wrapper}>
           <div className={styles.container}>
             <div

@@ -16,6 +16,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.4.0",
+    "react-remove-scroll-bar": "^2.3.3",
     "sass": "^1.52.3"
   },
   "devDependencies": {
