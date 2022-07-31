@@ -6,9 +6,12 @@ import styles from "../../styles/Projects.module.scss";
 import { Project } from "../../typings";
 import Button from "../Button";
 import ProjectModal from "./ProjectModal";
+import useMountTransition from "../../hooks/useMountTransition";
 
 function Project({ project }: { project: Project }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const hasModalTransitionedIn = useMountTransition(isModalOpen, 300);
+
   const [tags, setTags] = useState(
     project.tags.map((tag) => (
       <span key={tag._id} className={styles.projectTag}>
@@ -16,27 +19,25 @@ function Project({ project }: { project: Project }) {
       </span>
     ))
   );
-  let tagsLength = project.tags.length;
   const ref = useRef<any>(null);
 
   useLayoutEffect(() => {
     const tagElements = ref.current?.children;
-    if (tagElements && tagsLength > 0) {
+    if (tagElements && tagElements.length > 0) {
       let tagsContainerWidth = ref.current.offsetWidth;
       let totalWidth = 0;
       let tagCount = 0;
       for (tagCount = 0; tagCount < tagElements.length; tagCount++) {
         if (
-          totalWidth + tagElements[tagCount].offsetWidth + 40 <
+          totalWidth + tagElements[tagCount].offsetWidth + 60 <
           tagsContainerWidth
         ) {
           totalWidth += tagElements[tagCount].offsetWidth;
         } else {
-          tagsLength++;
           setTags(
-            tags.slice(0, tags.length - tagCount).concat(
+            tags.slice(0, tagCount).concat(
               <span key="count" className={styles.projectTag}>
-                {`+${tags.length - tagCount}`}
+                {`+${project.tags.length - tagCount}`}
               </span>
             )
           );
@@ -58,8 +59,13 @@ function Project({ project }: { project: Project }) {
 
   return (
     <>
-      {isModalOpen && (
-        <ProjectModal project={project} closeModal={closeModal} />
+      {(hasModalTransitionedIn || isModalOpen) && (
+        <ProjectModal
+          isModalOpen={isModalOpen}
+          hasTransitionedIn={hasModalTransitionedIn}
+          project={project}
+          closeModal={closeModal}
+        />
       )}
       <div className={styles.project} onClick={() => setIsModalOpen(true)}>
         <div className={styles.projectImageContainer}>

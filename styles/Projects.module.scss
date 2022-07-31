@@ -31,6 +31,7 @@
       box-shadow: 0 0.3em 0.5em -0.125em #0a0a0a14, 0 0 0 1px #e6ecf8;
       animation: fadeIn 0.6s ease-in-out;
       transition: all 0.25s ease;
+      cursor: pointer;
 
       &:hover {
         box-shadow: 0 0.5em 0.7em -0.125em #0a0a0a14, 0 0 0 1px #e6ecf8;
@@ -77,6 +78,7 @@
         }
 
         .status {
+          @include noDrag;
           @include flexCenter;
           position: absolute;
           top: 0;
@@ -113,7 +115,6 @@
         border-bottom-left-radius: 5px;
         border-bottom-right-radius: 5px;
         color: $darkPrimary;
-        cursor: pointer;
 
         .projectInfo {
           display: flex;
@@ -122,7 +123,7 @@
         }
 
         .projectDescription {
-          color: rgba($darkPrimary, 70%);
+          color: rgba($darkPrimary, 75%);
         }
       }
     }

@@ -10,9 +10,16 @@ import { RemoveScrollBar } from "react-remove-scroll-bar";
 interface Props {
   project: Project;
   closeModal: () => void;
+  isModalOpen?: boolean;
+  hasTransitionedIn?: boolean;
 }
 
-function ProjectModal({ project, closeModal }: Props) {
+function ProjectModal({
+  project,
+  closeModal,
+  isModalOpen,
+  hasTransitionedIn,
+}: Props) {
   const StatusIcon = getIcon(project.status);
   const GitHubIcon = getIcon("github");
   const CloseIcon = getIcon("close");
@@ -20,8 +27,16 @@ function ProjectModal({ project, closeModal }: Props) {
   return (
     <div className={styles.wrapper}>
       <RemoveScrollBar />
-      <div className={styles.background} onClick={() => closeModal()} />
-      <div className={styles.modal}>
+      <div
+        className={`${styles.background} ${hasTransitionedIn && styles.in} ${
+          isModalOpen && styles.visible
+        }`}
+        onClick={() => closeModal()}
+      />
+      <div
+        className={`${styles.modal} ${hasTransitionedIn && styles.in} ${
+          isModalOpen && styles.visible
+        }`}>
         <div className={styles.header}>
           <div className={styles.titleContainer}>
             <span className={styles.title}>{project.title}</span>
@@ -42,8 +57,8 @@ function ProjectModal({ project, closeModal }: Props) {
               )}
             </div>
           </div>
-          <div className={styles.closeButton}>
-            <CloseIcon onClick={() => closeModal()} />
+          <div className={styles.closeButton} onClick={() => closeModal()}>
+            <CloseIcon />
           </div>
         </div>
         <div className={styles.bodyContainer}>
