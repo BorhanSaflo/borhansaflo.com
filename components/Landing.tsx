@@ -21,7 +21,8 @@ const Landing = forwardRef<HTMLDivElement, Props>(
         <div className={styles.wrapper}>
           <div className={styles.container}>
             <div
-              className={`${styles.containerItem} ${styles.headingContainer}`}>
+              className={`${styles.containerItem} ${styles.headingContainer}`}
+              data-aos="fade-up">
               <div className={styles.subHeading}>
                 <span>
                   <PortableText value={section.subSections[1].content} />

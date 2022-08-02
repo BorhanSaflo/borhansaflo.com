@@ -16,6 +16,8 @@ import {
   socialsQuery,
 } from "../lib/getQuery";
 import SEOComponent from "../components/SEO";
+import "aos/dist/aos.css";
+import AOS from "aos";
 
 interface Props {
   seo: SEO;
@@ -34,6 +36,20 @@ const Home = ({ seo, sections, projects, skills, socials }: Props) => {
   const [sectionRefs, setSectionRefs] = useState<RefObject<HTMLDivElement>[]>(
     []
   );
+
+  useEffect(() => {
+    AOS.init({
+      disable: "phone",
+      duration: 1000,
+      easing: "ease",
+      once: true,
+      anchorPlacement: "top-center",
+    });
+
+    return () => {
+      AOS.refresh();
+    };
+  }, []);
 
   useEffect(() => {
     setSectionRefs((elRefs) =>
