@@ -3,7 +3,13 @@ import Footer from "../components/Footer";
 import Header from "../components/Header/Header";
 import Landing from "../components/Landing";
 import SectionComponent from "../components/Section";
-import React, { createRef, RefObject, useEffect, useState } from "react";
+import React, {
+  createRef,
+  RefObject,
+  useEffect,
+  useLayoutEffect,
+  useState,
+} from "react";
 import ProjectsGrid from "../components/Projects/ProjectsGrid";
 import SkillsGrid from "../components/Skills/SkillsGrid";
 import { Project, Section, SEO, SkillGroup, Social } from "../typings";
@@ -27,15 +33,40 @@ interface Props {
 }
 
 const Home = ({ seo, sections, projects, skills, socials }: Props) => {
+  if (typeof document === "undefined") {
+    React.useLayoutEffect = React.useEffect;
+  }
   const [currentElementIndexInViewport, setCurrentElementIndexInViewport] =
     useState(0);
-  const [isScrolled, setIsScrolled] = useState(
-    typeof window !== "undefined" && window.scrollY > 0
-  );
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(0);
   const arrLength = sections.length;
   const [sectionRefs, setSectionRefs] = useState<RefObject<HTMLDivElement>[]>(
     []
   );
+
+  useLayoutEffect(() => {
+    const checkDimensions = () => {
+      setIsMobile(window.innerWidth < 768);
+      setWindowWidth(window.innerWidth);
+    };
+    checkDimensions();
+    setIsScrolled(window.scrollY > 0);
+    window.addEventListener("resize", checkDimensions);
+
+    AOS.init({
+      disable: "phone",
+      duration: 1000,
+      easing: "ease",
+      once: true,
+      anchorPlacement: "top-center",
+    });
+
+    return () => {
+      window.removeEventListener("resize", checkDimensions);
+    };
+  }, []);
 
   useEffect(() => {
     setSectionRefs((elRefs) =>
@@ -77,20 +108,10 @@ const Home = ({ seo, sections, projects, skills, socials }: Props) => {
       window.removeEventListener("scroll", throttledScrollHandler(200));
   }, [sectionRefs, arrLength]);
 
-  useEffect(() => {
-    AOS.init({
-      disable: "phone",
-      duration: 1000,
-      easing: "ease",
-      once: true,
-      anchorPlacement: "top-center",
-    });
-  }, []);
-
   const getSectionContent = (section: string) => {
     switch (section) {
       case "projects":
-        return <ProjectsGrid projects={projects} />;
+        return <ProjectsGrid projects={projects} windowWidth={windowWidth} />;
       case "skills":
         return <SkillsGrid skills={skills} />;
       default:
@@ -105,6 +126,7 @@ const Home = ({ seo, sections, projects, skills, socials }: Props) => {
         sections={sections}
         socials={socials}
         isScrolled={isScrolled}
+        isMobile={isMobile}
         currentElement={currentElementIndexInViewport}
       />
       <main>
