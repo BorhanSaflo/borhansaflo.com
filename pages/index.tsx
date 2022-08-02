@@ -16,7 +16,6 @@ import {
   socialsQuery,
 } from "../lib/getQuery";
 import SEOComponent from "../components/SEO";
-import "aos/dist/aos.css";
 import AOS from "aos";
 
 interface Props {

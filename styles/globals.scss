@@ -10,10 +10,6 @@ body {
     "Helvetica Neue", Arial, sans-serif;
 }
 
-.overflowHidden {
-  overflow: hidden;
-}
-
 a {
   text-decoration: none;
   color: inherit;
@@ -31,10 +27,6 @@ h3 {
 
 * {
   box-sizing: border-box;
-}
-
-.hidden {
-  display: none;
 }
 
 .orderFirst {
@@ -106,4 +98,28 @@ h3 {
 .transparentButton {
   @include button;
   color: $darkPrimary;
+}
+
+[data-aos][data-aos][data-aos-easing="ease"],
+body[data-aos-easing="ease"] [data-aos] {
+  transition-timing-function: ease;
+}
+
+[data-aos][data-aos][data-aos-duration="1000"],
+body[data-aos-duration="1000"] [data-aos] {
+  transition-duration: 1s;
+}
+
+[data-aos^="fade"][data-aos^="fade"] {
+  opacity: 0;
+  transition-property: opacity, transform;
+}
+
+[data-aos^="fade"][data-aos^="fade"].aos-animate {
+  opacity: 1;
+  transform: translateZ(0);
+}
+
+[data-aos="fade-up"] {
+  transform: translate3d(0, 100px, 0);
 }
