@@ -1,5 +1,6 @@
 import React from "react";
 import Head from "next/head";
+import Script from "next/script";
 import { SEO } from "../../typings";
 import { urlFor } from "../../sanity";
 
@@ -55,11 +56,11 @@ const SEO = ({ seo }: { seo: SEO }) => {
       {socialTags(seo).map(({ name, content }) => {
         return <meta key={name} name={name} content={content} />;
       })}
-      <script
+      <Script
         async
         src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
       />
-      <script
+      <Script
         dangerouslySetInnerHTML={{
           __html: `
             window.dataLayer = window.dataLayer || [];
