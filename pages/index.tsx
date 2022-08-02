@@ -75,7 +75,7 @@ const Home = ({ seo, sections, projects, skills, socials }: Props) => {
 
     return () =>
       window.removeEventListener("scroll", throttledScrollHandler(200));
-  }, [sectionRefs]);
+  }, [sectionRefs, arrLength]);
 
   useEffect(() => {
     AOS.init({
@@ -85,10 +85,6 @@ const Home = ({ seo, sections, projects, skills, socials }: Props) => {
       once: true,
       anchorPlacement: "top-center",
     });
-
-    return () => {
-      AOS.refresh();
-    };
   }, []);
 
   const getSectionContent = (section: string) => {

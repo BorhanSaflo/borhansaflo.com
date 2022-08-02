@@ -45,7 +45,7 @@ function Project({ project }: { project: Project }) {
         }
       }
     }
-  }, []);
+  }, [project.tags.length, tags]);
 
   const truncateDescription = (description: string) => {
     return `${description.substring(0, description.lastIndexOf(" ", 180))}...`;
