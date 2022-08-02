@@ -29,12 +29,53 @@ interface Props {
 const Home = ({ seo, sections, projects, skills, socials }: Props) => {
   const [currentElementIndexInViewport, setCurrentElementIndexInViewport] =
     useState(0);
-  const [isScrolled, setIsScrolled] = useState(false);
-
+  const [isScrolled, setIsScrolled] = useState(
+    typeof window !== "undefined" && window.scrollY > 0
+  );
   const arrLength = sections.length;
   const [sectionRefs, setSectionRefs] = useState<RefObject<HTMLDivElement>[]>(
     []
   );
+
+  useEffect(() => {
+    setSectionRefs((elRefs) =>
+      Array(arrLength)
+        .fill(null)
+        .map((_, i) => elRefs[i] || createRef<HTMLDivElement>())
+    );
+  }, [arrLength]);
+
+  useEffect(() => {
+    const checkCurrentElementInViewport = () => {
+      const currentElementIndexInViewport: number =
+        window.innerHeight + window.scrollY >= document.body.offsetHeight
+          ? arrLength - 1
+          : sectionRefs.findIndex(
+              (elRef: RefObject<HTMLDivElement>) =>
+                elRef.current &&
+                elRef.current.getBoundingClientRect().top <= 100 &&
+                elRef.current.getBoundingClientRect().bottom >= 100
+            );
+      setCurrentElementIndexInViewport(currentElementIndexInViewport);
+    };
+
+    const throttledScrollHandler = (limit: number) => {
+      let waiting = false;
+      return () => {
+        if (!waiting || window.scrollY < 10) {
+          setIsScrolled(window.scrollY > 0);
+          checkCurrentElementInViewport();
+          waiting = true;
+          setTimeout(() => (waiting = false), limit);
+        }
+      };
+    };
+
+    window.addEventListener("scroll", throttledScrollHandler(200));
+
+    return () =>
+      window.removeEventListener("scroll", throttledScrollHandler(200));
+  }, [sectionRefs]);
 
   useEffect(() => {
     AOS.init({
@@ -49,37 +90,6 @@ const Home = ({ seo, sections, projects, skills, socials }: Props) => {
       AOS.refresh();
     };
   }, []);
-
-  useEffect(() => {
-    setSectionRefs((elRefs) =>
-      Array(arrLength)
-        .fill(null)
-        .map((_, i) => elRefs[i] || createRef<HTMLDivElement>())
-    );
-  }, [arrLength]);
-
-  useEffect(() => {
-    const handleScrollEvent = () => {
-      setIsScrolled(window.scrollY > 0);
-      checkCurrentElementInViewport();
-    };
-    window.addEventListener("scroll", handleScrollEvent);
-    return () =>
-      window.removeEventListener("scroll", checkCurrentElementInViewport);
-  }, [sectionRefs]);
-
-  const checkCurrentElementInViewport = () => {
-    const currentElementIndexInViewport: number =
-      window.innerHeight + window.scrollY >= document.body.offsetHeight
-        ? arrLength - 1
-        : sectionRefs.findIndex(
-            (elRef: RefObject<HTMLDivElement>) =>
-              elRef.current &&
-              elRef.current.getBoundingClientRect().top <= 100 &&
-              elRef.current.getBoundingClientRect().bottom >= 100
-          );
-    setCurrentElementIndexInViewport(currentElementIndexInViewport);
-  };
 
   const getSectionContent = (section: string) => {
     switch (section) {
