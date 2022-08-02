@@ -100,6 +100,10 @@ h3 {
   color: $darkPrimary;
 }
 
+.aos-init[data-aos][data-aos].aos-animate {
+  transform: unset;
+}
+
 [data-aos][data-aos][data-aos-easing="ease"],
 body[data-aos-easing="ease"] [data-aos] {
   transition-timing-function: ease;
