@@ -47,14 +47,8 @@ const Home = ({ seo, sections, projects, skills, socials }: Props) => {
   );
 
   useLayoutEffect(() => {
-    const checkDimensions = () => {
-      setIsMobile(window.innerWidth < 768);
-      setWindowWidth(window.innerWidth);
-    };
-    checkDimensions();
     setIsScrolled(window.scrollY > 0);
-    window.addEventListener("resize", checkDimensions);
-
+    setIsMobile(window.innerWidth < 768);
     AOS.init({
       disable: "phone",
       duration: 1000,
@@ -62,19 +56,32 @@ const Home = ({ seo, sections, projects, skills, socials }: Props) => {
       once: true,
       anchorPlacement: "top-center",
     });
-
-    return () => {
-      window.removeEventListener("resize", checkDimensions);
-    };
-  }, []);
-
-  useEffect(() => {
     setSectionRefs((elRefs) =>
       Array(arrLength)
         .fill(null)
         .map((_, i) => elRefs[i] || createRef<HTMLDivElement>())
     );
-  }, [arrLength]);
+  }, []);
+
+  useEffect(() => {
+    const throttledResizeHandler = (limit: number) => {
+      let waiting = false;
+      return () => {
+        if (!waiting) {
+          setIsMobile(window.innerWidth < 768);
+          setWindowWidth(window.innerWidth);
+          waiting = true;
+          setTimeout(() => (waiting = false), limit);
+        }
+      };
+    };
+
+    window.addEventListener("resize", throttledResizeHandler(300));
+
+    return () => {
+      window.removeEventListener("resize", throttledResizeHandler(300));
+    };
+  }, [isMobile]);
 
   useEffect(() => {
     const checkCurrentElementInViewport = () => {
@@ -102,11 +109,11 @@ const Home = ({ seo, sections, projects, skills, socials }: Props) => {
       };
     };
 
-    window.addEventListener("scroll", throttledScrollHandler(200));
+    window.addEventListener("scroll", throttledScrollHandler(100));
 
     return () =>
-      window.removeEventListener("scroll", throttledScrollHandler(200));
-  }, [sectionRefs, arrLength]);
+      window.removeEventListener("scroll", throttledScrollHandler(100));
+  }, [currentElementIndexInViewport, arrLength]);
 
   const getSectionContent = (section: string) => {
     switch (section) {
