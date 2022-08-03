@@ -30,7 +30,7 @@ const Section = forwardRef<
 
     return (
       <div id={section.id} ref={ref} className={styles.wrapper}>
-        <div className={styles.container}>
+        <div className={styles.container} data-aos="fade-up">
           <h2 className={styles.heading}>{section.heading}</h2>
 
           <div className={styles.subSectionsContainer}>

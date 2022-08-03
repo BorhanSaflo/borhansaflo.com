@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useLayoutEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { getIcon } from "../../lib/icons";
 import { urlFor } from "../../sanity";
 import styles from "../../styles/Projects.module.scss";
@@ -8,44 +8,41 @@ import Button from "../Button";
 import ProjectModal from "./ProjectModal";
 import useMountTransition from "../../hooks/useMountTransition";
 
-function Project({ project }: { project: Project }) {
+interface Props {
+  project: Project;
+  windowWidth: number;
+}
+
+function Project({ project, windowWidth }: Props) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const hasModalTransitionedIn = useMountTransition(isModalOpen, 300);
+  const [tagsWidth, setTagsWidth] = useState<number[]>([]);
+  const containerRef = useRef<any>(null);
+  const [tagsShown, setTagsShown] = useState<number>(project.tags.length);
+  const [computedWidths, setComputedWidths] = useState<boolean>(false);
 
-  const [tags, setTags] = useState(
-    project.tags.map((tag) => (
-      <span key={tag._id} className={styles.projectTag}>
-        {tag.name}
-      </span>
-    ))
-  );
-  const ref = useRef<any>(null);
+  useEffect(() => {
+    if (!computedWidths) {
+      const tagElements = containerRef.current.children;
+      let tempArray = [];
+      for (let i = 0; i < tagElements.length; i++) {
+        tempArray.push(tagElements[i].offsetWidth);
+      }
+      setTagsWidth(tempArray);
+      setComputedWidths(true);
+    }
+    let tagsContainerWidth = containerRef.current.offsetWidth;
+    let totalWidth = 0;
 
-  useLayoutEffect(() => {
-    const tagElements = ref.current?.children;
-    if (tagElements && tagElements.length > 0) {
-      let tagsContainerWidth = ref.current.offsetWidth;
-      let totalWidth = 0;
-      let tagCount = 0;
-      for (tagCount = 0; tagCount < tagElements.length; tagCount++) {
-        if (
-          totalWidth + tagElements[tagCount].offsetWidth + 60 <
-          tagsContainerWidth
-        ) {
-          totalWidth += tagElements[tagCount].offsetWidth;
-        } else {
-          setTags(
-            tags.slice(0, tagCount).concat(
-              <span key="count" className={styles.projectTag}>
-                {`+${project.tags.length - tagCount}`}
-              </span>
-            )
-          );
-          break;
-        }
+    for (let i = 0; i < tagsWidth.length; i++) {
+      totalWidth += tagsWidth[i] + 2;
+      if (totalWidth + 60 > tagsContainerWidth) {
+        setTagsShown(i);
+        return;
       }
     }
-  }, []);
+    setTagsShown(tagsWidth.length);
+  }, [windowWidth, tagsShown, computedWidths, tagsWidth]);
 
   const truncateDescription = (description: string) => {
     return `${description.substring(0, description.lastIndexOf(" ", 180))}...`;
@@ -107,8 +104,19 @@ function Project({ project }: { project: Project }) {
               </p>
             </div>
           </div>
-          <div ref={ref} className={styles.projectTags}>
-            {tags}
+          <div ref={containerRef} className={styles.projectTags}>
+            {project.tags.slice(0, tagsShown).map((tag) => {
+              return (
+                <span key={tag._id} className={styles.projectTag}>
+                  {tag.name}
+                </span>
+              );
+            })}
+            {project.tags.length - tagsShown > 0 && (
+              <span className={styles.projectTag}>
+                +{project.tags.length - tagsShown}
+              </span>
+            )}
           </div>
         </div>
       </div>

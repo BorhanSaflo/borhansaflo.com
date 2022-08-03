@@ -1,5 +1,6 @@
 import React from "react";
 import Head from "next/head";
+import Script from "next/script";
 import { SEO } from "../../typings";
 import { urlFor } from "../../sanity";
 
@@ -36,42 +37,48 @@ const SEO = ({ seo }: { seo: SEO }) => {
   };
 
   return (
-    <Head>
-      <title>{seo.title}</title>
-      <meta name="description" content={seo.description} />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link rel="icon" href="/favicon.ico" />
-      <link rel="manifest" href="/site.webmanifest" />
-      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-      <meta itemProp="name" content={seo.title} />
-      <meta itemProp="description" content={seo.description} />
+    <>
+      <Head>
+        <title>{seo.title}</title>
+        <meta name="description" content={seo.description} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <meta itemProp="name" content={seo.title} />
+        <meta itemProp="description" content={seo.description} />
 
-      <meta
-        itemProp="image"
-        content={
-          seo.image ? urlFor(seo.image).url() : "/images/Borhan-Saflo-Logo.png"
-        }
-      />
-      {socialTags(seo).map(({ name, content }) => {
-        return <meta key={name} name={name} content={content} />;
-      })}
-      <script
+        <meta
+          itemProp="image"
+          content={
+            seo.image
+              ? urlFor(seo.image).url()
+              : "/images/Borhan-Saflo-Logo.png"
+          }
+        />
+        {socialTags(seo).map(({ name, content }) => {
+          return <meta key={name} name={name} content={content} />;
+        })}
+      </Head>
+      <Script
         async
+        id="google-analytics"
         src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
       />
-      <script
+      <Script
+        id="google-analytics_measurement"
         dangerouslySetInnerHTML={{
           __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
-              page_path: window.location.pathname,
-            });
-          `,
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
+                page_path: window.location.pathname,
+              });
+            `,
         }}
       />
-    </Head>
+    </>
   );
 };
 

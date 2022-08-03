@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, } from "react";
 import styles from "../../styles/Header.module.scss";
 import SocialButton from "./SocialButton";
 import DesktopMenu from "./DesktopMenu";
@@ -13,23 +13,17 @@ interface Props {
   socials: Social[];
   currentElement: number;
   isScrolled: boolean;
+  isMobile: boolean;
 }
 
-function Header({ sections, socials, currentElement, isScrolled }: Props) {
-  const [isMobile, setIsMobile] = useState<boolean | undefined>(undefined);
+function Header({
+  sections,
+  socials,
+  currentElement,
+  isScrolled,
+  isMobile,
+}: Props) {
   const [isMobileMenuActive, setIsMobileMenuActive] = useState(false);
-
-  const updateWindowDimensions = () => {
-    setIsMobile(window.innerWidth < 768);
-  };
-
-  useEffect(() => {
-    updateWindowDimensions();
-    window.addEventListener("resize", updateWindowDimensions);
-    return () => {
-      window.removeEventListener("resize", updateWindowDimensions);
-    };
-  }, []);
 
   const menuData = sections.map((section: Section) => {
     return {
@@ -45,7 +39,7 @@ function Header({ sections, socials, currentElement, isScrolled }: Props) {
   const CloseButton = getIcon("close");
   const OpenButton = getIcon("open");
 
-  return typeof isMobile !== "undefined" ? (
+  return (
     <div
       className={
         isScrolled || isMobileMenuActive
@@ -95,7 +89,7 @@ function Header({ sections, socials, currentElement, isScrolled }: Props) {
         )}
       </div>
     </div>
-  ) : null;
+  );
 }
 
 export default Header;

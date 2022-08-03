@@ -6,9 +6,10 @@ import ProjectComponent from "./Project";
 
 interface Props {
   projects: Project[];
+  windowWidth: number;
 }
 
-function ProjectsGrid({ projects }: Props) {
+function ProjectsGrid({ projects, windowWidth }: Props) {
   const [projectsLength, setProjectsLength] = useState(0);
   const [visibleProjectsLength, setVisibleProjectsLength] = useState(3);
 
@@ -26,7 +27,13 @@ function ProjectsGrid({ projects }: Props) {
     <div className={styles.wrapper}>
       <div className={styles.container}>
         {projects.slice(0, visibleProjectsLength).map((project) => {
-          return <ProjectComponent key={project._id} project={project} />;
+          return (
+            <ProjectComponent
+              key={project._id}
+              project={project}
+              windowWidth={windowWidth}
+            />
+          );
         })}
       </div>
       {projectsLength > visibleProjectsLength && (

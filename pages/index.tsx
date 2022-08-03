@@ -3,7 +3,13 @@ import Footer from "../components/Footer";
 import Header from "../components/Header/Header";
 import Landing from "../components/Landing";
 import SectionComponent from "../components/Section";
-import React, { createRef, RefObject, useEffect, useState } from "react";
+import React, {
+  createRef,
+  RefObject,
+  useEffect,
+  useLayoutEffect,
+  useState,
+} from "react";
 import ProjectsGrid from "../components/Projects/ProjectsGrid";
 import SkillsGrid from "../components/Skills/SkillsGrid";
 import { Project, Section, SEO, SkillGroup, Social } from "../typings";
@@ -16,6 +22,7 @@ import {
   socialsQuery,
 } from "../lib/getQuery";
 import SEOComponent from "../components/SEO";
+import AOS from "aos";
 
 interface Props {
   seo: SEO;
@@ -26,16 +33,29 @@ interface Props {
 }
 
 const Home = ({ seo, sections, projects, skills, socials }: Props) => {
+  if (typeof document === "undefined") {
+    React.useLayoutEffect = React.useEffect;
+  }
   const [currentElementIndexInViewport, setCurrentElementIndexInViewport] =
     useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
-
+  const [isMobile, setIsMobile] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(0);
   const arrLength = sections.length;
   const [sectionRefs, setSectionRefs] = useState<RefObject<HTMLDivElement>[]>(
     []
   );
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    setIsScrolled(window.scrollY > 0);
+    setIsMobile(window.innerWidth < 768);
+    AOS.init({
+      disable: "phone",
+      duration: 1000,
+      easing: "ease",
+      once: true,
+      anchorPlacement: "top-center",
+    });
     setSectionRefs((elRefs) =>
       Array(arrLength)
         .fill(null)
@@ -44,32 +64,62 @@ const Home = ({ seo, sections, projects, skills, socials }: Props) => {
   }, [arrLength]);
 
   useEffect(() => {
-    const handleScrollEvent = () => {
-      setIsScrolled(window.scrollY > 0);
-      checkCurrentElementInViewport();
+    const throttledResizeHandler = (limit: number) => {
+      let waiting = false;
+      return () => {
+        if (!waiting) {
+          setIsMobile(window.innerWidth < 768);
+          setWindowWidth(window.innerWidth);
+          waiting = true;
+          setTimeout(() => (waiting = false), limit);
+        }
+      };
     };
-    window.addEventListener("scroll", handleScrollEvent);
-    return () =>
-      window.removeEventListener("scroll", checkCurrentElementInViewport);
-  }, [sectionRefs]);
 
-  const checkCurrentElementInViewport = () => {
-    const currentElementIndexInViewport: number =
-      window.innerHeight + window.scrollY >= document.body.offsetHeight
-        ? arrLength - 1
-        : sectionRefs.findIndex(
-            (elRef: RefObject<HTMLDivElement>) =>
-              elRef.current &&
-              elRef.current.getBoundingClientRect().top <= 100 &&
-              elRef.current.getBoundingClientRect().bottom >= 100
-          );
-    setCurrentElementIndexInViewport(currentElementIndexInViewport);
-  };
+    window.addEventListener("resize", throttledResizeHandler(300));
+
+    return () => {
+      window.removeEventListener("resize", throttledResizeHandler(300));
+    };
+  }, [isMobile]);
+
+  useEffect(() => {
+    const checkCurrentElementInViewport = () => {
+      const currentElementIndexInViewport: number =
+        window.innerHeight + window.scrollY >= document.body.offsetHeight
+          ? arrLength - 1
+          : sectionRefs.findIndex(
+              (elRef: RefObject<HTMLDivElement>) =>
+                elRef.current &&
+                elRef.current.getBoundingClientRect().top <= 100 &&
+                elRef.current.getBoundingClientRect().bottom >= 100
+            );
+      setCurrentElementIndexInViewport(currentElementIndexInViewport);
+    };
+
+    const throttledScrollHandler = (limit: number) => {
+      let waiting = false;
+      return () => {
+        if (!waiting || window.scrollY < 10) {
+          setIsScrolled(window.scrollY > 0);
+          checkCurrentElementInViewport();
+          waiting = true;
+          setTimeout(() => (waiting = false), limit);
+        }
+      };
+    };
+
+    window.addEventListener("scroll", throttledScrollHandler(100));
+
+    return () =>
+      window.removeEventListener("scroll", throttledScrollHandler(100));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentElementIndexInViewport, arrLength]);
 
   const getSectionContent = (section: string) => {
     switch (section) {
       case "projects":
-        return <ProjectsGrid projects={projects} />;
+        return <ProjectsGrid projects={projects} windowWidth={windowWidth} />;
       case "skills":
         return <SkillsGrid skills={skills} />;
       default:
@@ -84,6 +134,7 @@ const Home = ({ seo, sections, projects, skills, socials }: Props) => {
         sections={sections}
         socials={socials}
         isScrolled={isScrolled}
+        isMobile={isMobile}
         currentElement={currentElementIndexInViewport}
       />
       <main>
