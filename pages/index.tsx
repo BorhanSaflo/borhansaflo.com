@@ -61,7 +61,7 @@ const Home = ({ seo, sections, projects, skills, socials }: Props) => {
         .fill(null)
         .map((_, i) => elRefs[i] || createRef<HTMLDivElement>())
     );
-  }, []);
+  }, [arrLength]);
 
   useEffect(() => {
     const throttledResizeHandler = (limit: number) => {
@@ -113,6 +113,7 @@ const Home = ({ seo, sections, projects, skills, socials }: Props) => {
 
     return () =>
       window.removeEventListener("scroll", throttledScrollHandler(100));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentElementIndexInViewport, arrLength]);
 
   const getSectionContent = (section: string) => {

@@ -42,7 +42,7 @@ function Project({ project, windowWidth }: Props) {
       }
     }
     setTagsShown(tagsWidth.length);
-  }, [windowWidth, tagsShown, computedWidths]);
+  }, [windowWidth, tagsShown, computedWidths, tagsWidth]);
 
   const truncateDescription = (description: string) => {
     return `${description.substring(0, description.lastIndexOf(" ", 180))}...`;
