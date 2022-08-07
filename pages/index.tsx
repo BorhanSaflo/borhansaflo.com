@@ -50,7 +50,6 @@ const Home = ({ seo, sections, projects, skills, socials }: Props) => {
     setIsScrolled(window.scrollY > 0);
     setIsMobile(window.innerWidth < 768);
     AOS.init({
-      disable: "phone",
       duration: 1000,
       easing: "ease",
       once: true,

@@ -22,7 +22,7 @@
     border-radius: 5px;
     box-shadow: $boxShadow;
     background-color: $lightPrimary;
-    animation: fadeIn 0.5s ease-in-out;
+    //animation: fadeIn 0.5s ease-in-out;
     transition: all 0.25s ease;
 
     &:hover {
@@ -78,7 +78,6 @@
           border-radius: 5px;
           background-color: $primary;
           overflow: hidden;
-          transition: width 1s ease-in-out;
         }
       }
     }

@@ -21,9 +21,8 @@ function Skill({ skill }: { skill: Skill }) {
         <div className={styles.experienceBar}>
           <div
             className={styles.experience}
-            style={{
-              width: `${skill.level * 10}%`,
-            }}
+            data-experience={skill.level}
+            data-aos="fill-in"
           />
         </div>
       </div>

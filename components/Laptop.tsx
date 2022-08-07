@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../styles/Laptop.module.scss";
 
 function Laptop() {
-  const linesOfCode = 15;
+  const linesOfCode = 12;
   return (
     <div className={styles.laptop}>
       <div className={styles.display}>
