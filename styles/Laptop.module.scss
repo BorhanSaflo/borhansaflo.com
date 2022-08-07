@@ -104,7 +104,7 @@ $laptopHeight: 11.4em;
     }
 
     .screen {
-      $numOfLines: 15;
+      $numOfLines: 12;
       position: absolute;
       top: 2.5%;
       left: 1.45%;
@@ -131,7 +131,7 @@ $laptopHeight: 11.4em;
         li:nth-child(#{$i}) {
           left: $indent;
           width: $width;
-          animation: fadeIn 0.7s ease-in-out (1.4s + $i * 0.2) forwards,
+          animation: fadeIn 0.7s ease-in-out (1.4s + $i * 0.1) forwards,
             glow 5s ease infinite alternate;
 
           &:after {
@@ -147,7 +147,7 @@ $laptopHeight: 11.4em;
         counter-increment: liCounter;
         position: relative;
         opacity: 0;
-        height: 2.2%;
+        height: 3%;
         margin: 0.4em 0;
         border-radius: 0.3em;
         background: rgb(180, 180, 180);
@@ -159,7 +159,7 @@ $laptopHeight: 11.4em;
         );
 
         @include md {
-          height: 3%;
+          height: 3.5%;
         }
 
         &:after {
@@ -167,13 +167,13 @@ $laptopHeight: 11.4em;
           position: absolute;
           top: 0;
           margin-top: -0.4em;
-          margin-left: -2.5em;
+          margin-left: -2.3em;
           color: rgba($primary, 0.7);
-          font-size: 0.4rem;
+          font-size: 0.5em;
           font-weight: bold;
 
           @include md {
-            font-size: 0.5rem;
+            font-size: 0.6em;
           }
         }
       }
