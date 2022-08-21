@@ -43,6 +43,7 @@ export type ProjectBody = {
   description: string;
   link: string;
   previewImage: string;
+  images: string[];
   status: string;
   tags: Tag[];
 };
