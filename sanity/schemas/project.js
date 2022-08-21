@@ -22,6 +22,12 @@ export default {
       },
     },
     {
+      name: "images",
+      title: "Project Images",
+      type: "array",
+      of: [{ type: "image" }],
+    },
+    {
       name: "link",
       title: "Link",
       type: "string",

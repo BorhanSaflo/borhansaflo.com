@@ -16,6 +16,7 @@ import {
   FaChevronRight,
   FaChevronDown,
   FaExternalLinkAlt,
+  FaChevronLeft,
 } from "react-icons/fa";
 import { IoLogoCss3, IoMdConstruct, IoMdPause } from "react-icons/io";
 import {
@@ -74,6 +75,7 @@ const icons = new Map<string, IconType>([
   ["loadMore", FaChevronDown],
   ["linkedin", FaLinkedinIn],
   ["arrowRight", FaChevronRight],
+  ["arrowLeft", FaChevronLeft],
   ["html", FaHtml5],
   ["css", IoLogoCss3],
   ["js", SiJavascript],

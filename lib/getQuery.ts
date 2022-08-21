@@ -31,6 +31,7 @@ export const projectsQuery = groq`
     description,
     link,
     previewImage,
+    images[],
     status,
     tags[]-> {
         _id,
