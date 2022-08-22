@@ -114,6 +114,8 @@ function ProjectModal({
                 width={600}
                 height={400}
                 objectFit="cover"
+                placeholder="blur"
+                blurDataURL={`${urlFor(image).url()}?h=225`}
               />
               {project.images && project.images.length > 1 && (
                 <>

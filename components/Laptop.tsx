@@ -4,7 +4,7 @@ import styles from "../styles/Laptop.module.scss";
 function Laptop() {
   const linesOfCode = 12;
   return (
-    <div className={styles.laptop}>
+    <a className={styles.laptop} href="#projects" aria-label="Projects">
       <div className={styles.display}>
         <div className={styles.toolbar}>
           {[...Array(3)].map((_, i) => (
@@ -21,7 +21,7 @@ function Laptop() {
         <div className={styles.indent}></div>
       </div>
       <div className={styles.bottom}></div>
-    </div>
+    </a>
   );
 }
 
