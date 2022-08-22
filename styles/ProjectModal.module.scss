@@ -164,7 +164,7 @@
           z-index: 1;
 
           .arrow {
-            color: $lightTertiary;
+            color: rgba($lightPrimary, 0.8);
             font-size: 2em;
             transition: transform 0.25s;
             filter: drop-shadow(0px 3px 2px #0000001a);
