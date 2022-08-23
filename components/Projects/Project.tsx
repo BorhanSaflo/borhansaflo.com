@@ -15,7 +15,7 @@ interface Props {
 
 function Project({ project, windowWidth }: Props) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const hasModalTransitionedIn = useMountTransition(isModalOpen, 300);
+  const hasModalTransitionedIn = useMountTransition(isModalOpen, 250);
   const [tagsWidth, setTagsWidth] = useState<number[]>([]);
   const containerRef = useRef<any>(null);
   const [tagsShown, setTagsShown] = useState<number>(project.tags.length);

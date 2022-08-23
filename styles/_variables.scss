@@ -10,6 +10,7 @@ $secondary: saturate(darken($primary, 2%), 1%);
 $tertiary: #cf7900;
 $primaryBoxShadow: rgba(0, 0, 0, 0.15);
 $secondaryBoxShadow: rgba(0, 0, 0, 0.25);
+$lightBorderColor: #e6ecf8;
 
 //Screen Sizes
 $xl: 1279px;
@@ -18,8 +19,8 @@ $md: 768px;
 
 //Other
 $headerSize: 64px;
-$boxShadow: 0 0.3em 0.5em -0.125em #0a0a0a14, 0 0 0 1px #e6ecf8;
-$hoverBoxShadow: 0 0.5em 0.7em -0.125em #0a0a0a14, 0 0 0 1px #e6ecf8;
+$boxShadow: 0 0.3em 0.5em -0.125em #0a0a0a14, 0 0 0 1px $lightBorderColor;
+$hoverBoxShadow: 0 0.5em 0.7em -0.125em #0a0a0a14, 0 0 0 1px $lightBorderColor;
 
 @mixin xl {
   @media (min-width: $xl) {

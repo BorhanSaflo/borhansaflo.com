@@ -17,7 +17,7 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.25s ease;
 
     &.in.visible {
       opacity: 1;
@@ -31,11 +31,12 @@
     width: 95%;
     height: 95%;
     border-radius: 5px;
-    box-shadow: 0 0.3em 0.5em -0.125em rgba(10, 10, 10, 0.1), 0 0 0 1px #e6ecf8;
+    box-shadow: 0 0.3em 0.5em -0.125em rgba(10, 10, 10, 0.1),
+      0 0 0 1px $lightBorderColor;
     background-color: $lightPrimary;
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: opacity 0.25s ease, transform 0.25s ease;
 
     &.in.visible {
       opacity: 1;
@@ -43,10 +44,10 @@
     }
 
     @include md {
-      width: 800px;
+      width: 850px;
       max-width: 90%;
-      height: 750px;
-      max-height: 80%;
+      height: 800px;
+      max-height: 85%;
     }
   }
 
@@ -57,7 +58,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 20px 30px 10px 30px;
-    border-bottom: 1px solid #e6ecf8;
+    border-bottom: 1px solid $lightBorderColor;
     color: $darkPrimary;
 
     .titleContainer {
@@ -140,7 +141,7 @@
           width: 8px;
           height: 8px;
           border-radius: 50%;
-          background-color: $darkTertiary;
+          background-color: darken($lightTertiary, 10);
           cursor: pointer;
         }
 
@@ -197,10 +198,10 @@
           height: 100%;
           background: linear-gradient(
             90deg,
-            rgba($darkPrimary, 0.2) 0%,
+            rgba($darkPrimary, 0.1) 0%,
             transparent 10%,
             transparent 90%,
-            rgba($darkPrimary, 0.2) 100%
+            rgba($darkPrimary, 0.1) 100%
           );
         }
 
@@ -221,13 +222,13 @@
 .openModal {
   opacity: 1;
   transform: translateY(0px);
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
 }
 
 .closeModal {
   opacity: 0;
   transform: translateY(30px);
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
 }
 
 @keyframes fadeOutAndBackIn {
@@ -238,7 +239,7 @@
   50% {
     opacity: 0.8;
     scale: 1.01;
-    filter: blur(2px);
+    filter: blur(1px);
   }
   100% {
     opacity: 1;
