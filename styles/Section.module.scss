@@ -38,6 +38,10 @@
       gap: 75px;
       width: 100%;
 
+      @include lg {
+        gap: 8em;
+      }
+
       .subSection {
         @include flexCenter;
         flex-direction: column;

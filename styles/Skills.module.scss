@@ -1,5 +1,11 @@
 @use "styles/variables" as *;
 
+@property --border-angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0turn;
+}
+
 .container {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -22,12 +28,33 @@
     border-radius: 5px;
     box-shadow: $boxShadow;
     background-color: $lightPrimary;
-    //animation: fadeIn 0.5s ease-in-out;
     transition: all 0.25s ease;
 
     &:hover {
       box-shadow: $hoverBoxShadow;
       transform: scale(1.02);
+
+      --border-size: 2px;
+      --border-angle: 0turn;
+      background-image: conic-gradient(
+          from var(--border-angle),
+          $lightPrimary,
+          $lightPrimary 50%,
+          $lightPrimary
+        ),
+        conic-gradient(from var(--border-angle), transparent 25%, $primary);
+      background-size: calc(100% - (var(--border-size) * 2))
+          calc(100% - (var(--border-size) * 2)),
+        cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      animation: bg-spin 2s linear infinite;
+
+      @keyframes bg-spin {
+        to {
+          --border-angle: 1turn;
+        }
+      }
     }
 
     .skillGroupTitle {
