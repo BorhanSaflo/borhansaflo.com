@@ -22,6 +22,7 @@ function ProjectModal({
 }: Props) {
   const StatusIcon = getIcon(project.status);
   const GitHubIcon = getIcon("github");
+  const LinkIcon = getIcon("link");
   const CloseIcon = getIcon("close");
   const RightArrow = getIcon("arrowRight");
   const LeftArrow = getIcon("arrowLeft");
@@ -86,6 +87,16 @@ function ProjectModal({
                 {project.status}
               </div>
               {project.link && project.link != "" && (
+                <a
+                  className={styles.titleTag}
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  <LinkIcon />
+                  {"Link"}
+                </a>
+              )}
+              {project.github && project.github != "" && (
                 <a
                   className={styles.titleTag}
                   href={project.link}

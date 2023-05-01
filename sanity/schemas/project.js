@@ -28,6 +28,11 @@ export default {
       of: [{ type: "image" }],
     },
     {
+      name: "github",
+      title: "Github Link",
+      type: "string",
+    },
+    {
       name: "link",
       title: "Link",
       type: "string",

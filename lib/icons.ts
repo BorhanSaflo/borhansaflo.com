@@ -15,7 +15,7 @@ import {
   FaBars,
   FaChevronRight,
   FaChevronDown,
-  FaExternalLinkAlt,
+  FaLink,
   FaChevronLeft,
 } from "react-icons/fa";
 import { IoLogoCss3, IoMdConstruct, IoMdPause } from "react-icons/io";
@@ -59,6 +59,7 @@ import { BiLinkExternal } from "react-icons/bi";
 
 const icons = new Map<string, IconType>([
   ["externalLink", BiLinkExternal],
+  ["link", FaLink],
   ["Completed", ImCheckmark],
   ["In Development", IoMdConstruct],
   ["On Hold", IoMdPause],

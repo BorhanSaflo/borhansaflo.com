@@ -89,7 +89,13 @@ function Project({ project, windowWidth }: Props) {
             icon="externalLink"
             external={true}
             className={styles.button}
-            link={project.link ? project.link : "/"}
+            link={
+              project.link
+                ? project.link
+                : project.github
+                ? project.github
+                : "/"
+            }
           />
         </div>
 
