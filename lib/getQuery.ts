@@ -30,6 +30,7 @@ export const projectsQuery = groq`
     title,
     description,
     link,
+    github,
     previewImage,
     images[],
     status,

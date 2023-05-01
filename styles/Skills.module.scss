@@ -31,16 +31,14 @@
     transition: all 0.25s ease;
 
     &:hover {
-      box-shadow: $hoverBoxShadow;
-      transform: scale(1.02);
-
       --border-size: 2px;
       --border-angle: 0turn;
+      box-shadow: $hoverBoxShadow;
+      transform: scale(1.02);
       background-image: conic-gradient(
           from var(--border-angle),
           $lightPrimary,
-          $lightPrimary 50%,
-          $lightPrimary
+          $lightPrimary 50%
         ),
         conic-gradient(from var(--border-angle), transparent 25%, $primary);
       background-size: calc(100% - (var(--border-size) * 2))
