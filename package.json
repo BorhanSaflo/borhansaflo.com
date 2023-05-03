@@ -1,5 +1,5 @@
 {
-  "name": "personal-site",
+  "name": "borhansaflo.com",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,24 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@portabletext/react": "^2.0.2",
-    "@sanity/image-url": "^1.0.1",
-    "aos": "^2.3.4",
-    "next": "12.1.6",
-    "next-sanity": "^0.5.2",
+    "@types/node": "18.16.3",
+    "@types/react": "18.2.0",
+    "@types/react-dom": "18.2.1",
+    "eslint": "8.39.0",
+    "eslint-config-next": "13.3.4",
+    "framer-motion": "^10.12.5",
+    "lodash": "^4.17.21",
+    "next": "13.3.4",
+    "next-sanity": "^4.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-icons": "^4.4.0",
-    "react-remove-scroll-bar": "^2.3.3",
-    "sass": "^1.52.3"
-  },
-  "devDependencies": {
-    "@types/aos": "^3.0.4",
-    "@types/node": "18.0.0",
-    "@types/react": "18.0.14",
-    "@types/react-dom": "18.0.5",
-    "eslint": "8.18.0",
-    "eslint-config-next": "12.1.6",
-    "typescript": "4.7.4"
+    "react-icons": "^4.8.0",
+    "react-remove-scroll-bar": "^2.3.4",
+    "sanity": "^3.9.1",
+    "sass": "^1.62.1",
+    "typescript": "5.0.4"
   }
 }
