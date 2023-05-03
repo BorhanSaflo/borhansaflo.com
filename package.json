@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@portabletext/react": "^3.0.0",
+    "@sanity/cross-dataset-duplicator": "^1.2.0",
     "@sanity/orderable-document-list": "^1.0.4",
     "@sanity/vision": "^3.9.1",
     "@types/node": "18.16.3",
