@@ -160,9 +160,8 @@ function ProjectModal({ project, handleClose }: Props) {
                 {project.images.map((image, index) => (
                   <span
                     key={index}
-                    className={`${styles.imagePaginationItem}${
-                      imageIndex == index &&
-                      " " + styles.activeImagePaginationItem
+                    className={`${styles.imagePaginationItem} ${
+                      imageIndex == index && styles.activeImagePaginationItem
                     }`}
                     onClick={() => {
                       if (index != imageIndex) {
