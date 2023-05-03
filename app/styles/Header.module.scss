@@ -47,8 +47,8 @@
       }
     }
 
-    .menuContainer .mobileMenuButton {
-      color: $primary;
+    .mobileMenuButton {
+      color: $primary !important;
     }
   }
 
@@ -158,6 +158,7 @@
     .mobileMenuButton {
       font-size: 27px;
       transition: transform 0.25s ease;
+      cursor: pointer;
 
       &.mobileMenuButtonActive {
         transform: rotate(90deg);
