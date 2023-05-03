@@ -1,9 +1,20 @@
 import { StructureBuilder } from "sanity/desk";
+import { orderableDocumentListDeskItem } from "@sanity/orderable-document-list";
 
-export const deskStructure = (S: StructureBuilder) =>
+export const deskStructure = (S: StructureBuilder, context: any) =>
   S.list()
     .title("Content")
     .items([
+      // Optional configuration
+      orderableDocumentListDeskItem({
+        type: "project",
+        title: "Projects",
+        // Required if using multiple lists of the same 'type'
+        id: "orderable-en-projects",
+        // pass from the structure callback params above
+        S,
+        context,
+      }),
       S.listItem()
         .title("Meta Data")
         .child(S.document().schemaType("meta").documentId("meta")),
@@ -11,22 +22,6 @@ export const deskStructure = (S: StructureBuilder) =>
         .title("Sections")
         .schemaType("section")
         .child(S.documentTypeList("section").title("Sections")),
-      S.listItem()
-        .title("Projects")
-        .child(
-          S.list()
-            .title("Projects")
-            .items([
-              S.listItem()
-                .title("Projects")
-                .schemaType("project")
-                .child(S.documentTypeList("project").title("Projects")),
-              S.listItem()
-                .title("Tags")
-                .schemaType("tag")
-                .child(S.documentTypeList("tag").title("Tags")),
-            ])
-        ),
       S.listItem()
         .title("Skills")
         .child(

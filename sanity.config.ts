@@ -11,8 +11,8 @@ const studioConfig = defineConfig({
   basePath: "/admin",
   plugins: [
     deskTool({
-      structure: (S) => {
-        return deskStructure(S);
+      structure: (S, context) => {
+        return deskStructure(S, context);
       },
     }),
   ],

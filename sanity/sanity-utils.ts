@@ -31,10 +31,8 @@ export async function getSections(): Promise<Section[]> {
 
 export async function getProjects(): Promise<Project[]> {
   return createClient(clientConfig).fetch(
-    groq`*[_type == "project"] {
+    groq`*[_type == "project"] | order(orderRank) {
       _id,
-      _createdAt,
-      _updatedAt,
       title,
       description,
       link,
@@ -46,7 +44,7 @@ export async function getProjects(): Promise<Project[]> {
           _id,
           name
       },
-    } | order(_createdAt desc)`,
+    }`,
     { next: { revalidate: 3600 } }
   );
 }
