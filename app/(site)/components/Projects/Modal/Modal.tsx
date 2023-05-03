@@ -46,7 +46,7 @@ function ProjectModal({ project, handleClose }: Props) {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 30 }}
-        transition={{ duration: 0.25, ease: "easeInOut" }}>
+        transition={{ duration: 0.2, ease: "easeInOut" }}>
         <div className={styles.header}>
           <div className={styles.titleContainer}>
             <span className={styles.title}>{project.title}</span>
@@ -83,13 +83,18 @@ function ProjectModal({ project, handleClose }: Props) {
         </div>
         <div className={styles.bodyContainer}>
           <div className={styles.body}>
-            <div className={styles.imageContainer}>
+            <div
+              className={`${styles.imageContainer} ${
+                project.images &&
+                project.images.length > 1 &&
+                styles.imageContainerMultiple
+              }`}>
               <AnimatePresence initial={false} custom={direction}>
                 <motion.span
                   key={page}
                   custom={direction}
                   initial={{
-                    x: direction > 0 ? 1000 : -1000,
+                    x: direction > 0 ? 800 : -800,
                     opacity: 0,
                   }}
                   animate={{
@@ -97,11 +102,11 @@ function ProjectModal({ project, handleClose }: Props) {
                     opacity: 1,
                   }}
                   exit={{
-                    x: direction < 0 ? 1000 : -1000,
+                    x: direction < 0 ? 800 : -800,
                     opacity: 0,
                   }}
                   transition={{ duration: 0.25, ease: "easeInOut" }}
-                  drag="x"
+                  drag={project.images?.length > 1 && "x"}
                   dragConstraints={{ left: 0, right: 0 }}
                   dragElastic={1}
                   dragMomentum={false}
@@ -118,8 +123,7 @@ function ProjectModal({ project, handleClose }: Props) {
                     alt={project.title}
                     placeholder="blur"
                     blurDataURL={`${project.images[imageIndex]}?h=225`}
-                    width={600}
-                    height={400}
+                    fill
                     quality={100}
                     loading="eager"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -130,8 +134,7 @@ function ProjectModal({ project, handleClose }: Props) {
                         project.images[(imageIndex + 1) % project.images.length]
                       }
                       alt={project.title}
-                      width={600}
-                      height={400}
+                      fill
                       quality={100}
                       loading="lazy"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

@@ -46,11 +46,11 @@ const useScrollSpy = (ids: string[], offset: number = 0) => {
     listener();
 
     window.addEventListener("resize", listener);
-    window.addEventListener("scroll", _.throttle(listener, 300));
+    window.addEventListener("scroll", _.throttle(listener, 200));
 
     return () => {
       window.removeEventListener("resize", listener);
-      window.removeEventListener("scroll", _.throttle(listener, 300));
+      window.removeEventListener("scroll", _.throttle(listener, 200));
     };
   }, [ids, offset, isMobile, isScrolled]);
 

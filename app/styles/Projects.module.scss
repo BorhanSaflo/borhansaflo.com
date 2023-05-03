@@ -51,7 +51,7 @@
           .status span {
             opacity: 1;
             max-width: 150px;
-            transition: all 0.25s ease-in-out;
+            transition: all 0.25s ease;
           }
         }
       }
@@ -69,6 +69,7 @@
           border-top-left-radius: 5px;
           border-top-right-radius: 5px;
           transition: all 0.25s ease;
+          object-fit: cover;
           filter: brightness(0.95);
         }
 
