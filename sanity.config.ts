@@ -1,5 +1,6 @@
 import { defineConfig } from "sanity";
 import { deskTool } from "sanity/desk";
+import { visionTool } from "@sanity/vision";
 import schemas from "./sanity/schemas";
 import { deskStructure } from "./sanity/deskStructure";
 
@@ -14,6 +15,10 @@ const studioConfig = defineConfig({
       structure: (S, context) => {
         return deskStructure(S, context);
       },
+    }),
+    visionTool({
+      defaultApiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION,
+      defaultDataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
     }),
   ],
   schema: { types: schemas },
