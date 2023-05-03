@@ -26,6 +26,7 @@
     "react-icons": "^4.8.0",
     "react-remove-scroll-bar": "^2.3.4",
     "sanity": "^3.9.1",
+    "sanity-plugin-vercel-deploy": "^3.3.3",
     "sass": "^1.62.1",
     "typescript": "5.0.4"
   }

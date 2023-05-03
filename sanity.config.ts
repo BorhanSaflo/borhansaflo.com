@@ -1,6 +1,7 @@
 import { defineConfig } from "sanity";
 import { deskTool } from "sanity/desk";
 import { visionTool } from "@sanity/vision";
+import { vercelDeployTool } from "sanity-plugin-vercel-deploy";
 import schemas from "./sanity/schemas";
 import { deskStructure } from "./sanity/deskStructure";
 
@@ -20,6 +21,7 @@ const studioConfig = defineConfig({
       defaultApiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION,
       defaultDataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
     }),
+    vercelDeployTool(),
   ],
   schema: { types: schemas },
 });
