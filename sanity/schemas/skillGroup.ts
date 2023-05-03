@@ -1,13 +1,14 @@
+import {
+  orderRankField,
+  orderRankOrdering,
+} from "@sanity/orderable-document-list";
+
 export default {
   name: "skillGroup",
   title: "Skill Group",
   type: "document",
+  orderings: [orderRankOrdering],
   fields: [
-    {
-      name: "order",
-      title: "Order",
-      type: "number",
-    },
     {
       name: "name",
       title: "Name",
@@ -19,5 +20,6 @@ export default {
       type: "array",
       of: [{ type: "reference", to: { type: "skill" } }],
     },
+    orderRankField({ type: "project" }),
   ],
 };

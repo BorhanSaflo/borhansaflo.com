@@ -5,13 +5,10 @@ export const deskStructure = (S: StructureBuilder, context: any) =>
   S.list()
     .title("Content")
     .items([
-      // Optional configuration
       orderableDocumentListDeskItem({
         type: "project",
         title: "Projects",
-        // Required if using multiple lists of the same 'type'
-        id: "orderable-en-projects",
-        // pass from the structure callback params above
+        id: "projects",
         S,
         context,
       }),
@@ -28,10 +25,13 @@ export const deskStructure = (S: StructureBuilder, context: any) =>
           S.list()
             .title("Skills")
             .items([
-              S.listItem()
-                .title("Skill Groups")
-                .schemaType("skillGroup")
-                .child(S.documentTypeList("skillGroup").title("Skill Groups")),
+              orderableDocumentListDeskItem({
+                type: "skillGroup",
+                title: "Skill Groups",
+                id: "skillGroups",
+                S,
+                context,
+              }),
               S.listItem()
                 .title("Skills")
                 .schemaType("skill")

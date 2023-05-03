@@ -22,7 +22,7 @@ const studioConfig = defineConfig([
       }),
       visionTool({
         defaultApiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION,
-        defaultDataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
+        defaultDataset: "production",
       }),
       vercelDeployTool(),
       crossDatasetDuplicator({
@@ -57,7 +57,7 @@ const studioConfig = defineConfig([
       }),
       visionTool({
         defaultApiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION,
-        defaultDataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
+        defaultDataset: "staging",
       }),
       vercelDeployTool(),
       crossDatasetDuplicator({

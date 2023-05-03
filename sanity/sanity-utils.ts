@@ -51,7 +51,7 @@ export async function getProjects(): Promise<Project[]> {
 
 export async function getSkills(): Promise<SkillGroup[]> {
   return createClient(clientConfig).fetch(
-    groq`*[_type == "skillGroup"] {
+    groq`*[_type == "skillGroup"] | order(orderRank) {
       _id,
       _createdAt,
       _updatedAt,
@@ -64,7 +64,7 @@ export async function getSkills(): Promise<SkillGroup[]> {
         color,
         level,
       },
-    } | order(order asc)`,
+    }`,
     { next: { revalidate: 3600 } }
   );
 }
