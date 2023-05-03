@@ -9,6 +9,10 @@ const nextConfig = {
   async rewrites() {
     return [
       {
+        source: "/admin",
+        destination: "/admin",
+      },
+      {
         source: "/:path*",
         destination: "/api/:path*",
       },
