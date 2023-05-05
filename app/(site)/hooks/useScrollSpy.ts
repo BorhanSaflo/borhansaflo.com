@@ -2,15 +2,15 @@ import { useLayoutEffect, useState } from "react";
 import _ from "lodash";
 
 const useScrollSpy = (ids: string[], offset: number = 0) => {
-  const [activeId, setActiveId] = useState("");
-  const [isMobile, setIsMobile] = useState(false);
+  const [currentSectionID, setCurrentSectionID] = useState("");
+  const [isMobile, setIsMobile] = useState<boolean | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const clamp = (value: number) => Math.max(0, value);
   const isBetween = (value: number, floor: number, ceil: number) =>
     value >= floor && value <= ceil;
 
   useLayoutEffect(() => {
-    const listener = () => {
+    const scrollListener = () => {
       const scroll = window.pageYOffset;
 
       const position = ids
@@ -27,34 +27,34 @@ const useScrollSpy = (ids: string[], offset: number = 0) => {
         })
         .find(({ top, bottom }) => isBetween(scroll, top, bottom));
 
-      if (window.innerWidth < 768 && !isMobile) {
-        setIsMobile(true);
-      } else if (window.innerWidth >= 768 && isMobile) {
-        setIsMobile(false);
-      }
+      if (scroll > 0 && !isScrolled) setIsScrolled(true);
+      else if (scroll === 0 && isScrolled) setIsScrolled(false);
 
-      if (scroll > 0 && !isScrolled) {
-        setIsScrolled(true);
-      } else if (scroll === 0 && isScrolled) {
-        setIsScrolled(false);
-      }
-
-      if (position) setActiveId(position.id);
-      else setActiveId("");
+      if (position) setCurrentSectionID(position.id);
+      else setCurrentSectionID("");
     };
 
-    listener();
+    const resizeListener = () => {
+      if (window.innerWidth < 768 && !isMobile) {
+        setIsMobile(true);
+      } else if (window.innerWidth >= 768 && (isMobile || isMobile === null)) {
+        setIsMobile(false);
+      }
+    };
 
-    window.addEventListener("resize", listener);
-    window.addEventListener("scroll", _.throttle(listener, 200));
+    scrollListener();
+    resizeListener();
+
+    window.addEventListener("resize", resizeListener);
+    window.addEventListener("scroll", _.throttle(scrollListener, 200));
 
     return () => {
-      window.removeEventListener("resize", listener);
-      window.removeEventListener("scroll", _.throttle(listener, 200));
+      window.removeEventListener("resize", resizeListener);
+      window.removeEventListener("scroll", _.throttle(scrollListener, 200));
     };
   }, [ids, offset, isMobile, isScrolled]);
 
-  return { activeId, isMobile, isScrolled };
+  return { currentSectionID, isMobile, isScrolled };
 };
 
 export default useScrollSpy;

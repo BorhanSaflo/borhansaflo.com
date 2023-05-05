@@ -1,8 +1,10 @@
 import React from "react";
 import styles from "@/app/styles/Header.module.scss";
 import SocialButton from "./SocialButton";
+import clsx from "clsx";
 import { RemoveScrollBar } from "react-remove-scroll-bar";
 import { Social } from "@/types/Social";
+import { getIcon } from "@/lib/icons";
 
 interface menuProps {
   name: string;
@@ -12,51 +14,58 @@ interface menuProps {
 
 interface Props {
   menuData: menuProps[];
-  active: boolean;
+  isOpen: boolean;
   socials: Social[];
-  activeElement: string;
+  currentSection: string;
   toggleMobileMenu: () => void;
 }
 
 function MobileMenu({
   menuData,
-  active,
+  isOpen,
   socials,
-  activeElement,
+  currentSection,
   toggleMobileMenu,
 }: Props) {
+  const CloseButton = getIcon("close");
+  const OpenButton = getIcon("open");
   return (
-    <div
-      className={
-        active
-          ? `${styles.mobileMenu} ${styles.mobileMenuActive}`
-          : styles.mobileMenu
-      }>
-      {active && <RemoveScrollBar />}
+    <>
+      {isOpen && <RemoveScrollBar />}
       <div
-        onClick={() => toggleMobileMenu()}
-        className={styles.mobileMenuItemsContainer}>
-        {menuData.map((menuItem: menuProps) => (
-          <a
-            key={menuItem.name}
-            href={menuItem.href}
-            className={
-              menuItem.id === activeElement
-                ? `${styles.mobileMenuItem} ${styles.mobileActiveMenuItem}`
-                : styles.mobileMenuItem
-            }>
-            {menuItem.name}
-          </a>
-        ))}
-      </div>
-      <div className={styles.mobileSocialsContainer}>
-        <div className={styles.socialsContainer}>
-          {socials?.map((social: Social) => {
-            return <SocialButton key={social.id} social={social} />;
-          })}
+        className={clsx(styles.mobileMenu, isOpen && styles.mobileMenuActive)}>
+        <div
+          onClick={() => toggleMobileMenu()}
+          className={styles.mobileMenuItemsContainer}>
+          {menuData.map((menuItem: menuProps) => (
+            <a
+              key={menuItem.name}
+              href={menuItem.href}
+              className={clsx(
+                styles.mobileMenuItem,
+                menuItem.id === currentSection && styles.mobileActiveMenuItem
+              )}>
+              {menuItem.name}
+            </a>
+          ))}
+        </div>
+        <div className={styles.mobileSocialsContainer}>
+          <div className={styles.socialsContainer}>
+            {socials?.map((social: Social) => {
+              return <SocialButton key={social.id} social={social} />;
+            })}
+          </div>
         </div>
       </div>
-    </div>
+      <div
+        onClick={toggleMobileMenu}
+        className={clsx(
+          styles.mobileMenuButton,
+          isOpen && styles.mobileMenuButtonActive
+        )}>
+        {isOpen ? <CloseButton /> : <OpenButton />}
+      </div>
+    </>
   );
 }
 
