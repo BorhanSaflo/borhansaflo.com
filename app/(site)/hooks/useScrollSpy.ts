@@ -1,5 +1,5 @@
 import { useLayoutEffect, useState } from "react";
-import _ from "lodash";
+import { throttle } from 'throttle-debounce';
 
 const useScrollSpy = (ids: string[], offset: number = 0) => {
   const [currentSectionID, setCurrentSectionID] = useState("");
@@ -11,7 +11,7 @@ const useScrollSpy = (ids: string[], offset: number = 0) => {
 
   useLayoutEffect(() => {
     const scrollListener = () => {
-      const scroll = window.pageYOffset;
+      const scroll = window.scrollY;
 
       const position = ids
         .map((id) => {
@@ -46,11 +46,11 @@ const useScrollSpy = (ids: string[], offset: number = 0) => {
     resizeListener();
 
     window.addEventListener("resize", resizeListener);
-    window.addEventListener("scroll", _.throttle(scrollListener, 200));
+    window.addEventListener("scroll", throttle(200, scrollListener));
 
     return () => {
       window.removeEventListener("resize", resizeListener);
-      window.removeEventListener("scroll", _.throttle(scrollListener, 200));
+      window.removeEventListener("scroll", throttle(200, scrollListener));
     };
   }, [ids, offset, isMobile, isScrolled]);
 

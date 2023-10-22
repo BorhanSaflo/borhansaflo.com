@@ -26,6 +26,9 @@ dependencies:
   '@types/react-dom':
     specifier: 18.2.14
     version: 18.2.14
+  '@types/throttle-debounce':
+    specifier: ^5.0.1
+    version: 5.0.1
   clsx:
     specifier: ^2.0.0
     version: 2.0.0
@@ -38,9 +41,6 @@ dependencies:
   framer-motion:
     specifier: ^10.16.4
     version: 10.16.4(react-dom@18.2.0)(react@18.2.0)
-  lodash:
-    specifier: ^4.17.21
-    version: 4.17.21
   next:
     specifier: ^13.5.6
     version: 13.5.6(@babel/core@7.23.2)(react-dom@18.2.0)(react@18.2.0)(sass@1.69.4)
@@ -68,6 +68,9 @@ dependencies:
   sass:
     specifier: ^1.69.4
     version: 1.69.4
+  throttle-debounce:
+    specifier: ^5.0.0
+    version: 5.0.0
   typescript:
     specifier: 5.2.2
     version: 5.2.2
@@ -2026,6 +2029,10 @@ packages:
 
   /@types/speakingurl@13.0.5:
     resolution: {integrity: sha512-s9UP9hXGcm2/WILA9hOecD8JavXdh9x1SguO21hF6ok8/pbrIIdGFnf4jmjLe+TQFiBiW2g3FxbiUVwdSpvkIg==}
+    dev: false
+
+  /@types/throttle-debounce@5.0.1:
+    resolution: {integrity: sha512-/fifasjlhpz/r4YsH0r0ZXJvivXFB3F6bmezMnqgsn/NK/fYJn7vN84k7eYn/oALu/aenXo+t8Pv+QlkS6iYBg==}
     dev: false
 
   /@types/unist@2.0.9:
