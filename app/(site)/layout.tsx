@@ -65,9 +65,14 @@ export async function generateMetadata(): Promise<Metadata> {
         url: meta.image,
         alt: meta.title,
       },
-    },
-    themeColor: meta.themeColor,
+    }
   };
+}
+
+export const viewport = {
+  width: "device-width",
+  minimumScale: 1,
+  themeColor: "#1C1A17",
 }
 
 export const revalidate = 3600;
