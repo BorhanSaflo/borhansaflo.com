@@ -12,6 +12,8 @@ import {
   getSocials,
 } from "@/sanity/sanity-utils";
 
+export const revalidate = 3600;
+
 export default async function Home() {
   const sections = await getSections();
   const projects = await getProjects();

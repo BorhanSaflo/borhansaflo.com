@@ -74,5 +74,3 @@ export const viewport = {
   minimumScale: 1,
   themeColor: "#1C1A17",
 }
-
-export const revalidate = 3600;

@@ -53,13 +53,12 @@
     .containerItem {
       @include flexCenter;
       flex-direction: column;
-      gap: 0.6em;
+      gap: 0.3em;
       padding-bottom: 10px;
       text-align: center;
 
       @include lg {
         flex: 1;
-        gap: 0.4em;
         &.headingContainer {
           align-items: flex-start;
           text-align: left;
