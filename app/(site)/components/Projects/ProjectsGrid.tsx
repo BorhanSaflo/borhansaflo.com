@@ -12,7 +12,7 @@ interface Props {
 
 function ProjectsGrid({ projects, windowWidth }: Props) {
   const [projectsLength, setProjectsLength] = useState(0);
-  const [visibleProjectsLength, setVisibleProjectsLength] = useState(3);
+  const [visibleProjectsLength, setVisibleProjectsLength] = useState(6);
 
   const loadMoreProjects = () => {
     if (projectsLength + 3 > visibleProjectsLength) {
