@@ -64,9 +64,11 @@
       width: 100%;
       line-height: calc(1ex / 0.32);
       color: $darkPrimary;
+      text-align: center;
 
       @include lg {
         align-items: flex-start;
+        text-align: left;
       }
 
       .subSectionHeading {
@@ -76,10 +78,14 @@
       }
 
       .buttonsContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
         align-self: center;
         margin-top: 20px;
 
         @include lg {
+          flex-direction: row;
           align-self: auto;
         }
       }

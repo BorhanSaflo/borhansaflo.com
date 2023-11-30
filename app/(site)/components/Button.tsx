@@ -27,8 +27,8 @@ function Button({
       className={className ? `${type}Button ${className}` : `${type}Button`}
       onClick={onClick}
       {...(external && { target: "_blank", rel: "noopener noreferrer" })}>
-      {text}
       {Icon && <Icon className={"buttonIcon"} />}
+      {text}
     </a>
   ) : (
     <div
