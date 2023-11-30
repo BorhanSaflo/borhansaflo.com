@@ -2,9 +2,9 @@
 
 Link: [https://borhansaflo.com](https://borhansaflo.com)
 
-My personal portfolio, built with React and NextJS to create a modernized, lightning-fast, and accessible experience that highlights my skills, projects, and expertise while also allowing potential employers, clients, and users to connect with me.
+My personal portfolio, built with React and NextJS to create a modernized, fast, and accessible experience that highlights my skills, projects, and expertise while also allowing potential employers, clients, and users to connect with me.
 
-![Borhan Saflo Preview](https://user-images.githubusercontent.com/60056206/186060827-b005c11d-18c1-4053-8437-2a20449b2de3.png)
+![borhansaflo.com Preview](https://github.com/BorhanSaflo/borhansaflo.com/assets/60056206/b34d543b-a2b1-49e7-a82b-202fe3d4afdc)
 
 ## Stack:
 
