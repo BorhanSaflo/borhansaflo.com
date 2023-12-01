@@ -10,13 +10,12 @@ function Laptop() {
     target: element,
     offset: ['start 0', 'end 0.6'],
   });
-  const rotateX = useSpring(scrollYProgress, { stiffness: 240, damping: 100 });
-  const xInput = [360, 275.5];
-  const value = useTransform(rotateX, [1, 0], xInput);
+  const springScrollY = useSpring(scrollYProgress, { stiffness: 240, damping: 100 });
+  const rotateX = useTransform(springScrollY, [1, 0], [360, 275.5]);
 
   return (
     <a ref={element} className={styles.laptop} href="#projects" aria-label="Projects">
-      <motion.div className={styles.display} style={{ rotateX: value }}>
+      <motion.div className={styles.display} style={{ rotateX }}>
         <div className={styles.toolbar}>
           {[...Array(3)].map((_, i) => (
             <div key={i} />
