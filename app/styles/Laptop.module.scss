@@ -39,8 +39,6 @@ $laptopHeight: 11.4em;
     overflow: hidden;
     transform-origin: bottom;
     transform-style: preserve-3d;
-    animation-delay: 3s;
-    animation: openLaptop 2s ease-in-out;
 
     &:before {
       content: "";

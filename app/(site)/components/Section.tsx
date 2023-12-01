@@ -16,8 +16,7 @@ const cardVariants: Variants = {
     y: 0,
     opacity: 1,
     transition: {
-      duration: 0.8,
-      ease: "easeOut",
+      duration: 0.8
     },
   },
 };
@@ -39,8 +38,7 @@ const Section = ({
     keyStr.charAt(e3 & 63);
 
   const rgbDataURL = (r: number, g: number, b: number) =>
-    `data:image/gif;base64,R0lGODlhAQABAPAA${
-      triplet(0, r, g) + triplet(b, 255, 255)
+    `data:image/gif;base64,R0lGODlhAQABAPAA${triplet(0, r, g) + triplet(b, 255, 255)
     }/yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==`;
 
   return (
@@ -57,9 +55,8 @@ const Section = ({
             return (
               <div className={styles.subSection} key={subSection.name}>
                 <div
-                  className={`${styles.textContainer} ${
-                    subSection.switchOrder ? " orderSecond" : "orderFirst"
-                  }`}>
+                  className={`${styles.textContainer} ${subSection.switchOrder ? " orderSecond" : "orderFirst"
+                    }`}>
                   {subSection.heading && (
                     <h3 className={styles.subSectionHeading}>
                       {subSection.heading}
@@ -82,9 +79,8 @@ const Section = ({
                 </div>
                 {subSection.image && (
                   <div
-                    className={`${styles.imageContainer} ${
-                      subSection.switchOrder ? "orderFirst" : "orderSecond"
-                    }`}>
+                    className={`${styles.imageContainer} ${subSection.switchOrder ? "orderFirst" : "orderSecond"
+                      }`}>
                     <div className={styles.image}>
                       <Image
                         src={subSection.image}
