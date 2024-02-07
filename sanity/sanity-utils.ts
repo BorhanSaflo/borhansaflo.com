@@ -24,8 +24,7 @@ export async function getSections(): Promise<Section[]> {
         imageAlt,
         buttons,
       },
-    } | order(order asc)`,
-    { next: { revalidate: 3600 } }
+    } | order(order asc)`
   );
 }
 
@@ -44,8 +43,7 @@ export async function getProjects(): Promise<Project[]> {
           _id,
           name
       },
-    }`,
-    { next: { revalidate: 3600 } }
+    }`
   );
 }
 
@@ -64,8 +62,7 @@ export async function getSkills(): Promise<SkillGroup[]> {
         color,
         level,
       },
-    }`,
-    { next: { revalidate: 3600 } }
+    }`
   );
 }
 
@@ -91,7 +88,6 @@ export async function getMeta() {
       "image": image.asset->url,
       openGraphType,
       themeColor
-    }`,
-    { next: { revalidate: 3600 } }
+    }`
   );
 }

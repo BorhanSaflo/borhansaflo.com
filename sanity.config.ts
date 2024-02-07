@@ -1,5 +1,5 @@
 import { defineConfig } from "sanity";
-import { deskTool } from "sanity/desk";
+import { structureTool  } from "sanity/structure";
 import { visionTool } from "@sanity/vision";
 import { vercelDeployTool } from "sanity-plugin-vercel-deploy";
 import { crossDatasetDuplicator } from "@sanity/cross-dataset-duplicator";
@@ -15,7 +15,7 @@ const studioConfig = defineConfig([
     title: "borhansaflo.com Production Studio",
     basePath: "/admin/production",
     plugins: [
-      deskTool({
+      structureTool({
         structure: (S, context) => {
           return deskStructure(S, context);
         },
@@ -50,7 +50,7 @@ const studioConfig = defineConfig([
     title: "borhansaflo.com Staging Studio",
     basePath: "/admin/staging",
     plugins: [
-      deskTool({
+      structureTool({
         structure: (S, context) => {
           return deskStructure(S, context);
         },

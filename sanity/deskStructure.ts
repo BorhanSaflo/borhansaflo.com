@@ -1,4 +1,4 @@
-import { StructureBuilder } from "sanity/desk";
+import { StructureBuilder } from "sanity/structure";
 import { orderableDocumentListDeskItem } from "@sanity/orderable-document-list";
 
 export const deskStructure = (S: StructureBuilder, context: any) =>
