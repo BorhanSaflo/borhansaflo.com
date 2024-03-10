@@ -4,7 +4,7 @@ import Image from "next/image";
 import React from "react";
 import styles from "@/app/styles/Section.module.scss";
 import Button from "./Button";
-import { Section } from "@/types/Section";
+import type { Section } from "@/types/Section";
 import { motion, Variants } from "framer-motion";
 
 const cardVariants: Variants = {

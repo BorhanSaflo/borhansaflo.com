@@ -5,7 +5,7 @@ import { getIcon } from "@/lib/icons";
 import styles from "@/app/styles/Projects.module.scss";
 import Button from "../Button";
 import ProjectModal from "./Modal/Modal";
-import { Project } from "@/types/Project";
+import type { Project } from "@/types/Project";
 import { AnimatePresence } from "framer-motion";
 
 interface Props {

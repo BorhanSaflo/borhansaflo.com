@@ -2,7 +2,7 @@
 import React from "react";
 import { getIcon } from "@/lib/icons";
 import styles from "@/app/styles/Skills.module.scss";
-import { Skill } from "@/types/Skill";
+import type { Skill } from "@/types/Skill";
 import { motion } from "framer-motion";
 
 function Skill({ skill }: { skill: Skill }) {

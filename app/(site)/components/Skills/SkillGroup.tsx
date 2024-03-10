@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "@/app/styles/Skills.module.scss";
 import Skill from "./Skill";
-import { SkillGroup } from "@/types/SkillGroup";
+import type { SkillGroup } from "@/types/SkillGroup";
 
 function SkillGroup({ skillGroup }: { skillGroup: SkillGroup }) {
   return (
