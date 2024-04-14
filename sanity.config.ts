@@ -16,7 +16,7 @@ const studioConfig = defineConfig([
     basePath: "/admin/production",
     plugins: [
       structureTool({
-        structure: (S, context) => {
+        structure: (S: any, context: any) => {
           return deskStructure(S, context);
         },
       }),
@@ -51,7 +51,7 @@ const studioConfig = defineConfig([
     basePath: "/admin/staging",
     plugins: [
       structureTool({
-        structure: (S, context) => {
+        structure: (S: any, context: any) => {
           return deskStructure(S, context);
         },
       }),
