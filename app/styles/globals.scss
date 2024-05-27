@@ -70,7 +70,7 @@ h3 {
 .primaryButton {
   @include button;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  background-color: $darkPrimary;
+  background-color: $darkSecondary;
   color: $secondary;
 
   &:hover {
