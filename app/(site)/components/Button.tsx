@@ -27,7 +27,7 @@ function Button({
       className={className ? `${type}Button ${className}` : `${type}Button`}
       onClick={onClick}
       {...(external && { target: "_blank", rel: "noopener noreferrer" })}>
-      {Icon && <Icon className={"buttonIcon"} />}
+      {Icon && <Icon />}
       {text}
     </a>
   ) : (
@@ -35,7 +35,7 @@ function Button({
       className={className ? `${type}Button ${className}` : `${type}Button`}
       onClick={onClick}>
       {text}
-      {Icon && <Icon className={"buttonIcon"} />}
+      {Icon && <Icon />}
     </div>
   );
 }

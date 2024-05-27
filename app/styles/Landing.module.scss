@@ -79,11 +79,7 @@
         }
 
         @include lg {
-          font-size: 3.8rem;
-        }
-
-        @include xl {
-          font-size: 4rem;
+          font-size: 3.7rem;
         }
       }
 
@@ -139,7 +135,7 @@
         flex-direction: column;
         gap: 1em;
         width: 100%;
-        margin-top: 1em;
+        margin-top: 1.2rem;
 
         @include lg {
           flex-direction: row;

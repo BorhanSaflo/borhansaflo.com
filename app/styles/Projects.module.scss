@@ -43,7 +43,7 @@
 
         .projectImageContainer {
           .projectImage {
-            filter: brightness(0.8) blur(0.2px);
+            filter: brightness(0.75) blur(0.2px);
           }
 
           .status span {
@@ -86,8 +86,7 @@
           gap: 5px;
           padding: 6px 12px;
           border-bottom-left-radius: 5px;
-          background: rgba($darkPrimary, 85%);
-          color: $lightPrimary;
+          background: rgba(#1c1a17, 90%);
 
           span {
             opacity: 0;
@@ -123,7 +122,7 @@
         }
 
         .projectDescription {
-          color: rgba($darkPrimary, 75%);
+          color: rgba($darkSecondary, 75%);
         }
       }
     }
@@ -136,7 +135,6 @@
   flex-wrap: wrap;
   gap: 2px;
   width: 100%;
-  color: $darkPrimary;
   transition: all 0.3s ease-in-out;
 
   span {
