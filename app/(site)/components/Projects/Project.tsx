@@ -23,14 +23,14 @@ function Project({ project, windowWidth }: Props) {
   useEffect(() => {
     if (!computedWidths) {
       const tagElements = containerRef.current.children;
-      let tempArray = [];
+      const tempArray = [];
       for (let i = 0; i < tagElements.length; i++) {
         tempArray.push(tagElements[i].offsetWidth);
       }
       setTagsWidth(tempArray);
       setComputedWidths(true);
     }
-    let tagsContainerWidth = containerRef.current.offsetWidth;
+    const tagsContainerWidth = containerRef.current.offsetWidth;
     let totalWidth = 0;
 
     for (let i = 0; i < tagsWidth.length; i++) {
@@ -77,20 +77,6 @@ function Project({ project, windowWidth }: Props) {
             <StatusIcon className={styles.statusIcon} />
             <span>{project.status}</span>
           </div>
-          <Button
-            type="secondary"
-            text="View Project"
-            icon="externalLink"
-            external={true}
-            className={styles.button}
-            link={
-              project.link
-                ? project.link
-                : project.github
-                ? project.github
-                : "/"
-            }
-          />
         </div>
 
         <div className={styles.projectInfoContainer}>

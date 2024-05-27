@@ -28,30 +28,28 @@
       flex-direction: column;
       width: 100%;
       border-radius: 5px;
-      box-shadow: 0 0.3em 0.5em -0.125em #0a0a0a14, 0 0 0 1px $lightBorderColor;
+      box-shadow:
+        0 0.3em 0.5em -0.125em #0a0a0a14,
+        0 0 0 1px $lightBorderColor;
       animation: fadeIn 0.6s ease-in-out;
       transition: all 0.25s ease;
       cursor: pointer;
 
       &:hover {
-        box-shadow: 0 0.5em 0.7em -0.125em #0a0a0a14,
+        box-shadow:
+          0 0.5em 0.7em -0.125em #0a0a0a14,
           0 0 0 1px $lightBorderColor;
         transform: scale(1.02);
 
         .projectImageContainer {
           .projectImage {
-            filter: brightness(0.6) blur(0.5px);
-          }
-
-          .button {
-            opacity: 1;
-            transform: translateY(0px);
+            filter: brightness(0.8) blur(0.2px);
           }
 
           .status span {
             opacity: 1;
             max-width: 150px;
-            transition: all 0.25s ease;
+            transition: all 0.25s ease-in-out;
           }
         }
       }
