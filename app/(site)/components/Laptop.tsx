@@ -10,20 +10,20 @@ function Laptop() {
     target: element,
     offset: ['start 0', 'end 0.6'],
   });
-  const springScrollY = useSpring(scrollYProgress, { stiffness: 240, damping: 100 });
+  const springScrollY = useSpring(scrollYProgress, { stiffness: 350, damping: 150 });
   const rotateX = useTransform(springScrollY, [1, 0], [360, 275.5]);
 
   return (
     <a ref={element} className={styles.laptop} href="#projects" aria-label="Projects">
       <motion.div className={styles.display} style={{ rotateX }}>
         <div className={styles.toolbar}>
-          {[...Array(3)].map((_, i) => (
-            <div key={i} />
+          {Array.from({ length: 3 }).map((_, i) => (
+            <div key={`toolbar-item-${i}`} aria-hidden="true" />
           ))}
         </div>
         <ul className={styles.screen}>
-          {[...Array(linesOfCode)].map((_, i) => (
-            <li key={i} />
+          {Array.from({ length: linesOfCode }).map((_, i) => (
+            <li key={`code-line-${i}`} aria-hidden="true" />
           ))}
         </ul>
       </motion.div>
