@@ -50,6 +50,7 @@
         margin-top: 0.5em;
 
         @include lg {
+          gap: 75px;
           flex-direction: row;
         }
       }
@@ -94,7 +95,6 @@
     .imageContainer {
       @include flexCenter;
       position: relative;
-      flex: 1 1 0;
 
       .image {
         width: 375px;
