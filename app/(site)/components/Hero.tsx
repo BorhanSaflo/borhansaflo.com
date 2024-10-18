@@ -48,7 +48,7 @@ function Hero ({ section }: HeroProps) {
               <PortableText value={section.subSections[1].content} />
             </div>
             <div className={styles.buttonsContainer}>
-              {section.subSections[0].buttons?.map((button) => (
+              {section.subSections[1].buttons?.map((button) => (
                 <Button
                   key={button.text}
                   icon={button.icon}
