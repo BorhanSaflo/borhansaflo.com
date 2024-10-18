@@ -1,6 +1,6 @@
 import Footer from "./components/Footer";
 import Header from "./components/Header/Header";
-import Landing from "./components/Landing";
+import Hero from "./components/Hero";
 import SectionComponent from "./components/Section";
 import React from "react";
 import ProjectsGrid from "./components/Projects/ProjectsGrid";
@@ -25,8 +25,8 @@ export default async function Home() {
       <Header sections={sections} socials={socials} />
       <main>
         {sections.map((section) => {
-          if (section.id === "landing") {
-            return <Landing key={section._id} section={section} />;
+          if (section.id === "hero") {
+            return <Hero key={section._id} section={section} />;
           } else {
             return (
               <SectionComponent key={section._id} section={section}>

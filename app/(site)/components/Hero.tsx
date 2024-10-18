@@ -8,43 +8,44 @@ import Laptop from "./Laptop";
 import { SectionBody } from "@/types/Section";
 import { motion, Variants } from "framer-motion";
 
-interface Props {
+interface HeroProps {
   section: SectionBody;
 }
 
-const cardVariants: Variants = {
-  offscreen: {
+const animationVariants: Variants = {
+  initial: {
     y: 100,
     opacity: 0,
   },
-  onscreen: {
+  whileInView: {
     y: 0,
     opacity: 1,
     transition: {
       duration: 0.8,
+      ease: "easeOut",
     },
   },
 };
 
-const Landing = ({ section }: Props) => {
+function Hero ({ section }: HeroProps) {
   return (
     <div className={styles.bg} id={section.id}>
       <div className={styles.wrapper}>
         <div className={styles.container}>
           <motion.div
             className={`${styles.containerItem} ${styles.headingContainer}`}
-            initial="offscreen"
-            whileInView="onscreen"
+            initial="initial"
+            whileInView="whileInView"
             viewport={{ once: true }}
-            variants={cardVariants}>
+            variants={animationVariants}>
             <div className={styles.subHeading}>
               <span>
-                <PortableText value={section.subSections[1].content} />
+                <PortableText value={section.subSections[0].content} />
               </span>
             </div>
             <h1 className={styles.heading}>{section.heading}</h1>
             <div className={styles.subHeading}>
-              <PortableText value={section.subSections[0].content} />
+              <PortableText value={section.subSections[1].content} />
             </div>
             <div className={styles.buttonsContainer}>
               {section.subSections[0].buttons?.map((button) => (
@@ -68,4 +69,4 @@ const Landing = ({ section }: Props) => {
   );
 };
 
-export default Landing;
+export default Hero;
