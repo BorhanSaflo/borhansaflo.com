@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "@/app/styles/Landing.module.scss";
+import styles from "@/app/styles/Hero.module.scss";
 
 function SVGShape() {
   return (

@@ -23,7 +23,7 @@ function Header({ sections, socials }: Props) {
   const menuData = sections.map((section: Section) => {
     return {
       name: section.name,
-      href: `${section.id !== "landing" ? "#" + section.id : "/#"}`,
+      href: `${section.id !== "hero" ? "#" + section.id : "/#"}`,
       id: section.id,
     };
   });

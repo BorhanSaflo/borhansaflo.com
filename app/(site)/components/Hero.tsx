@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import styles from "@/app/styles/Landing.module.scss";
+import styles from "@/app/styles/Hero.module.scss";
 import SVGShape from "./SVGShape";
 import Button from "./Button";
 import { PortableText } from "@portabletext/react";
