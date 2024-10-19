@@ -28,13 +28,7 @@ function ProjectsGrid({ projects, windowWidth }: Props) {
     <div className={styles.wrapper}>
       <div className={styles.container}>
         {projects.slice(0, visibleProjectsLength).map((project) => {
-          return (
-            <ProjectComponent
-              key={project._id}
-              project={project}
-              windowWidth={windowWidth}
-            />
-          );
+          return <ProjectComponent key={project._id} project={project} windowWidth={windowWidth} />;
         })}
       </div>
       {projectsLength > visibleProjectsLength && (

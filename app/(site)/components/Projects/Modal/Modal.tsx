@@ -85,9 +85,7 @@ function ProjectModal({ project, handleClose }: Props) {
           <div className={styles.body}>
             <div
               className={`${styles.imageContainer} ${
-                project.images &&
-                project.images.length > 1 &&
-                styles.imageContainerMultiple
+                project.images && project.images.length > 1 && styles.imageContainerMultiple
               }`}>
               <AnimatePresence initial={false} custom={direction}>
                 <motion.span
@@ -130,9 +128,7 @@ function ProjectModal({ project, handleClose }: Props) {
                   />
                   {project.images && project.images.length > 1 && (
                     <Image
-                      src={
-                        project.images[(imageIndex + 1) % project.images.length]
-                      }
+                      src={project.images[(imageIndex + 1) % project.images.length]}
                       alt={project.title}
                       fill
                       quality={100}

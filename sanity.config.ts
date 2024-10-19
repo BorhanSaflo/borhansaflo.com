@@ -1,5 +1,5 @@
 import { defineConfig } from "sanity";
-import { structureTool  } from "sanity/structure";
+import { structureTool } from "sanity/structure";
 import { visionTool } from "@sanity/vision";
 import { vercelDeployTool } from "sanity-plugin-vercel-deploy";
 import { crossDatasetDuplicator } from "@sanity/cross-dataset-duplicator";

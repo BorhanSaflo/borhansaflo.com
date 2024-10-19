@@ -12,9 +12,7 @@ export const deskStructure = (S: StructureBuilder, context: any) =>
         S,
         context,
       }),
-      S.listItem()
-        .title("Meta Data")
-        .child(S.document().schemaType("meta").documentId("meta")),
+      S.listItem().title("Meta Data").child(S.document().schemaType("meta").documentId("meta")),
       S.listItem()
         .title("Sections")
         .schemaType("section")

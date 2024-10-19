@@ -24,10 +24,7 @@ function DesktopMenu({ menuData, socials, currentSection }: Props) {
           <a key={menuItem.name} href={menuItem.href}>
             {menuItem.name}
             {menuItem.id === currentSection && (
-              <motion.span
-                className={styles.underline}
-                layoutId={styles.underline}
-              />
+              <motion.span className={styles.underline} layoutId={styles.underline} />
             )}
           </a>
         ))}

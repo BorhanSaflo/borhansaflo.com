@@ -44,11 +44,7 @@ import {
 } from "react-icons/si";
 import { VscDebugBreakpointData } from "react-icons/vsc";
 import { GrStatusUnknown } from "react-icons/gr";
-import {
-  BsFillCalendarCheckFill,
-  BsFillTerminalFill,
-  BsXLg,
-} from "react-icons/bs";
+import { BsFillCalendarCheckFill, BsFillTerminalFill, BsXLg } from "react-icons/bs";
 import { ImCheckmark } from "react-icons/im";
 import { BiLinkExternal } from "react-icons/bi";
 

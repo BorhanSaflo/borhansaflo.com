@@ -29,16 +29,10 @@ function Header({ sections, socials }: Props) {
   });
 
   return (
-    <div
-      className={clsx(
-        styles.wrapper,
-        (isScrolled || isMobileMenuOpen) && styles.active
-      )}>
+    <div className={clsx(styles.wrapper, (isScrolled || isMobileMenuOpen) && styles.active)}>
       <div className={clsx(styles.container, fullWidthClassName)}>
         <div className={styles.logoContainer}>
-          <a
-            href="/#"
-            className={clsx(styles.logo, isScrolled && styles.logoActive)}>
+          <a href="/#" className={clsx(styles.logo, isScrolled && styles.logoActive)}>
             {"B"}
           </a>
         </div>
@@ -52,11 +46,7 @@ function Header({ sections, socials }: Props) {
           />
         )}
         {isMobile === false && (
-          <DesktopMenu
-            menuData={menuData}
-            socials={socials}
-            currentSection={currentSectionID}
-          />
+          <DesktopMenu menuData={menuData} socials={socials} currentSection={currentSectionID} />
         )}
       </div>
     </div>

@@ -1,6 +1,6 @@
 //Colors
 $darkPrimary: #2e1b0a;
-$darkSecondary: #1F1C17;
+$darkSecondary: #1f1c17;
 $lightPrimary: #fcfcfc;
 $lightSecondary: darken($lightPrimary, 4%);
 $lightTertiary: darken($lightPrimary, 8%);
@@ -18,8 +18,12 @@ $md: 768px;
 
 //Other
 $headerSize: 64px;
-$boxShadow: 0 0.3em 0.5em -0.125em #0a0a0a14, 0 0 0 1px $lightBorderColor;
-$hoverBoxShadow: 0 0.5em 0.7em -0.125em #0a0a0a14, 0 0 0 1px $lightBorderColor;
+$boxShadow:
+  0 0.3em 0.5em -0.125em #0a0a0a14,
+  0 0 0 1px $lightBorderColor;
+$hoverBoxShadow:
+  0 0.5em 0.7em -0.125em #0a0a0a14,
+  0 0 0 1px $lightBorderColor;
 
 @mixin xl {
   @media (min-width: $xl) {

@@ -11,15 +11,7 @@ interface Props {
   onClick?: () => void;
 }
 
-function Button({
-  icon,
-  className,
-  text,
-  link,
-  type,
-  external,
-  onClick,
-}: Props) {
+function Button({ icon, className, text, link, type, external, onClick }: Props) {
   const Icon = icon ? getIcon(icon) : null;
   return link ? (
     <a
@@ -31,9 +23,7 @@ function Button({
       {text}
     </a>
   ) : (
-    <div
-      className={className ? `${type}Button ${className}` : `${type}Button`}
-      onClick={onClick}>
+    <div className={className ? `${type}Button ${className}` : `${type}Button`} onClick={onClick}>
       {text}
       {Icon && <Icon />}
     </div>

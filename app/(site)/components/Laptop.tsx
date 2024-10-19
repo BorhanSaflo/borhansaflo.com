@@ -8,7 +8,7 @@ function Laptop() {
   const element = useRef(null);
   const { scrollYProgress } = useScroll({
     target: element,
-    offset: ['start 0', 'end 0.6'],
+    offset: ["start 0", "end 0.6"],
   });
   const springScrollY = useSpring(scrollYProgress, { stiffness: 350, damping: 150 });
   const rotateX = useTransform(springScrollY, [1, 0], [360, 275.5]);

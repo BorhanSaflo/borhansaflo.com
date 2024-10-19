@@ -6,9 +6,7 @@ import type { Skill } from "@/types/Skill";
 import { motion } from "framer-motion";
 
 function Skill({ skill }: { skill: Skill }) {
-  const IconComponent = getIcon(skill.icon)
-    ? getIcon(skill.icon)
-    : getIcon("empty");
+  const IconComponent = getIcon(skill.icon) ? getIcon(skill.icon) : getIcon("empty");
 
   return (
     <div className={styles.skill}>

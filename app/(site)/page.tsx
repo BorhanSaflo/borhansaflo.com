@@ -5,12 +5,7 @@ import SectionComponent from "./components/Section";
 import React from "react";
 import ProjectsGrid from "./components/Projects/ProjectsGrid";
 import SkillsGrid from "./components/Skills/SkillsGrid";
-import {
-  getProjects,
-  getSections,
-  getSkills,
-  getSocials,
-} from "@/sanity/sanity-utils";
+import { getProjects, getSections, getSkills, getSocials } from "@/sanity/sanity-utils";
 
 export const revalidate = 3600;
 

@@ -27,7 +27,7 @@ const animationVariants: Variants = {
   },
 };
 
-function Hero ({ section }: HeroProps) {
+function Hero({ section }: HeroProps) {
   return (
     <div className={styles.bg} id={section.id}>
       <div className={styles.wrapper}>
@@ -67,6 +67,6 @@ function Hero ({ section }: HeroProps) {
       <SVGShape />
     </div>
   );
-};
+}
 
 export default Hero;

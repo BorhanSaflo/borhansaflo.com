@@ -129,7 +129,8 @@ $laptopHeight: 11.4em;
         li:nth-child(#{$i}) {
           left: $indent;
           width: $width;
-          animation: fadeIn 0.7s ease-in-out (0.5s + $i * 0.1) forwards,
+          animation:
+            fadeIn 0.7s ease-in-out (0.5s + $i * 0.1) forwards,
             glow 5s ease infinite alternate;
 
           &:after {
@@ -149,12 +150,7 @@ $laptopHeight: 11.4em;
         margin: 0.4em 0;
         border-radius: 0.3em;
         background: rgb(180, 180, 180);
-        background-image: linear-gradient(
-          to right,
-          #f3b153,
-          lighten(#f3b153, 20%),
-          #f3b153
-        );
+        background-image: linear-gradient(to right, #f3b153, lighten(#f3b153, 20%), #f3b153);
 
         @include md {
           height: 3.5%;
@@ -222,11 +218,7 @@ $laptopHeight: 11.4em;
       margin: auto;
       border-bottom-left-radius: 2em;
       border-bottom-right-radius: 2em;
-      background: linear-gradient(
-        180deg,
-        rgba(153, 154, 158, 0.75) 30%,
-        rgba(44, 45, 47, 0.6) 90%
-      );
+      background: linear-gradient(180deg, rgba(153, 154, 158, 0.75) 30%, rgba(44, 45, 47, 0.6) 90%);
     }
   }
 
@@ -235,12 +227,10 @@ $laptopHeight: 11.4em;
     margin: auto;
     border-bottom-left-radius: 2em;
     border-bottom-right-radius: 2em;
-    box-shadow: 0 5px 15px #0000004d, 0 2px 6px #00000080;
-    background: linear-gradient(
-      180deg,
-      rgba(153, 154, 158, 0.75) 30%,
-      rgba(44, 45, 47, 0.6) 90%
-    );
+    box-shadow:
+      0 5px 15px #0000004d,
+      0 2px 6px #00000080;
+    background: linear-gradient(180deg, rgba(153, 154, 158, 0.75) 30%, rgba(44, 45, 47, 0.6) 90%);
   }
 }
 
@@ -267,6 +257,10 @@ $laptopHeight: 11.4em;
 
 @keyframes glow {
   to {
-    background-position: 315px 0, 0 0, 0 190px, 50px 195px;
+    background-position:
+      315px 0,
+      0 0,
+      0 190px,
+      50px 195px;
   }
 }

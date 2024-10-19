@@ -3,11 +3,7 @@ import { getMeta } from "@/sanity/sanity-utils";
 import { Metadata } from "next";
 import Analytics from "./components/Analytics";
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <Analytics />
@@ -65,7 +61,7 @@ export async function generateMetadata(): Promise<Metadata> {
         url: meta.image,
         alt: meta.title,
       },
-    }
+    },
   };
 }
 
@@ -73,4 +69,4 @@ export const viewport = {
   width: "device-width",
   minimumScale: 1,
   themeColor: "#1C1A17",
-}
+};

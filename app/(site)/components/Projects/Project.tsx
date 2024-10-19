@@ -53,19 +53,13 @@ function Project({ project, windowWidth }: Props) {
   return (
     <>
       <AnimatePresence>
-        {isModalOpen && (
-          <ProjectModal project={project} handleClose={closeModal} />
-        )}
+        {isModalOpen && <ProjectModal project={project} handleClose={closeModal} />}
       </AnimatePresence>
       <div className={styles.project} onClick={openModal}>
         <div className={styles.projectImageContainer}>
           <Image
             className={styles.projectImage}
-            src={
-              project.previewImage
-                ? project.previewImage
-                : "/images/projects/placeholder.png"
-            }
+            src={project.previewImage ? project.previewImage : "/images/projects/placeholder.png"}
             alt={project.title}
             placeholder="blur"
             blurDataURL={`${project.previewImage}?h=225`}
@@ -98,9 +92,7 @@ function Project({ project, windowWidth }: Props) {
               );
             })}
             {project.tags.length - tagsShown > 0 && (
-              <span className={styles.projectTag}>
-                +{project.tags.length - tagsShown}
-              </span>
+              <span className={styles.projectTag}>+{project.tags.length - tagsShown}</span>
             )}
           </div>
         </div>

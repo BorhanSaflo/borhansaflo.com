@@ -11,9 +11,7 @@ function SkillsGrid({ skills }: Props) {
   return (
     <div className={styles.container}>
       {skills.map((skillGroup) => {
-        return (
-          <SkillGroupComponent key={skillGroup._id} skillGroup={skillGroup} />
-        );
+        return <SkillGroupComponent key={skillGroup._id} skillGroup={skillGroup} />;
       })}
     </div>
   );

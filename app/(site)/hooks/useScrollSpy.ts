@@ -1,13 +1,12 @@
 import { useLayoutEffect, useState } from "react";
-import { throttle } from 'throttle-debounce';
+import { throttle } from "throttle-debounce";
 
 const useScrollSpy = (ids: string[], offset: number = 0) => {
   const [currentSectionID, setCurrentSectionID] = useState("");
   const [isMobile, setIsMobile] = useState<boolean | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const clamp = (value: number) => Math.max(0, value);
-  const isBetween = (value: number, floor: number, ceil: number) =>
-    value >= floor && value <= ceil;
+  const isBetween = (value: number, floor: number, ceil: number) => value >= floor && value <= ceil;
 
   useLayoutEffect(() => {
     const scrollListener = () => {

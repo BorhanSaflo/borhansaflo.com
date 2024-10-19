@@ -20,23 +20,14 @@ interface Props {
   toggleMobileMenu: () => void;
 }
 
-function MobileMenu({
-  menuData,
-  isOpen,
-  socials,
-  currentSection,
-  toggleMobileMenu,
-}: Props) {
+function MobileMenu({ menuData, isOpen, socials, currentSection, toggleMobileMenu }: Props) {
   const CloseButton = getIcon("close");
   const OpenButton = getIcon("open");
   return (
     <>
       {isOpen && <RemoveScrollBar />}
-      <div
-        className={clsx(styles.mobileMenu, isOpen && styles.mobileMenuActive)}>
-        <div
-          onClick={() => toggleMobileMenu()}
-          className={styles.mobileMenuItemsContainer}>
+      <div className={clsx(styles.mobileMenu, isOpen && styles.mobileMenuActive)}>
+        <div onClick={() => toggleMobileMenu()} className={styles.mobileMenuItemsContainer}>
           {menuData.map((menuItem: menuProps) => (
             <a
               key={menuItem.name}
@@ -59,10 +50,7 @@ function MobileMenu({
       </div>
       <div
         onClick={toggleMobileMenu}
-        className={clsx(
-          styles.mobileMenuButton,
-          isOpen && styles.mobileMenuButtonActive
-        )}>
+        className={clsx(styles.mobileMenuButton, isOpen && styles.mobileMenuButtonActive)}>
         {isOpen ? <CloseButton /> : <OpenButton />}
       </div>
     </>

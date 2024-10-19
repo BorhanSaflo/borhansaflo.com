@@ -46,7 +46,9 @@
       gap: 15px;
       width: 100%;
       padding: 10px;
-      transition: color 0.1s linear, transform 0.25s ease;
+      transition:
+        color 0.1s linear,
+        transform 0.25s ease;
 
       .skillIconContainer {
         @include flexCenter;
