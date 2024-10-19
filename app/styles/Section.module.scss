@@ -18,6 +18,7 @@
     width: $xl;
     padding: 20px 30px;
     overflow-x: hidden;
+    will-change: auto !important;
 
     @include lg {
       gap: 40px;
