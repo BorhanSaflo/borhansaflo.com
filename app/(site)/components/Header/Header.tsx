@@ -36,7 +36,7 @@ function Header({ sections, socials }: Props) {
             {"B"}
           </a>
         </div>
-        {isMobile && (
+        {isMobile ? (
           <MobileMenu
             menuData={menuData}
             isOpen={isMobileMenuOpen}
@@ -44,8 +44,7 @@ function Header({ sections, socials }: Props) {
             toggleMobileMenu={toggleMobileMenu}
             currentSection={currentSectionID}
           />
-        )}
-        {isMobile === false && (
+        ) : (
           <DesktopMenu menuData={menuData} socials={socials} currentSection={currentSectionID} />
         )}
       </div>

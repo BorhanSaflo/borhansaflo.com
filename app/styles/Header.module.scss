@@ -185,6 +185,10 @@
         &:hover {
           color: $darkSecondary;
         }
+
+        @include lg {
+          padding: 0 5px;
+        }
       }
     }
 
