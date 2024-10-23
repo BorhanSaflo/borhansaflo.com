@@ -72,26 +72,24 @@ const Section = ({ section, children }: { section: Section; children: React.Reac
                 </div>
                 {subSection.image && (
                   <div
-                    className={`${styles.imageContainer} ${
+                    className={`${styles.image} ${
                       subSection.switchOrder ? "orderFirst" : "orderSecond"
                     }`}>
-                    <div className={styles.image}>
-                      <Image
-                        src={subSection.image}
-                        width="1400"
-                        height="900"
-                        placeholder="blur"
-                        blurDataURL={rgbDataURL(253, 251, 250)}
-                        alt={subSection.imageAlt}
-                        sizes="(max-width: 768px) 100vw,
+                    <Image
+                      src={subSection.image}
+                      width="1400"
+                      height="900"
+                      placeholder="blur"
+                      blurDataURL={rgbDataURL(253, 251, 250)}
+                      alt={subSection.imageAlt}
+                      sizes="(max-width: 768px) 100vw,
                         (max-width: 1200px) 50vw,
                         33vw"
-                        style={{
-                          width: "100%",
-                          height: "auto",
-                        }}
-                      />
-                    </div>
+                      style={{
+                        width: "100%",
+                        height: "auto",
+                      }}
+                    />
                   </div>
                 )}
               </div>
