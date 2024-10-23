@@ -1,11 +1,12 @@
+@use "sass:color";
 //Colors
 $darkPrimary: #2e1b0a;
 $darkSecondary: #1f1c17;
 $lightPrimary: #fcfcfc;
-$lightSecondary: darken($lightPrimary, 4%);
-$lightTertiary: darken($lightPrimary, 8%);
+$lightSecondary: color.adjust($lightPrimary, $lightness: -4%);
+$lightTertiary: color.adjust($lightPrimary, $lightness: -8%);
 $primary: #f3b153;
-$secondary: saturate(darken($primary, 2%), 1%);
+$secondary: color.adjust(color.adjust($primary, $lightness: -2%), $saturation: 1%);
 $tertiary: #cf7900;
 $primaryBoxShadow: rgba(0, 0, 0, 0.15);
 $secondaryBoxShadow: rgba(0, 0, 0, 0.25);

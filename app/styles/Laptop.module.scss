@@ -1,3 +1,5 @@
+@use "sass:color";
+@use "sass:math";
 @use "variables" as *;
 
 $laptopWidth: 20.4em;
@@ -119,12 +121,12 @@ $laptopHeight: 11.4em;
       background: rgb(38, 38, 38);
       list-style: none;
       @for $i from 1 through $numOfLines {
-        $width: random(40) + 30 + 0%;
+        $width: math.random(40) + 30 + 0%;
         $indent: 0px;
-        @if ($i < $numOfLines/2) {
-          $indent: $i * 5 + random(20) + 0px;
+        @if ($i < calc($numOfLines / 2)) {
+          $indent: $i * 5 + math.random(20) + 0px;
         } @else {
-          $indent: ((($numOfLines/2) * 5) - ($i * 2)) + random(20) + 0px;
+          $indent: ((calc($numOfLines / 2) * 5) - ($i * 2)) + math.random(20) + 0px;
         }
         li:nth-child(#{$i}) {
           left: $indent;
@@ -150,7 +152,12 @@ $laptopHeight: 11.4em;
         margin: 0.4em 0;
         border-radius: 0.3em;
         background: rgb(180, 180, 180);
-        background-image: linear-gradient(to right, #f3b153, lighten(#f3b153, 20%), #f3b153);
+        background-image: linear-gradient(
+          to right,
+          #f3b153,
+          color.adjust(#f3b153, $lightness: 20%),
+          #f3b153
+        );
 
         @include md {
           height: 3.5%;

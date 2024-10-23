@@ -1,3 +1,4 @@
+@use "sass:color";
 @use "variables" as *;
 
 html,
@@ -44,7 +45,7 @@ h3 {
   }
 }
 
-@mixin button {
+%button {
   @include flexCenter;
   @include noDrag;
   gap: 10px;
@@ -71,30 +72,30 @@ h3 {
 }
 
 .primaryButton {
-  @include button;
+  @extend %button;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   background-color: $darkSecondary;
   color: $secondary;
 
   &:hover {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 5px 10px;
-    background-color: darken($darkPrimary, 1%);
+    background-color: color.adjust($darkPrimary, $lightness: -1%);
   }
 }
 
 .secondaryButton {
-  @include button;
-  box-shadow: $boxShadow;
+  @extend %button;
   background-color: #fff;
+  box-shadow: $boxShadow;
   color: $darkPrimary;
 
   &:hover {
     box-shadow: $secondaryBoxShadow;
-    background-color: darken($lightPrimary, 1%);
+    background-color: color.adjust($lightPrimary, $lightness: -1%);
   }
 }
 
 .transparentButton {
-  @include button;
+  @extend %button;
   color: $darkPrimary;
 }

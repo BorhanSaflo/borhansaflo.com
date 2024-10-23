@@ -1,8 +1,10 @@
 import { createClient, groq } from "next-sanity";
 import clientConfig from "@/sanity/config/client-config";
 
-export async function GET(request: Request, { params }: { params: { id: string } }) {
-  const id = params.id;
+export const dynamic = "force-static";
+
+export async function GET(request: Request, { params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   const query = groq`*[_type == "shortUrl" && shortUrl == "${id}"]{
         longUrl,
         }`;
