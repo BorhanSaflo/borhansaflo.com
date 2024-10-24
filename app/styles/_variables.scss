@@ -1,31 +1,36 @@
 @use "sass:color";
-//Colors
+
+// Colors
 $darkPrimary: #1f1a12;
 $darkSecondary: #1f1c17;
 $lightPrimary: #fcfcfc;
 $lightSecondary: color.adjust($lightPrimary, $lightness: -4%);
 $lightTertiary: color.adjust($lightPrimary, $lightness: -8%);
 $primary: #f3b153;
-$secondary: color.adjust(color.adjust($primary, $lightness: -2%), $saturation: 1%);
+$secondary: color.adjust($primary, $lightness: -2%, $saturation: 1%);
 $tertiary: #cf7900;
 $primaryBoxShadow: rgba(0, 0, 0, 0.15);
 $secondaryBoxShadow: rgba(0, 0, 0, 0.25);
 $lightBorderColor: #e6ecf8;
 
-//Screen Sizes
+// Box Shadows
+$boxShadowColor: rgba(0, 0, 0, 0.15);
+$boxShadow:
+  0 0.3em 0.5em -0.125em $boxShadowColor,
+  0 0 0 1px $lightBorderColor;
+$hoverBoxShadow:
+  0 0.5em 0.7em -0.125em $boxShadowColor,
+  0 0 0 1px $lightBorderColor;
+
+// Screen Sizes
 $xl: 1279px;
 $lg: 1024px;
 $md: 768px;
 
-//Other
+// Other
 $headerSize: 64px;
-$boxShadow:
-  0 0.3em 0.5em -0.125em #0a0a0a14,
-  0 0 0 1px $lightBorderColor;
-$hoverBoxShadow:
-  0 0.5em 0.7em -0.125em #0a0a0a14,
-  0 0 0 1px $lightBorderColor;
 
+// Mixins
 @mixin xl {
   @media (min-width: $xl) {
     @content;
@@ -51,16 +56,7 @@ $hoverBoxShadow:
 }
 
 @mixin noDrag {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
-  -webkit-user-drag: none;
-  -moz-user-drag: none;
-  -khtml-user-drag: none;
-  -o-user-drag: none;
   user-drag: none;
 }
 
