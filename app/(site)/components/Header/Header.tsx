@@ -32,6 +32,7 @@ function Header({ sections, socials }: Props) {
     <div className={clsx(styles.wrapper, (isScrolled || isMobileMenuOpen) && styles.active)}>
       <div className={clsx(styles.container, fullWidthClassName)}>
         <div className={styles.logoContainer}>
+          {/*  eslint-disable-next-line @next/next/no-html-link-for-pages */}
           <a href="/#" className={clsx(styles.logo, isScrolled && styles.logoActive)}>
             {"B"}
           </a>
