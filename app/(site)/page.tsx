@@ -10,10 +10,12 @@ import { getProjects, getSections, getSkills, getSocials } from "@/sanity/sanity
 export const revalidate = 3600;
 
 export default async function Home() {
-  const sections = await getSections();
-  const projects = await getProjects();
-  const skills = await getSkills();
-  const socials = await getSocials();
+  const [sections, projects, skills, socials] = await Promise.all([
+    getSections(),
+    getProjects(),
+    getSkills(),
+    getSocials(),
+  ]);
 
   return (
     <div>
