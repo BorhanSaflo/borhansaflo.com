@@ -66,7 +66,7 @@ function Footer() {
       </svg>
       <footer className={styles.footer}>
         <span className={styles.logo}>{"B"}</span>
-        <span>{"Crafted with Passion & Code."}</span>
+        <span>{"Crafted with Code & Passion."}</span>
         <span>© {new Date().getFullYear()} Borhan Saflo. All rights reserved.</span>
       </footer>
     </>
