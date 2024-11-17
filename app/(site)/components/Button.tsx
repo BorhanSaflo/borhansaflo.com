@@ -1,7 +1,9 @@
 "use client";
 import React from "react";
 import { getIcon } from "@/lib/icons";
-interface Props {
+import clsx from "clsx";
+
+interface ButtonProps {
   text: string;
   type: string;
   icon?: string;
@@ -11,19 +13,20 @@ interface Props {
   onClick?: () => void;
 }
 
-function Button({ icon, className, text, link, type, external, onClick }: Props) {
+function Button({ icon, className, text, link, type, external, onClick }: ButtonProps) {
   const Icon = icon ? getIcon(icon) : null;
   return link ? (
     <a
       href={link}
-      className={className ? `${type}Button ${className}` : `${type}Button`}
+      className={clsx(className, `${type}Button`)}
       onClick={onClick}
-      {...(external && { target: "_blank", rel: "noopener noreferrer" })}>
+      target={external ? "_blank" : undefined}
+      rel={external ? "noopener noreferrer" : undefined}>
       {Icon && <Icon />}
       {text}
     </a>
   ) : (
-    <div className={className ? `${type}Button ${className}` : `${type}Button`} onClick={onClick}>
+    <div className={clsx(className, `${type}Button`)} onClick={onClick}>
       {text}
       {Icon && <Icon />}
     </div>
