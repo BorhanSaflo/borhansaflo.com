@@ -1,12 +1,15 @@
 import "@/app/styles/globals.scss";
 import { getMeta } from "@/sanity/sanity-utils";
 import { Metadata } from "next";
-import Analytics from "./components/Analytics";
+import Script from "next/script";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <Analytics />
+      <Script
+        defer
+        src="https://cloud.umami.is/script.js"
+        data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID} />
       <body>{children}</body>
     </html>
   );
