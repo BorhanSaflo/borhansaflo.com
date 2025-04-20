@@ -1,4 +1,5 @@
 import { PortableTextBlock } from "sanity";
+import { ReactNode } from "react";
 
 export interface Section extends SectionBody {
   _id: string;
@@ -12,7 +13,7 @@ export type SectionBody = {
   id: string;
   heading: string;
   subHeading: string;
-  content?: JSX.Element;
+  content?: ReactNode;
   order: number;
   subSections: {
     name: string;
