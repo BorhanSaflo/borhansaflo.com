@@ -41,6 +41,7 @@ import {
   SiIntellijidea,
   SiTailwindcss,
   SiKubernetes,
+  SiGo,
 } from "react-icons/si";
 import { VscDebugBreakpointData } from "react-icons/vsc";
 import { GrStatusUnknown } from "react-icons/gr";
@@ -80,6 +81,7 @@ const icons = new Map<string, IconType>([
   ["python", SiPython],
   ["c", SiC],
   ["c++", SiCplusplus],
+  ["go", SiGo],
   ["php", SiPhp],
   ["mysql", SiMysql],
   ["mongodb", SiMongodb],
