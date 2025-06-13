@@ -8,7 +8,6 @@ import { Social } from "@/types/Social";
 import { fullWidthClassName } from "react-remove-scroll-bar";
 import useScrollSpy from "../../hooks/useScrollSpy";
 import clsx from "clsx";
-import Link from "next/link";
 
 interface Props {
   sections: Section[];
