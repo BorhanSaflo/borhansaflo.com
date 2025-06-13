@@ -3,10 +3,8 @@
 .bg {
   position: relative;
   overflow: hidden;
-  background: $secondary;
   background: linear-gradient(0deg, $secondary 0%, $primary 100%);
   z-index: 0;
-
   &:before {
     content: "";
     z-index: -1;
@@ -35,131 +33,120 @@
   min-height: 100vh;
   padding: 100px 0;
   overflow: hidden;
+}
 
-  .container {
-    @include flexCenter;
-    flex-direction: column;
-    gap: 40px;
-    max-width: 1150px;
-    padding: 0 30px;
-    margin: 0 auto;
+.container {
+  @include flexCenter;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 1150px;
+  padding: 0 30px;
+  margin: 0 auto;
+  @include lg {
+    flex: 1;
+    flex-direction: row;
+    gap: 0;
+  }
+}
 
-    @include lg {
-      flex: 1;
-      flex-direction: row;
-      gap: 0px;
+.containerItem {
+  @include flexCenter;
+  flex-direction: column;
+  gap: 0.3em;
+  padding-bottom: 10px;
+  text-align: center;
+  @include lg {
+    flex: 1;
+    &.headingContainer {
+      align-items: flex-start;
+      text-align: left;
     }
-
-    .containerItem {
-      @include flexCenter;
-      flex-direction: column;
-      gap: 0.3em;
-      padding-bottom: 10px;
-      text-align: center;
-
-      @include lg {
-        flex: 1;
-        &.headingContainer {
-          align-items: flex-start;
-          text-align: left;
-        }
-        &.laptopContainer {
-          align-items: flex-end;
-        }
-      }
-
-      .heading {
-        white-space: nowrap;
-        color: $darkPrimary;
-        font-size: 2.8rem;
-        font-weight: 700;
-
-        @include md {
-          font-size: 2.8rem;
-        }
-
-        @include lg {
-          font-size: 3.7rem;
-        }
-      }
-
-      .subHeading {
-        h2,
-        span {
-          max-width: 350px;
-          line-height: 1.5em;
-          color: $darkPrimary;
-          font-size: 1.2rem;
-          font-weight: 600;
-
-          span {
-            text-underline-offset: 2px;
-            display: inline-flex;
-            position: relative;
-            padding: 0 2px;
-            overflow: hidden;
-            text-decoration-color: $tertiary !important;
-            transform-style: preserve-3d;
-            cursor: text;
-
-            &::after {
-              content: "";
-              position: absolute;
-              bottom: 0px;
-              left: 0;
-              z-index: -1;
-              width: 100%;
-              height: 100%;
-              background-color: $tertiary;
-              transform: translate3d(-101%, 0, 0);
-              transition: transform 0.25s ease-in-out;
-            }
-
-            &:hover::after {
-              transform: translate3d(0, 0, 0);
-            }
-          }
-        }
-
-        @include md {
-          h2,
-          span {
-            max-width: 500px;
-            font-size: 1.4rem;
-          }
-        }
-      }
-
-      .buttonsContainer {
-        @include flexCenter;
-        flex-direction: column;
-        gap: 1em;
-        width: 100%;
-        margin-top: 1.2rem;
-
-        @include lg {
-          flex-direction: row;
-          justify-content: flex-start;
-        }
-      }
+    &.laptopContainer {
+      align-items: flex-end;
     }
   }
+}
 
-  .scrollDownArrow {
-    display: none;
-    position: absolute;
-    bottom: 10px;
-    opacity: 0.75;
-    margin: 0;
-    text-align: center;
-    color: $darkPrimary;
-    font-size: 2rem;
-    animation: arrowSliding 1.5s ease infinite;
-    transition: all 0.25s ease;
+.heading {
+  white-space: nowrap;
+  color: $darkPrimary;
+  font-size: 2.8rem;
+  font-weight: 700;
+  @include md {
+    font-size: 2.8rem;
+  }
+  @include lg {
+    font-size: 3.7rem;
+  }
+}
 
-    @include md {
-      display: block;
-    }
+.subHeading h2,
+.subHeading span {
+  max-width: 350px;
+  line-height: 1.5em;
+  color: $darkPrimary;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.subHeading span {
+  text-underline-offset: 2px;
+  display: inline-flex;
+  position: relative;
+  padding: 0 2px;
+  overflow: hidden;
+  text-decoration-color: $tertiary !important;
+  transform-style: preserve-3d;
+  cursor: text;
+}
+.subHeading span::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background-color: $tertiary;
+  transform: translate3d(-101%, 0, 0);
+  transition: transform 0.25s;
+}
+.subHeading span:hover::after {
+  transform: translate3d(0, 0, 0);
+}
+
+@include md {
+  .subHeading h2,
+  .subHeading span {
+    max-width: 500px;
+    font-size: 1.4rem;
+  }
+}
+
+.buttonsContainer {
+  @include flexCenter;
+  flex-direction: column;
+  gap: 1em;
+  width: 100%;
+  margin-top: 1.2rem;
+  @include lg {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+}
+
+.scrollDownArrow {
+  display: none;
+  position: absolute;
+  bottom: 10px;
+  opacity: 0.75;
+  margin: 0;
+  text-align: center;
+  color: $darkPrimary;
+  font-size: 2rem;
+  animation: arrowSliding 1.5s ease infinite;
+  transition: all 0.25s;
+  @include md {
+    display: block;
   }
 }
 
@@ -170,7 +157,6 @@
   overflow: hidden;
 }
 
-//Animations
 @keyframes arrowSliding {
   0%,
   100% {

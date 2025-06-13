@@ -8,229 +8,201 @@
   height: $headerSize;
   background-color: transparent;
   transition:
-    background-color 0.25s ease-in-out,
-    color 0.25s ease-in-out;
+    background-color 0.25s,
+    color 0.25s;
+}
 
-  .menuContainer {
-    a {
-      position: relative;
-      color: $darkSecondary !important;
+.menuContainer a {
+  position: relative;
+  color: $darkSecondary !important;
+}
+.menuContainer a .underline {
+  visibility: hidden;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: $primary;
+}
 
-      .underline {
-        visibility: hidden;
-        position: absolute;
-        bottom: 0px;
-        left: 0;
-        right: 0;
-        height: 3px;
-        background: $primary;
-      }
-    }
+.wrapper.active {
+  box-shadow: 0 4px 22px 0 #0000001a;
+  background-color: $darkSecondary;
+}
+.wrapper.active .mobileActiveMenuItem {
+  padding-left: 35px;
+  border-left: 5px solid $primary;
+  font-weight: 600;
+}
+.wrapper.active .menuContainer a {
+  color: $primary !important;
+}
+.wrapper.active .menuContainer a .underline {
+  visibility: visible;
+}
+.wrapper.active .menuContainer a:hover {
+  color: $secondary !important;
+}
+.wrapper.active .mobileMenuButton {
+  color: $primary !important;
+}
+
+.container {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: $xl;
+  height: 100%;
+  padding: 0 25px;
+  @include lg {
+    padding: 0 30px;
   }
+}
 
-  &.active {
-    box-shadow: 0px 4px 22px 0px #0000001a;
+.logoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+  @include md {
+    flex-basis: 0;
+    flex-grow: 1;
+  }
+}
+
+.logo {
+  @include noDrag;
+  display: flex;
+  align-items: flex-end;
+  height: 38px;
+  padding: 0 10px;
+  border-radius: 5px;
+  background-color: $darkSecondary;
+  color: $primary;
+  font-size: 2rem;
+  font-weight: 600;
+  transition: all 0.25s;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 0 2px 5px $secondaryBoxShadow;
+    transform: translateY(-2px);
+  }
+  &:after {
+    content: "orhan";
+    width: auto;
+    max-width: 0;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: bottom;
+    transition: max-width 0.25s;
+  }
+  &.logoActive:after {
+    max-width: 200px;
+  }
+}
+
+.mobileMenu {
+  display: flex;
+  position: fixed;
+  top: $headerSize;
+  left: 0;
+  flex-direction: column;
+  justify-content: space-between;
+  opacity: 0;
+  width: 100%;
+  height: 0;
+  background-color: $darkSecondary;
+  overflow: hidden;
+  transition:
+    opacity 0.25s,
+    height 0.25s;
+}
+.mobileMenu.mobileMenuActive {
+  opacity: 1;
+  height: calc(100% - $headerSize);
+}
+.mobileMenuItemsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.mobileMenuItem {
+  width: 100%;
+  padding: 15px 40px;
+  border-bottom: 1px solid $secondary;
+  color: $primary;
+  font-size: 1.8em;
+}
+.mobileMenuItem:first-child {
+  border-top: 1px solid $secondary;
+}
+.mobileSocialsContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.mobileMenuButton {
+  font-size: 27px;
+  transition: transform 0.25s;
+  cursor: pointer;
+}
+.mobileMenuButton.mobileMenuButtonActive {
+  transform: rotate(90deg);
+}
+
+.menuContainer {
+  @include flexCenter;
+  gap: 30px;
+  height: 100%;
+  font-size: 18px;
+  font-weight: 700;
+}
+.menuContainer a {
+  @include flexCenter;
+  height: 100%;
+  &:hover {
+    color: $darkSecondary;
+  }
+  @include lg {
+    padding: 0 5px;
+  }
+}
+
+.socialsContainer {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-end;
+  @include md {
+    flex-basis: 0;
+    flex-grow: 1;
+  }
+}
+
+.socialButton {
+  @include flexCenter;
+  width: 55px;
+  height: 55px;
+  margin: 10px;
+  border-radius: 5px;
+  background-color: $darkSecondary;
+  color: $primary;
+  font-size: 35px;
+  transition: all 0.25s;
+  @include md {
+    width: 35px;
+    height: 35px;
+    margin: 0;
+    font-size: 20px;
+  }
+  &:hover {
+    box-shadow: 0 2px 5px $secondaryBoxShadow;
     background-color: $darkSecondary;
-
-    .mobileActiveMenuItem {
-      padding-left: 35px;
-      border-left: 5px solid $primary;
-      font-weight: 600;
-    }
-
-    .menuContainer {
-      a {
-        color: $primary !important;
-
-        .underline {
-          visibility: visible;
-        }
-
-        &:hover {
-          color: $secondary !important;
-        }
-      }
-    }
-
-    .mobileMenuButton {
-      color: $primary !important;
-    }
-  }
-
-  .container {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    max-width: $xl;
-    height: 100%;
-    padding: 0 25px;
-
-    @include lg {
-      padding: 0 30px;
-    }
-
-    .logoContainer {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      height: 100%;
-
-      @include md {
-        flex-basis: 0;
-        flex-grow: 1;
-      }
-
-      .logo {
-        @include noDrag;
-        display: flex;
-        align-items: flex-end;
-        height: 38px;
-        padding: 0 10px;
-        border-radius: 5px;
-        background-color: $darkSecondary;
-        color: $primary;
-        font-size: 2rem;
-        font-weight: 600;
-        transition: all 0.25s ease-in-out;
-        cursor: pointer;
-
-        &:hover {
-          box-shadow: 0px 2px 5px $secondaryBoxShadow;
-          transform: translateY(-2px);
-        }
-
-        &:after {
-          content: "orhan";
-          width: auto;
-          max-width: 0;
-          overflow: hidden;
-          display: inline-block;
-          vertical-align: bottom;
-          transition: max-width 0.25s ease;
-        }
-
-        &.logoActive {
-          &:after {
-            max-width: 200px;
-          }
-        }
-      }
-    }
-
-    .mobileMenu {
-      display: flex;
-      position: fixed;
-      top: $headerSize;
-      left: 0;
-      flex-direction: column;
-      justify-content: space-between;
-      opacity: 0;
-      width: 100%;
-      height: 0;
-      background-color: $darkSecondary;
-      overflow: hidden;
-      transition:
-        opacity 0.25s ease-in-out,
-        height 0.25s ease-in-out;
-
-      &.mobileMenuActive {
-        opacity: 1;
-        height: calc(100% - $headerSize);
-      }
-
-      .mobileMenuItemsContainer {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-
-        .mobileMenuItem {
-          width: 100%;
-          padding: 15px 40px;
-          border-bottom: 1px solid $secondary;
-          color: $primary;
-          font-size: 1.8em;
-
-          &:first-child {
-            border-top: 1px solid $secondary;
-          }
-        }
-      }
-
-      .mobileSocialsContainer {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        margin-bottom: 20px;
-      }
-    }
-
-    .mobileMenuButton {
-      font-size: 27px;
-      transition: transform 0.25s ease;
-      cursor: pointer;
-
-      &.mobileMenuButtonActive {
-        transform: rotate(90deg);
-      }
-    }
-
-    .menuContainer {
-      @include flexCenter;
-      gap: 30px;
-      height: 100%;
-      font-size: 18px;
-      font-weight: 700;
-
-      a {
-        @include flexCenter;
-        height: 100%;
-        &:hover {
-          color: $darkSecondary;
-        }
-
-        @include lg {
-          padding: 0 5px;
-        }
-      }
-    }
-
-    .socialsContainer {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      justify-content: flex-end;
-
-      @include md {
-        flex-basis: 0;
-        flex-grow: 1;
-      }
-    }
-
-    .socialButton {
-      @include flexCenter;
-      width: 55px;
-      height: 55px;
-      margin: 10px;
-      border-radius: 5px;
-      background-color: $darkSecondary;
-      color: $primary;
-      font-size: 35px;
-      transition: all 0.25s ease-in-out;
-
-      @include md {
-        width: 35px;
-        height: 35px;
-        margin: 0;
-        font-size: 20px;
-      }
-
-      &:hover {
-        box-shadow: 0px 2px 5px $secondaryBoxShadow;
-        background-color: $darkSecondary;
-        transform: translateY(-2px);
-      }
-    }
+    transform: translateY(-2px);
   }
 }

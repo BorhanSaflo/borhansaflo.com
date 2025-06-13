@@ -10,194 +10,183 @@
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 100;
+}
 
-  .modal {
-    @extend %card;
-    display: flex;
-    flex-direction: column;
-    width: 95%;
-    height: 95%;
-    z-index: 101;
+.modal {
+  @extend %card;
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  height: 95%;
+  z-index: 101;
+  @include md {
+    width: 850px;
+    max-width: 90%;
+    height: 800px;
+    max-height: 85%;
+  }
+}
 
-    @include md {
-      width: 850px;
-      max-width: 90%;
-      height: 800px;
-      max-height: 85%;
+.header {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 30px 10px;
+  border-bottom: 1px solid $lightBorderColor;
+  color: $darkPrimary;
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  overflow: hidden;
+}
+
+.title {
+  color: $darkPrimary;
+  font-size: 1.5em;
+  font-weight: 700;
+  @include lg {
+    font-size: 1.8em;
+  }
+}
+
+.titleTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.titleTag {
+  @include noDrag;
+  @include flexCenter;
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: $primary;
+  color: $darkPrimary;
+  font-size: 0.8em;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+  &:hover {
+    background-color: $secondary;
+  }
+  @include lg {
+    padding: 5px 12px;
+    font-size: 0.9em;
+  }
+}
+
+.closeButton {
+  @include flexCenter;
+  color: $darkPrimary;
+  font-size: 1.2em;
+  font-weight: 700;
+  transition: all 0.2s ease;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  &:hover {
+    background-color: $lightSecondary;
+  }
+}
+
+.bodyContainer {
+  overflow-y: auto;
+}
+
+.body {
+  @include flexCenter;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 30px;
+}
+
+.imagePagination {
+  @include flexCenter;
+  gap: 5px;
+  padding: 5px 0;
+}
+
+.imagePaginationItem {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: color.adjust($lightTertiary, $lightness: -10%);
+  cursor: pointer;
+}
+
+.activeImagePaginationItem {
+  background-color: $primary;
+  cursor: default;
+}
+
+.imageContainerMultiple:after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba($darkPrimary, 0.15) 0%,
+    transparent 10%,
+    transparent 90%,
+    rgba($darkPrimary, 0.15) 100%
+  );
+  z-index: 1;
+}
+
+.imageContainer {
+  @include noDrag;
+  position: relative;
+  overflow: hidden;
+  height: 300px;
+  width: 100%;
+  border-radius: 5px;
+  @include md {
+    height: 450px;
+  }
+  span {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  img {
+    pointer-events: none;
+    user-select: none;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    object-position: center;
+    object-fit: cover;
+    image-rendering: auto;
+  }
+  .arrow {
+    position: absolute;
+    top: 50%;
+    color: $lightPrimary;
+    font-size: 2em;
+    transition: transform 0.25s;
+    filter: drop-shadow(0px 3px 2px #0000001a);
+    cursor: pointer;
+    z-index: 2;
+    &:hover {
+      transform: scale(1.1);
     }
   }
+}
 
-  .header {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 30px 10px 30px;
-    border-bottom: 1px solid $lightBorderColor;
-    color: $darkPrimary;
-
-    .titleContainer {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      align-items: flex-start;
-      overflow: hidden;
-
-      .title {
-        color: $darkPrimary;
-        font-size: 1.5em;
-        font-weight: 700;
-
-        @include lg {
-          font-size: 1.8em;
-        }
-      }
-
-      .titleTags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 5px;
-      }
-
-      .titleTag {
-        @include noDrag;
-        @include flexCenter;
-        gap: 5px;
-        padding: 5px 10px;
-        border-radius: 5px;
-        background-color: $primary;
-        color: $darkPrimary;
-        font-size: 0.8em;
-        font-weight: 500;
-        transition: background-color 0.2s ease;
-
-        &:hover {
-          background-color: $secondary;
-        }
-
-        @include lg {
-          padding: 5px 12px;
-          font-size: 0.9em;
-        }
-      }
-    }
-
-    .closeButton {
-      @include flexCenter;
-      color: $darkPrimary;
-      font-size: 1.2em;
-      font-weight: 700;
-      transition: all 0.2s ease;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      cursor: pointer;
-
-      &:hover {
-        background-color: $lightSecondary;
-      }
-    }
-  }
-
-  .bodyContainer {
-    overflow-y: auto;
-
-    .body {
-      @include flexCenter;
-      flex-direction: column;
-      gap: 10px;
-      padding: 20px 30px;
-
-      .imagePagination {
-        @include flexCenter;
-        gap: 5px;
-        padding: 5px 0;
-
-        .imagePaginationItem {
-          width: 8px;
-          height: 8px;
-          border-radius: 50%;
-          background-color: color.adjust($lightTertiary, $lightness: -10%);
-          cursor: pointer;
-        }
-
-        .activeImagePaginationItem {
-          background-color: $primary;
-          cursor: default;
-        }
-      }
-
-      .imageContainerMultiple:after {
-        content: "";
-        pointer-events: none;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          90deg,
-          rgba($darkPrimary, 0.15) 0%,
-          transparent 10%,
-          transparent 90%,
-          rgba($darkPrimary, 0.15) 100%
-        );
-        z-index: 1;
-      }
-
-      .imageContainer {
-        @include noDrag;
-        position: relative;
-        overflow: hidden;
-        height: 300px;
-        width: 100%;
-        border-radius: 5px;
-
-        @include md {
-          height: 450px;
-        }
-
-        span {
-          position: absolute;
-          width: 100%;
-          height: 100%;
-        }
-
-        img {
-          pointer-events: none;
-          user-select: none;
-          display: block;
-          width: 100%;
-          height: 100%;
-          border-radius: inherit;
-          object-position: center;
-          object-fit: cover;
-          image-rendering: auto;
-        }
-
-        .arrow {
-          position: absolute;
-          top: 50%;
-          color: $lightPrimary;
-          font-size: 2em;
-          transition: transform 0.25s;
-          filter: drop-shadow(0px 3px 2px #0000001a);
-          cursor: pointer;
-          z-index: 2;
-
-          &:hover {
-            transform: scale(1.1);
-            transition: transform 0.25s;
-          }
-        }
-      }
-
-      .description {
-        width: 100%;
-        text-align: left;
-        line-height: 1.5em;
-      }
-    }
-  }
+.description {
+  width: 100%;
+  text-align: left;
+  line-height: 1.5em;
 }

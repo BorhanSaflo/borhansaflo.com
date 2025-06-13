@@ -32,15 +32,18 @@ h3 {
   box-sizing: border-box;
 }
 
-.orderFirst {
+.orderFirst,
+.orderSecond {
   order: auto;
+}
+
+.orderFirst {
   @include lg {
     order: 1;
   }
 }
 
 .orderSecond {
-  order: auto;
   @include lg {
     order: 2;
   }
@@ -56,10 +59,10 @@ h3 {
   font-size: 1rem;
   font-weight: 700;
   transition:
-    transform 0.25s ease-in-out,
-    background-color 0.25s ease,
-    color 0.25s ease,
-    box-shadow 0.25s ease-in-out;
+    transform 0.25s,
+    background-color 0.25s,
+    color 0.25s,
+    box-shadow 0.25s;
   cursor: pointer;
 
   @include md {
@@ -74,12 +77,12 @@ h3 {
 
 .primaryButton {
   @extend %button;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
   background-color: $darkSecondary;
   color: $secondary;
 
   &:hover {
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 5px 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0 5px 10px;
     background-color: color.adjust($darkPrimary, $lightness: -1%);
   }
 }
