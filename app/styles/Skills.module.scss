@@ -24,11 +24,9 @@
   }
 
   .skillGroup {
+    @extend %card;
     @include noDrag;
     padding: 30px 25px;
-    border-radius: 5px;
-    box-shadow: $boxShadow;
-    background-color: $lightPrimary;
     transition: all 0.25s ease;
 
     &:hover {

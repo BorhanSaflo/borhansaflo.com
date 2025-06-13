@@ -1,8 +1,7 @@
 @use "variables" as *;
 
 .footer {
-  @include flexCenter;
-  flex-direction: column;
+  @include flexColumnCenter;
   gap: 5px;
   width: 100%;
   padding: 100px 0px;

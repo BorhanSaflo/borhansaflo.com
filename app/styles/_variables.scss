@@ -70,3 +70,27 @@ $headerSize: 64px;
     transform: translateY(0);
   }
 }
+
+// Card/Box Placeholder
+%card {
+  border-radius: 5px;
+  box-shadow: $boxShadow;
+  background-color: $lightPrimary;
+}
+
+// Tag/Badge Placeholder
+%tag {
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: $primary;
+  color: $darkPrimary;
+  font-size: 0.8em;
+}
+
+// Flex Column Center Mixin
+@mixin flexColumnCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

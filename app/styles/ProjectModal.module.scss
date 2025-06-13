@@ -12,15 +12,11 @@
   z-index: 100;
 
   .modal {
+    @extend %card;
     display: flex;
     flex-direction: column;
     width: 95%;
     height: 95%;
-    border-radius: 5px;
-    box-shadow:
-      0 0.3em 0.5em -0.125em rgba(10, 10, 10, 0.1),
-      0 0 0 1px $lightBorderColor;
-    background-color: $lightPrimary;
     z-index: 101;
 
     @include md {

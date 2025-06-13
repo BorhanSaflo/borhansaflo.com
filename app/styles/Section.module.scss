@@ -12,8 +12,7 @@
   }
 
   .container {
-    @include flexCenter;
-    flex-direction: column;
+    @include flexColumnCenter;
     gap: 15px;
     width: $xl;
     padding: 20px 30px;
@@ -38,8 +37,7 @@
     }
 
     .subSectionsContainer {
-      display: flex;
-      flex-direction: column;
+      @include flexColumnCenter;
       gap: 75px;
       width: 100%;
 
@@ -48,8 +46,7 @@
       }
 
       .subSection {
-        @include flexCenter;
-        flex-direction: column;
+        @include flexColumnCenter;
         gap: 50px;
         width: 100%;
         margin-top: 0.5em;
@@ -84,8 +81,7 @@
       }
 
       .buttonsContainer {
-        display: flex;
-        flex-direction: column;
+        @include flexColumnCenter;
         gap: 1em;
         align-self: center;
         margin-top: 20px;
