@@ -8,6 +8,7 @@ import { Social } from "@/types/Social";
 import { fullWidthClassName } from "react-remove-scroll-bar";
 import useScrollSpy from "../../hooks/useScrollSpy";
 import clsx from "clsx";
+import Link from "next/link";
 
 interface Props {
   sections: Section[];
@@ -32,10 +33,13 @@ function Header({ sections, socials }: Props) {
     <div className={clsx(styles.wrapper, (isScrolled || isMobileMenuOpen) && styles.active)}>
       <div className={clsx(styles.container, fullWidthClassName)}>
         <div className={styles.logoContainer}>
-          {/*  eslint-disable-next-line @next/next/no-html-link-for-pages */}
-          <a href="/#" className={clsx(styles.logo, isScrolled && styles.logoActive)}>
+          <div
+            className={clsx(styles.logo, isScrolled && styles.logoActive)}
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}>
             {"B"}
-          </a>
+          </div>
         </div>
         {isMobile ? (
           <MobileMenu

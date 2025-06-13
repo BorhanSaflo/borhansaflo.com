@@ -94,6 +94,7 @@
         font-size: 2rem;
         font-weight: 600;
         transition: all 0.25s ease-in-out;
+        cursor: pointer;
 
         &:hover {
           box-shadow: 0px 2px 5px $secondaryBoxShadow;
@@ -102,14 +103,17 @@
 
         &:after {
           content: "orhan";
-          width: 0;
+          width: auto;
+          max-width: 0;
           overflow: hidden;
-          transition: all 0.25s ease;
+          display: inline-block;
+          vertical-align: bottom;
+          transition: max-width 0.25s ease;
         }
 
         &.logoActive {
           &:after {
-            width: 85px;
+            max-width: 200px;
           }
         }
       }
