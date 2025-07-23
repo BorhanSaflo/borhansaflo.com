@@ -1,8 +1,6 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  sassOptions: {
-    silenceDeprecations: ["legacy-js-api"],
-  },
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
@@ -12,7 +10,7 @@ const nextConfig = {
       },
     ],
   },
-  async rewrites() {
+  rewrites: async () => {
     return [
       {
         source: "/:path((?!admin).*)",
@@ -22,4 +20,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+export default nextConfig;
