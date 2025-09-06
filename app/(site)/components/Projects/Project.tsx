@@ -1,11 +1,34 @@
 "use client";
 import Image from "next/image";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import { getIcon } from "@/lib/icons";
 import styles from "@/app/styles/Projects.module.scss";
 import ProjectModal from "./Modal/Modal";
 import type { Project } from "@/types/Project";
 import { AnimatePresence } from "framer-motion";
+
+const MAX_DESCRIPTION_LENGTH = 160;
+const MOBILE_BREAKPOINT = 768;
+const TABLET_BREAKPOINT = 1024;
+
+// Responsive tag limits based on screen size
+const getMaxTagsToShow = (windowWidth: number): number => {
+  if (windowWidth < MOBILE_BREAKPOINT) return 3; // Mobile
+  if (windowWidth < TABLET_BREAKPOINT) return 4; // Tablet
+  return 6; // Desktop
+};
+
+const truncateDescription = (description: string) => {
+  if (description.length <= MAX_DESCRIPTION_LENGTH) return description;
+
+  const truncated = description.substring(0, MAX_DESCRIPTION_LENGTH);
+  const lastSpaceIndex = truncated.lastIndexOf(" ");
+
+  // If no space found, truncate at MAX_DESCRIPTION_LENGTH
+  const truncateAt = lastSpaceIndex > 0 ? lastSpaceIndex : MAX_DESCRIPTION_LENGTH;
+
+  return `${description.substring(0, truncateAt)}...`;
+};
 
 interface Props {
   project: Project;
@@ -14,41 +37,9 @@ interface Props {
 
 function Project({ project, windowWidth }: Props) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [tagsWidth, setTagsWidth] = useState<number[]>([]);
-  const containerRef = useRef<any>(null);
-  const [tagsShown, setTagsShown] = useState<number>(project.tags.length);
-  const [computedWidths, setComputedWidths] = useState<boolean>(false);
-
-  useEffect(() => {
-    if (!computedWidths) {
-      const tagElements = containerRef.current.children;
-      const tempArray = [];
-      for (let i = 0; i < tagElements.length; i++) {
-        tempArray.push(tagElements[i].offsetWidth);
-      }
-      setTagsWidth(tempArray);
-      setComputedWidths(true);
-    }
-    const tagsContainerWidth = containerRef.current.offsetWidth;
-    let totalWidth = 0;
-
-    for (let i = 0; i < tagsWidth.length; i++) {
-      totalWidth += tagsWidth[i] + 2;
-      if (totalWidth + 60 > tagsContainerWidth) {
-        setTagsShown(i);
-        return;
-      }
-    }
-    setTagsShown(tagsWidth.length);
-  }, [windowWidth, tagsShown, computedWidths, tagsWidth]);
-
-  const truncateDescription = (description: string) => {
-    return `${description.substring(0, description.lastIndexOf(" ", 180))}...`;
-  };
-
-  const StatusIcon = getIcon(project.status);
   const closeModal = () => setIsModalOpen(false);
   const openModal = () => setIsModalOpen(true);
+  const StatusIcon = getIcon(project.status);
 
   return (
     <>
@@ -77,23 +68,31 @@ function Project({ project, windowWidth }: Props) {
             <h3 className={styles.projectTitle}>{project.title}</h3>
             <div className={styles.projectDescription}>
               <p>
-                {project.description.length > 180
+                {project.description.length > MAX_DESCRIPTION_LENGTH
                   ? truncateDescription(project.description)
                   : project.description}
               </p>
             </div>
           </div>
-          <div ref={containerRef} className={styles.projectTags}>
-            {project.tags.slice(0, tagsShown).map((tag) => {
+          <div className={styles.projectTags}>
+            {(() => {
+              const maxTags = getMaxTagsToShow(windowWidth);
+              const tagsToShow = project.tags.slice(0, maxTags);
+              const remainingCount = project.tags.length - maxTags;
+
               return (
-                <span key={tag._id} className={styles.projectTag}>
-                  {tag.name}
-                </span>
+                <>
+                  {tagsToShow.map((tag) => (
+                    <span key={tag._id} className={styles.projectTag}>
+                      {tag.name}
+                    </span>
+                  ))}
+                  {remainingCount > 0 && (
+                    <span className={styles.projectTag}>+{remainingCount}</span>
+                  )}
+                </>
               );
-            })}
-            {project.tags.length - tagsShown > 0 && (
-              <span className={styles.projectTag}>+{project.tags.length - tagsShown}</span>
-            )}
+            })()}
           </div>
         </div>
       </div>
