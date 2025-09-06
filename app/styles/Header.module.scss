@@ -54,12 +54,9 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: $xl;
+  max-width: $lg;
   height: 100%;
-  padding: 0 25px;
-  @include lg {
-    padding: 0 30px;
-  }
+  padding: 0 20px;
 }
 
 .logoContainer {

@@ -26,12 +26,8 @@ $numOfLines: 12;
     height: $laptopHeight * 1.2;
   }
   @include lg {
-    width: $laptopWidth * 1.3;
-    height: $laptopHeight * 1.3;
-  }
-  @include xl {
-    width: $laptopWidth * 1.4;
-    height: $laptopHeight * 1.4;
+    width: $laptopWidth * 1.25;
+    height: $laptopHeight * 1.25;
   }
   &:hover {
     transform: scale(1.01);

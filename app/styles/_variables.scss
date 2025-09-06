@@ -23,7 +23,6 @@ $hoverBoxShadow:
   0 0 0 1px $lightBorderColor;
 
 // Screen Sizes
-$xl: 1279px;
 $lg: 1024px;
 $md: 768px;
 
@@ -31,12 +30,6 @@ $md: 768px;
 $headerSize: 64px;
 
 // Mixins
-@mixin xl {
-  @media (min-width: $xl) {
-    @content;
-  }
-}
-
 @mixin lg {
   @media (min-width: $lg) {
     @content;

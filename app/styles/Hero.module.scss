@@ -39,7 +39,7 @@
   @include flexCenter;
   flex-direction: column;
   gap: 40px;
-  max-width: 1150px;
+  max-width: $lg;
   padding: 0 30px;
   margin: 0 auto;
   @include lg {
