@@ -18,15 +18,5 @@ export default {
       title: "Icon Color",
       type: "string",
     },
-    {
-      name: "level",
-      title: "Level",
-      type: "number",
-      options: {
-        min: 1,
-        max: 10,
-        step: 1,
-      },
-    },
   ],
 };

@@ -3,31 +3,38 @@ import React from "react";
 import { getIcon } from "@/lib/icons";
 import styles from "@/app/styles/Skills.module.scss";
 import type { Skill } from "@/types/Skill";
-import { motion } from "framer-motion";
+
+function darkenColor(color: string, amount: number = 0.3): string {
+  // Remove # if present
+  const hex = color.replace("#", "");
+
+  // Parse the hex color
+  const r = parseInt(hex.slice(0, 2), 16);
+  const g = parseInt(hex.slice(2, 4), 16);
+  const b = parseInt(hex.slice(4, 6), 16);
+
+  // Darken each component
+  const darkenedR = Math.max(0, Math.floor(r * (1 - amount)));
+  const darkenedG = Math.max(0, Math.floor(g * (1 - amount)));
+  const darkenedB = Math.max(0, Math.floor(b * (1 - amount)));
+
+  // Convert back to hex
+  return `#${darkenedR.toString(16).padStart(2, "0")}${darkenedG.toString(16).padStart(2, "0")}${darkenedB.toString(16).padStart(2, "0")}`;
+}
 
 function Skill({ skill }: { skill: Skill }) {
   const IconComponent = getIcon(skill.icon) ? getIcon(skill.icon) : getIcon("empty");
 
   return (
-    <div className={styles.skill}>
-      <div className={styles.skillIconContainer}>
-        <IconComponent
-          className={styles.skillIcon}
-          style={skill.color ? { color: `#${skill.color}` } : {}}
-        />
-      </div>
-      <div className={styles.skillInfo}>
-        <h4 className={styles.skillName}>{skill.name}</h4>
-        <div className={styles.experienceBar}>
-          <motion.div
-            className={styles.experience}
-            initial={{ width: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            whileInView={{ width: `${skill.level * 10}%` }}
-            transition={{ duration: 1, ease: "easeInOut" }}
-          />
-        </div>
-      </div>
+    <div
+      className={styles.skillBadge}
+      style={{
+        backgroundColor: skill.color ? `#${skill.color}30` : undefined,
+        color: skill.color ? darkenColor(`#${skill.color}`, 0.25) : undefined,
+        borderColor: skill.color ? darkenColor(`#${skill.color}`, 0.25) : undefined,
+      }}>
+      <IconComponent className={styles.skillIcon} />
+      <span className={styles.skillName}>{skill.name}</span>
     </div>
   );
 }

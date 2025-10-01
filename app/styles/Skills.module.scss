@@ -8,14 +8,14 @@
 }
 
 .container {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  grid-auto-rows: 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 30px;
   width: 100%;
   padding: 25px 0;
   @include md {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 }
 
@@ -24,62 +24,53 @@
   @include noDrag;
   padding: 30px 25px;
   transition: all 0.25s ease;
+  @include md {
+    flex: 1 1 calc(50% - 15px);
+    min-width: 0;
+  }
   &:hover {
-    scale: 1.02;
     box-shadow: $hoverBoxShadow;
   }
 }
 
 .skillGroupTitle {
-  margin-bottom: 15px;
+  margin-bottom: 1.2rem;
   font-size: 1.4rem;
 }
 
-.skill {
-  @include flexCenter;
-  flex-wrap: nowrap;
-  gap: 15px;
-  width: 100%;
-  padding: 10px;
-  transition:
-    color 0.1s linear,
-    transform 0.25s ease;
+.skillBadgesContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
-.skillIconContainer {
+.skillBadge {
   @include flexCenter;
-  width: 35px;
-  height: 100%;
-  color: $primary;
-  filter: drop-shadow(0px 1px 0.5px #0000001a);
+  gap: 8px;
+  padding: 6px 10px;
+  border: 1px solid;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 0.25em 0.5em -0.125em rgba(0, 0, 0, 0.1);
+    filter: brightness(1.05);
+  }
 }
 
 .skillIcon {
-  width: 100%;
-  height: 100%;
-}
-
-.skillInfo {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
 }
 
 .skillName {
-  margin-top: 0;
-  margin-bottom: 10px;
-}
-
-.experienceBar {
-  width: 100%;
-  height: 10px;
-  border-radius: 5px;
-  background-color: color.adjust($lightTertiary, $lightness: -10%);
-}
-
-.experience {
-  height: 100%;
-  border-radius: 5px;
-  background-color: $primary;
-  overflow: hidden;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
 }

@@ -7,5 +7,4 @@ export type SkillBody = {
   name: string;
   icon: string;
   color: string;
-  level: number;
 };

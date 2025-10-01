@@ -60,7 +60,6 @@ export async function getSkills(): Promise<SkillGroup[]> {
         name,
         icon,
         color,
-        level,
       },
     }`
   );
