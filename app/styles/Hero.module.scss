@@ -1,3 +1,4 @@
+@use "sass:color";
 @use "variables" as *;
 
 .bg {
@@ -90,14 +91,12 @@
     font-weight: 600;
 
     span {
-      text-underline-offset: 2px;
       display: inline-flex;
       position: relative;
       padding: 0 2px;
       overflow: hidden;
-      text-decoration-color: $tertiary !important;
-      transform-style: preserve-3d;
-      cursor: text;
+      text-underline-offset: 2px;
+      text-decoration-color: color.adjust($primary, $lightness: -25%, $saturation: 5%) !important;
 
       &::after {
         content: "";
@@ -107,7 +106,7 @@
         z-index: -1;
         width: 100%;
         height: 100%;
-        background-color: $tertiary;
+        background-color: color.adjust($primary, $lightness: -25%, $saturation: 5%);
         transform: translate3d(-101%, 0, 0);
         transition: transform 0.25s ease-in-out;
       }
@@ -158,7 +157,7 @@
 .SVGShape {
   display: block;
   margin-bottom: -1px;
-  fill: $lightPrimary;
+  fill: $bg;
   overflow: hidden;
 }
 

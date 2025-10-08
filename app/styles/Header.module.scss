@@ -4,48 +4,12 @@
   @include flexCenter;
   position: fixed;
   z-index: 99;
-  width: 100%;
-  height: $headerSize;
-  background-color: transparent;
-  transition:
-    background-color 0.25s,
-    color 0.25s;
-}
-
-.menuContainer a {
-  position: relative;
-  color: $darkSecondary !important;
-}
-.menuContainer a .underline {
-  visibility: hidden;
-  position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
   right: 0;
-  height: 3px;
-  background: $primary;
-}
-
-.wrapper.active {
-  box-shadow: 0 4px 22px 0 #0000001a;
-  background-color: $darkSecondary;
-}
-.wrapper.active .mobileActiveMenuItem {
-  padding-left: 35px;
-  border-left: 5px solid $primary;
-  font-weight: 600;
-}
-.wrapper.active .menuContainer a {
-  color: $primary !important;
-}
-.wrapper.active .menuContainer a .underline {
-  visibility: visible;
-}
-.wrapper.active .menuContainer a:hover {
-  color: $secondary !important;
-}
-.wrapper.active .mobileMenuButton {
-  color: $primary !important;
+  height: $headerSize;
+  background-color: rgba($darkPrimary, 0.98);
+  transition: all 0.25s;
 }
 
 .container {
@@ -53,10 +17,29 @@
   flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+  flex-grow: 1;
   max-width: $lg;
   height: 100%;
   padding: 0 20px;
+}
+
+.menuContainer {
+  @include flexCenter;
+  gap: 10px;
+  height: 100%;
+}
+
+.menuContainer a {
+  @include button;
+  &:hover {
+    background-color: $darkSecondary;
+  }
+}
+
+.menuContainer a {
+  position: relative;
+  color: $primary;
+  border-radius: $borderRadius;
 }
 
 .logoContainer {
@@ -76,16 +59,14 @@
   align-items: flex-end;
   height: 38px;
   padding: 0 10px;
-  border-radius: 5px;
-  background-color: $darkSecondary;
+  border-radius: $borderRadius;
   color: $primary;
   font-size: 2rem;
   font-weight: 600;
   transition: all 0.25s;
   cursor: pointer;
   &:hover {
-    box-shadow: 0 2px 5px $secondaryBoxShadow;
-    transform: translateY(-2px);
+    background-color: $darkSecondary;
   }
   &:after {
     content: "orhan";
@@ -94,10 +75,10 @@
     overflow: hidden;
     display: inline-block;
     vertical-align: bottom;
-    transition: max-width 0.25s;
+    transition: max-width 0.25s ease-in-out;
   }
   &.logoActive:after {
-    max-width: 200px;
+    max-width: 6rem;
   }
 }
 
@@ -111,21 +92,24 @@
   opacity: 0;
   width: 100%;
   height: 0;
-  background-color: $darkSecondary;
+  background-color: $darkPrimary;
   overflow: hidden;
   transition:
     opacity 0.25s,
     height 0.25s;
 }
+
 .mobileMenu.mobileMenuActive {
   opacity: 1;
   height: calc(100% - $headerSize);
 }
+
 .mobileMenuItemsContainer {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
+
 .mobileMenuItem {
   width: 100%;
   padding: 15px 40px;
@@ -133,9 +117,17 @@
   color: $primary;
   font-size: 1.8em;
 }
+
+.wrapper.active .mobileActiveMenuItem {
+  padding-left: 35px;
+  border-left: 5px solid $primary;
+  font-weight: 600;
+}
+
 .mobileMenuItem:first-child {
   border-top: 1px solid $secondary;
 }
+
 .mobileSocialsContainer {
   display: flex;
   justify-content: center;
@@ -144,30 +136,10 @@
 }
 
 .mobileMenuButton {
+  color: $primary;
   font-size: 27px;
   transition: transform 0.25s;
   cursor: pointer;
-}
-.mobileMenuButton.mobileMenuButtonActive {
-  transform: rotate(90deg);
-}
-
-.menuContainer {
-  @include flexCenter;
-  gap: 30px;
-  height: 100%;
-  font-size: 18px;
-  font-weight: 700;
-}
-.menuContainer a {
-  @include flexCenter;
-  height: 100%;
-  &:hover {
-    color: $darkSecondary;
-  }
-  @include lg {
-    padding: 0 5px;
-  }
 }
 
 .socialsContainer {
@@ -186,8 +158,7 @@
   width: 55px;
   height: 55px;
   margin: 10px;
-  border-radius: 5px;
-  background-color: $darkSecondary;
+  border-radius: $borderRadius;
   color: $primary;
   font-size: 35px;
   transition: all 0.25s;
@@ -198,8 +169,6 @@
     font-size: 20px;
   }
   &:hover {
-    box-shadow: 0 2px 5px $secondaryBoxShadow;
     background-color: $darkSecondary;
-    transform: translateY(-2px);
   }
 }

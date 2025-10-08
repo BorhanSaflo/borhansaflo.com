@@ -1,33 +1,29 @@
 @use "sass:color";
 
 // Colors
+$bg: #fcfcfc;
 $darkPrimary: #1f1a12;
-$darkSecondary: #1f1c17;
-$lightPrimary: #fcfcfc;
-$lightSecondary: color.adjust($lightPrimary, $lightness: -4%);
-$lightTertiary: color.adjust($lightPrimary, $lightness: -8%);
+$darkSecondary: color.adjust($darkPrimary, $lightness: 8%);
+$lightPrimary: #ffffff;
+$lightSecondary: color.adjust($lightPrimary, $lightness: -2%);
 $primary: #f3b153;
 $secondary: color.adjust($primary, $lightness: -2%, $saturation: 1%);
-$tertiary: #cf7900;
-$primaryBoxShadow: rgba(0, 0, 0, 0.15);
-$secondaryBoxShadow: rgba(0, 0, 0, 0.25);
-$lightBorderColor: #e6ecf8;
+
+// Borders
+$borderColor: #e5e5e5;
+$borderRadius: 4px;
+$border: 1px solid $borderColor;
 
 // Box Shadows
-$boxShadowColor: rgba(0, 0, 0, 0.15);
-$boxShadow:
-  0 0.3em 0.5em -0.125em $boxShadowColor,
-  0 0 0 1px $lightBorderColor;
-$hoverBoxShadow:
-  0 0.5em 0.7em -0.125em $boxShadowColor,
-  0 0 0 1px $lightBorderColor;
+$boxShadow: 0 1px 2px -1px rgb(0 0 0 / 0.15);
+$hoverBoxShadow: 0 1px 6px -1px rgb(0 0 0 / 0.2);
 
 // Screen Sizes
 $lg: 1024px;
 $md: 768px;
 
 // Other
-$headerSize: 64px;
+$headerSize: 54px;
 
 // Mixins
 @mixin lg {
@@ -64,18 +60,39 @@ $headerSize: 64px;
   }
 }
 
-%card {
-  border-radius: 5px;
+@mixin button {
+  @include flexCenter;
+  @include noDrag;
+  gap: 10px;
+  padding: 8px 16px;
+  border-radius: $borderRadius;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  transition:
+    transform 0.25s,
+    background-color 0.25s,
+    color 0.25s,
+    box-shadow 0.25s;
+  cursor: pointer;
+}
+
+@mixin card {
+  border-radius: $borderRadius;
+  border: $border;
   box-shadow: $boxShadow;
   background-color: $lightPrimary;
 }
 
-%tag {
-  padding: 5px 10px;
-  border-radius: 5px;
-  background-color: $primary;
-  color: $darkPrimary;
-  font-size: 0.8em;
+@mixin tag {
+  padding: 4px 8px;
+  border-radius: $borderRadius;
+  white-space: nowrap;
+  font-weight: 500;
+  &:hover,
+  &:focus-visible {
+    filter: brightness(0.75);
+  }
 }
 
 @mixin flexColumnCenter {

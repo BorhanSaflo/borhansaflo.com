@@ -29,9 +29,9 @@ function Skill({ skill }: { skill: Skill }) {
     <div
       className={styles.skillBadge}
       style={{
-        backgroundColor: skill.color ? `#${skill.color}30` : undefined,
-        color: skill.color ? darkenColor(`#${skill.color}`, 0.25) : undefined,
-        borderColor: skill.color ? darkenColor(`#${skill.color}`, 0.25) : undefined,
+        backgroundColor: skill.color ? `#${skill.color}35` : undefined,
+        color: skill.color ? darkenColor(`#${skill.color}`, 0.3) : undefined,
+        borderColor: skill.color ? darkenColor(`#${skill.color}`, 0.3) : undefined,
       }}>
       <IconComponent className={styles.skillIcon} />
       <span className={styles.skillName}>{skill.name}</span>

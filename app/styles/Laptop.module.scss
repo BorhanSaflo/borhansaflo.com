@@ -5,7 +5,7 @@
 $laptopWidth: 20.4em;
 $laptopHeight: 11.4em;
 $toolbar-background: rgb(50, 50, 50);
-$screen-background: rgb(38, 38, 38);
+$screen-background: color.adjust($darkPrimary, $saturation: -5%, $lightness: 2%);
 $base-background: rgb(209, 210, 214);
 $gradient-dark: rgba(44, 45, 47, 0.6);
 $gradient-light: rgba(153, 154, 158, 0.75);

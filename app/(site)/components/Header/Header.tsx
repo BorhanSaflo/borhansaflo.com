@@ -45,11 +45,11 @@ function Header({ sections, socials }: Props) {
             menuData={menuData}
             isOpen={isMobileMenuOpen}
             socials={socials}
-            toggleMobileMenu={toggleMobileMenu}
             currentSection={currentSectionID}
+            toggleMobileMenu={toggleMobileMenu}
           />
         ) : (
-          <DesktopMenu menuData={menuData} socials={socials} currentSection={currentSectionID} />
+          <DesktopMenu menuData={menuData} socials={socials} />
         )}
       </div>
     </div>

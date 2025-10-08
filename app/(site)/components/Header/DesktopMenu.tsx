@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "@/app/styles/Header.module.scss";
-import { motion } from "framer-motion";
 import { Social } from "@/types/Social";
 import SocialButton from "./SocialButton";
 
@@ -13,19 +12,15 @@ interface menuProps {
 interface Props {
   menuData: menuProps[];
   socials: Social[];
-  currentSection: string;
 }
 
-function DesktopMenu({ menuData, socials, currentSection }: Props) {
+function DesktopMenu({ menuData, socials }: Props) {
   return (
     <>
       <div className={styles.menuContainer}>
         {menuData.map((menuItem: menuProps) => (
           <a key={menuItem.name} href={menuItem.href}>
             {menuItem.name}
-            {menuItem.id === currentSection && (
-              <motion.span className={styles.underline} layoutId={styles.underline} />
-            )}
           </a>
         ))}
       </div>

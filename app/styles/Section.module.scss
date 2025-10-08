@@ -4,9 +4,8 @@
   @include flexCenter;
   width: 100%;
   padding: 100px 0;
-  background-color: $lightPrimary;
   &:not(:nth-child(2)) {
-    border-top: 1px solid $lightBorderColor;
+    border-top: 1px solid $borderColor;
   }
 }
 
@@ -61,7 +60,7 @@
   align-items: center;
   width: 100%;
   line-height: calc(1ex / 0.32);
-  color: $darkSecondary;
+  color: $darkPrimary;
   text-align: center;
   @include lg {
     align-items: flex-start;
@@ -91,10 +90,10 @@
   box-shadow:
     rgba(9, 30, 66, 0.1) 0px 4px 8px -2px,
     rgba(230, 236, 248, 0.5) 0px 0px 0px 1px;
-  border-radius: 5px;
+  border-radius: $borderRadius;
   transition: all 0.3s ease-in-out;
   span {
-    border-radius: 5px;
+    border-radius: $borderRadius;
   }
   &:hover {
     transform: scale(1.02);

@@ -13,7 +13,7 @@
 }
 
 .modal {
-  @extend %card;
+  @include card;
   display: flex;
   flex-direction: column;
   width: 95%;
@@ -34,7 +34,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 20px 30px 10px;
-  border-bottom: 1px solid $lightBorderColor;
+  border-bottom: 1px solid $borderColor;
   color: $darkPrimary;
 }
 
@@ -64,17 +64,11 @@
 .titleTag {
   @include noDrag;
   @include flexCenter;
+  @include tag;
   gap: 5px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  background-color: $primary;
-  color: $darkPrimary;
-  font-size: 0.8em;
-  font-weight: 500;
-  transition: background-color 0.2s ease;
-  &:hover {
-    background-color: $secondary;
-  }
+  font-size: 0.8rem;
+  background-color: rgba($primary, 0.4);
+  color: color.adjust($primary, $lightness: -45%, $saturation: 20%);
   @include lg {
     padding: 5px 12px;
     font-size: 0.9em;
@@ -117,7 +111,7 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: color.adjust($lightTertiary, $lightness: -10%);
+  background-color: color.adjust($lightPrimary, $lightness: -15%);
   cursor: pointer;
 }
 
@@ -150,7 +144,7 @@
   overflow: hidden;
   height: 300px;
   width: 100%;
-  border-radius: 5px;
+  border-radius: $borderRadius;
   @include md {
     height: 450px;
   }
@@ -165,7 +159,7 @@
     display: block;
     width: 100%;
     height: 100%;
-    border-radius: inherit;
+    border-radius: $borderRadius;
     object-position: center;
     object-fit: cover;
     image-rendering: auto;

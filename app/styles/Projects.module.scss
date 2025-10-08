@@ -1,3 +1,4 @@
+@use "sass:color";
 @use "variables" as *;
 
 .wrapper {
@@ -10,7 +11,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   grid-auto-rows: 1fr;
-  gap: 30px;
+  gap: 25px;
   justify-items: center;
   width: 100%;
   padding: 25px 0px;
@@ -20,7 +21,7 @@
 }
 
 .project {
-  @extend %card;
+  @include card;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -28,10 +29,6 @@
   transition: all 0.25s ease;
   cursor: pointer;
   &:hover {
-    box-shadow:
-      0 0.5em 0.7em -0.125em #0a0a0a14,
-      0 0 0 1px $lightBorderColor;
-    transform: scale(1.02);
     .projectImage {
       filter: brightness(0.75) blur(0.2px);
     }
@@ -39,6 +36,9 @@
       opacity: 1;
       max-width: 150px;
       transition: all 0.25s ease-in-out;
+    }
+    .projectInfoContainer {
+      background-color: $lightSecondary;
     }
   }
 }
@@ -48,14 +48,14 @@
   position: relative;
   width: 100%;
   height: 275px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  border-top-left-radius: $borderRadius;
+  border-top-right-radius: $borderRadius;
   overflow: hidden;
 }
 
 .projectImage {
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  border-top-left-radius: $borderRadius;
+  border-top-right-radius: $borderRadius;
   transition: all 0.25s ease;
   object-fit: cover;
   filter: brightness(0.95);
@@ -75,7 +75,7 @@
   right: 0;
   gap: 5px;
   padding: 6px 12px;
-  border-bottom-left-radius: 5px;
+  border-bottom-left-radius: $borderRadius;
   background: rgba(#1c1a17, 90%);
 }
 
@@ -100,8 +100,8 @@
   justify-content: space-between;
   width: 100%;
   padding: 20px;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: $borderRadius;
+  border-bottom-right-radius: $borderRadius;
   color: $darkPrimary;
 }
 
@@ -112,7 +112,7 @@
 }
 
 .projectDescription {
-  color: rgba($darkSecondary, 75%);
+  color: rgba($darkPrimary, 75%);
 }
 
 .projectTags {
@@ -125,12 +125,10 @@
 }
 
 .projectTags span {
-  @extend %tag;
+  @include tag;
   margin: 2px;
-  white-space: nowrap;
+  font-size: 0.8rem;
+  background-color: rgba($primary, 0.5);
+  color: color.adjust($primary, $lightness: -40%, $saturation: 100%);
   transition: all 0.3s ease-in-out;
-  &:hover {
-    background: $secondary;
-    color: $darkSecondary;
-  }
 }

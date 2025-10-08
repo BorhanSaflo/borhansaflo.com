@@ -10,9 +10,8 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 25px;
   width: 100%;
-  padding: 25px 0;
   @include md {
     flex-direction: row;
     flex-wrap: wrap;
@@ -20,16 +19,16 @@
 }
 
 .skillGroup {
-  @extend %card;
+  @include card;
   @include noDrag;
-  padding: 30px 25px;
+  padding: 25px;
   transition: all 0.25s ease;
   @include md {
     flex: 1 1 calc(50% - 15px);
     min-width: 0;
   }
   &:hover {
-    box-shadow: $hoverBoxShadow;
+    background-color: $lightSecondary;
   }
 }
 
@@ -46,31 +45,15 @@
 
 .skillBadge {
   @include flexCenter;
+  @include tag;
   gap: 8px;
-  padding: 6px 10px;
-  border: 1px solid;
-  border-radius: 5px;
-  font-size: 0.9rem;
-  font-weight: 500;
   transition: all 0.2s ease;
-  white-space: nowrap;
-
-  &:hover,
-  &:focus-visible {
-    transform: translateY(-2px);
-    box-shadow: 0 0.25em 0.5em -0.125em rgba(0, 0, 0, 0.1);
-    filter: brightness(1.05);
-  }
+  font-size: 0.9rem;
+  border: 1px solid;
 }
 
 .skillIcon {
   width: 16px;
   height: 16px;
   flex-shrink: 0;
-}
-
-.skillName {
-  font-size: inherit;
-  font-weight: inherit;
-  color: inherit;
 }

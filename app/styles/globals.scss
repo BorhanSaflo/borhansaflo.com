@@ -6,7 +6,7 @@ body {
   scroll-behavior: smooth;
   padding: 0;
   margin: 0;
-  background-color: $lightPrimary;
+  background-color: $bg;
   font-family:
     -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
     sans-serif;
@@ -49,57 +49,30 @@ h3 {
   }
 }
 
-%button {
-  @include flexCenter;
-  @include noDrag;
-  gap: 10px;
-  padding: 12px 16px;
-  border-radius: 5px;
-  text-align: center;
-  font-size: 1rem;
-  font-weight: 700;
-  transition:
-    transform 0.25s,
-    background-color 0.25s,
-    color 0.25s,
-    box-shadow 0.25s;
-  cursor: pointer;
-
-  @include md {
-    padding: 12px 20px;
-    font-size: 1.1rem;
-  }
-
-  &:hover {
-    transform: translateY(-2px);
-  }
-}
-
 .primaryButton {
-  @extend %button;
+  @include button;
   box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
-  background-color: $darkSecondary;
+  background-color: $darkPrimary;
   color: $secondary;
 
   &:hover {
-    box-shadow: rgba(0, 0, 0, 0.24) 0 5px 10px;
-    background-color: color.adjust($darkPrimary, $lightness: -1%);
+    background-color: $darkSecondary;
   }
 }
 
 .secondaryButton {
-  @extend %button;
+  @include button;
   background-color: #fff;
-  box-shadow: $boxShadow;
+  border: 1px solid $borderColor;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   color: $darkPrimary;
 
   &:hover {
-    box-shadow: $secondaryBoxShadow;
-    background-color: color.adjust($lightPrimary, $lightness: -1%);
+    background-color: $lightSecondary;
   }
 }
 
 .transparentButton {
-  @extend %button;
+  @include button;
   color: $darkPrimary;
 }
