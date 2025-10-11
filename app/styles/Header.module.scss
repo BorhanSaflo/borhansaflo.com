@@ -8,7 +8,8 @@
   left: 0;
   right: 0;
   height: $headerSize;
-  background-color: rgba($darkPrimary, 0.98);
+  background-color: rgba($darkPrimary, 0.96);
+  backdrop-filter: blur(10px);
   transition: all 0.25s;
 }
 
