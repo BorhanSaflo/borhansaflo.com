@@ -4,7 +4,8 @@ import SocialButton from "./SocialButton";
 import clsx from "clsx";
 import { RemoveScrollBar } from "react-remove-scroll-bar";
 import { Social } from "@/types/Social";
-import { getIcon } from "@/lib/icons";
+import { BsXLg } from "react-icons/bs";
+import { FaBars } from "react-icons/fa";
 
 interface menuProps {
   name: string;
@@ -21,8 +22,6 @@ interface Props {
 }
 
 function MobileMenu({ menuData, isOpen, socials, currentSection, toggleMobileMenu }: Props) {
-  const CloseButton = getIcon("close");
-  const OpenButton = getIcon("open");
   return (
     <>
       {isOpen && <RemoveScrollBar />}
@@ -51,7 +50,7 @@ function MobileMenu({ menuData, isOpen, socials, currentSection, toggleMobileMen
       <div
         onClick={toggleMobileMenu}
         className={clsx(styles.mobileMenuButton, isOpen && styles.mobileMenuButtonActive)}>
-        {isOpen ? <CloseButton /> : <OpenButton />}
+        {isOpen ? <BsXLg /> : <FaBars />}
       </div>
     </>
   );

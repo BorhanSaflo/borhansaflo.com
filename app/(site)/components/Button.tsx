@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { getIcon } from "@/lib/icons";
+import DynamicIcon from "@/lib/icons";
 import clsx from "clsx";
 
 interface ButtonProps {
@@ -14,7 +14,6 @@ interface ButtonProps {
 }
 
 function Button({ icon, className, text, link, type, external, onClick }: ButtonProps) {
-  const Icon = icon ? getIcon(icon) : null;
   return link ? (
     <a
       href={link}
@@ -22,13 +21,13 @@ function Button({ icon, className, text, link, type, external, onClick }: Button
       onClick={onClick}
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}>
-      {Icon && <Icon />}
+      {icon && <DynamicIcon name={icon} />}
       {text}
     </a>
   ) : (
     <div className={clsx(className, `${type}Button`)} onClick={onClick}>
       {text}
-      {Icon && <Icon />}
+      {icon && <DynamicIcon name={icon} />}
     </div>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { getIcon } from "@/lib/icons";
+import DynamicIcon from "@/lib/icons";
 import styles from "@/app/styles/Skills.module.scss";
 import type { Skill } from "@/types/Skill";
 
@@ -23,8 +23,6 @@ function darkenColor(color: string, amount: number = 0.3): string {
 }
 
 function Skill({ skill }: { skill: Skill }) {
-  const IconComponent = getIcon(skill.icon) ? getIcon(skill.icon) : getIcon("empty");
-
   return (
     <div
       className={styles.skillBadge}
@@ -33,7 +31,7 @@ function Skill({ skill }: { skill: Skill }) {
         color: skill.color ? darkenColor(`#${skill.color}`, 0.3) : undefined,
         borderColor: skill.color ? darkenColor(`#${skill.color}`, 0.3) : undefined,
       }}>
-      <IconComponent className={styles.skillIcon} />
+      <DynamicIcon name={skill.icon} className={styles.skillIcon} />
       <span className={styles.skillName}>{skill.name}</span>
     </div>
   );

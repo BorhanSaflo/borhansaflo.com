@@ -1,4 +1,4 @@
-import { IconType } from "react-icons";
+import React from "react";
 import {
   FaHtml5,
   FaJava,
@@ -15,7 +15,7 @@ import {
   FaArrowCircleDown,
   FaPaperPlane,
   FaChevronDown,
-  FaLinkedinIn,
+  FaLinkedin,
   FaAws,
 } from "react-icons/fa";
 import { IoLogoCss3, IoMdConstruct, IoMdPause } from "react-icons/io";
@@ -46,57 +46,61 @@ import { ImCheckmark } from "react-icons/im";
 import { BsXLg, BsFillCalendarCheckFill } from "react-icons/bs";
 import { VscDebugBreakpointData } from "react-icons/vsc";
 
-const icons = new Map<string, IconType>([
-  ["externalLink", BiLinkExternal],
-  ["link", FaLink],
-  ["Completed", ImCheckmark],
-  ["In Development", IoMdConstruct],
-  ["On Hold", IoMdPause],
-  ["Cancelled", BsXLg],
-  ["Planned", BsFillCalendarCheckFill],
-  ["open", FaBars],
-  ["close", BsXLg],
-  ["arrowCircleDown", FaArrowCircleDown],
-  ["empty", VscDebugBreakpointData],
-  ["email", FaEnvelope],
-  ["send", FaPaperPlane],
-  ["github", FaGithub],
-  ["git", FaGitAlt],
-  ["loadMore", FaChevronDown],
-  ["linkedin", FaLinkedinIn],
-  ["arrowRight", FaChevronRight],
-  ["arrowLeft", FaChevronLeft],
-  ["html", FaHtml5],
-  ["css", IoLogoCss3],
-  ["js", SiJavascript],
-  ["ts", SiTypescript],
-  ["react", FaReact],
-  ["java", FaJava],
-  ["vue", FaVuejs],
-  ["python", SiPython],
-  ["c", SiC],
-  ["c++", SiCplusplus],
-  ["go", SiGo],
-  ["express", SiExpress],
-  ["nextJs", SiNextdotjs],
-  ["nuxtJs", SiNuxtdotjs],
-  ["tailwind", SiTailwindcss],
-  ["docker", FaDocker],
-  ["postgres", SiPostgresql],
-  ["mysql", SiMysql],
-  ["mongodb", SiMongodb],
-  ["redis", DiRedis],
-  ["fastapi", SiFastapi],
-  ["svelte", SiSvelte],
-  ["mongo", SiMongodb],
-  ["mysql", SiMysql],
-  ["postgres", SiPostgresql],
-  ["kubernetes", SiKubernetes],
-  ["githubActions", SiGithubactions],
-  ["terraform", SiTerraform],
-  ["aws", FaAws],
-]);
-
-export const getIcon = (name: string) => {
-  return icons.get(name) || GrStatusUnknown;
+const iconMap = {
+  externalLink: BiLinkExternal,
+  link: FaLink,
+  Completed: ImCheckmark,
+  "In Development": IoMdConstruct,
+  "On Hold": IoMdPause,
+  Cancelled: BsXLg,
+  Planned: BsFillCalendarCheckFill,
+  open: FaBars,
+  close: BsXLg,
+  arrowCircleDown: FaArrowCircleDown,
+  empty: VscDebugBreakpointData,
+  email: FaEnvelope,
+  send: FaPaperPlane,
+  github: FaGithub,
+  git: FaGitAlt,
+  loadMore: FaChevronDown,
+  linkedin: FaLinkedin,
+  arrowRight: FaChevronRight,
+  arrowLeft: FaChevronLeft,
+  html: FaHtml5,
+  css: IoLogoCss3,
+  js: SiJavascript,
+  ts: SiTypescript,
+  react: FaReact,
+  java: FaJava,
+  vue: FaVuejs,
+  python: SiPython,
+  c: SiC,
+  "c++": SiCplusplus,
+  go: SiGo,
+  express: SiExpress,
+  nextJs: SiNextdotjs,
+  nuxtJs: SiNuxtdotjs,
+  tailwind: SiTailwindcss,
+  docker: FaDocker,
+  postgres: SiPostgresql,
+  mysql: SiMysql,
+  mongodb: SiMongodb,
+  redis: DiRedis,
+  fastapi: SiFastapi,
+  svelte: SiSvelte,
+  mongo: SiMongodb,
+  kubernetes: SiKubernetes,
+  githubActions: SiGithubactions,
+  terraform: SiTerraform,
+  aws: FaAws,
 };
+
+interface DynamicIconProps extends React.SVGProps<SVGSVGElement> {
+  name: string;
+}
+
+export default function DynamicIcon({ name, ...rest }: DynamicIconProps) {
+  const IconComponent = iconMap[name as keyof typeof iconMap];
+  const IconToRender = IconComponent || GrStatusUnknown;
+  return React.createElement(IconToRender, rest);
+}

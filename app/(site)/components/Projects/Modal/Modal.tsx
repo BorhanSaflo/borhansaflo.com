@@ -1,13 +1,15 @@
 "use client";
 import Image from "next/image";
 import React, { useState } from "react";
-import { getIcon } from "@/lib/icons";
+import DynamicIcon from "@/lib/icons";
 import styles from "@/app/styles/ProjectModal.module.scss";
 import projectStyles from "@/app/styles/Projects.module.scss";
 import { RemoveScrollBar } from "react-remove-scroll-bar";
 import { Project } from "@/types/Project";
 import { motion, AnimatePresence } from "framer-motion";
 import Backdrop from "./Backdrop";
+import { FaChevronLeft, FaChevronRight, FaGithub, FaLink } from "react-icons/fa";
+import { BsXLg } from "react-icons/bs";
 
 interface Props {
   project: Project;
@@ -15,13 +17,6 @@ interface Props {
 }
 
 function ProjectModal({ project, handleClose }: Props) {
-  const StatusIcon = getIcon(project.status);
-  const GitHubIcon = getIcon("github");
-  const LinkIcon = getIcon("link");
-  const CloseIcon = getIcon("close");
-  const RightArrow = getIcon("arrowRight");
-  const LeftArrow = getIcon("arrowLeft");
-
   const wrap = (min: number, max: number, v: number) => {
     const rangeSize = max - min;
     return ((((v - min) % rangeSize) + rangeSize) % rangeSize) + min;
@@ -52,7 +47,7 @@ function ProjectModal({ project, handleClose }: Props) {
             <span className={styles.title}>{project.title}</span>
             <div className={styles.titleTags}>
               <div className={styles.titleTag}>
-                <StatusIcon />
+                <DynamicIcon name={project.status} />
                 {project.status}
               </div>
               {project.link && project.link != "" && (
@@ -61,7 +56,7 @@ function ProjectModal({ project, handleClose }: Props) {
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer">
-                  <LinkIcon />
+                  <FaLink />
                   {"Link"}
                 </a>
               )}
@@ -71,14 +66,14 @@ function ProjectModal({ project, handleClose }: Props) {
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer">
-                  <GitHubIcon />
+                  <FaGithub />
                   {"Github"}
                 </a>
               )}
             </div>
           </div>
           <div className={styles.closeButton} onClick={handleClose}>
-            <CloseIcon />
+            <BsXLg />
           </div>
         </div>
         <div className={styles.bodyContainer}>
@@ -141,12 +136,12 @@ function ProjectModal({ project, handleClose }: Props) {
               </AnimatePresence>
               {project.images && project.images.length > 1 && (
                 <>
-                  <LeftArrow
+                  <FaChevronLeft
                     style={{ left: 5 }}
                     className={styles.arrow}
                     onClick={() => paginate(-1)}
                   />
-                  <RightArrow
+                  <FaChevronRight
                     style={{ right: 5 }}
                     className={styles.arrow}
                     onClick={() => paginate(1)}
@@ -156,7 +151,7 @@ function ProjectModal({ project, handleClose }: Props) {
             </div>
             {project.images && project.images.length > 1 && (
               <div className={styles.imagePagination}>
-                {project.images.map((image, index) => (
+                {project.images.map((_, index) => (
                   <span
                     key={index}
                     className={`${styles.imagePaginationItem} ${

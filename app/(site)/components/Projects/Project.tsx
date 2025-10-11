@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import React, { useState } from "react";
-import { getIcon } from "@/lib/icons";
+import DynamicIcon from "@/lib/icons";
 import styles from "@/app/styles/Projects.module.scss";
 import ProjectModal from "./Modal/Modal";
 import type { Project } from "@/types/Project";
@@ -39,7 +39,6 @@ function Project({ project, windowWidth }: Props) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const closeModal = () => setIsModalOpen(false);
   const openModal = () => setIsModalOpen(true);
-  const StatusIcon = getIcon(project.status);
 
   return (
     <>
@@ -58,7 +57,7 @@ function Project({ project, windowWidth }: Props) {
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
           <div className={styles.status}>
-            <StatusIcon className={styles.statusIcon} />
+            <DynamicIcon name={project.status} className={styles.statusIcon} />
             <span>{project.status}</span>
           </div>
         </div>
