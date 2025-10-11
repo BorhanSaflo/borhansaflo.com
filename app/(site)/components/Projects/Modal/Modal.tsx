@@ -10,6 +10,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Backdrop from "./Backdrop";
 import { FaChevronLeft, FaChevronRight, FaGithub, FaLink } from "react-icons/fa";
 import { BsXLg } from "react-icons/bs";
+import { IoMdClose } from "react-icons/io";
 
 interface Props {
   project: Project;
@@ -73,8 +74,8 @@ function ProjectModal({ project, handleClose }: Props) {
               )}
             </div>
           </div>
-          <div className={styles.closeButton} onClick={handleClose}>
-            <BsXLg />
+          <div className={styles.closeButton} role="button" onClick={handleClose}>
+            <IoMdClose size={25} />
           </div>
         </div>
         <div className={styles.bodyContainer}>
