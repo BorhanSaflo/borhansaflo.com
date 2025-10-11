@@ -29,6 +29,7 @@
   }
   &:hover {
     background-color: $lightSecondary;
+    border-color: $borderColorMuted;
   }
 }
 
@@ -47,9 +48,12 @@
   @include flexCenter;
   @include tag;
   gap: 8px;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
   font-size: 0.9rem;
   border: 1px solid;
+  &:hover {
+    scale: 1.02;
+  }
 }
 
 .skillIcon {

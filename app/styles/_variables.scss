@@ -11,6 +11,7 @@ $secondary: color.adjust($primary, $lightness: -2%, $saturation: 1%);
 
 // Borders
 $borderColor: #e5e5e5;
+$borderColorMuted: #dcdcdc;
 $borderRadius: 4px;
 $border: 1px solid $borderColor;
 
@@ -73,6 +74,7 @@ $headerSize: 54px;
     transform 0.25s,
     background-color 0.25s,
     color 0.25s,
+    border-color 0.25s,
     box-shadow 0.25s;
   cursor: pointer;
 }
@@ -89,10 +91,7 @@ $headerSize: 54px;
   border-radius: $borderRadius;
   white-space: nowrap;
   font-weight: 500;
-  &:hover,
-  &:focus-visible {
-    filter: brightness(0.75);
-  }
+  transition: all 0.25s ease;
 }
 
 @mixin flexColumnCenter {

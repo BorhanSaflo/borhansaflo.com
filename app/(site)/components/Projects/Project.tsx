@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import React, { useState } from "react";
-import DynamicIcon from "@/lib/icons";
 import styles from "@/app/styles/Projects.module.scss";
 import ProjectModal from "./Modal/Modal";
 import type { Project } from "@/types/Project";
@@ -56,10 +55,6 @@ function Project({ project, windowWidth }: Props) {
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
-          <div className={styles.status}>
-            <DynamicIcon name={project.status} className={styles.statusIcon} />
-            <span>{project.status}</span>
-          </div>
         </div>
 
         <div className={styles.projectInfoContainer}>

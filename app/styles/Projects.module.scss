@@ -29,13 +29,10 @@
   transition: all 0.25s ease;
   cursor: pointer;
   &:hover {
+    border-color: $borderColorMuted;
     .projectImage {
       filter: brightness(0.75) blur(0.2px);
-    }
-    .status span {
-      opacity: 1;
-      max-width: 150px;
-      transition: all 0.25s ease-in-out;
+      scale: 1.05;
     }
     .projectInfoContainer {
       background-color: $lightSecondary;
@@ -59,37 +56,6 @@
   transition: all 0.25s ease;
   object-fit: cover;
   filter: brightness(0.95);
-}
-
-.button {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.25s ease;
-}
-
-.status {
-  @include noDrag;
-  @include flexCenter;
-  position: absolute;
-  top: 0;
-  right: 0;
-  gap: 5px;
-  padding: 6px 12px;
-  border-bottom-left-radius: $borderRadius;
-  background: rgba(#1c1a17, 90%);
-}
-
-.status span {
-  opacity: 0;
-  max-width: 0;
-  white-space: nowrap;
-  color: $lightPrimary;
-  font-weight: 500;
-  transition: all 0.25s ease-in-out;
-}
-
-.statusIcon {
-  color: $primary;
 }
 
 .projectInfoContainer {
