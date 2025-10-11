@@ -26,6 +26,7 @@ function ProjectModal({ project, handleClose }: Props) {
   };
   const [[page, direction], setPage] = useState([0, 0]);
   const imageIndex = wrap(0, project.images.length, page);
+  const [isDragging, setIsDragging] = useState(false);
 
   const swipeConfidenceThreshold = 10000;
   const swipePower = (offset: number, velocity: number) => {
@@ -33,7 +34,7 @@ function ProjectModal({ project, handleClose }: Props) {
   };
 
   return (
-    <Backdrop onClick={handleClose}>
+    <Backdrop onClick={() => !isDragging && handleClose()}>
       <RemoveScrollBar />
       <motion.div
         onClick={(e) => e.stopPropagation()}
@@ -103,7 +104,9 @@ function ProjectModal({ project, handleClose }: Props) {
                   dragConstraints={{ left: 0, right: 0 }}
                   dragElastic={1}
                   dragMomentum={false}
-                  onDragEnd={(e, { offset, velocity }) => {
+                  onDragStart={() => setIsDragging(true)}
+                  onDragEnd={(_, { offset, velocity }) => {
+                    setIsDragging(false);
                     const swipe = swipePower(offset.x, velocity.x);
                     if (swipe < -swipeConfidenceThreshold) {
                       paginate(1);
