@@ -85,16 +85,15 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 2px;
+  gap: 5px;
   width: 100%;
   transition: all 0.3s ease-in-out;
 }
 
 .projectTags span {
   @include tag;
-  margin: 2px;
   font-size: 0.8rem;
   background-color: rgba($primary, 0.5);
-  color: color.adjust($primary, $lightness: -40%, $saturation: 100%);
+  color: color.adjust($primary, $lightness: -40%);
   transition: all 0.3s ease-in-out;
 }
