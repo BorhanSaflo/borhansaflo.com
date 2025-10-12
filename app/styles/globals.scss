@@ -51,7 +51,7 @@ h3 {
 
 .primaryButton {
   @include button;
-  box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+  box-shadow: $boxShadow;
   background-color: $darkPrimary;
   color: $secondary;
 
@@ -64,7 +64,7 @@ h3 {
   @include button;
   background-color: #fff;
   border: 1px solid $borderColor;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: $boxShadow;
   color: $darkPrimary;
 
   &:hover {

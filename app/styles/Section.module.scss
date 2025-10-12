@@ -12,7 +12,7 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2.5rem;
   width: $lg;
   padding: 10px 30px;
   overflow-x: hidden;
@@ -40,7 +40,7 @@
 
 .subSection {
   @include flexColumnCenter;
-  gap: 50px;
+  gap: 3rem;
   width: 100%;
   margin-top: 0.5em;
   @include lg {
@@ -52,7 +52,7 @@
   display: flex;
   flex: 1.4 1 0;
   flex-direction: column;
-  gap: 15px;
+  gap: 1rem;
   width: 100%;
   line-height: calc(1ex / 0.32);
   color: $darkPrimary;
@@ -76,15 +76,12 @@
 }
 
 .image {
+  @include noDrag;
   width: 28rem;
-  box-shadow:
-    rgba(9, 30, 66, 0.1) 0px 4px 8px -2px,
-    rgba(230, 236, 248, 0.5) 0px 0px 0px 1px;
+  border: $border;
   border-radius: $borderRadius;
   transition: all 0.3s ease-in-out;
-  span {
-    border-radius: $borderRadius;
-  }
+  box-shadow: $boxShadow;
   &:hover {
     transform: scale(1.02);
   }

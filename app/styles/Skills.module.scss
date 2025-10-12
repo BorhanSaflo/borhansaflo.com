@@ -10,7 +10,7 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 1rem;
   width: 100%;
   @include md {
     flex-direction: row;
@@ -37,16 +37,18 @@
   margin-bottom: 1.2rem;
 }
 
-.skillBadgesContainer {
+.skillTagsContainer {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
 
-.skillBadge {
+.skillTag {
   @include flexCenter;
   @include tag;
   gap: 8px;
+  white-space: nowrap;
+  font-weight: 500;
   transition: all 0.25s ease;
   font-size: 0.9rem;
   border: 1px solid;

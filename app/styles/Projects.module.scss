@@ -11,12 +11,16 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   grid-auto-rows: 1fr;
-  gap: 25px;
+  gap: 1rem;
   justify-items: center;
   width: 100%;
-  padding: 25px 0px;
+  padding: 1rem 0;
+  overflow: hidden;
   @include md {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  @include lg {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
@@ -44,10 +48,16 @@
   @include flexCenter;
   position: relative;
   width: 100%;
-  height: 275px;
+  height: 15rem;
   border-top-left-radius: $borderRadius;
   border-top-right-radius: $borderRadius;
   overflow: hidden;
+  @include md {
+    height: 14rem;
+  }
+  @include lg {
+    height: 11.5rem;
+  }
 }
 
 .projectImage {
@@ -62,10 +72,9 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  gap: 0.5em;
   justify-content: space-between;
-  width: 100%;
-  padding: 20px;
+  gap: 1rem;
+  padding: 1rem;
   border-bottom-left-radius: $borderRadius;
   border-bottom-right-radius: $borderRadius;
   color: $darkPrimary;
@@ -74,11 +83,25 @@
 .projectInfo {
   display: flex;
   flex-direction: column;
-  gap: 0.5em;
+  gap: 0.5rem;
+}
+
+.projectTitle {
+  @include lg {
+    font-size: 1.1rem;
+  }
 }
 
 .projectDescription {
-  color: rgba($darkPrimary, 75%);
+  color: rgba($darkPrimary, 80%);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  @include lg {
+    font-size: 0.9rem;
+  }
 }
 
 .projectTags {

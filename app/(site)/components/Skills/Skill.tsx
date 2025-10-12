@@ -25,7 +25,7 @@ function darkenColor(color: string, amount: number = 0.3): string {
 function Skill({ skill }: { skill: Skill }) {
   return (
     <div
-      className={styles.skillBadge}
+      className={styles.skillTag}
       style={{
         backgroundColor: skill.color ? `#${skill.color}35` : undefined,
         color: skill.color ? darkenColor(`#${skill.color}`, 0.3) : undefined,

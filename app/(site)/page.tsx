@@ -28,7 +28,7 @@ export default async function Home() {
             return (
               <SectionComponent key={section._id} section={section}>
                 {section.id === "projects" ? (
-                  <ProjectsGrid projects={projects} windowWidth={1000} />
+                  <ProjectsGrid projects={projects} />
                 ) : (
                   section.id === "skills" && <SkillsGrid skills={skills} />
                 )}
