@@ -19,7 +19,7 @@ export type SectionBody = {
     name: string;
     heading: string;
     content: PortableTextBlock[];
-    switchOrder: Boolean;
+    switchOrder: boolean;
     image: string;
     imageAlt: string;
     buttons: {

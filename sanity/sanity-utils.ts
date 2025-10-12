@@ -1,12 +1,36 @@
-import clientConfig from "./config/client-config";
 import { createClient, groq } from "next-sanity";
+
+import clientConfig from "./config/client-config";
 import { Project } from "@/types/Project";
 import { Section } from "@/types/Section";
 import { SkillGroup } from "@/types/SkillGroup";
+import { Social } from "@/types/Social";
+import { Meta } from "@/types/Meta";
+
+const client = createClient(clientConfig);
+
+enum DOCUMENT_TYPES {
+  SECTION = "section",
+  PROJECT = "project",
+  SKILL_GROUP = "skillGroup",
+  SOCIAL = "social",
+  META = "meta",
+}
+
+async function fetchSanityData<T>(query: string, entityName: string): Promise<T> {
+  try {
+    return await client.fetch(query);
+  } catch (error) {
+    console.error(`Failed to fetch ${entityName}:`, error);
+    throw new Error(
+      `Failed to fetch ${entityName}: ${error instanceof Error ? error.message : "Unknown error"}`
+    );
+  }
+}
 
 export async function getSections(): Promise<Section[]> {
-  return createClient(clientConfig).fetch(
-    groq`*[_type == "section"]{
+  return fetchSanityData<Section[]>(
+    groq`*[_type == "${DOCUMENT_TYPES.SECTION}"] | order(order asc) {
       order,
       _id,
       _createdAt,
@@ -24,14 +48,17 @@ export async function getSections(): Promise<Section[]> {
         imageAlt,
         buttons,
       },
-    } | order(order asc)`
+    }`,
+    "sections"
   );
 }
 
 export async function getProjects(): Promise<Project[]> {
-  return createClient(clientConfig).fetch(
-    groq`*[_type == "project"] | order(orderRank) {
+  return fetchSanityData<Project[]>(
+    groq`*[_type == "${DOCUMENT_TYPES.PROJECT}"] | order(orderRank) {
       _id,
+      _createdAt,
+      _updatedAt,
       title,
       description,
       link,
@@ -43,13 +70,14 @@ export async function getProjects(): Promise<Project[]> {
           _id,
           name
       },
-    }`
+    }`,
+    "projects"
   );
 }
 
 export async function getSkills(): Promise<SkillGroup[]> {
-  return createClient(clientConfig).fetch(
-    groq`*[_type == "skillGroup"] | order(orderRank) {
+  return fetchSanityData<SkillGroup[]>(
+    groq`*[_type == "${DOCUMENT_TYPES.SKILL_GROUP}"] | order(orderRank) {
       _id,
       _createdAt,
       _updatedAt,
@@ -61,25 +89,27 @@ export async function getSkills(): Promise<SkillGroup[]> {
         icon,
         color,
       },
-    }`
+    }`,
+    "skills"
   );
 }
 
-export async function getSocials() {
-  return createClient(clientConfig).fetch(
-    groq`*[_type == "social"] {
+export async function getSocials(): Promise<Social[]> {
+  return fetchSanityData<Social[]>(
+    groq`*[_type == "${DOCUMENT_TYPES.SOCIAL}"] {
       _id,
       name,
       id,
       icon,
       link,
-    }`
+    }`,
+    "socials"
   );
 }
 
-export async function getMeta() {
-  return createClient(clientConfig).fetch(
-    groq`*[_type == "meta"][0] {
+export async function getMeta(): Promise<Meta> {
+  const meta = await fetchSanityData<Meta | null>(
+    groq`*[_type == "${DOCUMENT_TYPES.META}"][0] {
       siteName,
       title,
       description,
@@ -87,6 +117,13 @@ export async function getMeta() {
       "image": image.asset->url,
       openGraphType,
       themeColor
-    }`
+    }`,
+    "meta"
   );
+
+  if (!meta) {
+    throw new Error("No meta document found in Sanity");
+  }
+
+  return meta;
 }
