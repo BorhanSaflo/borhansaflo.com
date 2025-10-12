@@ -107,9 +107,9 @@ export async function getSocials(): Promise<Social[]> {
   );
 }
 
-export async function getMeta(): Promise<Meta> {
-  const meta = await fetchSanityData<Meta | null>(
-    groq`*[_type == "${DOCUMENT_TYPES.META}"][0] {
+export async function getMeta() {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "meta"][0] {
       siteName,
       title,
       description,
@@ -117,13 +117,6 @@ export async function getMeta(): Promise<Meta> {
       "image": image.asset->url,
       openGraphType,
       themeColor
-    }`,
-    "meta"
+    }`
   );
-
-  if (!meta) {
-    throw new Error("No meta document found in Sanity");
-  }
-
-  return meta;
 }
