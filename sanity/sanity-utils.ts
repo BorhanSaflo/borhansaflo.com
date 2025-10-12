@@ -1,11 +1,9 @@
 import { createClient, groq } from "next-sanity";
-
 import clientConfig from "./config/client-config";
 import { Project } from "@/types/Project";
 import { Section } from "@/types/Section";
 import { SkillGroup } from "@/types/SkillGroup";
 import { Social } from "@/types/Social";
-import { Meta } from "@/types/Meta";
 
 const client = createClient(clientConfig);
 
