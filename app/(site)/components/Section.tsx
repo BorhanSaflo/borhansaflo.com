@@ -6,6 +6,7 @@ import styles from "@/app/styles/Section.module.scss";
 import Button from "./Button";
 import type { Section } from "@/types/Section";
 import { motion, Variants } from "framer-motion";
+import clsx from "clsx";
 
 const cardVariants: Variants = {
   offscreen: {
@@ -49,13 +50,30 @@ const Section = ({ section, children }: { section: Section; children: React.Reac
             return (
               <div className={styles.subSection} key={subSection.name}>
                 <div
-                  className={`${styles.textContainer} ${
-                    subSection.switchOrder ? " orderSecond" : "orderFirst"
-                  }`}>
+                  className={clsx(
+                    styles.textContainer,
+                    subSection.switchOrder ? "orderSecond" : "orderFirst"
+                  )}>
                   {subSection.heading && (
                     <h3 className={styles.subSectionHeading}>{subSection.heading}</h3>
                   )}
-                  <PortableText value={subSection.content} />
+                  <PortableText
+                    value={subSection.content}
+                    components={{
+                      marks: {
+                        link: ({ children, value }) => {
+                          const rel = !value.href.startsWith("/")
+                            ? "noopener noreferrer"
+                            : undefined;
+                          return (
+                            <a href={value.href} target="_blank" rel={rel}>
+                              {children}
+                            </a>
+                          );
+                        },
+                      },
+                    }}
+                  />
                   {subSection.buttons && (
                     <div className={styles.buttonsContainer}>
                       {subSection.buttons?.map((button) => (
@@ -72,9 +90,10 @@ const Section = ({ section, children }: { section: Section; children: React.Reac
                 </div>
                 {subSection.image && (
                   <div
-                    className={`${styles.image} ${
+                    className={clsx(
+                      styles.image,
                       subSection.switchOrder ? "orderFirst" : "orderSecond"
-                    }`}>
+                    )}>
                     <Image
                       src={subSection.image}
                       width="1400"

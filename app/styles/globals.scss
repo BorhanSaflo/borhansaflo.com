@@ -13,8 +13,14 @@ body {
 }
 
 a {
-  text-decoration: none;
+  text-decoration-color: $primary;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 2px;
   color: inherit;
+  transition: all 0.25s ease-in-out;
+  &:hover {
+    text-decoration-color: color.adjust($primary, $lightness: -20%, $saturation: 5%);
+  }
 }
 
 p {

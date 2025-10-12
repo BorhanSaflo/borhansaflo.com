@@ -67,6 +67,7 @@
   @include tag;
   gap: 5px;
   font-size: 0.8rem;
+  text-decoration: none;
   background-color: rgba($primary, 0.4);
   color: color.adjust($primary, $lightness: -40%);
   @include lg {

@@ -32,6 +32,7 @@
 
 .menuContainer a {
   @include button;
+  text-decoration: none;
   &:hover {
     background-color: $darkSecondary;
   }
