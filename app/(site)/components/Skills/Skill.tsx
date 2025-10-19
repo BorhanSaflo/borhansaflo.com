@@ -29,7 +29,7 @@ function Skill({ skill }: { skill: Skill }) {
       style={{
         backgroundColor: skill.color ? `#${skill.color}35` : undefined,
         color: skill.color ? darkenColor(`#${skill.color}`, 0.3) : undefined,
-        borderColor: skill.color ? darkenColor(`#${skill.color}`, 0.3) : undefined,
+        borderColor: skill.color ? `${darkenColor(`#${skill.color}`, 0.3)}80` : undefined,
       }}>
       <DynamicIcon name={skill.icon} className={styles.skillIcon} />
       <span className={styles.skillName}>{skill.name}</span>
