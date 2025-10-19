@@ -9,7 +9,6 @@ import { Project } from "@/types/Project";
 import { motion, AnimatePresence } from "framer-motion";
 import Backdrop from "./Backdrop";
 import { FaChevronLeft, FaChevronRight, FaGithub, FaLink } from "react-icons/fa";
-import { BsXLg } from "react-icons/bs";
 import { IoMdClose } from "react-icons/io";
 
 interface Props {

@@ -40,7 +40,7 @@
 .skillTagsContainer {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 0.4rem;
 }
 
 .skillTag {
@@ -58,7 +58,7 @@
 }
 
 .skillIcon {
-  width: 16px;
-  height: 16px;
+  width: 0.9rem;
+  height: 0.9rem;
   flex-shrink: 0;
 }
