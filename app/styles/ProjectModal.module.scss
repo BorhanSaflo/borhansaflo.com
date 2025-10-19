@@ -67,6 +67,8 @@
   text-decoration: none;
   background-color: rgba($primary, 0.4);
   color: color.adjust($primary, $lightness: -40%);
+  border: 1px solid;
+  border-color: rgba(color.adjust($primary, $lightness: -40%), 0.25);
 }
 
 .closeButton {

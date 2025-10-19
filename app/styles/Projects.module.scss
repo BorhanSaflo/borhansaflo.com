@@ -118,5 +118,7 @@
   font-size: 0.8rem;
   background-color: rgba($primary, 0.5);
   color: color.adjust($primary, $lightness: -40%);
+  border: 1px solid;
+  border-color: rgba(color.adjust($primary, $lightness: -40%), 0.25);
   transition: all 0.3s ease-in-out;
 }
