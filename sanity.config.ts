@@ -43,12 +43,12 @@ const studioConfig = defineConfig([
     schema: { types: schemas },
   },
   {
-    name: "staging",
+    name: "development",
     projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
-    dataset: "staging",
+    dataset: "development",
     apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION!,
-    title: "borhansaflo.com Staging Studio",
-    basePath: "/admin/staging",
+    title: "borhansaflo.com Development Studio",
+    basePath: "/admin/development",
     plugins: [
       structureTool({
         structure: (S: StructureBuilder, context: StructureResolverContext) => {
@@ -57,7 +57,7 @@ const studioConfig = defineConfig([
       }),
       visionTool({
         defaultApiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION,
-        defaultDataset: "staging",
+        defaultDataset: "development",
       }),
       vercelDeployTool(),
       crossDatasetDuplicator({
