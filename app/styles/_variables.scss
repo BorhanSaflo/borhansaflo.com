@@ -16,7 +16,7 @@ $borderColor: hsl(0, 0%, 90%);
 $borderColorMuted: hsl(0, 0%, 87%);
 
 // Borders
-$borderRadius: 4px;
+$borderRadius: 5px;
 $border: 1px solid $borderColor;
 $boxShadow: rgba(0, 0, 0, 0.05) 0 0px 3px;
 
@@ -66,11 +66,11 @@ $headerSize: 54px;
   @include flexCenter;
   @include noDrag;
   gap: 10px;
-  padding: 8px 16px;
+  padding: 10px 14px;
   border-radius: $borderRadius;
   text-align: center;
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-weight: 600;
+  line-height: 1;
   text-decoration: none;
   transition:
     transform 0.25s,
@@ -79,6 +79,10 @@ $headerSize: 54px;
     border-color 0.25s,
     box-shadow 0.25s;
   cursor: pointer;
+
+  &:active {
+    transform: scale(0.98);
+  }
 }
 
 @mixin card {
