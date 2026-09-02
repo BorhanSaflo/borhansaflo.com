@@ -119,9 +119,15 @@ $numOfLines: 12;
   @for $i from 1 through $numOfLines {
     $width: math.random(40) + 30 + 0%;
     $indent: if(
-      $i < calc($numOfLines / 2),
-      $i * 5 + math.random(20) + 0px,
-      ((calc($numOfLines / 2) * 5) - ($i * 2)) + math.random(20) + 0px
+      sass($i < calc($numOfLines / 2)): $i *
+        5 +
+        math.random(20) +
+        0px;
+        else: (
+          (calc($numOfLines / 2) * 5) - ($i * 2),
+        ) +
+        math.random(20) +
+        0px
     );
     li:nth-child(#{$i}) {
       left: $indent;
@@ -130,7 +136,7 @@ $numOfLines: 12;
         fadeIn 0.7s ease-in-out (0.5s + $i * 0.1) forwards,
         glow 5s ease infinite alternate;
       &:after {
-        left: -$indent + if($i < 10, 10.5px, 8px);
+        left: -$indent + if(sass($i < 10): 10.5px; else: 8px);
       }
     }
   }
