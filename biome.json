@@ -19,6 +19,13 @@
       "bracketSameLine": true
     }
   },
-  "linter": { "enabled": false },
+  "linter": {
+    "enabled": true,
+    "domains": { "next": "recommended", "react": "recommended" },
+    "rules": {
+      "recommended": true,
+      "style": { "useImportType": "off", "noNonNullAssertion": "off", "useTemplate": "off" }
+    }
+  },
   "assist": { "enabled": false }
 }
