@@ -31,7 +31,7 @@ function Laptop() {
   return (
     <a
       ref={element}
-      className="w-[20.4em] h-[11.4em] perspective-[1200px] transition-[transform] ease-in-out hover:transform-[scale(1.01)] md:w-[24.48em] md:h-[13.68em] lg:w-[25.5em] lg:h-[14.25em]"
+      className="w-[20.4em] h-[11.4em] perspective-[1200px] pressable hover:transform-[scale(1.01)] active:transform-[scale(0.98)] md:w-[24.48em] md:h-[13.68em] lg:w-[25.5em] lg:h-[14.25em]"
       href="#projects"
       aria-label="Projects">
       <motion.div

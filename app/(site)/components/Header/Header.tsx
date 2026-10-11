@@ -7,7 +7,7 @@ import { Social } from "@/types/Social";
 import { fullWidthClassName } from "react-remove-scroll-bar";
 import useScrollSpy from "../../hooks/useScrollSpy";
 import clsx from "clsx";
-import { buttonProps } from "@/lib/a11y";
+import { Button } from "@/components/ui/button";
 
 interface Props {
   sections: Section[];
@@ -29,28 +29,23 @@ function Header({ sections, socials }: Props) {
   });
 
   return (
-    <div
-      className={clsx(
-        "group/header flex items-center justify-center fixed top-0 left-0 right-0 z-99 h-(--header-height) bg-header backdrop-blur-[10px] transition-all",
-        (isScrolled || isMobileMenuOpen) && "active"
-      )}>
+    <div className="flex items-center justify-center fixed top-0 left-0 right-0 z-99 h-(--header-height) bg-header backdrop-blur-[10px] transition-all">
       <div
         className={clsx(
           "flex flex-nowrap items-center justify-between grow max-w-site h-full px-[20px]",
           fullWidthClassName
         )}>
         <div className="flex items-center justify-start h-full md:basis-0 md:grow">
-          <div
+          <Button
+            variant="iconDark"
+            aria-label="Scroll to top"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className={clsx(
-              "select-none flex items-end h-[38px] px-[10px] rounded-base text-primary text-[2rem] font-semibold transition-all cursor-pointer hover:bg-dark-secondary after:content-['orhan'] after:w-auto after:overflow-hidden after:inline-block after:align-bottom after:transition-[max-width] after:ease-in-out",
+              "items-end h-[38px] px-[10px] text-[2rem] font-semibold after:content-['orhan'] after:w-auto after:overflow-hidden after:inline-block after:align-bottom after:transition-[max-width] after:ease-in-out",
               isScrolled ? "after:max-w-[7rem]" : "after:max-w-0"
-            )}
-            {...buttonProps(
-              () => window.scrollTo({ top: 0, behavior: "smooth" }),
-              "Scroll to top"
             )}>
             {"B"}
-          </div>
+          </Button>
         </div>
         {isMobile ? (
           <MobileMenu

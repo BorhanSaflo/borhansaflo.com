@@ -1,10 +1,9 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-import { projectTag } from "@/lib/styles";
+import { Badge } from "@/components/ui/badge";
 import ProjectModal from "./Modal/Modal";
 import type { Project as ProjectType } from "@/types/Project";
-import { AnimatePresence } from "framer-motion";
 import { buttonProps } from "@/lib/a11y";
 
 interface Props {
@@ -13,16 +12,13 @@ interface Props {
 
 function Project({ project }: Props) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const closeModal = () => setIsModalOpen(false);
   const openModal = () => setIsModalOpen(true);
 
   return (
     <>
-      <AnimatePresence>
-        {isModalOpen && <ProjectModal project={project} handleClose={closeModal} />}
-      </AnimatePresence>
+      <ProjectModal project={project} open={isModalOpen} onOpenChange={setIsModalOpen} />
       <div
-        className="group rounded-base border border-border shadow-card bg-light-primary flex flex-col w-full animate-fade-in transition-all cursor-pointer hover:border-border-muted"
+        className="group rounded-base border border-border shadow-card bg-light-primary flex flex-col w-full animate-fade-in pressable hover:border-border-muted"
         {...buttonProps(openModal)}>
         <div className="flex items-center justify-center relative w-full h-60 rounded-t-base overflow-hidden md:h-56 lg:h-[11.5rem]">
           <Image
@@ -43,7 +39,7 @@ function Project({ project }: Props) {
               <p>{project.description}</p>
             </div>
           </div>
-          <div className="flex flex-row flex-wrap gap-[5px] w-full transition-all duration-300 ease-in-out">
+          <div className="flex flex-row flex-wrap gap-[5px] w-full">
             {(() => {
               const maxTags = 3;
               const tagsToShow = project.tags.slice(0, maxTags);
@@ -52,11 +48,9 @@ function Project({ project }: Props) {
               return (
                 <>
                   {tagsToShow.map((tag) => (
-                    <span key={tag._id} className={projectTag}>
-                      {tag.name}
-                    </span>
+                    <Badge key={tag._id}>{tag.name}</Badge>
                   ))}
-                  {remainingCount > 0 && <span className={projectTag}>+{remainingCount}</span>}
+                  {remainingCount > 0 && <Badge>+{remainingCount}</Badge>}
                 </>
               );
             })()}

@@ -1,4 +1,4 @@
-import { buttonBase } from "@/lib/styles";
+import { buttonVariants } from "@/components/ui/button";
 import { Social } from "@/types/Social";
 import SocialButton from "./SocialButton";
 
@@ -21,7 +21,7 @@ function DesktopMenu({ menuData, socials }: Props) {
           <a
             key={menuItem.name}
             href={menuItem.href}
-            className={`${buttonBase} relative text-primary hover:bg-dark-secondary`}>
+            className={buttonVariants({ variant: "nav" })}>
             {menuItem.name}
           </a>
         ))}

@@ -9,7 +9,7 @@ function SocialButton({ social }: { social: Social }) {
       target="_blank"
       rel="noreferrer"
       title={social.name}
-      className="flex items-center justify-center w-[55px] h-[55px] m-[10px] rounded-base text-primary text-[35px] transition-all hover:bg-dark-secondary md:w-[35px] md:h-[35px] md:m-0 md:text-[20px]">
+      className="flex items-center justify-center w-[55px] h-[55px] m-[10px] rounded-base text-primary text-[35px] pressable hover:bg-dark-secondary md:w-[35px] md:h-[35px] md:m-0 md:text-[20px]">
       <DynamicIcon name={social.icon} />
     </a>
   );
