@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "@/app/styles/Header.module.scss";
 import DesktopMenu from "./DesktopMenu";
 import MobileMenu from "./MobileMenu";
@@ -8,6 +8,7 @@ import { Social } from "@/types/Social";
 import { fullWidthClassName } from "react-remove-scroll-bar";
 import useScrollSpy from "../../hooks/useScrollSpy";
 import clsx from "clsx";
+import { buttonProps } from "@/lib/a11y";
 
 interface Props {
   sections: Section[];
@@ -34,9 +35,10 @@ function Header({ sections, socials }: Props) {
         <div className={styles.logoContainer}>
           <div
             className={clsx(styles.logo, isScrolled && styles.logoActive)}
-            onClick={() => {
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }}>
+            {...buttonProps(
+              () => window.scrollTo({ top: 0, behavior: "smooth" }),
+              "Scroll to top"
+            )}>
             {"B"}
           </div>
         </div>

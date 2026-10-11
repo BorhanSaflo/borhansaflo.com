@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "@/app/styles/Projects.module.scss";
 import Button from "../Button";
 import ProjectComponent from "./Project";

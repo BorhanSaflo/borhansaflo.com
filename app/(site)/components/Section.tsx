@@ -4,7 +4,7 @@ import Image from "next/image";
 import React from "react";
 import styles from "@/app/styles/Section.module.scss";
 import Button from "./Button";
-import type { Section } from "@/types/Section";
+import type { Section as SectionType } from "@/types/Section";
 import { motion, Variants } from "framer-motion";
 import clsx from "clsx";
 
@@ -22,7 +22,7 @@ const cardVariants: Variants = {
   },
 };
 
-const Section = ({ section, children }: { section: Section; children: React.ReactNode }) => {
+const Section = ({ section, children }: { section: SectionType; children: React.ReactNode }) => {
   const keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
 
   const triplet = (e1: number, e2: number, e3: number) =>

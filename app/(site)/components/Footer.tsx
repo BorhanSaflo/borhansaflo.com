@@ -1,10 +1,10 @@
-import React from "react";
 import styles from "../../styles/Footer.module.scss";
 
 function Footer() {
   return (
     <>
       <svg
+        aria-hidden="true"
         className={styles.svgShape}
         preserveAspectRatio="xMidYMin slice"
         xmlns="http://www.w3.org/2000/svg"

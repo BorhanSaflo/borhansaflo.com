@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "@/app/styles/Header.module.scss";
 import { Social } from "@/types/Social";
 import SocialButton from "./SocialButton";

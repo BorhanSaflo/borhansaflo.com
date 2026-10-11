@@ -1,9 +1,8 @@
-import React from "react";
 import styles from "@/app/styles/Skills.module.scss";
 import Skill from "./Skill";
-import type { SkillGroup } from "@/types/SkillGroup";
+import type { SkillGroup as SkillGroupType } from "@/types/SkillGroup";
 
-function SkillGroup({ skillGroup }: { skillGroup: SkillGroup }) {
+function SkillGroup({ skillGroup }: { skillGroup: SkillGroupType }) {
   return (
     <div className={styles.skillGroup}>
       <h3 className={styles.skillGroupTitle}>{skillGroup.name}</h3>

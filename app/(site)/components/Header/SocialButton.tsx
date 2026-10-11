@@ -1,4 +1,3 @@
-import React from "react";
 import DynamicIcon from "@/lib/icons";
 import styles from "@/app/styles/Header.module.scss";
 import { Social } from "@/types/Social";

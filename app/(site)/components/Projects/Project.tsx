@@ -1,13 +1,14 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "@/app/styles/Projects.module.scss";
 import ProjectModal from "./Modal/Modal";
-import type { Project } from "@/types/Project";
+import type { Project as ProjectType } from "@/types/Project";
 import { AnimatePresence } from "framer-motion";
+import { buttonProps } from "@/lib/a11y";
 
 interface Props {
-  project: Project;
+  project: ProjectType;
 }
 
 function Project({ project }: Props) {
@@ -20,7 +21,7 @@ function Project({ project }: Props) {
       <AnimatePresence>
         {isModalOpen && <ProjectModal project={project} handleClose={closeModal} />}
       </AnimatePresence>
-      <div className={styles.project} onClick={openModal}>
+      <div className={styles.project} {...buttonProps(openModal)}>
         <div className={styles.projectImageContainer}>
           <Image
             className={styles.projectImage}

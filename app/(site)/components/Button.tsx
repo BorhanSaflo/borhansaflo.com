@@ -1,7 +1,7 @@
 "use client";
-import React from "react";
 import DynamicIcon from "@/lib/icons";
 import clsx from "clsx";
+import { buttonProps } from "@/lib/a11y";
 
 interface ButtonProps {
   text: string;
@@ -25,7 +25,7 @@ function Button({ icon, className, text, link, type, external, onClick }: Button
       {text}
     </a>
   ) : (
-    <div className={clsx(className, `${type}Button`)} onClick={onClick}>
+    <div className={clsx(className, `${type}Button`)} {...(onClick ? buttonProps(onClick) : {})}>
       {text}
       {icon && <DynamicIcon name={icon} />}
     </div>

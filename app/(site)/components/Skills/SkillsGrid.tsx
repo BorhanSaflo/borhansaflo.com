@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "@/app/styles/Skills.module.scss";
 import SkillGroupComponent from "./SkillGroup";
 import { SkillGroup } from "@/types/SkillGroup";

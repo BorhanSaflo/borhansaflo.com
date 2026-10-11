@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import { useState } from "react";
 import DynamicIcon from "@/lib/icons";
 import styles from "@/app/styles/ProjectModal.module.scss";
 import projectStyles from "@/app/styles/Projects.module.scss";
@@ -10,6 +10,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Backdrop from "./Backdrop";
 import { FaChevronLeft, FaChevronRight, FaGithub, FaLink } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
+import { buttonProps } from "@/lib/a11y";
 
 interface Props {
   project: Project;
@@ -51,7 +52,7 @@ function ProjectModal({ project, handleClose }: Props) {
                 <DynamicIcon name={project.status} />
                 {project.status}
               </div>
-              {project.link && project.link != "" && (
+              {project.link && project.link !== "" && (
                 <a
                   className={styles.titleTag}
                   href={project.link}
@@ -61,7 +62,7 @@ function ProjectModal({ project, handleClose }: Props) {
                   {"Link"}
                 </a>
               )}
-              {project.github && project.github != "" && (
+              {project.github && project.github !== "" && (
                 <a
                   className={styles.titleTag}
                   href={project.github}
@@ -73,7 +74,7 @@ function ProjectModal({ project, handleClose }: Props) {
               )}
             </div>
           </div>
-          <div className={styles.closeButton} role="button" onClick={handleClose}>
+          <div className={styles.closeButton} {...buttonProps(handleClose, "Close")}>
             <IoMdClose size={25} />
           </div>
         </div>
@@ -156,15 +157,19 @@ function ProjectModal({ project, handleClose }: Props) {
               <div className={styles.imagePagination}>
                 {project.images.map((_, index) => (
                   <span
+                    // biome-ignore lint/suspicious/noArrayIndexKey: images have no stable id
                     key={index}
                     className={`${styles.imagePaginationItem} ${
-                      imageIndex == index && styles.activeImagePaginationItem
+                      imageIndex === index && styles.activeImagePaginationItem
                     }`}
-                    onClick={() => {
-                      if (index != imageIndex) {
-                        setPage([index, index > imageIndex ? 1 : -1]);
-                      }
-                    }}
+                    {...buttonProps(
+                      () => {
+                        if (index !== imageIndex) {
+                          setPage([index, index > imageIndex ? 1 : -1]);
+                        }
+                      },
+                      `Go to image ${index + 1}`
+                    )}
                   />
                 ))}
               </div>

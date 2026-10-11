@@ -1,7 +1,7 @@
-import React from "react";
 import styles from "@/app/styles/Header.module.scss";
 import SocialButton from "./SocialButton";
 import clsx from "clsx";
+import { buttonProps } from "@/lib/a11y";
 import { RemoveScrollBar } from "react-remove-scroll-bar";
 import { Social } from "@/types/Social";
 import { BsXLg } from "react-icons/bs";
@@ -26,11 +26,12 @@ function MobileMenu({ menuData, isOpen, socials, currentSection, toggleMobileMen
     <>
       {isOpen && <RemoveScrollBar />}
       <div className={clsx(styles.mobileMenu, isOpen && styles.mobileMenuActive)}>
-        <div onClick={() => toggleMobileMenu()} className={styles.mobileMenuItemsContainer}>
+        <div className={styles.mobileMenuItemsContainer}>
           {menuData.map((menuItem: menuProps) => (
             <a
               key={menuItem.name}
               href={menuItem.href}
+              onClick={toggleMobileMenu}
               className={clsx(
                 styles.mobileMenuItem,
                 menuItem.id === currentSection && styles.mobileActiveMenuItem
@@ -48,7 +49,7 @@ function MobileMenu({ menuData, isOpen, socials, currentSection, toggleMobileMen
         </div>
       </div>
       <div
-        onClick={toggleMobileMenu}
+        {...buttonProps(toggleMobileMenu, "Toggle menu")}
         className={clsx(styles.mobileMenuButton, isOpen && styles.mobileMenuButtonActive)}>
         {isOpen ? <BsXLg /> : <FaBars />}
       </div>

@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from "react";
+import { useRef } from "react";
 import styles from "@/app/styles/Laptop.module.scss";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 
@@ -18,11 +18,13 @@ function Laptop() {
       <motion.div className={styles.display} style={{ rotateX }}>
         <div className={styles.toolbar}>
           {Array.from({ length: 3 }).map((_, i) => (
+            // biome-ignore lint/suspicious/noArrayIndexKey: static decorative list
             <div key={`toolbar-item-${i}`} aria-hidden="true" />
           ))}
         </div>
         <ul className={styles.screen}>
           {Array.from({ length: linesOfCode }).map((_, i) => (
+            // biome-ignore lint/suspicious/noArrayIndexKey: static decorative list
             <li key={`code-line-${i}`} aria-hidden="true" />
           ))}
         </ul>

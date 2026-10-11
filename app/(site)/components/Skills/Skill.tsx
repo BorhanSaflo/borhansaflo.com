@@ -1,8 +1,7 @@
 "use client";
-import React from "react";
 import DynamicIcon from "@/lib/icons";
 import styles from "@/app/styles/Skills.module.scss";
-import type { Skill } from "@/types/Skill";
+import type { Skill as SkillType } from "@/types/Skill";
 
 function darkenColor(color: string, amount: number = 0.3): string {
   // Remove # if present
@@ -22,7 +21,7 @@ function darkenColor(color: string, amount: number = 0.3): string {
   return `#${darkenedR.toString(16).padStart(2, "0")}${darkenedG.toString(16).padStart(2, "0")}${darkenedB.toString(16).padStart(2, "0")}`;
 }
 
-function Skill({ skill }: { skill: Skill }) {
+function Skill({ skill }: { skill: SkillType }) {
   return (
     <div
       className={styles.skillTag}

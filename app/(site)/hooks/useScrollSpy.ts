@@ -71,7 +71,9 @@ const useScrollSpy = (ids: string[], offset: number = 0) => {
       .map((id) => document.getElementById(id))
       .filter((element): element is HTMLElement => element !== null);
 
-    validElements.forEach((element) => observer.observe(element));
+    validElements.forEach((element) => {
+      observer.observe(element);
+    });
     scrollObserver.observe(scrollDetector);
 
     let resizeTimeout: NodeJS.Timeout;
