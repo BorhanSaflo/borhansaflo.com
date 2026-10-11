@@ -1,6 +1,5 @@
 "use client";
 import DynamicIcon from "@/lib/icons";
-import styles from "@/app/styles/Skills.module.scss";
 import type { Skill as SkillType } from "@/types/Skill";
 
 function darkenColor(color: string, amount: number = 0.3): string {
@@ -24,14 +23,14 @@ function darkenColor(color: string, amount: number = 0.3): string {
 function Skill({ skill }: { skill: SkillType }) {
   return (
     <div
-      className={styles.skillTag}
+      className="flex items-center justify-center py-[3px] px-[6px] rounded-base gap-[8px] whitespace-nowrap font-medium transition-all text-[0.9rem] border hover:scale-[1.02]"
       style={{
         backgroundColor: skill.color ? `#${skill.color}35` : undefined,
         color: skill.color ? darkenColor(`#${skill.color}`, 0.3) : undefined,
         borderColor: skill.color ? `${darkenColor(`#${skill.color}`, 0.3)}80` : undefined,
       }}>
-      <DynamicIcon name={skill.icon} className={styles.skillIcon} />
-      <span className={styles.skillName}>{skill.name}</span>
+      <DynamicIcon name={skill.icon} className="w-[0.9rem] h-[0.9rem] shrink-0" />
+      <span>{skill.name}</span>
     </div>
   );
 }

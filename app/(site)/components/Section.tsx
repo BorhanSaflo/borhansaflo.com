@@ -2,7 +2,6 @@
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 import React from "react";
-import styles from "@/app/styles/Section.module.scss";
 import Button from "./Button";
 import type { Section as SectionType } from "@/types/Section";
 import { motion, Variants } from "framer-motion";
@@ -37,25 +36,33 @@ const Section = ({ section, children }: { section: SectionType; children: React.
     }/yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==`;
 
   return (
-    <div id={section.id} className={styles.wrapper}>
+    <div
+      id={section.id}
+      className="flex items-center justify-center w-full py-[100px] not-nth-2:border-t not-nth-2:border-border">
       <motion.div
-        className={styles.container}
+        className="flex flex-col gap-10 w-site py-[10px] px-[30px] overflow-x-hidden will-change-auto!"
         initial="offscreen"
         whileInView="onscreen"
         viewport={{ once: true, amount: 0.1 }}
         variants={cardVariants}>
-        <h2 className={styles.heading}>{section.heading}</h2>
-        <div className={styles.subSectionsContainer}>
+        <h2 className="text-[2.2rem] after:content-[''] after:block after:rounded-base after:w-20 after:h-[4px] after:mt-4 after:bg-primary">
+          {section.heading}
+        </h2>
+        <div className="flex flex-col gap-32">
           {section.subSections?.map((subSection) => {
             return (
-              <div className={styles.subSection} key={subSection.name}>
+              <div
+                className="flex flex-col items-center justify-center gap-12 w-full mt-[0.5em] lg:flex-row"
+                key={subSection.name}>
                 <div
                   className={clsx(
-                    styles.textContainer,
-                    subSection.switchOrder ? "orderSecond" : "orderFirst"
+                    "flex flex-[1.4_1_0] flex-col gap-4 w-full leading-[calc(1ex/0.32)] text-dark-primary items-start text-left",
+                    subSection.switchOrder ? "lg:order-2" : "lg:order-1"
                   )}>
                   {subSection.heading && (
-                    <h3 className={styles.subSectionHeading}>{subSection.heading}</h3>
+                    <h3 className="text-dark-primary text-[1.5em] font-bold">
+                      {subSection.heading}
+                    </h3>
                   )}
                   <PortableText
                     value={subSection.content}
@@ -75,7 +82,7 @@ const Section = ({ section, children }: { section: SectionType; children: React.
                     }}
                   />
                   {subSection.buttons && (
-                    <div className={styles.buttonsContainer}>
+                    <div className="flex gap-4 flex-row self-auto mt-4 flex-wrap">
                       {subSection.buttons?.map((button) => (
                         <Button
                           key={button.text}
@@ -91,8 +98,8 @@ const Section = ({ section, children }: { section: SectionType; children: React.
                 {subSection.image && (
                   <div
                     className={clsx(
-                      styles.image,
-                      subSection.switchOrder ? "orderFirst" : "orderSecond"
+                      "select-none w-[28rem] border border-border rounded-base transition-all duration-300 ease-in-out shadow-card hover:transform-[scale(1.02)] md:w-[23rem]",
+                      subSection.switchOrder ? "lg:order-1" : "lg:order-2"
                     )}>
                     <Image
                       src={subSection.image}

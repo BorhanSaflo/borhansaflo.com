@@ -1,11 +1,9 @@
-import styles from "../../styles/Footer.module.scss";
-
 function Footer() {
   return (
     <>
       <svg
         aria-hidden="true"
-        className={styles.svgShape}
+        className="mt-[100px] mb-[-5px] overflow-hidden fill-secondary w-full h-[100px] lg:mt-[200px]"
         preserveAspectRatio="xMidYMin slice"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 2000.4 78.7">
@@ -64,8 +62,10 @@ function Footer() {
           <circle cx="1763.2" cy="5.8" r="2.8" opacity=".75" />
         </g>
       </svg>
-      <footer className={styles.footer}>
-        <span className={styles.logo}>{"B"}</span>
+      <footer className="flex flex-col items-center justify-center gap-[5px] w-full py-[125px] bg-secondary text-[rgb(81,41,7)] text-[1.1em] font-bold text-center">
+        <span className="select-none flex items-center justify-center w-[60px] h-[60px] pb-[6px] mb-[20px] rounded-base bg-dark-primary text-primary text-[3.3rem] font-semibold">
+          {"B"}
+        </span>
         <span>{"Crafted with Code & Passion."}</span>
         <span>© {new Date().getFullYear()} Borhan Saflo. All rights reserved.</span>
       </footer>

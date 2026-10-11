@@ -1,4 +1,4 @@
-import "@/app/styles/globals.scss";
+import "@/app/styles/globals.css";
 import { getMeta } from "@/sanity/sanity-utils";
 import { Metadata } from "next";
 import Script from "next/script";

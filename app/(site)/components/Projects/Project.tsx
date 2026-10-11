@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-import styles from "@/app/styles/Projects.module.scss";
+import { projectTag } from "@/lib/styles";
 import ProjectModal from "./Modal/Modal";
 import type { Project as ProjectType } from "@/types/Project";
 import { AnimatePresence } from "framer-motion";
@@ -21,10 +21,12 @@ function Project({ project }: Props) {
       <AnimatePresence>
         {isModalOpen && <ProjectModal project={project} handleClose={closeModal} />}
       </AnimatePresence>
-      <div className={styles.project} {...buttonProps(openModal)}>
-        <div className={styles.projectImageContainer}>
+      <div
+        className="group rounded-base border border-border shadow-card bg-light-primary flex flex-col w-full animate-fade-in transition-all cursor-pointer hover:border-border-muted"
+        {...buttonProps(openModal)}>
+        <div className="flex items-center justify-center relative w-full h-60 rounded-t-base overflow-hidden md:h-56 lg:h-[11.5rem]">
           <Image
-            className={styles.projectImage}
+            className="rounded-t-base transition-all object-cover brightness-95 group-hover:brightness-75 group-hover:blur-[0.2px] group-hover:scale-[1.05]"
             src={project.previewImage ? project.previewImage : "/images/projects/placeholder.png"}
             alt={project.title}
             placeholder="blur"
@@ -34,14 +36,14 @@ function Project({ project }: Props) {
           />
         </div>
 
-        <div className={styles.projectInfoContainer}>
-          <div className={styles.projectInfo}>
-            <h3 className={styles.projectTitle}>{project.title}</h3>
-            <div className={styles.projectDescription}>
+        <div className="flex flex-1 flex-col justify-between gap-4 p-4 rounded-b-base text-dark-primary group-hover:bg-light-secondary">
+          <div className="flex flex-col gap-2">
+            <h3 className="lg:text-[1.1rem]">{project.title}</h3>
+            <div className="text-muted-text line-clamp-3 overflow-hidden lg:text-[0.9rem]">
               <p>{project.description}</p>
             </div>
           </div>
-          <div className={styles.projectTags}>
+          <div className="flex flex-row flex-wrap gap-[5px] w-full transition-all duration-300 ease-in-out">
             {(() => {
               const maxTags = 3;
               const tagsToShow = project.tags.slice(0, maxTags);
@@ -50,13 +52,11 @@ function Project({ project }: Props) {
               return (
                 <>
                   {tagsToShow.map((tag) => (
-                    <span key={tag._id} className={styles.projectTag}>
+                    <span key={tag._id} className={projectTag}>
                       {tag.name}
                     </span>
                   ))}
-                  {remainingCount > 0 && (
-                    <span className={styles.projectTag}>+{remainingCount}</span>
-                  )}
+                  {remainingCount > 0 && <span className={projectTag}>+{remainingCount}</span>}
                 </>
               );
             })()}

@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import styles from "@/app/styles/Projects.module.scss";
 import Button from "../Button";
 import ProjectComponent from "./Project";
 import { Project } from "@/types/Project";
@@ -23,8 +22,8 @@ function ProjectsGrid({ projects }: Props) {
   };
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.container}>
+    <div className="flex flex-col items-center justify-center gap-[60px] w-full">
+      <div className="grid grid-cols-1 auto-rows-[1fr] gap-4 justify-items-center w-full py-4 overflow-hidden md:grid-cols-2 lg:grid-cols-3">
         {projects.slice(0, visibleProjectsLength).map((project) => {
           return <ProjectComponent key={project._id} project={project} />;
         })}

@@ -1,4 +1,4 @@
-import "@/app/styles/globals.scss";
+import "@/app/styles/globals.css";
 export const metadata = {
   title: "borhansaflo.com Studio",
   robots: "noindex, nofollow",

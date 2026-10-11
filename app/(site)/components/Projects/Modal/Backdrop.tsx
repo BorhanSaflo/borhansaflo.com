@@ -1,6 +1,5 @@
 "use client";
 import { motion } from "framer-motion";
-import styles from "@/app/styles/ProjectModal.module.scss";
 
 interface Props {
   children: React.ReactNode;
@@ -11,7 +10,7 @@ const Backdrop = ({ children, onClick }: Props) => {
   return (
     <motion.div
       onClick={onClick}
-      className={styles.backdrop}
+      className="flex items-center justify-center fixed top-0 left-0 w-screen h-screen bg-[rgba(0,0,0,0.6)] z-100"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

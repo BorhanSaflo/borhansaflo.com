@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import styles from "@/app/styles/Header.module.scss";
 import DesktopMenu from "./DesktopMenu";
 import MobileMenu from "./MobileMenu";
 import { Section } from "@/types/Section";
@@ -30,11 +29,22 @@ function Header({ sections, socials }: Props) {
   });
 
   return (
-    <div className={clsx(styles.wrapper, (isScrolled || isMobileMenuOpen) && styles.active)}>
-      <div className={clsx(styles.container, fullWidthClassName)}>
-        <div className={styles.logoContainer}>
+    <div
+      className={clsx(
+        "group/header flex items-center justify-center fixed top-0 left-0 right-0 z-99 h-(--header-height) bg-header backdrop-blur-[10px] transition-all",
+        (isScrolled || isMobileMenuOpen) && "active"
+      )}>
+      <div
+        className={clsx(
+          "flex flex-nowrap items-center justify-between grow max-w-site h-full px-[20px]",
+          fullWidthClassName
+        )}>
+        <div className="flex items-center justify-start h-full md:basis-0 md:grow">
           <div
-            className={clsx(styles.logo, isScrolled && styles.logoActive)}
+            className={clsx(
+              "select-none flex items-end h-[38px] px-[10px] rounded-base text-primary text-[2rem] font-semibold transition-all cursor-pointer hover:bg-dark-secondary after:content-['orhan'] after:w-auto after:overflow-hidden after:inline-block after:align-bottom after:transition-[max-width] after:ease-in-out",
+              isScrolled ? "after:max-w-[7rem]" : "after:max-w-0"
+            )}
             {...buttonProps(
               () => window.scrollTo({ top: 0, behavior: "smooth" }),
               "Scroll to top"

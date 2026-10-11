@@ -19,6 +19,7 @@
       "bracketSameLine": true
     }
   },
+  "css": { "parser": { "tailwindDirectives": true } },
   "linter": {
     "enabled": true,
     "domains": { "next": "recommended", "react": "recommended" },
