@@ -2,9 +2,8 @@
   "name": "borhansaflo.com",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "pnpm@11.22.0",
+  "trustedDependencies": ["@parcel/watcher", "esbuild", "sharp", "unrs-resolver"],
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
